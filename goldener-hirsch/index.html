@@ -1,0 +1,1215 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Hotel Goldener Hirsch · Mosbach — Design-Entwurf</title>
+    <style>
+      :root {
+        --papier: #f7f1e5;
+        --papier-hell: #fdfaf3;
+        --band: #eee5d2;
+        --tinte: #2f261a;
+        --tinte-weich: #6f6353;
+        --tanne: #2e4636;
+        --tanne-tief: #223528;
+        --gold: #b08d42;
+        --gold-tief: #816018;
+        --saloon: #1d1710;
+        --saloon-tief: #16110b;
+        --creme: #f2ead8;
+        --creme-weich: #cbbfa4;
+        --linie: rgba(47, 38, 26, 0.28);
+        --linie-zart: rgba(47, 38, 26, 0.14);
+        /* prettier-ignore */
+        --serif: Baskerville, 'Iowan Old Style', Palatino, Georgia, 'Times New Roman', serif;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+        overflow-x: clip;
+      }
+      body {
+        background: var(--papier);
+        color: var(--tinte);
+        font-family: var(--serif);
+        font-size: 17px;
+        line-height: 1.72;
+        overflow-x: clip;
+      }
+      ::selection {
+        background: var(--tanne);
+        color: var(--papier);
+      }
+      a {
+        color: inherit;
+      }
+      img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* ===== entwurfs-banner ===== */
+      .entwurf-banner {
+        position: sticky;
+        top: 0;
+        z-index: 30;
+        background: var(--tanne);
+        color: var(--papier);
+        font-size: 0.74rem;
+        text-align: center;
+        padding: 0.5rem 1rem;
+        letter-spacing: 0.05em;
+      }
+
+      /* ===== typografie-grundlagen ===== */
+      .vorzeile {
+        font-size: 0.72rem;
+        font-weight: 400;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        color: var(--tanne);
+        margin-bottom: 1rem;
+      }
+      h1,
+      h2,
+      h3 {
+        font-weight: 500;
+        letter-spacing: 0.01em;
+      }
+      h2 {
+        font-size: clamp(1.7rem, 3.6vw, 2.4rem);
+        line-height: 1.22;
+        margin-bottom: 1rem;
+      }
+      .abschnitt-hinweis {
+        color: var(--tinte-weich);
+        font-size: 0.95rem;
+        max-width: 58ch;
+        margin-bottom: 2.4rem;
+      }
+      .muted {
+        color: var(--tinte-weich);
+      }
+      em {
+        letter-spacing: 0.01em;
+      }
+
+      /* ===== masthead ===== */
+      .masthead {
+        text-align: center;
+        padding: clamp(2.2rem, 5vh, 3.6rem) 1.2rem 0;
+        max-width: 1080px;
+        margin: 0 auto;
+      }
+      #top {
+        scroll-margin-top: 5rem;
+      }
+      .masthead-ort {
+        font-size: 0.66rem;
+        letter-spacing: 0.32em;
+        text-transform: uppercase;
+        color: var(--tinte-weich);
+      }
+      .masthead-marke {
+        display: inline-block;
+        margin-top: 1.3rem;
+        color: inherit;
+        text-decoration: none;
+      }
+      .geweih-marke {
+        width: 52px;
+        height: 44px;
+        margin: 0 auto 0.9rem;
+        display: block;
+      }
+      .wortmarke {
+        font-size: clamp(1.9rem, 5.5vw, 2.9rem);
+        line-height: 1.1;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        font-weight: 500;
+      }
+      .masthead-unterzeile {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1.1rem;
+        font-size: 0.7rem;
+        letter-spacing: 0.26em;
+        text-transform: uppercase;
+        color: var(--gold-tief);
+      }
+      .masthead-unterzeile::before,
+      .masthead-unterzeile::after {
+        content: '';
+        flex: 0 1 110px;
+        border-top: 1px solid var(--gold);
+      }
+      .hauptnav {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0 0.4rem;
+        margin-top: 1.6rem;
+        padding-top: 0.4rem;
+        border-top: 3px double var(--linie);
+      }
+      .hauptnav a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        padding: 0 0.9rem;
+        font-size: 0.72rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        text-decoration: none;
+        color: var(--tinte);
+        transition: color 0.2s;
+      }
+      .hauptnav a:hover {
+        color: var(--tanne);
+      }
+
+      /* ===== hero ===== */
+      .hero {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: clamp(2.6rem, 6vh, 4.5rem) clamp(1.2rem, 4vw, 3rem) clamp(3rem, 7vh, 5rem);
+        text-align: center;
+      }
+      .hero h1 {
+        font-size: clamp(2.1rem, 5.4vw, 3.6rem);
+        line-height: 1.18;
+        max-width: 21ch;
+        margin: 0 auto;
+      }
+      .hero-lauftext {
+        max-width: 52ch;
+        margin: 1.4rem auto 0;
+        color: var(--tinte-weich);
+        font-size: 1.02rem;
+      }
+      .hero-cta {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.9rem;
+        margin-top: 2.2rem;
+      }
+      .h1-zeile {
+        display: block;
+      }
+      @media (max-width: 480px) {
+        .hero-cta {
+          flex-direction: column;
+          align-items: stretch;
+          max-width: 320px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+        .masthead-unterzeile {
+          font-size: 0.58rem;
+          letter-spacing: 0.18em;
+          gap: 0.7rem;
+        }
+        .masthead-unterzeile::before,
+        .masthead-unterzeile::after {
+          flex-basis: 36px;
+        }
+      }
+
+      /* ===== buttons ===== */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        padding: 0.8rem 1.9rem;
+        font-family: var(--serif);
+        font-size: 0.82rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        text-decoration: none;
+        cursor: pointer;
+        color: var(--tanne);
+        background: transparent;
+        border: 1px solid var(--tanne);
+        transition:
+          background 0.2s,
+          color 0.2s;
+      }
+      .btn:hover {
+        background: var(--tanne);
+        color: var(--papier);
+      }
+      .btn-voll {
+        background: var(--tanne);
+        color: var(--papier);
+      }
+      .btn-voll:hover {
+        background: var(--tanne-tief);
+        border-color: var(--tanne-tief);
+      }
+      .btn:focus-visible {
+        outline: 2px solid var(--gold-tief);
+        outline-offset: 3px;
+      }
+
+      /* ===== foto-rahmen (gerahmter druck) ===== */
+      .foto-rahmen {
+        border: 0;
+        margin: 0;
+      }
+      .foto {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid var(--tinte);
+        outline: 1px solid var(--linie);
+        outline-offset: 6px;
+        background: var(--band);
+      }
+      .foto img {
+        transition: transform 0.9s ease;
+      }
+      .foto-rahmen:hover .foto img {
+        transform: scale(1.025);
+      }
+      .foto-unterschrift {
+        margin-top: 1.1rem;
+        font-size: 0.82rem;
+        font-style: italic;
+        color: var(--tinte-weich);
+        text-align: center;
+      }
+      .hero-foto {
+        aspect-ratio: 16 / 9;
+      }
+      @media (max-width: 640px) {
+        .hero-foto {
+          aspect-ratio: 4 / 5;
+        }
+      }
+      .foto-siegel {
+        position: absolute;
+        z-index: 2;
+        top: 1.1rem;
+        left: 1.1rem;
+        background: var(--papier);
+        border: 1px solid var(--tinte);
+        padding: 0.45rem 0.9rem;
+        font-size: 0.64rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--tinte);
+      }
+
+      /* ===== sektionen ===== */
+      section {
+        scroll-margin-top: 3rem;
+      }
+      .inhalt {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: clamp(3rem, 8vh, 5.5rem) clamp(1.2rem, 4vw, 3rem);
+      }
+      .trennlinie {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 0 clamp(1.2rem, 4vw, 3rem);
+      }
+      .trennlinie hr {
+        border: 0;
+        border-top: 3px double var(--linie);
+      }
+      .ornament {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        color: var(--gold-tief);
+        font-size: 0.9rem;
+      }
+      .ornament::before,
+      .ornament::after {
+        content: '';
+        flex: 0 1 84px;
+        border-top: 1px solid var(--gold);
+      }
+
+      /* ===== chronik ===== */
+      .chronik {
+        text-align: center;
+      }
+      .chronik-text {
+        max-width: 62ch;
+        margin: 0 auto;
+        text-align: left;
+        font-size: 1.06rem;
+      }
+      .chronik-text::first-letter {
+        font-size: 3.4em;
+        float: left;
+        line-height: 0.82;
+        padding: 0.08em 0.12em 0 0;
+        color: var(--tanne);
+      }
+      .fakten {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.4rem 0;
+        margin-top: 2.6rem;
+        font-size: 0.72rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--gold-tief);
+      }
+      .fakten span {
+        padding: 0 1.1rem;
+      }
+      .fakten span + span {
+        border-left: 1px solid var(--gold);
+      }
+
+      /* ===== zimmer ===== */
+      .zimmer-grid {
+        display: grid;
+        gap: 2.4rem;
+      }
+      @media (min-width: 800px) {
+        .zimmer-grid {
+          grid-template-columns: 1fr 1fr 1fr;
+        }
+      }
+      .zimmer-karte {
+        display: flex;
+        flex-direction: column;
+      }
+      .zimmer-foto {
+        aspect-ratio: 4 / 3;
+      }
+      .zimmer-karte h3 {
+        margin-top: 1.5rem;
+        font-size: 0.78rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--tanne);
+      }
+      .zimmer-karte p {
+        margin-top: 0.7rem;
+        font-size: 0.95rem;
+        color: var(--tinte-weich);
+      }
+      .zimmer-preis {
+        display: flex;
+        align-items: baseline;
+        gap: 0.7rem;
+        margin-top: 1.1rem;
+        padding-top: 0.9rem;
+        border-top: 1px solid var(--linie-zart);
+        font-size: 0.95rem;
+      }
+      .zimmer-preis s {
+        flex: 1;
+        border-bottom: 1px dotted var(--linie);
+        text-decoration: none;
+        transform: translateY(-4px);
+      }
+      .zimmer-preis strong {
+        white-space: nowrap;
+        font-weight: 600;
+      }
+      .zimmer-inklusive {
+        font-style: italic;
+        font-size: 0.85rem !important;
+        margin-top: 0.35rem !important;
+      }
+      .ausstattung {
+        margin-top: 3rem;
+        text-align: center;
+        font-size: 0.9rem;
+        color: var(--tinte-weich);
+      }
+      .karten-hinweis {
+        margin-top: 2.2rem;
+        text-align: center;
+        font-size: 0.82rem;
+        font-style: italic;
+        color: var(--tinte-weich);
+      }
+
+      /* ===== frühstück (getöntes band) ===== */
+      .band-sektion {
+        background: var(--band);
+        border-block: 1px solid var(--linie-zart);
+      }
+      .zwei-spalten {
+        display: grid;
+        gap: 2.6rem;
+        align-items: center;
+      }
+      @media (min-width: 860px) {
+        .zwei-spalten {
+          grid-template-columns: 1fr 1fr;
+          gap: 4rem;
+        }
+      }
+      .fruehstueck-foto {
+        aspect-ratio: 4 / 3;
+      }
+      .merkzeile {
+        margin-top: 1.6rem;
+        padding-left: 1.2rem;
+        border-left: 2px solid var(--gold);
+        font-size: 0.95rem;
+        font-style: italic;
+        color: var(--tinte-weich);
+      }
+
+      /* ===== saloon (dunkler kontrastblock) ===== */
+      .saloon-sektion {
+        background: var(--saloon);
+        color: var(--creme);
+      }
+      .saloon-sektion .vorzeile {
+        color: var(--gold);
+      }
+      .saloon-sektion .abschnitt-hinweis {
+        color: var(--creme-weich);
+      }
+      .saloon-sektion .foto {
+        border-color: var(--gold);
+        outline-color: rgba(176, 141, 66, 0.35);
+      }
+      .saloon-sektion .foto-unterschrift {
+        color: var(--creme-weich);
+      }
+      .saloon-foto {
+        aspect-ratio: 4 / 3;
+      }
+      .saloon-karte {
+        margin-top: 0.6rem;
+        max-width: 480px;
+      }
+      .saloon-karte .gericht {
+        display: flex;
+        align-items: baseline;
+        gap: 0.7rem;
+        padding: 0.5rem 0;
+        font-size: 0.98rem;
+      }
+      .saloon-karte .gericht s {
+        flex: 1;
+        border-bottom: 1px dotted rgba(203, 191, 164, 0.55);
+        text-decoration: none;
+        transform: translateY(-4px);
+      }
+      .saloon-karte .gericht strong {
+        white-space: nowrap;
+        font-weight: 600;
+      }
+      .saloon-hinweis {
+        margin-top: 1rem;
+        font-size: 0.82rem;
+        font-style: italic;
+        color: var(--creme-weich);
+      }
+      .saloon-service {
+        margin-top: 1.8rem;
+        padding-left: 1.2rem;
+        border-left: 2px solid var(--gold);
+        font-size: 0.95rem;
+        font-style: italic;
+        color: var(--creme-weich);
+        max-width: 46ch;
+      }
+      .feiern {
+        display: grid;
+        gap: 2.4rem;
+        align-items: center;
+        margin-top: 3.6rem;
+        padding-top: 2.8rem;
+        border-top: 1px solid rgba(176, 141, 66, 0.35);
+      }
+      @media (min-width: 860px) {
+        .feiern {
+          grid-template-columns: 0.9fr 1.1fr;
+          gap: 4rem;
+        }
+      }
+      .feiern-foto {
+        aspect-ratio: 16 / 10;
+      }
+      .feiern h3 {
+        font-size: 1.35rem;
+      }
+      .feiern p {
+        margin-top: 0.8rem;
+        color: var(--creme-weich);
+        font-size: 0.98rem;
+        max-width: 48ch;
+      }
+      .saloon-sektion .btn {
+        color: var(--creme);
+        border-color: var(--gold);
+        margin-top: 1.6rem;
+      }
+      .saloon-sektion .btn:hover {
+        background: var(--gold);
+        color: var(--saloon-tief);
+      }
+      .chronik-schluss {
+        margin-top: 3.4rem;
+        text-align: center;
+        font-style: italic;
+        font-size: 1.05rem;
+        color: var(--gold);
+      }
+
+      /* ===== zimmeranfrage ===== */
+      .anfrage-grid {
+        display: grid;
+        gap: 3rem;
+        align-items: start;
+      }
+      @media (min-width: 860px) {
+        .anfrage-grid {
+          grid-template-columns: 0.9fr 1.1fr;
+          gap: 4.5rem;
+        }
+      }
+      .anfrage-form {
+        display: grid;
+        gap: 1.5rem;
+        background: var(--papier-hell);
+        border: 1px solid var(--linie);
+        outline: 1px solid var(--linie-zart);
+        outline-offset: 6px;
+        padding: 2.2rem 1.9rem;
+      }
+      .feld {
+        display: grid;
+        gap: 0.3rem;
+      }
+      .feld label {
+        font-size: 0.68rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--tanne);
+      }
+      .feld input,
+      .feld select,
+      .feld textarea {
+        font: inherit;
+        color: var(--tinte);
+        background: transparent;
+        border: 0;
+        border-bottom: 1px solid var(--linie);
+        padding: 0.55rem 0.1rem;
+        min-height: 44px;
+        border-radius: 0;
+      }
+      .feld textarea {
+        resize: vertical;
+      }
+      .feld input::placeholder,
+      .feld textarea::placeholder {
+        color: #9a8f7c;
+        font-style: italic;
+      }
+      .feld input:focus-visible,
+      .feld select:focus-visible,
+      .feld textarea:focus-visible {
+        outline: none;
+        border-bottom-color: var(--tanne);
+        box-shadow: 0 1px 0 var(--tanne);
+      }
+      .anfrage-demo {
+        cursor: help;
+        justify-self: start;
+      }
+      .demo-hinweis {
+        font-size: 0.8rem;
+        font-style: italic;
+        color: var(--tinte-weich);
+      }
+      .anfrage-kontakt {
+        margin-top: 2rem;
+        display: grid;
+        gap: 0.9rem;
+        justify-items: start;
+      }
+
+      /* ===== anfahrt ===== */
+      .zeiten-liste {
+        list-style: none;
+        max-width: 400px;
+      }
+      .zeiten-liste li {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 0.8rem;
+        padding: 0.6rem 0;
+        border-bottom: 1px solid var(--linie-zart);
+        font-size: 0.98rem;
+      }
+      .zeiten-liste li:first-child {
+        border-top: 1px solid var(--linie-zart);
+      }
+      .zeiten-liste .tag {
+        font-size: 0.72rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--tanne);
+      }
+      .zeiten-liste s {
+        flex: 1;
+        border-bottom: 1px dotted var(--linie);
+        text-decoration: none;
+        transform: translateY(-4px);
+      }
+      .karten-rahmen svg {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+      .karten-adresse {
+        margin-top: 1.4rem;
+        font-size: 0.98rem;
+      }
+      .karten-rahmen .btn {
+        margin-top: 1.3rem;
+      }
+
+      /* ===== footer ===== */
+      .site-footer {
+        background: var(--saloon-tief);
+        color: var(--creme-weich);
+        text-align: center;
+        padding: 3.5rem clamp(1.2rem, 4vw, 3rem) 7.5rem;
+        font-size: 0.9rem;
+      }
+      @media (min-width: 760px) {
+        .site-footer {
+          padding-bottom: 3.5rem;
+        }
+      }
+      .footer-marke {
+        color: var(--creme);
+        font-size: 1.15rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+      .footer-unterzeile {
+        margin-top: 0.5rem;
+        font-size: 0.66rem;
+        letter-spacing: 0.26em;
+        text-transform: uppercase;
+        color: var(--gold);
+      }
+      .site-footer address {
+        font-style: normal;
+        margin-top: 1.6rem;
+        line-height: 2;
+      }
+      .site-footer a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        padding: 0 0.4rem;
+        color: var(--creme);
+        text-decoration-color: rgba(176, 141, 66, 0.6);
+      }
+      .footer-rechtliches {
+        margin-top: 1.8rem;
+        padding-top: 1.6rem;
+        border-top: 1px solid rgba(176, 141, 66, 0.3);
+        font-size: 0.8rem;
+      }
+
+      /* ===== sticky call-bar (mobil) ===== */
+      .call-bar {
+        position: fixed;
+        z-index: 35;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        background: var(--papier);
+        border-top: 1px solid var(--linie);
+      }
+      .call-bar .btn {
+        flex: 1;
+        border: 0;
+        min-height: 56px;
+      }
+      .call-bar .btn + .btn {
+        border-left: 1px solid var(--linie);
+      }
+      .call-bar .btn-voll {
+        background: var(--tanne);
+        color: var(--papier);
+      }
+      @media (min-width: 760px) {
+        .call-bar {
+          display: none;
+        }
+      }
+
+      /* ===== reveal ===== */
+      .reveal {
+        opacity: 0;
+        transform: translateY(14px);
+        transition:
+          opacity 0.9s ease,
+          transform 0.9s ease;
+      }
+      .reveal.sichtbar {
+        opacity: 1;
+        transform: none;
+      }
+      .d2 {
+        transition-delay: 0.12s;
+      }
+      .d3 {
+        transition-delay: 0.24s;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        .reveal {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+        .foto img {
+          transition: none;
+        }
+        .foto-rahmen:hover .foto img {
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <aside class="entwurf-banner" aria-label="Hinweis zum Design-Entwurf">
+      Design-Entwurf von TOMORROWWORKS — nicht die offizielle Website von Hotel Goldener Hirsch
+    </aside>
+
+    <header id="top">
+      <div class="masthead">
+        <p class="masthead-ort">Mosbach · Baden-Württemberg</p>
+        <a class="masthead-marke" href="#top" aria-label="Hotel Goldener Hirsch — zum Seitenanfang">
+          <svg class="geweih-marke" viewBox="0 0 120 100" aria-hidden="true" focusable="false">
+            <g fill="none" stroke="#816018" stroke-width="3" stroke-linecap="round">
+              <path d="M52 96V54q0-14-10-22M52 68q-14-2-22-14M52 52q-12-6-14-20M42 32q-2-10 2-18" />
+              <path d="M68 96V54q0-14 10-22M68 68q14-2 22-14M68 52q12-6 14-20M78 32q2-10-2-18" />
+            </g>
+            <circle cx="60" cy="96" r="3" fill="#816018" />
+          </svg>
+          <span class="wortmarke">Goldener Hirsch</span>
+        </a>
+        <p class="masthead-unterzeile">Hotel &amp; Wild Bills Saloon — Anno 1700</p>
+        <nav class="hauptnav" aria-label="Hauptnavigation">
+          <a href="#zimmer">Zimmer</a>
+          <a href="#fruehstueck">Frühstück</a>
+          <a href="#saloon">Saloon</a>
+          <a href="#anfrage">Anfrage</a>
+          <a href="#anfahrt">Anfahrt</a>
+        </nav>
+      </div>
+
+      <div class="hero">
+        <h1 class="reveal">
+          <span class="h1-zeile">Gut schlafen im Fachwerk —</span>
+          <em class="h1-zeile">mitten in Mosbach.</em>
+        </h1>
+        <p class="hero-lauftext reveal">
+          23 Zimmer in einem Kulturdenkmal von 1700, direkt in der Fußgängerzone.
+          Frühstücksbuffet inklusive (Beispiel).
+        </p>
+        <div class="hero-cta reveal">
+          <a class="btn btn-voll" href="#anfrage">Zimmer anfragen</a>
+          <a class="btn" href="tel:+4962618465020">Anrufen</a>
+        </div>
+      </div>
+
+      <figure class="foto-rahmen reveal" style="max-width: 1080px; margin: 0 auto; padding: 0 clamp(1.2rem, 4vw, 3rem)">
+        <div class="foto hero-foto">
+          <span class="foto-siegel">Anno 1700 · Kulturdenkmal</span>
+          <img
+            src="assets/fachwerk-fassade.jpg"
+            alt="Historisches Fachwerkhaus mit reich verzierter Fassade"
+            width="1600"
+            height="2400"
+          />
+        </div>
+        <figcaption class="foto-unterschrift">
+          Echte Aufnahme — beispielhafte Bildwelt für Ihren neuen Auftritt.
+        </figcaption>
+      </figure>
+    </header>
+
+    <main>
+      <section class="chronik">
+        <div class="inhalt">
+          <p class="ornament" aria-hidden="true">❦</p>
+          <p class="chronik-text reveal" style="margin-top: 2.2rem">
+            Seit dem Jahr 1700 ist der Goldene Hirsch als Gasthaus in Mosbach bekannt — ein
+            mittelalterliches Fachwerkhaus, heute Kulturdenkmal, mitten in der Fußgängerzone. Nach
+            der großen Renovierung 2020 empfangen wir Sie mit hellen, komfortablen Zimmern, einem
+            reichhaltigen Frühstück und einem Restaurant, das man so schnell nicht vergisst.
+          </p>
+          <p class="fakten reveal">
+            <span>23 Zimmer</span><span>Kulturdenkmal</span><span>Fußgängerzone</span
+            ><span>Frühstück inklusive</span>
+          </p>
+        </div>
+      </section>
+
+      <div class="trennlinie"><hr /></div>
+
+      <section id="zimmer">
+        <div class="inhalt">
+          <p class="vorzeile reveal">Schlafen im Kulturdenkmal</p>
+          <h2 class="reveal">Zimmer</h2>
+          <p class="abschnitt-hinweis reveal">
+            23 Zimmer — Einzel, Doppel und Dreibett, alle mit Dusche oder Badewanne, SAT-TV, freiem
+            WLAN und Klimaanlage.
+          </p>
+          <div class="zimmer-grid">
+            <article class="zimmer-karte reveal">
+              <div class="foto zimmer-foto">
+                <img
+                  src="assets/zimmer-renoviert.jpg"
+                  alt="Helles Zimmer mit frisch bezogenem Bett und Nachttischlampe"
+                  width="1600"
+                  height="2400"
+                />
+              </div>
+              <h3>Renoviert 2020</h3>
+              <p>Frisch renovierte Zimmer im 1. und 2. Stock — hell, ruhig und komfortabel.</p>
+              <p class="zimmer-preis">
+                <span>ab</span><s></s><strong>79 € / Nacht</strong>
+              </p>
+              <p class="zimmer-inklusive muted">inkl. Frühstück · Beispielpreis</p>
+            </article>
+            <article class="zimmer-karte reveal d2">
+              <div class="foto zimmer-foto">
+                <img
+                  src="assets/zimmer-landhaus.jpg"
+                  alt="Bett mit weißer Tagesdecke vor einer warmen Holzwand"
+                  width="1600"
+                  height="2400"
+                />
+              </div>
+              <h3>Landhausstil</h3>
+              <p>Warme Hölzer und viel Charakter — für alle, die das Haus von 1700 spüren wollen.</p>
+              <p class="zimmer-preis">
+                <span>ab</span><s></s><strong>72 € / Nacht</strong>
+              </p>
+              <p class="zimmer-inklusive muted">inkl. Frühstück · Beispielpreis</p>
+            </article>
+            <article class="zimmer-karte reveal d3">
+              <div class="foto zimmer-foto">
+                <img
+                  src="assets/zimmer-warm.jpg"
+                  alt="Gemütliches Zimmer im warmen Licht einer Wandleuchte"
+                  width="1600"
+                  height="2133"
+                />
+              </div>
+              <h3>Klimatisiert — 3. Stock</h3>
+              <p>Unterm Dach mit zentraler Klimaanlage — auch im Hochsommer angenehm kühl.</p>
+              <p class="zimmer-preis">
+                <span>ab</span><s></s><strong>85 € / Nacht</strong>
+              </p>
+              <p class="zimmer-inklusive muted">inkl. Frühstück · Beispielpreis</p>
+            </article>
+          </div>
+          <p class="ausstattung reveal">
+            Familienfreundlich: Gitterbett, Hochstuhl und Babybadewanne kostenfrei.
+          </p>
+          <p class="karten-hinweis reveal">
+            Beispielpreise — werden gemeinsam mit Ihnen festgelegt. Fotos: beispielhafte Bildwelt.
+          </p>
+        </div>
+      </section>
+
+      <section id="fruehstueck" class="band-sektion">
+        <div class="inhalt">
+          <div class="zwei-spalten">
+            <figure class="foto-rahmen reveal">
+              <div class="foto fruehstueck-foto">
+                <img
+                  src="assets/fruehstueck-buffet.jpg"
+                  alt="Frühstücksbuffet mit Croissants und Brotkörben"
+                  width="1600"
+                  height="1068"
+                />
+              </div>
+              <figcaption class="foto-unterschrift">
+                Echte Aufnahme — beispielhafte Bildwelt für Ihren neuen Auftritt.
+              </figcaption>
+            </figure>
+            <div>
+              <p class="vorzeile reveal">Täglich ab 07:00 Uhr</p>
+              <h2 class="reveal">Frühstücksbuffet inklusive</h2>
+              <p class="abschnitt-hinweis reveal" style="margin-bottom: 0">
+                Täglich frische Produkte: Rühreier mit oder ohne Speck, Wurst- und Käseaufschnitt,
+                Backwaren, Kaffee, Tee und Saft — im Zimmerpreis enthalten. Zeiten 07:00–10:00
+                (Beispiel).
+              </p>
+              <p class="merkzeile reveal">
+                Für Frühaufsteher und Monteure decken wir früher ein — einfach an der Rezeption
+                Bescheid sagen.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="saloon" class="saloon-sektion">
+        <div class="inhalt">
+          <div class="zwei-spalten">
+            <div>
+              <p class="vorzeile reveal">Das Restaurant im Haus</p>
+              <h2 class="reveal">Wild Bills Saloon</h2>
+              <p class="abschnitt-hinweis reveal">
+                2018 eröffnet, echtes Western-Ambiente: Steaks, Burger und rauchiges BBQ — dazu ein
+                edler Whiskey.
+              </p>
+              <div class="saloon-karte reveal">
+                <p class="gericht"><span>Rumpsteak 300&nbsp;g</span><s></s><strong>26,50 €</strong></p>
+                <p class="gericht"><span>Smoked BBQ Ribs</span><s></s><strong>19,50 €</strong></p>
+                <p class="gericht"><span>Saloon Burger</span><s></s><strong>15,50 €</strong></p>
+                <p class="gericht">
+                  <span>Whiskey-Empfehlung des Hauses</span><s></s><strong>6,50 €</strong>
+                </p>
+                <p class="saloon-hinweis">
+                  Beispielkarte — Gerichte und Preise werden gemeinsam mit Ihnen übernommen.
+                </p>
+              </div>
+              <p class="saloon-service reveal">
+                Zimmerservice aus dem Saloon — Hotelgäste bestellen aufs Zimmer.
+              </p>
+            </div>
+            <figure class="foto-rahmen reveal">
+              <div class="foto saloon-foto">
+                <img
+                  src="assets/saloon-steak.jpg"
+                  alt="Gegrilltes Steak mit Rosmarin auf dunkler Steinplatte"
+                  width="1600"
+                  height="966"
+                />
+              </div>
+              <figcaption class="foto-unterschrift">
+                Echte Aufnahme — beispielhafte Bildwelt für Ihren neuen Auftritt.
+              </figcaption>
+            </figure>
+          </div>
+          <div class="feiern">
+            <figure class="foto-rahmen reveal">
+              <div class="foto feiern-foto">
+                <img
+                  src="assets/saloon-grill.jpg"
+                  alt="Koch am rauchenden Holzkohlegrill"
+                  width="1600"
+                  height="1064"
+                />
+              </div>
+            </figure>
+            <div class="reveal">
+              <h3>Feiern &amp; Veranstaltungen</h3>
+              <p>
+                Familienfeiern, Firmenessen und Geburtstage — im Saloon oder im Frühstücksraum. Wir
+                planen mit Ihnen.
+              </p>
+              <a class="btn" href="tel:+4962618465020">Anfrage besprechen</a>
+            </div>
+          </div>
+          <p class="chronik-schluss reveal">Gut geschlafen, gut gegessen — seit 1700.</p>
+        </div>
+      </section>
+
+      <section id="anfrage">
+        <div class="inhalt">
+          <div class="anfrage-grid">
+            <div>
+              <p class="vorzeile reveal">Direkt vom Haus — ohne Portal-Gebühren</p>
+              <h2 class="reveal">Zimmer anfragen</h2>
+              <p class="abschnitt-hinweis reveal" style="margin-bottom: 0">
+                Kurz anfragen — wir melden uns am selben Tag zurück. Oder einfach anrufen.
+              </p>
+              <div class="anfrage-kontakt reveal">
+                <a class="btn btn-voll" href="tel:+4962618465020">06261 8465020</a>
+                <a class="btn" href="mailto:info@goldener-hirsch-mosbach.de">E-Mail schreiben</a>
+              </div>
+            </div>
+            <form class="anfrage-form reveal">
+              <div class="feld">
+                <label for="anfrage-name">Name</label>
+                <input id="anfrage-name" name="name" type="text" autocomplete="name" />
+              </div>
+              <div class="feld">
+                <label for="anfrage-zeitraum">Zeitraum</label>
+                <input
+                  id="anfrage-zeitraum"
+                  name="zeitraum"
+                  type="text"
+                  placeholder="z. B. 02.–04. Oktober"
+                />
+              </div>
+              <div class="feld">
+                <label for="anfrage-zimmertyp">Zimmertyp</label>
+                <select id="anfrage-zimmertyp" name="zimmertyp">
+                  <option>Einzelzimmer</option>
+                  <option>Doppelzimmer</option>
+                  <option>Dreibettzimmer</option>
+                </select>
+              </div>
+              <div class="feld">
+                <label for="anfrage-nachricht">Nachricht</label>
+                <textarea id="anfrage-nachricht" name="nachricht" rows="3"></textarea>
+              </div>
+              <button
+                class="btn btn-voll anfrage-demo"
+                type="button"
+                title="Im Entwurf noch ohne Funktion — wird bei Umsetzung mit Ihrem Postfach verbunden"
+              >
+                Anfrage senden
+              </button>
+              <p class="demo-hinweis">
+                Das Formular wird bei der Umsetzung mit Ihrem E-Mail-Postfach verbunden.
+                (Beispiel-Entwurf)
+              </p>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <div class="trennlinie"><hr /></div>
+
+      <section id="anfahrt">
+        <div class="inhalt">
+          <p class="vorzeile reveal">Mitten in der Fußgängerzone</p>
+          <h2 class="reveal">Anfahrt &amp; Rezeption</h2>
+          <div class="zwei-spalten" style="align-items: start; margin-top: 2.2rem">
+            <div class="reveal">
+              <ul class="zeiten-liste">
+                <li><span class="tag">Check-in</span><s></s><span>ab 14:00</span></li>
+                <li><span class="tag">Check-out</span><s></s><span>bis 11:00</span></li>
+                <li><span class="tag">Frühstück</span><s></s><span>07:00 – 10:00</span></li>
+              </ul>
+              <p class="abschnitt-hinweis" style="margin: 1.4rem 0 0">
+                Rezeption täglich 09:00 – 16:00 Uhr. Zeiten sind ein Beispiel — werden mit Ihnen
+                abgestimmt.
+              </p>
+            </div>
+            <div class="karten-rahmen reveal">
+              <svg viewBox="0 0 560 300" role="img" aria-label="Stilisierte Karte: Hauptstraße 13, Mosbach">
+                <rect width="560" height="300" fill="#ece2cc" />
+                <path
+                  d="M0 168 Q140 148 300 160 T560 148"
+                  stroke="#cdb97e"
+                  stroke-width="26"
+                  fill="none"
+                />
+                <path d="M182 0 Q198 90 186 300" stroke="#d8caa6" stroke-width="10" fill="none" />
+                <path d="M402 0 Q392 100 406 300" stroke="#d8caa6" stroke-width="8" fill="none" />
+                <path
+                  d="M0 66 Q170 56 350 68 T560 60"
+                  stroke="#d8caa6"
+                  stroke-width="6"
+                  fill="none"
+                />
+                <path
+                  d="M0 244 Q180 232 360 244 T560 236"
+                  stroke="#ddd0ae"
+                  stroke-width="6"
+                  fill="none"
+                />
+                <g fill="#dccfae" stroke="#b8a878" stroke-width="1">
+                  <rect x="52" y="96" width="44" height="26" rx="1" />
+                  <rect x="128" y="88" width="34" height="24" rx="1" />
+                  <rect x="236" y="94" width="46" height="26" rx="1" />
+                  <rect x="330" y="90" width="40" height="24" rx="1" />
+                  <rect x="452" y="86" width="44" height="26" rx="1" />
+                  <rect x="60" y="200" width="42" height="26" rx="1" />
+                  <rect x="242" y="204" width="46" height="26" rx="1" />
+                  <rect x="452" y="198" width="42" height="26" rx="1" />
+                </g>
+                <text
+                  x="326"
+                  y="174"
+                  fill="#2f261a"
+                  font-size="15"
+                  font-style="italic"
+                  font-family="Baskerville, Georgia, serif"
+                >Fußgängerzone</text>
+                <g fill="none" stroke="#2f261a" stroke-width="1.4">
+                  <path d="M523 42v26M513 55h20M523 32l6 10h-12z" />
+                </g>
+                <circle cx="256" cy="158" r="22" fill="#2e463622" />
+                <circle cx="256" cy="158" r="11" fill="#2e4636" />
+                <circle cx="256" cy="158" r="4" fill="#f7f1e5" />
+              </svg>
+              <p class="karten-adresse">Hauptstraße 13 · 74821 Mosbach</p>
+              <a
+                class="btn"
+                href="https://maps.apple.com/?address=Hauptstra%C3%9Fe%2013,%2074821%20Mosbach"
+                >Route planen</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p class="footer-marke">Goldener Hirsch</p>
+      <p class="footer-unterzeile">Hotel &amp; Wild Bills Saloon — Anno 1700</p>
+      <address>
+        Hauptstraße 13 · 74821 Mosbach<br />
+        <a href="tel:+4962618465020">06261 8465020</a> ·
+        <a href="mailto:info@goldener-hirsch-mosbach.de">info@goldener-hirsch-mosbach.de</a>
+      </address>
+      <p class="footer-rechtliches">
+        Impressum folgt bei Umsetzung · Design-Entwurf: TOMORROWWORKS, Mosbach<br />
+        Bildwelt: lizenzierte Beispielfotos (Pexels) — zeigen nicht den Betrieb.
+      </p>
+    </footer>
+
+    <nav class="call-bar" aria-label="Schnellaktionen">
+      <a class="btn btn-voll" href="tel:+4962618465020">Anrufen</a>
+      <a class="btn" href="#anfrage">Zimmer anfragen</a>
+    </nav>
+
+    <script>
+      const beobachter = new IntersectionObserver(
+        (eintraege) => {
+          for (const e of eintraege) {
+            if (e.isIntersecting) {
+              e.target.classList.add('sichtbar');
+              beobachter.unobserve(e.target);
+            }
+          }
+        },
+        { threshold: 0.1 },
+      );
+      document.querySelectorAll('.reveal').forEach((el) => beobachter.observe(el));
+    </script>
+  </body>
+</html>

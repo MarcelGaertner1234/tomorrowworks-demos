@@ -1,0 +1,12 @@
+# TOMORROWWORKS — Design-Demos
+
+Unverbindliche Design-Entwürfe von TOMORROWWORKS (Mosbach) für Gespräche mit regionalen
+Betrieben. Jede Demo ist deutlich als Entwurf gekennzeichnet und stellt **nicht** die
+offizielle Website des jeweiligen Betriebs dar. Alle Seiten stehen auf `noindex`.
+
+Preise, Zeiten und Speisekarten sind Beispiele. Fotos sind lizenzierte Beispielbilder
+(Pexels-Lizenz, Nachweis je Demo in `MEDIA-LICENSES.md`) und zeigen nicht die Betriebe.
+
+## Demos
+
+- [Hotel Goldener Hirsch, Mosbach](goldener-hirsch/) — Design-Entwurf „Gasthaus-Chronik"
