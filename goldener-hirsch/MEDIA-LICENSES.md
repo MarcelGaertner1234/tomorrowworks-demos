@@ -9,7 +9,8 @@ und in der Demo als solche gekennzeichnet.
 
 | Datei | Pexels-ID | Fotograf:in | Motiv |
 | --- | --- | --- | --- |
-| assets/fachwerk-fassade.jpg | 9468414 | Benni Fish | Fachwerkhaus in Mainz |
+| assets/fachwerk-fassade.jpg | 9468414 | Benni Fish | Fachwerkhaus in Mainz (Hero mobil, Hochformat) |
+| assets/fachwerk-zeile.jpg | 34545862 | Thomas Caspari | Fachwerk-Häuserzeile (Hero Desktop, Querformat) |
 | assets/zimmer-renoviert.jpg | 4940710 | Maria Orlova | Klassisches Zimmer mit Bett und Lampe |
 | assets/zimmer-landhaus.jpg | 27638174 | Alexander Mass | Bett mit Holzwand (Hotel de la Ville) |
 | assets/zimmer-warm.jpg | 8968179 | Natalya Markina (Наталья Маркина) | Warmes Zimmer mit Wandleuchte |
@@ -20,6 +21,7 @@ und in der Demo als solche gekennzeichnet.
 Quell-URLs (Abruf über images.pexels.com, Breite 1600 px, `auto=compress&cs=tinysrgb`):
 
 - https://www.pexels.com/photo/9468414/
+- https://www.pexels.com/photo/charming-half-timbered-houses-in-germany-34545862/
 - https://www.pexels.com/photo/interior-of-classic-styled-room-with-comfortable-bed-and-table-lamp-4940710/
 - https://www.pexels.com/photo/a-bed-or-beds-in-a-room-at-hotel-de-la-ville-27638174/
 - https://www.pexels.com/photo/wooden-framed-bed-with-lamp-on-headboard-8968179/

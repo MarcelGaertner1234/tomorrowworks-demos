@@ -190,7 +190,7 @@
       .hero h1 {
         font-size: clamp(2.1rem, 5.4vw, 3.6rem);
         line-height: 1.18;
-        max-width: 21ch;
+        max-width: 28ch;
         margin: 0 auto;
       }
       .hero-lauftext {
@@ -277,6 +277,9 @@
         outline: 1px solid var(--linie);
         outline-offset: 6px;
         background: var(--band);
+      }
+      .foto picture {
+        display: contents;
       }
       .foto img {
         transition: transform 0.9s ease;
@@ -849,12 +852,15 @@
       <figure class="foto-rahmen reveal" style="max-width: 1080px; margin: 0 auto; padding: 0 clamp(1.2rem, 4vw, 3rem)">
         <div class="foto hero-foto">
           <span class="foto-siegel">Anno 1700 · Kulturdenkmal</span>
-          <img
-            src="assets/fachwerk-fassade.jpg"
-            alt="Historisches Fachwerkhaus mit reich verzierter Fassade"
-            width="1600"
-            height="2400"
-          />
+          <picture>
+            <source media="(min-width: 641px)" srcset="assets/fachwerk-zeile.jpg" />
+            <img
+              src="assets/fachwerk-fassade.jpg"
+              alt="Historische Fachwerkhäuser in einer Altstadtgasse"
+              width="1600"
+              height="2400"
+            />
+          </picture>
         </div>
         <figcaption class="foto-unterschrift">
           Echte Aufnahme — beispielhafte Bildwelt für Ihren neuen Auftritt.
