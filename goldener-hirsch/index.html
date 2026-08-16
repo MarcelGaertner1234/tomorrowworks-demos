@@ -7,21 +7,21 @@
     <title>Hotel Goldener Hirsch · Mosbach — Design-Entwurf</title>
     <style>
       :root {
-        --papier: #f7f1e5;
-        --papier-hell: #fdfaf3;
-        --band: #eee5d2;
-        --tinte: #2f261a;
-        --tinte-weich: #6f6353;
-        --tanne: #2e4636;
-        --tanne-tief: #223528;
-        --gold: #b08d42;
-        --gold-tief: #816018;
-        --saloon: #1d1710;
-        --saloon-tief: #16110b;
-        --creme: #f2ead8;
-        --creme-weich: #cbbfa4;
-        --linie: rgba(47, 38, 26, 0.28);
-        --linie-zart: rgba(47, 38, 26, 0.14);
+        --papier: #faf7f2;
+        --papier-hell: #ffffff;
+        --band: #f1ece2;
+        --tinte: #211d17;
+        --tinte-weich: #6b645a;
+        --tanne: #2f5644;
+        --tanne-tief: #254435;
+        --messing: #c2a061;
+        --saloon: #1b241e;
+        --saloon-tief: #141c17;
+        --creme: #f0ece1;
+        --creme-weich: #a8b2a4;
+        --linie: rgba(33, 29, 23, 0.22);
+        --linie-zart: rgba(33, 29, 23, 0.1);
+        --sans: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
         /* prettier-ignore */
         --serif: Baskerville, 'Iowan Old Style', Palatino, Georgia, 'Times New Roman', serif;
       }
@@ -64,17 +64,19 @@
         z-index: 30;
         background: var(--tanne);
         color: var(--papier);
-        font-size: 0.74rem;
+        font-family: var(--sans);
+        font-size: 0.72rem;
         text-align: center;
-        padding: 0.5rem 1rem;
-        letter-spacing: 0.05em;
+        padding: 0.55rem 1rem;
+        letter-spacing: 0.04em;
       }
 
       /* ===== typografie-grundlagen ===== */
       .vorzeile {
-        font-size: 0.72rem;
-        font-weight: 400;
-        letter-spacing: 0.24em;
+        font-family: var(--sans);
+        font-size: 0.68rem;
+        font-weight: 600;
+        letter-spacing: 0.22em;
         text-transform: uppercase;
         color: var(--tanne);
         margin-bottom: 1rem;
@@ -114,7 +116,9 @@
         scroll-margin-top: 5rem;
       }
       .masthead-ort {
-        font-size: 0.66rem;
+        font-family: var(--sans);
+        font-weight: 500;
+        font-size: 0.62rem;
         letter-spacing: 0.32em;
         text-transform: uppercase;
         color: var(--tinte-weich);
@@ -144,16 +148,18 @@
         justify-content: center;
         gap: 1rem;
         margin-top: 1.1rem;
-        font-size: 0.7rem;
-        letter-spacing: 0.26em;
+        font-family: var(--sans);
+        font-weight: 500;
+        font-size: 0.66rem;
+        letter-spacing: 0.24em;
         text-transform: uppercase;
-        color: var(--gold-tief);
+        color: var(--tinte-weich);
       }
       .masthead-unterzeile::before,
       .masthead-unterzeile::after {
         content: '';
         flex: 0 1 110px;
-        border-top: 1px solid var(--gold);
+        border-top: 1px solid var(--linie);
       }
       .hauptnav {
         display: flex;
@@ -162,14 +168,16 @@
         gap: 0 0.4rem;
         margin-top: 1.6rem;
         padding-top: 0.4rem;
-        border-top: 3px double var(--linie);
+        border-top: 1px solid var(--linie-zart);
       }
       .hauptnav a {
         display: inline-flex;
         align-items: center;
         min-height: 44px;
         padding: 0 0.9rem;
-        font-size: 0.72rem;
+        font-family: var(--sans);
+        font-weight: 500;
+        font-size: 0.68rem;
         letter-spacing: 0.22em;
         text-transform: uppercase;
         text-decoration: none;
@@ -234,10 +242,12 @@
         align-items: center;
         justify-content: center;
         min-height: 48px;
-        padding: 0.8rem 1.9rem;
-        font-family: var(--serif);
-        font-size: 0.82rem;
-        letter-spacing: 0.18em;
+        padding: 0.85rem 1.8rem;
+        border-radius: 999px;
+        font-family: var(--sans);
+        font-weight: 600;
+        font-size: 0.74rem;
+        letter-spacing: 0.14em;
         text-transform: uppercase;
         text-decoration: none;
         cursor: pointer;
@@ -261,7 +271,7 @@
         border-color: var(--tanne-tief);
       }
       .btn:focus-visible {
-        outline: 2px solid var(--gold-tief);
+        outline: 2px solid var(--tanne);
         outline-offset: 3px;
       }
 
@@ -273,10 +283,9 @@
       .foto {
         position: relative;
         overflow: hidden;
-        border: 1px solid var(--tinte);
-        outline: 1px solid var(--linie);
-        outline-offset: 6px;
+        border-radius: 18px;
         background: var(--band);
+        box-shadow: 0 24px 48px -32px rgba(33, 29, 23, 0.45);
       }
       .foto picture {
         display: contents;
@@ -307,13 +316,16 @@
         z-index: 2;
         top: 1.1rem;
         left: 1.1rem;
-        background: var(--papier);
-        border: 1px solid var(--tinte);
-        padding: 0.45rem 0.9rem;
-        font-size: 0.64rem;
-        letter-spacing: 0.22em;
+        background: rgba(255, 255, 255, 0.94);
+        border-radius: 999px;
+        padding: 0.5rem 1rem;
+        font-family: var(--sans);
+        font-weight: 600;
+        font-size: 0.6rem;
+        letter-spacing: 0.18em;
         text-transform: uppercase;
         color: var(--tinte);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.14);
       }
 
       /* ===== sektionen ===== */
@@ -332,39 +344,18 @@
       }
       .trennlinie hr {
         border: 0;
-        border-top: 3px double var(--linie);
+        border-top: 1px solid var(--linie-zart);
       }
-      .ornament {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 1rem;
-        color: var(--gold-tief);
-        font-size: 0.9rem;
-      }
-      .ornament::before,
-      .ornament::after {
-        content: '';
-        flex: 0 1 84px;
-        border-top: 1px solid var(--gold);
-      }
-
       /* ===== chronik ===== */
       .chronik {
         text-align: center;
       }
       .chronik-text {
-        max-width: 62ch;
+        max-width: 60ch;
         margin: 0 auto;
         text-align: left;
-        font-size: 1.06rem;
-      }
-      .chronik-text::first-letter {
-        font-size: 3.4em;
-        float: left;
-        line-height: 0.82;
-        padding: 0.08em 0.12em 0 0;
-        color: var(--tanne);
+        font-size: 1.14rem;
+        line-height: 1.8;
       }
       .fakten {
         display: flex;
@@ -372,16 +363,18 @@
         flex-wrap: wrap;
         gap: 0.4rem 0;
         margin-top: 2.6rem;
-        font-size: 0.72rem;
-        letter-spacing: 0.2em;
+        font-family: var(--sans);
+        font-weight: 600;
+        font-size: 0.64rem;
+        letter-spacing: 0.18em;
         text-transform: uppercase;
-        color: var(--gold-tief);
+        color: var(--tinte-weich);
       }
       .fakten span {
         padding: 0 1.1rem;
       }
       .fakten span + span {
-        border-left: 1px solid var(--gold);
+        border-left: 1px solid var(--linie);
       }
 
       /* ===== zimmer ===== */
@@ -403,8 +396,10 @@
       }
       .zimmer-karte h3 {
         margin-top: 1.5rem;
-        font-size: 0.78rem;
-        letter-spacing: 0.22em;
+        font-family: var(--sans);
+        font-weight: 700;
+        font-size: 0.68rem;
+        letter-spacing: 0.2em;
         text-transform: uppercase;
         color: var(--tanne);
       }
@@ -424,9 +419,7 @@
       }
       .zimmer-preis s {
         flex: 1;
-        border-bottom: 1px dotted var(--linie);
         text-decoration: none;
-        transform: translateY(-4px);
       }
       .zimmer-preis strong {
         white-space: nowrap;
@@ -473,7 +466,7 @@
       .merkzeile {
         margin-top: 1.6rem;
         padding-left: 1.2rem;
-        border-left: 2px solid var(--gold);
+        border-left: 2px solid var(--tanne);
         font-size: 0.95rem;
         font-style: italic;
         color: var(--tinte-weich);
@@ -485,14 +478,10 @@
         color: var(--creme);
       }
       .saloon-sektion .vorzeile {
-        color: var(--gold);
+        color: var(--messing);
       }
       .saloon-sektion .abschnitt-hinweis {
         color: var(--creme-weich);
-      }
-      .saloon-sektion .foto {
-        border-color: var(--gold);
-        outline-color: rgba(176, 141, 66, 0.35);
       }
       .saloon-sektion .foto-unterschrift {
         color: var(--creme-weich);
@@ -513,7 +502,7 @@
       }
       .saloon-karte .gericht s {
         flex: 1;
-        border-bottom: 1px dotted rgba(203, 191, 164, 0.55);
+        border-bottom: 1px dotted rgba(168, 178, 164, 0.5);
         text-decoration: none;
         transform: translateY(-4px);
       }
@@ -530,7 +519,7 @@
       .saloon-service {
         margin-top: 1.8rem;
         padding-left: 1.2rem;
-        border-left: 2px solid var(--gold);
+        border-left: 2px solid var(--messing);
         font-size: 0.95rem;
         font-style: italic;
         color: var(--creme-weich);
@@ -542,7 +531,7 @@
         align-items: center;
         margin-top: 3.6rem;
         padding-top: 2.8rem;
-        border-top: 1px solid rgba(176, 141, 66, 0.35);
+        border-top: 1px solid rgba(194, 160, 97, 0.28);
       }
       @media (min-width: 860px) {
         .feiern {
@@ -564,11 +553,11 @@
       }
       .saloon-sektion .btn {
         color: var(--creme);
-        border-color: var(--gold);
+        border-color: var(--messing);
         margin-top: 1.6rem;
       }
       .saloon-sektion .btn:hover {
-        background: var(--gold);
+        background: var(--messing);
         color: var(--saloon-tief);
       }
       .chronik-schluss {
@@ -576,7 +565,7 @@
         text-align: center;
         font-style: italic;
         font-size: 1.05rem;
-        color: var(--gold);
+        color: var(--messing);
       }
 
       /* ===== zimmeranfrage ===== */
@@ -595,18 +584,20 @@
         display: grid;
         gap: 1.5rem;
         background: var(--papier-hell);
-        border: 1px solid var(--linie);
-        outline: 1px solid var(--linie-zart);
-        outline-offset: 6px;
-        padding: 2.2rem 1.9rem;
+        border: 1px solid var(--linie-zart);
+        border-radius: 20px;
+        padding: 2.4rem 2rem;
+        box-shadow: 0 24px 48px -36px rgba(33, 29, 23, 0.4);
       }
       .feld {
         display: grid;
         gap: 0.3rem;
       }
       .feld label {
-        font-size: 0.68rem;
-        letter-spacing: 0.22em;
+        font-family: var(--sans);
+        font-weight: 600;
+        font-size: 0.62rem;
+        letter-spacing: 0.18em;
         text-transform: uppercase;
         color: var(--tanne);
       }
@@ -671,21 +662,22 @@
         border-top: 1px solid var(--linie-zart);
       }
       .zeiten-liste .tag {
-        font-size: 0.72rem;
-        letter-spacing: 0.2em;
+        font-family: var(--sans);
+        font-weight: 600;
+        font-size: 0.64rem;
+        letter-spacing: 0.18em;
         text-transform: uppercase;
         color: var(--tanne);
       }
       .zeiten-liste s {
         flex: 1;
-        border-bottom: 1px dotted var(--linie);
         text-decoration: none;
-        transform: translateY(-4px);
       }
       .karten-rahmen svg {
         display: block;
         width: 100%;
         height: auto;
+        border-radius: 16px;
       }
       .karten-adresse {
         margin-top: 1.4rem;
@@ -716,10 +708,12 @@
       }
       .footer-unterzeile {
         margin-top: 0.5rem;
-        font-size: 0.66rem;
-        letter-spacing: 0.26em;
+        font-family: var(--sans);
+        font-weight: 600;
+        font-size: 0.62rem;
+        letter-spacing: 0.24em;
         text-transform: uppercase;
-        color: var(--gold);
+        color: var(--messing);
       }
       .site-footer address {
         font-style: normal;
@@ -732,12 +726,12 @@
         min-height: 44px;
         padding: 0 0.4rem;
         color: var(--creme);
-        text-decoration-color: rgba(176, 141, 66, 0.6);
+        text-decoration-color: rgba(194, 160, 97, 0.55);
       }
       .footer-rechtliches {
         margin-top: 1.8rem;
         padding-top: 1.6rem;
-        border-top: 1px solid rgba(176, 141, 66, 0.3);
+        border-top: 1px solid rgba(194, 160, 97, 0.25);
         font-size: 0.8rem;
       }
 
@@ -816,11 +810,11 @@
         <p class="masthead-ort">Mosbach · Baden-Württemberg</p>
         <a class="masthead-marke" href="#top" aria-label="Hotel Goldener Hirsch — zum Seitenanfang">
           <svg class="geweih-marke" viewBox="0 0 120 100" aria-hidden="true" focusable="false">
-            <g fill="none" stroke="#816018" stroke-width="3" stroke-linecap="round">
+            <g fill="none" stroke="#2f5644" stroke-width="3" stroke-linecap="round">
               <path d="M52 96V54q0-14-10-22M52 68q-14-2-22-14M52 52q-12-6-14-20M42 32q-2-10 2-18" />
               <path d="M68 96V54q0-14 10-22M68 68q14-2 22-14M68 52q12-6 14-20M78 32q2-10-2-18" />
             </g>
-            <circle cx="60" cy="96" r="3" fill="#816018" />
+            <circle cx="60" cy="96" r="3" fill="#2f5644" />
           </svg>
           <span class="wortmarke">Goldener Hirsch</span>
         </a>
@@ -871,8 +865,7 @@
     <main>
       <section class="chronik">
         <div class="inhalt">
-          <p class="ornament" aria-hidden="true">❦</p>
-          <p class="chronik-text reveal" style="margin-top: 2.2rem">
+          <p class="chronik-text reveal">
             Seit dem Jahr 1700 ist der Goldene Hirsch als Gasthaus in Mosbach bekannt — ein
             mittelalterliches Fachwerkhaus, heute Kulturdenkmal, mitten in der Fußgängerzone. Nach
             der großen Renovierung 2020 empfangen wir Sie mit hellen, komfortablen Zimmern, einem
