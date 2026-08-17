@@ -20,6 +20,22 @@
     reveals.forEach(function (el) { io.observe(el); });
   }
 
+  /* ---------- Hero-Höhe: Bild füllt den restlichen Viewport ---------- */
+  var heroBand = document.querySelector('.hero-slideshow');
+  if (heroBand) {
+    var setHeroHeight = function () {
+      var banner = document.querySelector('.draft-banner');
+      var header = document.querySelector('.site-header');
+      var rest =
+        window.innerHeight -
+        (banner ? banner.offsetHeight : 0) -
+        (header ? header.offsetHeight : 0);
+      document.documentElement.style.setProperty('--hero-h', Math.max(rest, 320) + 'px');
+    };
+    setHeroHeight();
+    window.addEventListener('resize', setHeroHeight);
+  }
+
   /* ---------- Hero-Slideshow ---------- */
   document.querySelectorAll('[data-slideshow]').forEach(function (show) {
     var slides = [].slice.call(show.querySelectorAll('.slide'));

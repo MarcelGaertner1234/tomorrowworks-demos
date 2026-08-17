@@ -338,7 +338,8 @@ h2 em {
 
 .hero-slideshow .slide img {
   width: 100%;
-  height: clamp(22rem, 74vh, 46rem);
+  height: var(--hero-h, calc(100svh - 8rem));
+  min-height: 22rem;
   object-fit: cover;
   object-position: var(--pos-m, 50% 30%);
 }
@@ -353,7 +354,7 @@ h2 em {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 0.9rem;
+  bottom: 5.4rem;
   display: flex;
   align-items: center;
   justify-content: center;
