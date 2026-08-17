@@ -32,7 +32,7 @@ Salons oder seines Teams.
 |---|---|---|---|
 | `hero-salon.jpg` | Fade-Schnitt mit Schere und Kamm | Nate Johnston | photo-1647140655214 |
 | `team/platzhalter-a.jpg` | Profil mit gepflegtem Vollbart | Ahmad Ebadi | photo-1630827020718 |
-| `team/platzhalter-b.jpg` | Porträt im warmen Gegenlicht | Stephan Louis | photo-1599834562135 |
+| `team/platzhalter-b.jpg` | Stylistin bei der Arbeit an einer Kundin | Vinicius "amnx" Amano | photo-1675034741473 |
 | `team/platzhalter-c.jpg` | Pompadour vor Ziegelwand | Hannah Skelly | photo-1562004760 |
 | `steps/leistung-waehlen.jpg` | Kamm und Schere am Haar | Obi | photo-1567894340315 |
 | `steps/friseur-waehlen.jpg` | Friseur schneidet Locken | Michael DeMoya | photo-1593702275687 |
@@ -49,8 +49,8 @@ dem Salon CLEAN CUT.
 | Datei | Motiv | Fotograf:in | Pexels-ID |
 |---|---|---|---|
 | `models/pexels-17899459.jpg` | Seitenprofil, frischer Schnitt, dunkles Studio | Wallace Castro | 17899459 |
-| `models/pexels-18189288.jpg` | Fade & Bart, Salon mit Backstein | TONI&GUY PONDICHERRY | 18189288 |
-| `models/pexels-7781848.jpg` | Profil mit frischem Fade, warmes Salonlicht | Leonardo Hidalgo | 7781848 |
+| `models/unsplash-locken.jpg` | Locken-Styling im Salon (Unsplash-Lizenz) | Baylee Gramling | photo-1560869713 |
+| `models/unsplash-balayage.jpg` | Balayage-Ergebnis, Rückansicht (Unsplash-Lizenz) | "Jessie Dee" Dabrowski | photo-1554519934 |
 | `models/pexels-4422102.jpg` | Rasiermesser-Finish am Fade | Maksim Goncharenok | 4422102 |
 
 ## Pexels-Beispielfotos (Galerie-Band „Look-Inspiration", junges Auftreten)
@@ -65,6 +65,6 @@ Lizenz: Pexels-Lizenz, Abrufdatum: 17.08.2026. Auf der Seite als „Beispielfoto
 | `gallery/pexels-17899457.jpg` | Wallace Castro | 17899457 |
 | `gallery/pexels-19995885.jpg` | Caner Kökçü | 19995885 |
 | `gallery/pexels-35055806.jpg` | Mustafa Sabri Soymaç | 35055806 |
-| `gallery/pexels-5337945.jpg` | alexandre saraiva carniato | 5337945 |
-| `gallery/pexels-16766527.jpg` | Pegah Sharifi | 16766527 |
+| `gallery/unsplash-flip.jpg` (Unsplash-Lizenz) | Vinicius "amnx" Amano | photo-1619218533116 |
+| `gallery/unsplash-updo.jpg` (Unsplash-Lizenz) | Enis Yavuz | photo-1672788694268 |
 | `gallery/pexels-11395986.jpg` | annmteu | 11395986 |
