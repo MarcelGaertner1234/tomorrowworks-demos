@@ -30,12 +30,12 @@ KEINE Aufnahmen des Salons oder seines Teams.
 
 | Datei | Motiv | Fotograf:in | Pexels-ID |
 |---|---|---|---|
-| `hero-salon.jpg` | Friseur schneidet Kunden im modernen Salon | Bulat843 | 32329619 |
-| `team/platzhalter-a.jpg` | Friseur mit Schürze und Stylingwerkzeug | Nataliya Vaitkevich | 8468137 |
+| `hero-salon.jpg` | Friseur im hellen Sakko stylt Kunden | Sephina Cornwall | 32351050 |
+| `team/platzhalter-a.jpg` | Porträt mit gestyltem Pompadour | Fatih Doğrul | 18347793 |
 | `team/platzhalter-b.jpg` | Moderner Mann mit Brille, Studio | Sumant Arora | 12689125 |
 | `team/platzhalter-c.jpg` | Lächelnder Friseur mit Schere | alexandre saraiva carniato | 5337979 |
-| `steps/leistung-waehlen.jpg` | Schere und Kamm am Haar | Godwin Torres | 18186525 |
-| `steps/friseur-waehlen.jpg` | Stylistin arbeitet am Look eines Kunden | Antoni Shkraba / AI25.studio | 6599038 |
+| `steps/leistung-waehlen.jpg` | Styling mit Bürste, von oben | Sephina Cornwall | 32351049 |
+| `steps/friseur-waehlen.jpg` | Friseur im hellen Sakko beim Schnitt | Sephina Cornwall | 32351046 |
 | `steps/zeit-reservieren.jpg` | Schere und Kamm im warmen Licht | Matheus Wladeka | 6487890 |
 | `salon-theke.jpg` | Eleganter Salon in Schwarz-Weiß | Max Vakhtbovych | 13068377 |
 | `salon-eingang.jpg` | Salonstuhl und Spiegel | cottonbro studio | 3992850 |
