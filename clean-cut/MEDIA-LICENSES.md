@@ -49,8 +49,8 @@ dem Salon CLEAN CUT.
 | Datei | Motiv | Fotograf:in | Pexels-ID |
 |---|---|---|---|
 | `models/pexels-17899459.jpg` | Seitenprofil, frischer Schnitt, dunkles Studio | Wallace Castro | 17899459 |
-| `models/unsplash-locken.jpg` | Locken-Styling im Salon (Unsplash-Lizenz) | Baylee Gramling | photo-1560869713 |
-| `models/unsplash-balayage.jpg` | Balayage-Ergebnis, Rückansicht (Unsplash-Lizenz) | "Jessie Dee" Dabrowski | photo-1554519934 |
+| `models/unsplash-styling-team.jpg` | Zwei Stylistinnen bei der Arbeit (Unsplash-Lizenz) | Lindsay Cash | photo-1634449571017 |
+| `models/unsplash-salon-szene.jpg` | Kundin im Salon mit runden Spiegeln (Unsplash-Lizenz) | Vinicius "amnx" Amano | photo-1675034743339 |
 | `models/pexels-4422102.jpg` | Rasiermesser-Finish am Fade | Maksim Goncharenok | 4422102 |
 
 ## Pexels-Beispielfotos (Galerie-Band „Look-Inspiration", junges Auftreten)
