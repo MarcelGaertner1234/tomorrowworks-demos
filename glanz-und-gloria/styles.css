@@ -1,0 +1,649 @@
+/* Glanz und Gloria · Goldschmiede Mosbach — Design-Entwurf v2 „Smaragd-Atelier"
+   Referenz-DNA: fabianblaser.ch (Smaragd-Basis, Sidebar, Hero-Claim, Überlapp-Karten)
+   übersetzt in die eigene Gold/Didot-Identität — kein Klon. */
+
+:root {
+  --paper: #fbf8f1;
+  --cream: #f7f2e9;
+  --ink: #211b12;
+  --ink-soft: #574c3a;
+  --gold-text: #7a5c16;    /* dunkles Altgold — Text auf hellen Karten */
+  --gold-line: #cbaa52;    /* Gold für Linien/Rahmen */
+  --gold-bright: #e0c67c;  /* helles Gold — Text/Akzente auf Grün (>=4.5:1) */
+  --emerald-deep: #04352e; /* Sidebar, Footer — Palette B „Tiefer Smaragd" (Marcel 17.08.) */
+  --emerald: #00594b;      /* Flächen-Grün, satt/blaustichig nach Blaser-Referenz */
+  --band: #0a1f1b;         /* Galerie-Band, grünstichig dunkel */
+  --band-ink: #f3ead6;
+  --serif: "Didot", "Bodoni 72", "Bodoni MT", "Iowan Old Style", Georgia, serif;
+  --sans: "Avenir Next", "Avenir", "Helvetica Neue", Arial, sans-serif;
+  --wrap: 64rem;
+  --sidebar-b: 17.5rem;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--emerald);
+  color: var(--band-ink);
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+figure { margin: 0; }
+
+.wrap {
+  max-width: var(--wrap);
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+.wrap--narrow { max-width: 46rem; }
+
+/* Helle Inhalts-Karte auf Grün */
+.wrap--karte {
+  background: var(--paper);
+  color: var(--ink);
+  padding: 2.8rem 2.5rem;
+  border: 1px solid var(--gold-line);
+}
+
+.small { font-size: 0.85rem; }
+.wrap--karte .small,
+.stilwelt-card .small,
+.planer-schritt .small,
+.bestaetigung .small { color: var(--ink-soft); }
+
+/* Typografie */
+h1, h2, h3 {
+  font-family: var(--serif);
+  font-weight: 500;
+  line-height: 1.12;
+  margin: 0 0 1rem;
+}
+h1 { font-size: clamp(2.4rem, 5vw, 3.8rem); letter-spacing: 0.01em; }
+h1 em, h2 em { font-style: italic; color: var(--gold-bright); }
+.wrap--karte h2 em { color: var(--gold-text); }
+h2 { font-size: clamp(1.7rem, 3.2vw, 2.3rem); }
+h3 { font-size: 1.15rem; letter-spacing: 0.06em; text-transform: uppercase; }
+
+.eyebrow {
+  font-size: 0.78rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+  margin: 0 0 0.9rem;
+}
+.wrap--karte .eyebrow { color: var(--gold-text); }
+.eyebrow--gold { color: var(--gold-bright); }
+
+.lede {
+  font-size: 1.15rem;
+  max-width: 34rem;
+  margin: 0 0 1.8rem;
+}
+
+/* Skip-Link */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.5rem 1rem;
+  z-index: 100;
+}
+.skip-link:focus { left: 0.5rem; top: 0.5rem; }
+
+/* Entwurfs-Banner */
+.draft-banner {
+  background: var(--ink);
+  color: var(--cream);
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  padding: 0.5rem 1.25rem;
+  text-align: center;
+  position: relative;
+  z-index: 5;
+}
+.draft-banner strong { color: var(--gold-line); }
+
+/* Layout: Sidebar links (Blaser-DNA), Inhalt rechts */
+.layout {
+  display: grid;
+  grid-template-columns: var(--sidebar-b) minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+.sidebar {
+  background: var(--emerald-deep);
+  padding: 2.2rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
+  position: sticky;
+  top: 0;
+  align-self: start;
+  height: 100vh;
+  overflow-y: auto;
+}
+.inhalt { min-width: 0; }
+
+.wordmark {
+  text-decoration: none;
+  color: var(--band-ink);
+  display: grid;
+  line-height: 1.15;
+}
+.wordmark strong {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 1.4rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.wordmark strong em {
+  font-style: italic;
+  text-transform: lowercase;
+  letter-spacing: 0.04em;
+  color: var(--gold-bright);
+}
+.wordmark span {
+  font-size: 0.68rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+  margin-top: 0.3rem;
+}
+
+.site-nav {
+  display: grid;
+  gap: 0.9rem;
+  justify-items: start;
+}
+.site-nav a {
+  color: var(--band-ink);
+  text-decoration: none;
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.site-nav a:hover { color: var(--gold-bright); }
+.site-nav .nav-cta {
+  border: 1px solid var(--gold-bright);
+  color: var(--gold-bright);
+  padding: 0.6rem 1.1rem;
+  margin-top: 0.4rem;
+}
+.site-nav .nav-cta:hover {
+  background: var(--gold-bright);
+  color: var(--ink);
+}
+
+.sidebar-info {
+  margin-top: auto;
+  display: grid;
+  gap: 1.2rem;
+  font-size: 0.85rem;
+}
+.sidebar-titel {
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+  margin: 0 0 0.4rem;
+}
+.sidebar-info p { margin: 0; }
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 0.85rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.9rem 1.6rem;
+  border: 1px solid currentColor;
+  color: var(--band-ink);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.btn--primary {
+  background: var(--gold-bright);
+  color: var(--ink);
+  border-color: var(--gold-bright);
+}
+.btn--primary:hover { background: var(--band-ink); border-color: var(--band-ink); }
+.btn--ghost:hover { background: var(--band-ink); color: var(--emerald); }
+.wrap--karte .btn,
+.planer-schritt .btn,
+.bestaetigung .btn { color: var(--ink); }
+.wrap--karte .btn--primary,
+.planer-schritt .btn--primary {
+  background: var(--emerald);
+  color: var(--band-ink);
+  border-color: var(--emerald);
+}
+.wrap--karte .btn--primary:hover,
+.planer-schritt .btn--primary:hover { background: var(--emerald-deep); }
+.btn .arrow { margin-left: 0.4rem; }
+
+.card-link {
+  display: inline-block;
+  color: var(--gold-text);
+  text-decoration: none;
+  font-size: 0.85rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--gold-line);
+  padding-bottom: 0.2rem;
+}
+.card-link:hover { color: var(--ink); border-color: var(--ink); }
+
+/* Sektionen */
+.section { padding-block: 4rem; }
+.section--band {
+  background: var(--band);
+  color: var(--band-ink);
+}
+.section--band h2 { color: var(--band-ink); }
+
+/* Hero: Smaragd, Facettenmuster, Claim + gerahmte Goldschmiedin */
+.hero {
+  position: relative;
+  padding-block: 4rem 9rem;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='420' height='360'><g fill='none' stroke='%23e0c67c' stroke-opacity='0.07'><path d='M0 180 210 0l210 180-210 180z'/><path d='M105 90h210v180H105z'/><path d='M210 0v360M0 180h420'/></g></svg>");
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 3rem;
+  align-items: center;
+}
+.hero-copy .btn { margin: 0 0.6rem 0.6rem 0; }
+.hero-figure {
+  position: relative;
+  padding: 0 1rem 1rem 0;
+}
+.hero-figure img {
+  border: 1px solid var(--gold-line);
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  width: 100%;
+}
+.hero-figure::before {
+  content: "";
+  position: absolute;
+  inset: 1.25rem -1rem -1rem 1.25rem;
+  border: 1px solid var(--gold-line);
+  pointer-events: none;
+}
+.hero-figure figcaption { margin-top: 1.4rem; }
+
+/* Stilwelten: helle Karten überlappen das Hero (Blaser-DNA) */
+#stilwelten {
+  margin-top: -7.5rem;
+  padding-top: 0;
+  position: relative;
+}
+#stilwelten > .wrap > .eyebrow,
+#stilwelten > .wrap > h2 { color: var(--band-ink); }
+#stilwelten > .wrap > .eyebrow { color: var(--gold-bright); }
+.stilwelten-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.6rem;
+  margin-top: 2rem;
+}
+.stilwelt-card {
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--gold-line);
+  display: flex;
+  flex-direction: column;
+}
+.stilwelt-card figure { margin: 0; }
+.stilwelt-card img {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  width: 100%;
+}
+.stilwelt-card figcaption { margin: 0.4rem 1.2rem 0; }
+.stilwelt-card h3 {
+  margin: 0.8rem 1.2rem 0.5rem;
+  color: var(--emerald);
+}
+.stilwelt-card p {
+  margin: 0 1.2rem 1.2rem;
+  color: var(--ink-soft);
+  flex-grow: 1;
+}
+.stilwelt-card .card-cta {
+  display: block;
+  text-align: center;
+  background: var(--emerald);
+  color: var(--band-ink);
+  text-decoration: none;
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 0.95rem 1rem;
+}
+.stilwelt-card .card-cta:hover { background: var(--emerald-deep); }
+
+/* Galerie-Band */
+.band-hinweis { color: #b6a98e; max-width: 44rem; }
+.galerie-grid {
+  list-style: none;
+  margin: 2.5rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+.galerie-grid li {
+  border: 1px solid rgba(203, 170, 82, 0.45);
+  padding: 0.6rem;
+  background: rgba(243, 234, 214, 0.03);
+}
+.galerie-grid img {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  width: 100%;
+}
+
+/* Atelier */
+.atelier-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 3rem;
+  align-items: center;
+}
+.atelier-figure img {
+  border: 1px solid var(--gold-line);
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  width: 100%;
+}
+.atelier-figure figcaption { margin-top: 0.6rem; }
+.atelier-copy p { color: var(--ink-soft); }
+.atelier-copy .card-link { margin-top: 0.6rem; }
+
+/* Ablauf */
+.ablauf-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 3rem;
+  align-items: center;
+}
+.ablauf-liste {
+  list-style: none;
+  margin: 2rem 0 0;
+  padding: 0;
+  counter-reset: schritt;
+  display: grid;
+  gap: 1.6rem;
+}
+.ablauf-schritt {
+  counter-increment: schritt;
+  position: relative;
+  padding-left: 4.2rem;
+}
+.ablauf-schritt::before {
+  content: "0" counter(schritt);
+  position: absolute;
+  left: 0;
+  top: 0.1rem;
+  font-family: var(--serif);
+  font-size: 2rem;
+  color: var(--gold-text);
+  line-height: 1;
+}
+.ablauf-schritt h3 { margin-bottom: 0.3rem; color: var(--emerald); }
+.ablauf-schritt p { margin: 0; color: var(--ink-soft); }
+.ablauf-figure img {
+  border: 1px solid var(--gold-line);
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  width: 100%;
+}
+.ablauf-figure figcaption { margin-top: 0.6rem; }
+
+/* Terminwunsch */
+.termin-teaser { text-align: center; }
+.termin-teaser .lede { margin-inline: auto; }
+.termin-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  margin-top: 3rem;
+  text-align: left;
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--gold-line);
+  padding: 2.2rem;
+}
+.termin-info .small { color: var(--ink-soft); }
+.termin-info h3 { color: var(--emerald); }
+.zeiten-liste {
+  list-style: none;
+  margin: 0.8rem 0 0;
+  padding: 0;
+}
+.zeiten-liste li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 0.45rem;
+  border-bottom: 1px dotted var(--gold-line);
+}
+.sidebar .zeiten-liste li { border-bottom-color: rgba(224, 198, 124, 0.35); }
+
+/* FAQ */
+#faq details {
+  border-bottom: 1px solid var(--gold-line);
+  padding-block: 1rem;
+}
+#faq summary {
+  cursor: pointer;
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  letter-spacing: 0.02em;
+}
+#faq summary:hover { color: var(--gold-text); }
+#faq details p { color: var(--ink-soft); }
+
+/* Planer (termin.html) */
+.wrap--planer { max-width: 52rem; }
+.demo-chip {
+  display: inline-block;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  border: 1px solid var(--gold-bright);
+  color: var(--gold-bright);
+  padding: 0.35rem 0.8rem;
+  margin: 0 0 2rem;
+}
+.planer-schritt {
+  border: 1px solid var(--gold-line);
+  padding: 1.6rem;
+  margin: 0 0 1.8rem;
+  background: var(--paper);
+  color: var(--ink);
+}
+.planer-schritt legend {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  padding: 0.2rem 0.8rem;
+  background: var(--paper);
+  border: 1px solid var(--gold-line);
+}
+.schritt-nr {
+  color: var(--gold-text);
+  font-size: 1rem;
+  margin-right: 0.4rem;
+}
+.anlass-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+.anlass-card {
+  display: grid;
+  gap: 0.4rem;
+  border: 1px solid var(--gold-line);
+  padding: 1rem;
+  cursor: pointer;
+  background: var(--paper);
+}
+.anlass-card:has(input:checked) {
+  border-color: var(--emerald);
+  outline: 2px solid var(--emerald);
+  outline-offset: -1px;
+}
+.anlass-card input { margin: 0 0 0.2rem; accent-color: var(--emerald); }
+.anlass-titel { font-family: var(--serif); font-size: 1.05rem; }
+.anlass-text { font-size: 0.88rem; color: var(--ink-soft); }
+.anlass-meta {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-text);
+}
+.zeiten-grid { display: grid; gap: 1.2rem; margin-top: 0.8rem; }
+.zeiten-titel {
+  margin: 0 0 0.5rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.slot-reihe { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.slot {
+  font: inherit;
+  font-size: 0.88rem;
+  border: 1px solid var(--emerald);
+  background: var(--paper);
+  color: var(--ink);
+  padding: 0.7rem 1.1rem;
+  min-height: 44px;
+  cursor: pointer;
+}
+.slot:hover { background: var(--cream); }
+.slot.is-active {
+  background: var(--emerald);
+  color: var(--band-ink);
+  border-color: var(--emerald);
+}
+.slot-auswahl { margin-top: 0.9rem; }
+.feld-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.feld { display: grid; gap: 0.3rem; }
+.feld--breit { grid-column: 1 / -1; }
+.feld label {
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.feld input,
+.feld textarea {
+  font: inherit;
+  border: 1px solid var(--ink-soft);
+  background: #fffdf8;
+  color: var(--ink);
+  padding: 0.65rem 0.8rem;
+}
+.feld input:focus,
+.feld textarea:focus {
+  outline: 2px solid var(--emerald);
+  outline-offset: 1px;
+}
+.fehler {
+  color: #8c2f1b;
+  font-size: 0.92rem;
+  margin: 1rem 0 0;
+}
+#termin-form .btn { margin-top: 1.2rem; }
+.bestaetigung {
+  border: 1px solid var(--gold-line);
+  background: var(--paper);
+  color: var(--ink);
+  padding: 2rem;
+}
+.bestaetigung h2 { margin-top: 0; }
+.bestaetigung h2 em { color: var(--gold-text); }
+
+/* Footer */
+.site-footer {
+  background: var(--emerald-deep);
+  padding-block: 2rem;
+  font-size: 0.9rem;
+}
+.site-footer a { color: var(--gold-bright); }
+
+/* Responsive */
+@media (max-width: 1000px) {
+  .layout { grid-template-columns: 1fr; }
+  .sidebar {
+    position: static;
+    height: auto;
+    padding: 1.4rem 1.25rem;
+    gap: 1.2rem;
+  }
+  .site-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem 1.4rem;
+  }
+  .sidebar-info { display: none; }
+}
+
+@media (max-width: 860px) {
+  .hero { padding-bottom: 7.5rem; }
+  .hero-grid,
+  .atelier-grid,
+  .ablauf-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .stilwelten-grid { grid-template-columns: 1fr; }
+  .galerie-grid { grid-template-columns: repeat(2, 1fr); }
+  .termin-info { grid-template-columns: 1fr; }
+  .hero-figure { order: -1; }
+  .atelier-figure { max-width: 28rem; }
+  .anlass-grid { grid-template-columns: 1fr; }
+  .wrap--karte { padding: 1.8rem 1.4rem; }
+}
+
+@media (max-width: 560px) {
+  .feld-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .galerie-grid { grid-template-columns: 1fr; }
+  .section { padding-block: 3rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

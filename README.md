@@ -5,9 +5,10 @@ Betrieben. Jede Demo ist deutlich als Entwurf gekennzeichnet und stellt **nicht*
 offizielle Website des jeweiligen Betriebs dar. Alle Seiten stehen auf `noindex`.
 
 Preise, Zeiten und Speisekarten sind Beispiele. Fotos sind lizenzierte Beispielbilder
-(Pexels-Lizenz, Nachweis je Demo in `MEDIA-LICENSES.md`) und zeigen nicht die Betriebe.
+(Pexels-/Unsplash-Lizenz, Nachweis je Demo in `MEDIA-LICENSES.md`) und zeigen nicht die Betriebe.
 
 ## Demos
 
 - [Hotel Goldener Hirsch, Mosbach](goldener-hirsch/) — Design-Entwurf „Gasthaus-Chronik"
 - [CLEAN CUT, Mosbach](clean-cut/) — Design-Entwurf „Salon-Editorial" (Friseursalon, inkl. Termin-Demo)
+- [Goldschmiede Glanz und Gloria, Mosbach](glanz-und-gloria/) — Design-Entwurf „Smaragd-Atelier" (inkl. Beratungstermin-Demo)

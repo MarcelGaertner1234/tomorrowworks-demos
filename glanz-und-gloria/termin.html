@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Design-Entwurf von TOMORROWWORKS: Beratungstermin-Demo der Goldschmiede Glanz und Gloria in Mosbach — Trauring-Beratung, Unikat-Erstgespräch, Reparatur-Abgabe.">
+  <title>Beratungstermin · Glanz und Gloria — Design-Entwurf</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#hauptinhalt">Zum Inhalt springen</a>
+
+  <aside class="draft-banner" aria-label="Hinweis zum Entwurfsstatus">
+    <strong>Design-Entwurf von TOMORROWWORKS</strong> — nicht die offizielle Website von Goldschmiede Glanz und Gloria ·
+    Persönliche Konzeptvorschau · Terminwunsch ist eine Demo · Angaben werden bestätigt
+  </aside>
+
+  <div class="layout">
+    <header class="sidebar">
+      <a class="wordmark" href="index.html" aria-label="Zurück zur Startseite">
+        <strong>Glanz <em>und</em> Gloria</strong>
+        <span>Goldschmiede · Mosbach</span>
+      </a>
+      <nav class="site-nav" aria-label="Hauptnavigation">
+        <a href="index.html">← Zur Homepage</a>
+        <a href="index.html#stilwelten">Stilwelten</a>
+        <a href="index.html#galerie">Galerie</a>
+        <a class="nav-cta" href="termin.html" aria-current="page">Beratungstermin</a>
+      </nav>
+      <div class="sidebar-info">
+        <div>
+          <p class="sidebar-titel">Beispielzeiten</p>
+          <ul class="zeiten-liste small">
+            <li><span>Di – Fr</span><span>Vormittag &amp; Nachmittag</span></li>
+            <li><span>Sa</span><span>Vormittag</span></li>
+            <li><span>So &amp; Mo</span><span>geschlossen</span></li>
+          </ul>
+        </div>
+        <div>
+          <p class="sidebar-titel">Kontakt</p>
+          <p class="small">Goldschmiede Glanz und Gloria · Mosbach<br>Kontaktdaten folgen nach Freigabe.</p>
+        </div>
+      </div>
+    </header>
+
+    <div class="inhalt">
+      <main id="hauptinhalt">
+        <section class="section" id="planer">
+          <div class="wrap wrap--planer">
+            <p class="eyebrow">Beratungstermin · Demo</p>
+            <h1>Ihr Terminwunsch</h1>
+            <p class="lede">Wählen Sie Anlass und Wunschzeit — in dieser Konzeptvorschau wird nichts gesendet oder gespeichert.</p>
+            <p class="demo-chip">DEMO · KEINE SPEICHERUNG</p>
+
+            <form id="termin-form" novalidate>
+              <fieldset class="planer-schritt">
+                <legend><span class="schritt-nr">01</span> Anlass wählen</legend>
+                <div class="anlass-grid">
+                  <label class="anlass-card">
+                    <input type="radio" name="anlass" value="trauringe" checked>
+                    <span class="anlass-titel">Trauring-Beratung</span>
+                    <span class="anlass-text">Gemeinsam Formen, Materialien und Möglichkeiten ansehen.</span>
+                    <span class="anlass-meta">Dauer offen · Preis offen</span>
+                  </label>
+                  <label class="anlass-card">
+                    <input type="radio" name="anlass" value="unikat">
+                    <span class="anlass-titel">Unikat-Erstgespräch</span>
+                    <span class="anlass-text">Ihre Idee besprechen — vom Neuentwurf bis zum Erbstück.</span>
+                    <span class="anlass-meta">Dauer offen · Preis offen</span>
+                  </label>
+                  <label class="anlass-card">
+                    <input type="radio" name="anlass" value="reparatur">
+                    <span class="anlass-titel">Reparatur-Abgabe</span>
+                    <span class="anlass-text">Ihr Stück vorbeibringen und begutachten lassen.</span>
+                    <span class="anlass-meta">Dauer offen · Preis offen</span>
+                  </label>
+                </div>
+              </fieldset>
+
+              <fieldset class="planer-schritt">
+                <legend><span class="schritt-nr">02</span> Wunschzeit wählen</legend>
+                <p class="small">Alle Zeiten sind illustrative Platzhalter und keine echte Verfügbarkeit.</p>
+                <div class="zeiten-grid" role="group" aria-label="Beispielhafte Wunschzeiten">
+                  <div class="zeiten-tag">
+                    <p class="zeiten-titel">Beispieltag Dienstag</p>
+                    <div class="slot-reihe">
+                      <button type="button" class="slot" data-slot="Dienstag, Vormittag">Vormittag</button>
+                      <button type="button" class="slot" data-slot="Dienstag, Mittag">Mittag</button>
+                      <button type="button" class="slot" data-slot="Dienstag, Nachmittag">Nachmittag</button>
+                    </div>
+                  </div>
+                  <div class="zeiten-tag">
+                    <p class="zeiten-titel">Beispieltag Samstag</p>
+                    <div class="slot-reihe">
+                      <button type="button" class="slot" data-slot="Samstag, früher Vormittag">Früher Vormittag</button>
+                      <button type="button" class="slot" data-slot="Samstag, später Vormittag">Später Vormittag</button>
+                    </div>
+                  </div>
+                </div>
+                <p class="small slot-auswahl" data-slot-anzeige hidden>Gewählte Wunschzeit: <strong data-slot-wert></strong></p>
+              </fieldset>
+
+              <fieldset class="planer-schritt">
+                <legend><span class="schritt-nr">03</span> Ihre Angaben</legend>
+                <div class="feld-grid">
+                  <div class="feld">
+                    <label for="vorname">Vorname</label>
+                    <input id="vorname" name="vorname" type="text" autocomplete="given-name" required>
+                  </div>
+                  <div class="feld">
+                    <label for="nachname">Nachname</label>
+                    <input id="nachname" name="nachname" type="text" autocomplete="family-name" required>
+                  </div>
+                  <div class="feld feld--breit">
+                    <label for="handy">Handynummer für die Rückmeldung</label>
+                    <input id="handy" name="handy" type="tel" inputmode="tel" autocomplete="tel" required>
+                    <p class="small">Mindestens 7 Ziffern · wird in dieser Demo nicht gespeichert.</p>
+                  </div>
+                  <div class="feld feld--breit">
+                    <label for="nachricht">Nachricht (optional)</label>
+                    <textarea id="nachricht" name="nachricht" rows="3"></textarea>
+                  </div>
+                </div>
+                <p class="fehler" data-fehler hidden></p>
+                <button type="submit" class="btn btn--primary">Terminwunsch senden (Demo) <span class="arrow" aria-hidden="true">→</span></button>
+              </fieldset>
+            </form>
+
+            <div class="bestaetigung" data-bestaetigung hidden>
+              <h2>Danke — Ihr Terminwunsch ist angekommen. <em>Fast.</em></h2>
+              <p>Das ist eine Konzeptvorschau: <strong>es wurden keine Daten gespeichert oder versendet</strong>. Auf der echten Website würde die Goldschmiede Ihren Wunsch jetzt erhalten und sich zurückmelden.</p>
+              <p class="small" data-zusammenfassung></p>
+              <button type="button" class="btn btn--ghost" data-neustart>Demo neu starten</button>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="wrap">
+          <p><strong>Design-Entwurf von TOMORROWWORKS</strong> — nicht die offizielle Website von Goldschmiede Glanz und Gloria.</p>
+          <p class="small">Konzeptvorschau · keine echte Verfügbarkeit · keine Buchung · keine Datenübertragung</p>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
