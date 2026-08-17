@@ -44,14 +44,23 @@
     var initialCaptionHtml = captionEl ? captionEl.innerHTML : '';
     var current = 0;
     var timer = null;
+    var leaveTimer = null;
 
     function render(index) {
+      var previous = current;
       current = (index + slides.length) % slides.length;
       slides.forEach(function (slide, i) {
+        slide.classList.remove('is-leaving');
+        // alter Slide bleibt opak unter dem neuen liegen — kein Durchblitzen des Hintergrunds
+        if (i === previous && previous !== current) slide.classList.add('is-leaving');
         slide.classList.toggle('is-active', i === current);
         if (i === current) slide.removeAttribute('aria-hidden');
         else slide.setAttribute('aria-hidden', 'true');
       });
+      window.clearTimeout(leaveTimer);
+      leaveTimer = window.setTimeout(function () {
+        slides.forEach(function (slide) { slide.classList.remove('is-leaving'); });
+      }, 1250);
       dots.forEach(function (dot, i) {
         if (i === current) dot.setAttribute('aria-current', 'true');
         else dot.removeAttribute('aria-current');

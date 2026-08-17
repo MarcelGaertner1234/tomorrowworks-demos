@@ -5,15 +5,17 @@
 
 :root {
   --paper: #faf8f4;
-  --sand: #efe9df;
-  --sand-deep: #e9e0d1;
+  --sand: #f2eee7;
+  --sand-deep: #eae4d9;
   --card: #fffefb;
-  --tone: #7d6249;
-  --tone-strong: #5b4732;
-  --tone-soft: #937b60;
-  --ink: #26201a;
-  --bright: #c8834f;
-  --line: #e3d9c8;
+  --tone: #443d33;
+  --tone-strong: #26221c;
+  --tone-soft: #a8842c;
+  --gold-deep: #7f621f;
+  --gold-bright: #c9a24b;
+  --ink: #221e18;
+  --bright: #d4a94e;
+  --line: #e7e1d5;
   --ok: #55763f;
   --radius: 12px;
   --radius-btn: 7px;
@@ -105,6 +107,7 @@ h3 {
 h1 em,
 h2 em {
   font-style: italic;
+  color: var(--tone-soft);
 }
 
 .eyebrow {
@@ -112,6 +115,7 @@ h2 em {
   font-weight: 500;
   letter-spacing: 0.26em;
   text-transform: uppercase;
+  color: var(--gold-deep);
   margin-bottom: 1.1rem;
 }
 
@@ -269,14 +273,14 @@ h2 em {
 }
 
 .btn--primary {
-  background: var(--sand);
-  color: var(--tone);
-  border-color: var(--sand-deep);
+  background: var(--gold-bright);
+  color: #211c12;
+  border-color: var(--gold-bright);
 }
 
 .btn--primary:hover {
-  background: var(--tone);
-  border-color: var(--tone);
+  background: var(--tone-strong);
+  border-color: var(--tone-strong);
   color: var(--paper);
   text-decoration: none;
 }
@@ -310,7 +314,6 @@ h2 em {
 
 .section--sand {
   background: var(--sand);
-  border-block: 1px solid var(--line);
 }
 
 /* ---------- Hero (Vollbild-Slideshow) ---------- */
@@ -327,12 +330,20 @@ h2 em {
 .hero-slideshow .slide {
   grid-area: 1 / 1;
   opacity: 0;
-  transition: opacity 0.9s ease;
+  z-index: 0;
+  transition: opacity 1.1s ease;
   pointer-events: none;
+}
+
+.hero-slideshow .slide.is-leaving {
+  opacity: 1;
+  z-index: 1;
+  transition: none;
 }
 
 .hero-slideshow .slide.is-active {
   opacity: 1;
+  z-index: 2;
   pointer-events: auto;
 }
 
@@ -418,7 +429,6 @@ h2 em {
 
 .hero-caption {
   background: var(--sand);
-  border-block: 1px solid var(--line);
 }
 
 .hero-caption .wrap {
@@ -464,8 +474,7 @@ h2 em {
 /* ---------- Vorteile-Band ---------- */
 
 .perks {
-  border-block: 1px solid var(--line);
-  background: var(--paper);
+  background: var(--sand);
 }
 
 .perks .wrap {
@@ -510,11 +519,15 @@ h2 em {
   }
 }
 
+.statement-number::before {
+  content: attr(data-n);
+}
+
 .statement-number {
   font-family: var(--font-display);
   font-size: clamp(7rem, 18vw, 13rem);
   line-height: 0.9;
-  color: var(--tone-soft);
+  color: var(--gold-bright);
   justify-self: center;
 }
 
@@ -618,6 +631,7 @@ h2 em {
   font-weight: 500;
   letter-spacing: 0.24em;
   text-transform: uppercase;
+  color: var(--gold-deep);
 }
 
 .team-card h3 {
@@ -1085,6 +1099,7 @@ h2 em {
   font-weight: 500;
   letter-spacing: 0.26em;
   text-transform: uppercase;
+  color: var(--gold-deep);
 }
 
 .service-card p {
@@ -1391,8 +1406,8 @@ h2 em {
   font-weight: 500;
   letter-spacing: 0.22em;
   text-transform: uppercase;
+  color: var(--gold-deep);
   padding-block: 0.8rem;
-  border-top: 1px solid var(--line);
 }
 
 .gallery-band {
