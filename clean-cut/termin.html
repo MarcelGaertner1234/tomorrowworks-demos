@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Termin-Demo im Design-Entwurf von TOMORROWWORKS für CLEAN CUT Mosbach: Leistung, Friseur und Beispielzeit wählen — ohne Speicherung, ohne Versand.">
+  <title>Termin-Demo | CLEAN CUT Mosbach — Design-Entwurf</title>
+  <link rel="icon" href="assets/logo.png" type="image/png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#hauptinhalt">Zum Inhalt springen</a>
+
+  <aside class="draft-banner" aria-label="Hinweis zum Entwurfsstatus">
+    <strong>Design-Entwurf von TOMORROWWORKS</strong> — nicht die offizielle Website von CLEAN CUT Mosbach ·
+    Persönliche Konzeptvorschau · Diese Demo speichert und versendet keine Daten
+  </aside>
+
+  <header class="site-header">
+    <div class="wrap">
+      <nav class="site-nav" aria-label="Hauptnavigation">
+        <a href="index.html">Startseite</a>
+      </nav>
+      <a class="wordmark" href="index.html" aria-label="CLEAN CUT Startseite">
+        <strong>Clean Cut</strong>
+        <span>Cuts &amp; Styles · Mosbach</span>
+      </a>
+      <div class="header-side">
+        <a href="index.html">← Zur Homepage</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="hauptinhalt">
+
+    <section class="subpage-head">
+      <div class="wrap">
+        <p class="eyebrow">Terminplaner · Prototyp</p>
+        <h1>Deinen Termin. <em>Direkt reservieren.</em></h1>
+        <p class="lede">So könnte die direkte Terminseite hinter QR-Code, Google-Profil und Website aussehen.</p>
+        <dl class="steps-strip" aria-label="Schritte">
+          <div><dt>01</dt><dd>Leistung</dd></div>
+          <div><dt>02</dt><dd>Friseur</dd></div>
+          <div><dt>03</dt><dd>Zeit</dd></div>
+          <div><dt>04</dt><dd>Erinnerung</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="wrap">
+        <form class="planner" data-planner novalidate>
+          <div class="planner-head">
+            <strong>Terminwahl ausprobieren</strong>
+            <span class="pill-note">DEMO · KEINE SPEICHERUNG</span>
+          </div>
+
+          <fieldset>
+            <legend><span class="step-no">01</span> Was darf's sein?</legend>
+            <div class="choice-grid choice-grid--3">
+              <label class="choice">
+                <input type="radio" name="leistung" value="Haarschnitt" checked>
+                <span class="choice-text"><strong>Haarschnitt</strong><span>Dauer offen · Preis offen</span></span>
+              </label>
+              <label class="choice">
+                <input type="radio" name="leistung" value="Bartpflege">
+                <span class="choice-text"><strong>Bartpflege</strong><span>Dauer offen · Preis offen</span></span>
+              </label>
+              <label class="choice">
+                <input type="radio" name="leistung" value="Schnitt &amp; Bart">
+                <span class="choice-text"><strong>Schnitt &amp; Bart</strong><span>Dauer offen · Preis offen</span></span>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend><span class="step-no">02</span> Wer schneidet?</legend>
+            <div class="choice-grid choice-grid--2x2">
+              <label class="choice">
+                <input type="radio" name="friseur" value="Schnellster Termin" checked>
+                <span class="choice-text"><span class="choice-flag">EMPFOHLEN</span><strong>Schnellster Termin</strong><span>Automatisch aus allen 3 Kalendern</span></span>
+              </label>
+              <label class="choice">
+                <input type="radio" name="friseur" value="Samir · Inhaber">
+                <img src="assets/team/samy-inhaber.jpg" alt="" loading="lazy" width="120" height="120">
+                <span class="choice-text"><strong>Samir · Inhaber</strong><span>Bild und Profilentwurf</span></span>
+              </label>
+              <label class="choice">
+                <input type="radio" name="friseur" value="Karim · Mitarbeiter">
+                <img src="assets/team/karim.jpg" alt="" loading="lazy" width="120" height="120">
+                <span class="choice-text"><strong>Karim · Mitarbeiter</strong><span>Bild und Profilentwurf</span></span>
+              </label>
+              <label class="choice">
+                <input type="radio" name="friseur" value="Samir · Mitarbeiter">
+                <img src="assets/team/samir-mitarbeiter.jpg" alt="" loading="lazy" width="120" height="120">
+                <span class="choice-text"><strong>Samir · Mitarbeiter</strong><span>Bild und Profilentwurf</span></span>
+              </label>
+            </div>
+            <div class="assign-box">
+              <img src="assets/team/samy-inhaber.jpg" alt="Samir, Inhaber" loading="lazy" width="120" height="120">
+              <div>
+                <p class="role-line">Beispiel-Zuordnung</p>
+                <strong>Samir</strong> <span>· Inhaber</span>
+                <p>Nach der Zeitwahl wird automatisch der früheste freie Mitarbeiter angezeigt.</p>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend><span class="step-no">03</span> Welcher Beispieltermin?</legend>
+            <div class="chip-row" role="group" aria-label="Beispieltage" data-days>
+              <button type="button" class="chip" aria-pressed="false" data-day="Dienstag"><small>BEISPIEL</small> Dienstag</button>
+              <button type="button" class="chip" aria-pressed="false" data-day="Donnerstag"><small>BEISPIEL</small> Donnerstag</button>
+              <button type="button" class="chip" aria-pressed="false" data-day="Samstag"><small>BEISPIEL</small> Samstag</button>
+            </div>
+            <div class="chip-row" role="group" aria-label="Beispielzeiten" data-times style="margin-top:0.8rem">
+              <button type="button" class="chip" aria-pressed="false" data-time="09:30">09:30</button>
+              <button type="button" class="chip" aria-pressed="false" data-time="11:00">11:00</button>
+              <button type="button" class="chip" aria-pressed="false" data-time="14:15">14:15</button>
+              <button type="button" class="chip" aria-pressed="false" data-time="16:00">16:00</button>
+              <button type="button" class="chip" aria-pressed="false" data-time="17:00">17:00</button>
+            </div>
+            <p class="chip-hint">Alle Zeiten sind illustrative Platzhalter und keine echte Verfügbarkeit.</p>
+          </fieldset>
+
+          <fieldset>
+            <legend><span class="step-no">04</span> Kontaktdaten für die Bestätigung</legend>
+            <div class="field-grid">
+              <div class="field">
+                <label for="vorname">Vorname *</label>
+                <input id="vorname" name="vorname" type="text" placeholder="Dein Vorname" autocomplete="off">
+              </div>
+              <div class="field">
+                <label for="nachname">Nachname *</label>
+                <input id="nachname" name="nachname" type="text" placeholder="Dein Nachname" autocomplete="off">
+              </div>
+              <div class="field field--wide">
+                <label for="handy">Handynummer *</label>
+                <input id="handy" name="handy" type="tel" placeholder="Für die Terminbestätigung" autocomplete="off">
+                <span class="field-hint">Mindestens 7 Ziffern · wird in dieser Demo nicht gespeichert.</span>
+              </div>
+              <label class="check-line">
+                <input type="checkbox" name="whatsapp">
+                <span>
+                  <strong>WhatsApp-Erinnerung 2 Stunden vorher</strong>
+                  <span>Freiwillig: CLEAN CUT darf mir zu diesem Termin eine Bestätigung und eine Erinnerung per WhatsApp senden. Jederzeit widerrufbar.</span>
+                </span>
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="planner-foot">
+            <button type="submit" class="btn btn--primary" data-confirm disabled>Demo-Termin bestätigen &amp; QR anzeigen <span class="arrow">→</span></button>
+            <p class="planner-status" data-status aria-live="polite">Bitte Beispieltag, Uhrzeit und Kontaktdaten wählen — erst dann wird der Demo-Termin aktiv.</p>
+          </div>
+
+          <div class="planner-confirm" data-confirm-panel hidden>
+            <h3>Demo-Termin bestätigt</h3>
+            <dl class="confirm-summary">
+              <dt>Leistung</dt><dd data-sum-leistung></dd>
+              <dt>Friseur</dt><dd data-sum-friseur></dd>
+              <dt>Beispieltermin</dt><dd data-sum-termin></dd>
+              <dt>Name</dt><dd data-sum-name></dd>
+            </dl>
+            <div class="confirm-qr">
+              <img src="assets/qr-termin.svg" alt="QR-Code zur CLEAN CUT Termin-Demo" width="160" height="160">
+              <p>So sieht die Bestätigung mit QR-Code aus — im echten Betrieb dient er dem Check-in im Salon.</p>
+            </div>
+            <p class="confirm-note">Demo-Bestätigung — es wurden keine Daten gespeichert oder versendet.</p>
+          </div>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>Konzeptvorschau · keine echte Verfügbarkeit · keine Buchung · keine Datenübertragung</p>
+      <div class="footer-meta">
+        <span>Impressum · Entwurf</span>
+        <span>Datenschutz · Entwurf</span>
+      </div>
+      <p class="footer-credit">Design-Entwurf von TOMORROWWORKS — nicht die offizielle Website von CLEAN CUT Mosbach.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

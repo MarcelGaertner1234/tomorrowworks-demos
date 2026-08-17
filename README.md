@@ -10,3 +10,4 @@ Preise, Zeiten und Speisekarten sind Beispiele. Fotos sind lizenzierte Beispielb
 ## Demos
 
 - [Hotel Goldener Hirsch, Mosbach](goldener-hirsch/) — Design-Entwurf „Gasthaus-Chronik"
+- [CLEAN CUT, Mosbach](clean-cut/) — Design-Entwurf „Salon-Editorial" (Friseursalon, inkl. Termin-Demo)
