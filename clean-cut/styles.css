@@ -1720,6 +1720,207 @@ h2 em {
   text-transform: uppercase;
 }
 
+/* ---------- Team-Portal (Terminkalender-Demo) ---------- */
+
+.portal-note {
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: baseline;
+  background: var(--sand);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-btn);
+  padding: 0.5rem 0.9rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 1.2rem;
+}
+
+.portal-note strong {
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.schedule-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+}
+
+.schedule-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 1.1rem 1.4rem;
+  border-bottom: 1px solid var(--line);
+  background: var(--sand);
+}
+
+.schedule-head strong {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 1.15rem;
+}
+
+.schedule-scroll {
+  overflow-x: auto;
+}
+
+.schedule {
+  display: grid;
+  grid-template-columns: 3.6rem repeat(3, minmax(10rem, 1fr));
+  gap: 2px;
+  padding: 1rem 1.2rem 1.4rem;
+  min-width: 640px;
+}
+
+.schedule-col-head {
+  grid-row: 1;
+  text-align: center;
+  padding-block: 0.5rem 0.7rem;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 0.4rem;
+}
+
+.schedule-col-head strong {
+  display: block;
+  font-weight: 500;
+  color: var(--tone-strong);
+  font-size: 0.95rem;
+}
+
+.schedule-col-head span {
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+}
+
+.schedule-body {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: 3.6rem repeat(3, minmax(10rem, 1fr));
+  grid-auto-rows: 18px;
+  gap: 0 6px;
+  position: relative;
+}
+
+.schedule-time {
+  grid-column: 1;
+  font-size: 0.68rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--tone);
+  border-top: 1px dashed var(--line);
+  padding-top: 1px;
+}
+
+.schedule-line {
+  border-top: 1px dashed var(--line);
+  grid-column: 2 / -1;
+}
+
+.slot {
+  border-radius: 6px;
+  background: var(--sand);
+  border: 1px solid var(--sand-deep);
+  border-left: 3px solid var(--gold-bright);
+  padding: 0.18rem 0.5rem;
+  font-size: 0.66rem;
+  line-height: 1.3;
+  overflow: hidden;
+  margin: 1px 0;
+}
+
+.slot strong {
+  display: block;
+  font-weight: 500;
+  color: var(--tone-strong);
+  font-size: 0.72rem;
+}
+
+.slot--pause {
+  border-left-color: var(--line-strong, var(--line));
+  background: var(--paper);
+  color: var(--tone);
+  border-style: dashed;
+}
+
+.slot--absent {
+  border-left-color: var(--tone);
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--paper),
+    var(--paper) 6px,
+    var(--sand) 6px,
+    var(--sand) 12px
+  );
+}
+
+.portal-grid {
+  display: grid;
+  gap: 1.4rem;
+  margin-top: 1.6rem;
+}
+
+@media (min-width: 900px) {
+  .portal-grid {
+    grid-template-columns: 2fr 1fr;
+    align-items: start;
+  }
+}
+
+.absence-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  padding: 1.3rem 1.4rem;
+  display: grid;
+  gap: 0.8rem;
+}
+
+.absence-card .absence-title {
+  font-size: 1.15rem;
+}
+
+.absence-row {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-btn);
+  padding: 0.8rem 1rem;
+  display: grid;
+  gap: 0.2rem;
+  font-size: 0.85rem;
+}
+
+.absence-row strong {
+  font-weight: 500;
+  color: var(--tone-strong);
+}
+
+.absence-state {
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+}
+
+.absence-actions {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 0.4rem;
+}
+
+.absence-actions .btn {
+  padding: 0.5rem 1.1rem;
+  font-size: 0.8rem;
+}
+
 /* ---------- Footer & Sticky-Bar ---------- */
 
 footer.site-footer {
