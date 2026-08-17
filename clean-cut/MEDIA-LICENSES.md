@@ -22,23 +22,23 @@ bestätigen — der Hinweis steht sichtbar auf der Demo-Seite.
 | `visitenkarte-druckentwurf.pdf` | Hochformat-Druckentwurf Visitenkarte v1 |
 | `qr-termin.svg` | QR-Code auf die Termin-Demo (selbst generiert, npm `qrcode`) |
 
-## Pexels-Beispielfotos (Hero, Team-Platzhalter, Ablauf, Salon)
+## Unsplash-Beispielfotos (Hero, Team-Platzhalter, Ablauf, Salon)
 
-Lizenz: Pexels-Lizenz (https://www.pexels.com/legal-pages/license/), Abrufdatum:
-17.08.2026. Auf der Seite als „Beispielfoto (Symbolbild)"/„Platzhalter" gekennzeichnet —
-KEINE Aufnahmen des Salons oder seines Teams.
+Lizenz: Unsplash-Lizenz (https://unsplash.com/license), Abrufdatum: 17.08.2026. Auf der
+Seite als „Beispielfoto (Symbolbild)"/„Platzhalter" gekennzeichnet — KEINE Aufnahmen des
+Salons oder seines Teams.
 
-| Datei | Motiv | Fotograf:in | Pexels-ID |
+| Datei | Motiv | Fotograf:in | Unsplash-ID |
 |---|---|---|---|
-| `hero-salon.jpg` | Friseur im hellen Sakko stylt Kunden | Sephina Cornwall | 32351050 |
-| `team/platzhalter-a.jpg` | Porträt mit gestyltem Pompadour | Fatih Doğrul | 18347793 |
-| `team/platzhalter-b.jpg` | Moderner Mann mit Brille, Studio | Sumant Arora | 12689125 |
-| `team/platzhalter-c.jpg` | Lächelnder Friseur mit Schere | alexandre saraiva carniato | 5337979 |
-| `steps/leistung-waehlen.jpg` | Styling mit Bürste, von oben | Sephina Cornwall | 32351049 |
-| `steps/friseur-waehlen.jpg` | Friseur im hellen Sakko beim Schnitt | Sephina Cornwall | 32351046 |
-| `steps/zeit-reservieren.jpg` | Schere und Kamm im warmen Licht | Matheus Wladeka | 6487890 |
-| `salon-theke.jpg` | Eleganter Salon in Schwarz-Weiß | Max Vakhtbovych | 13068377 |
-| `salon-eingang.jpg` | Salonstuhl und Spiegel | cottonbro studio | 3992850 |
+| `hero-salon.jpg` | Fade-Schnitt mit Schere und Kamm | Nate Johnston | photo-1647140655214 |
+| `team/platzhalter-a.jpg` | Profil mit gepflegtem Vollbart | Ahmad Ebadi | photo-1630827020718 |
+| `team/platzhalter-b.jpg` | Porträt im warmen Gegenlicht | Stephan Louis | photo-1599834562135 |
+| `team/platzhalter-c.jpg` | Pompadour vor Ziegelwand | Hannah Skelly | photo-1562004760 |
+| `steps/leistung-waehlen.jpg` | Kamm und Schere am Haar | Obi | photo-1567894340315 |
+| `steps/friseur-waehlen.jpg` | Friseur schneidet Locken | Michael DeMoya | photo-1593702275687 |
+| `steps/zeit-reservieren.jpg` | Rasiermesser-Detail am Fade | Agustin Fernandez | photo-1599351431202 |
+| `salon-theke.jpg` | Klassische Salonstühle, dunkel | Joshua Lawrence | photo-1621645582931 |
+| `salon-eingang.jpg` | Salon mit Ziegelwand und Lichtern | Nathon Oski | photo-1585747860715 |
 
 ## Pexels-Beispielfotos (Hero-Slideshow „Models & Handwerk")
 
