@@ -4,33 +4,41 @@
 
 ## Herkunft
 
-Alle Fotos, Team-Porträts, Logos und das Visitenkarten-PDF wurden aus der bestehenden
-persönlichen Konzeptvorschau `https://clean-cut-mosbach.info979896.chatgpt.site`
-übernommen (Abruf: 17.08.2026). Diese Vorversion wurde von Marcel Gärtner (TOMORROWWORKS)
-mit vom Betrieb CLEAN CUT Mosbach gelieferten Personen- und Salonbildern erstellt; die
-Bilder sind professionell bearbeitete **Konzeptbilder** (keine Stockfotos).
+Logo-Dateien und Visitenkarten-PDF stammen aus der persönlichen Konzeptvorschau
+`https://clean-cut-mosbach.info979896.chatgpt.site` (Abruf: 17.08.2026), erstellt von
+Marcel Gärtner (TOMORROWWORKS) mit vom Betrieb gelieferten Unterlagen; es sind
+bearbeitete **Konzeptbilder**. Die früher hier genutzten Personen- und Salonfotos der
+Vorversion wurden am 17.08.2026 vollständig durch lizenzfreie Pexels-Beispielfotos
+ersetzt (Bildrechte der Originale noch nicht bestätigt).
 
-⚠️ **Vorbehalt (gilt für jede Veröffentlichung):** Bildrechte, Logo- und Produktrechte
-sind vor einem Livegang mit dem Betrieb zu bestätigen — der entsprechende Hinweis steht
-sichtbar auf der Demo-Seite und darf nicht entfernt werden.
+⚠️ **Vorbehalt:** Logo- und Produktrechte sind vor einem Livegang mit dem Betrieb zu
+bestätigen — der Hinweis steht sichtbar auf der Demo-Seite.
 
-## Dateien
+## Dateien aus der Konzeptvorschau
 
-| Datei | Inhalt | Bearbeitung hier |
-|---|---|---|
-| `hero-team.jpg` | Teamvisualisierung (Samir, Karim, Samir) | PNG→JPEG, max 1600px |
-| `team/samir-mitarbeiter.jpg` | Porträt-Fotoentwurf Samir (Mitarbeiter) | PNG→JPEG, max 1200px |
-| `team/karim.jpg` | Porträt-Fotoentwurf Karim | PNG→JPEG, max 1200px |
-| `team/samy-inhaber.jpg` | Porträt-Fotoentwurf Samir (Inhaber) | PNG→JPEG, max 1200px |
-| `steps/leistung-waehlen.jpg` | Barberstuhl-Szene (Schritt 1) | PNG→JPEG, max 1200px |
-| `steps/friseur-waehlen.jpg` | Begrüßungs-Szene (Schritt 2) | PNG→JPEG, max 1200px |
-| `steps/zeit-reservieren.jpg` | Salonuhr-Szene (Schritt 3) | PNG→JPEG, max 1200px |
-| `salon-theke.jpg` | Bearbeiteter Ladenentwurf der Theke | PNG→JPEG, max 1400px |
-| `salon-eingang.jpg` | Salon-Eingang mit Schlüssel | PNG→JPEG, max 1600px |
-| `logo.png` / `logo-wall.png` | CLEAN CUT Barber-Lounge-Logo (transparent) | verkleinert 640px |
-| `og.jpg` | Social-Vorschaubild der Vorversion | PNG→JPEG, 1200px |
-| `visitenkarte-druckentwurf.pdf` | Hochformat-Druckentwurf Visitenkarte v1 | unverändert |
-| `qr-termin.svg` | QR-Code auf die Termin-Demo (Hub-URL) | selbst generiert (npm `qrcode`), 17.08.2026 |
+| Datei | Inhalt |
+|---|---|
+| `logo.png` / `logo-wall.png` | CLEAN CUT Logo (transparent), verkleinert 640px |
+| `visitenkarte-druckentwurf.pdf` | Hochformat-Druckentwurf Visitenkarte v1 |
+| `qr-termin.svg` | QR-Code auf die Termin-Demo (selbst generiert, npm `qrcode`) |
+
+## Pexels-Beispielfotos (Hero, Team-Platzhalter, Ablauf, Salon)
+
+Lizenz: Pexels-Lizenz (https://www.pexels.com/legal-pages/license/), Abrufdatum:
+17.08.2026. Auf der Seite als „Beispielfoto (Symbolbild)"/„Platzhalter" gekennzeichnet —
+KEINE Aufnahmen des Salons oder seines Teams.
+
+| Datei | Motiv | Fotograf:in | Pexels-ID |
+|---|---|---|---|
+| `hero-salon.jpg` | Friseur zeigt Ergebnis im Handspiegel | David Payne | 18987112 |
+| `team/platzhalter-a.jpg` | Barber mit Schürze, stimmungsvoll | Th2city Santana | 2215783 |
+| `team/platzhalter-b.jpg` | Barber auf Stuhl, Retro-Salon | Th2city Santana | 2174113 |
+| `team/platzhalter-c.jpg` | Barbier stylt Kunden | cottonbro studio | 3998392 |
+| `steps/leistung-waehlen.jpg` | Maschinenschnitt-Nahaufnahme | Marvin Sacdalan | 13138522 |
+| `steps/friseur-waehlen.jpg` | Friseur bei modernem Schnitt | Th2city Santana | 2775272 |
+| `steps/zeit-reservieren.jpg` | Klassische Friseurwerkzeuge | Marcelo Lemes | 30911662 |
+| `salon-theke.jpg` | Vintage-Salon-Interieur bei Nacht | Alina Degli | 18991957 |
+| `salon-eingang.jpg` | Barbershop-Schaufenster mit Logo | esrannuur | 14698352 |
 
 ## Pexels-Beispielfotos (Hero-Slideshow „Models & Handwerk")
 
