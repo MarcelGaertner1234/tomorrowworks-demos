@@ -30,15 +30,15 @@ KEINE Aufnahmen des Salons oder seines Teams.
 
 | Datei | Motiv | Fotograf:in | Pexels-ID |
 |---|---|---|---|
-| `hero-salon.jpg` | Friseur zeigt Ergebnis im Handspiegel | David Payne | 18987112 |
-| `team/platzhalter-a.jpg` | Barber mit Schürze, stimmungsvoll | Th2city Santana | 2215783 |
-| `team/platzhalter-b.jpg` | Barber auf Stuhl, Retro-Salon | Th2city Santana | 2174113 |
-| `team/platzhalter-c.jpg` | Barbier stylt Kunden | cottonbro studio | 3998392 |
-| `steps/leistung-waehlen.jpg` | Maschinenschnitt-Nahaufnahme | Marvin Sacdalan | 13138522 |
-| `steps/friseur-waehlen.jpg` | Friseur bei modernem Schnitt | Th2city Santana | 2775272 |
-| `steps/zeit-reservieren.jpg` | Klassische Friseurwerkzeuge | Marcelo Lemes | 30911662 |
-| `salon-theke.jpg` | Vintage-Salon-Interieur bei Nacht | Alina Degli | 18991957 |
-| `salon-eingang.jpg` | Barbershop-Schaufenster mit Logo | esrannuur | 14698352 |
+| `hero-salon.jpg` | Friseur schneidet Kunden im modernen Salon | Bulat843 | 32329619 |
+| `team/platzhalter-a.jpg` | Friseur mit Schürze und Stylingwerkzeug | Nataliya Vaitkevich | 8468137 |
+| `team/platzhalter-b.jpg` | Moderner Mann mit Brille, Studio | Sumant Arora | 12689125 |
+| `team/platzhalter-c.jpg` | Lächelnder Friseur mit Schere | alexandre saraiva carniato | 5337979 |
+| `steps/leistung-waehlen.jpg` | Schere und Kamm am Haar | Godwin Torres | 18186525 |
+| `steps/friseur-waehlen.jpg` | Stylistin arbeitet am Look eines Kunden | Antoni Shkraba / AI25.studio | 6599038 |
+| `steps/zeit-reservieren.jpg` | Schere und Kamm im warmen Licht | Matheus Wladeka | 6487890 |
+| `salon-theke.jpg` | Eleganter Salon in Schwarz-Weiß | Max Vakhtbovych | 13068377 |
+| `salon-eingang.jpg` | Salonstuhl und Spiegel | cottonbro studio | 3992850 |
 
 ## Pexels-Beispielfotos (Hero-Slideshow „Models & Handwerk")
 
