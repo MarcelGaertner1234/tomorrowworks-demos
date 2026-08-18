@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Spitzer Moden — Modehaus in Mosbach (Design-Entwurf)</title>
+    <meta
+      name="description"
+      content="Design-Entwurf von TOMORROWWORKS — Persönliche Konzeptvorschau, nicht die offizielle Website des Betriebs."
+    >
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+
+    <header>
+      <div class="banner">
+        <strong>Design-Entwurf von TOMORROWWORKS</strong> —
+        nicht die offizielle Website von Spitzer Moden ·
+        Persönliche Konzeptvorschau
+      </div>
+      <div class="site-header">
+        <div class="site-header-inhalt">
+          <nav class="site-nav" aria-label="Hauptnavigation">
+            <a href="#looks">Looks</a>
+            <a href="#haus">Haus</a>
+            <a href="#ablauf">Ablauf</a>
+          </nav>
+          <a class="wortmarke" href="#inhalt" aria-label="Spitzer Moden — zur Startseite">
+            <svg class="ornament" viewBox="0 0 28 22" aria-hidden="true" focusable="false">
+              <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10 2c-1.7 0-3 1.1-3 2.5"/>
+                <path d="M10 4.5v2"/>
+                <path d="M2 15 10 6.5 18 15"/>
+                <path d="M2 15h16"/>
+                <g opacity=".55">
+                  <path d="M20 4c-1.4 0-2.5 1-2.5 2.1"/>
+                  <path d="M20 6.1v1.6"/>
+                  <path d="M14 15 20 8.5 26 15"/>
+                  <path d="M14 15h12"/>
+                </g>
+              </g>
+            </svg>
+            <span class="wortmarke-text">SPITZER<span class="wm-moden">MODEN</span></span>
+          </a>
+          <a class="btn btn--voll site-header-cta" href="anfrage.html">Beratung anfragen</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="inhalt">
+      <!-- Vollbild-Hero mit Sie/Ihn-Toggle (Referenz-DNA prada.com, s. Spec §3b) -->
+      <section class="hero" aria-label="Einstieg">
+        <div class="hero-buehne">
+          <img
+            class="hero-bild"
+            id="hero-bild"
+            src="assets/hero-damen.jpg"
+            data-bild-damen="assets/hero-damen.jpg"
+            data-bild-herren="assets/hero-herren.jpg"
+            alt="Editorial-Look für Damen — Beispielfoto"
+            width="1600"
+            height="2000"
+            fetchpriority="high"
+          >
+          <div class="hero-scrim" aria-hidden="true"></div>
+          <div class="hero-text">
+            <span class="eyebrow">Modehaus in Mosbach</span>
+            <h1>Zwei Garderoben. <em>Ein</em> Anspruch.</h1>
+            <div class="hero-toggle" role="tablist" aria-label="Bereich wählen">
+              <button type="button" class="hero-toggle-btn is-aktiv" data-bereich="damen" role="tab" aria-selected="true">Für Sie</button>
+              <button type="button" class="hero-toggle-btn" data-bereich="herren" role="tab" aria-selected="false">Für Ihn</button>
+            </div>
+            <a class="btn btn--voll hero-cta" id="hero-cta" href="anfrage.html?bereich=damen">Beratung anfragen</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Intro: zentrierte schmale Textspalte -->
+      <section class="section intro" aria-label="Einleitung">
+        <div class="section-inhalt">
+          <p class="intro-statement">Ein Modehaus ist kein Regal — es ist ein Gespräch über Stil.</p>
+          <p>
+            Deshalb zeigt diese Seite zuerst Bilder statt Listen: zwei Garderoben, ein paar
+            Beispiel-Looks und ein kurzer Weg zu Ihrer persönlichen Beratung.
+          </p>
+        </div>
+      </section>
+
+      <!-- Bereichskacheln: funktionale Wiederholung der Hero-Dualität -->
+      <section class="section" id="bereiche">
+        <div class="section-inhalt">
+          <div class="section-kopf">
+            <span class="eyebrow">Ihr Bereich</span>
+            <h2>Womit dürfen wir Ihnen helfen?</h2>
+            <p>
+              Damen, Herren oder beides — wählen Sie, dann leiten wir Ihre Anfrage direkt an die
+              passende Beratung weiter.
+            </p>
+          </div>
+          <div class="bereich-grid">
+            <a class="bereich-kachel" data-bereich="damen" href="anfrage.html?bereich=damen">
+              <div class="bereich-bild">
+                <img
+                  src="assets/bereich-damen.jpg"
+                  alt="Damenmode im Laden — Beispielfoto"
+                  loading="lazy"
+                  width="1200"
+                  height="1500"
+                >
+              </div>
+              <div class="bereich-text">
+                <h3>Damen</h3>
+                <span class="bereich-sub">Von Business bis festlich</span>
+                <span class="bereich-cta">Damen-Beratung anfragen →</span>
+              </div>
+            </a>
+            <a class="bereich-kachel" data-bereich="herren" href="anfrage.html?bereich=herren">
+              <div class="bereich-bild">
+                <img
+                  src="assets/bereich-herren.jpg"
+                  alt="Herrenmode im Laden — Beispielfoto"
+                  loading="lazy"
+                  width="1200"
+                  height="1500"
+                >
+              </div>
+              <div class="bereich-text">
+                <h3>Herren</h3>
+                <span class="bereich-sub">Vom Anzug bis leger</span>
+                <span class="bereich-cta">Herren-Beratung anfragen →</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Anlass-Looks-Galerie (Herzstück, verzahnt mit der Anfrage) -->
+      <section class="section section--looks" id="looks">
+        <div class="section-inhalt">
+          <div class="section-kopf">
+            <span class="eyebrow">Beispiel-Looks</span>
+            <h2>Für welchen Anlass kleiden Sie sich ein?</h2>
+            <p>
+              Vier Anlässe als Startpunkt — jede Kachel führt direkt zur Beratungs-Anfrage.
+            </p>
+            <span class="symbolbild-hinweis">
+              Beispiel-Leistungsspektrum dieser Konzeptvorschau — das echte Sortiment stimmt der
+              Laden mit Ihnen ab.
+            </span>
+          </div>
+          <div class="look-grid">
+            <a class="look-kachel" data-anlass="business" href="anfrage.html?anlass=business">
+              <div class="look-bild">
+                <img
+                  src="assets/look-business.jpg"
+                  alt="Business-Look in gedeckten Tönen — Beispielfoto"
+                  loading="lazy"
+                  width="1000"
+                  height="1250"
+                >
+              </div>
+              <div class="look-caption">
+                <h3>Business</h3>
+                <span class="look-sub">Klar und selbstbewusst</span>
+              </div>
+            </a>
+            <a class="look-kachel" data-anlass="festlich" href="anfrage.html?anlass=festlich">
+              <div class="look-bild">
+                <img
+                  src="assets/look-festlich.jpg"
+                  alt="Festlicher Look für besondere Anlässe — Beispielfoto"
+                  loading="lazy"
+                  width="1000"
+                  height="1250"
+                >
+              </div>
+              <div class="look-caption">
+                <h3>Festlich</h3>
+                <span class="look-sub">Für den großen Auftritt</span>
+              </div>
+            </a>
+            <a class="look-kachel" data-anlass="alltag" href="anfrage.html?anlass=alltag">
+              <div class="look-bild">
+                <img
+                  src="assets/look-alltag.jpg"
+                  alt="Entspannter Look für den Alltag — Beispielfoto"
+                  loading="lazy"
+                  width="1000"
+                  height="1250"
+                >
+              </div>
+              <div class="look-caption">
+                <h3>Alltag</h3>
+                <span class="look-sub">Bequem und trotzdem stilvoll</span>
+              </div>
+            </a>
+            <a class="look-kachel" data-anlass="garderobe" href="anfrage.html?anlass=garderobe">
+              <div class="look-bild">
+                <img
+                  src="assets/look-garderobe.jpg"
+                  alt="Sortierte Kleiderstangen — Beispielfoto"
+                  loading="lazy"
+                  width="1000"
+                  height="1250"
+                >
+              </div>
+              <div class="look-caption">
+                <h3>Garderoben-Auffrischung</h3>
+                <span class="look-sub">Neue Teile, neuer Blick</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Haus-Sektion, rollenbasiert -->
+      <section class="section" id="haus">
+        <div class="section-inhalt">
+          <div class="haus-split">
+            <div class="haus-bild">
+              <img
+                src="assets/haus.jpg"
+                alt="Kleiderstangen im Ladeninneren — Beispielfoto"
+                loading="lazy"
+                width="1200"
+                height="1500"
+              >
+              <span class="foto-tag">Beispielfoto (Symbolbild)</span>
+            </div>
+            <div class="haus-text">
+              <span class="eyebrow">Das Haus</span>
+              <h2>Ihr Modehaus in der Mosbacher Innenstadt</h2>
+              <p>
+                Ein Ort, an dem Sie sich Zeit nehmen dürfen: Damen- und Herrenmode unter einem
+                Dach, mit Blick für den Anlass und für das, was zu Ihnen passt.
+              </p>
+              <ul class="haus-punkte">
+                <li>Damen- und Herrenmode unter einem Dach</li>
+                <li>Beratung mit Zeit statt Stückzahl</li>
+                <li>Mitten in der Mosbacher Fußgängerzone</li>
+              </ul>
+              <a class="btn btn--kontur" href="anfrage.html">Beratung anfragen</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Beratung/Service als gekennzeichnetes Beispiel -->
+      <section class="section section--beratung" id="beratung">
+        <div class="section-inhalt">
+          <div class="section-kopf">
+            <span class="eyebrow">Service</span>
+            <h2>Beratung, die zuhört</h2>
+            <p>
+              Ein Beispiel dafür, wie Ihre Beratung aussehen könnte — was der Laden tatsächlich
+              anbietet, bespricht er direkt mit Ihnen.
+            </p>
+            <span class="symbolbild-hinweis">
+              Beispiel-Leistungsspektrum dieser Konzeptvorschau — kein Angebot des Betriebs.
+            </span>
+          </div>
+          <div class="beratung-split">
+            <div class="beratung-bild">
+              <img
+                src="assets/beratung.jpg"
+                alt="Beratungssituation im Laden — Beispielfoto"
+                loading="lazy"
+                width="1200"
+                height="1500"
+              >
+              <span class="foto-tag">Beispielfoto (Symbolbild)</span>
+            </div>
+            <ul class="beratung-liste">
+              <li>
+                <h3>Stilberatung</h3>
+                <p>Was zu Figur, Anlass und Alltag passt — als Ausgangspunkt für das Gespräch.</p>
+              </li>
+              <li>
+                <h3>Anlassberatung</h3>
+                <p>Vom Vorstellungsgespräch bis zur Hochzeit — ein Blick fürs Ganze.</p>
+              </li>
+              <li>
+                <h3>Änderungsservice (Beispiel)</h3>
+                <p>Ob ein solcher Service angeboten wird, klärt der Laden direkt mit Ihnen.</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Ablauf -->
+      <section class="section section--ablauf" id="ablauf">
+        <div class="section-inhalt">
+          <div class="section-kopf">
+            <span class="eyebrow">So läuft es</span>
+            <h2>In drei Schritten zur Beratung</h2>
+          </div>
+          <div class="ablauf-grid">
+            <div class="ablauf-schritt">
+              <span class="ablauf-nummer" aria-hidden="true">01</span>
+              <h3>Anfragen</h3>
+              <p>Bereich, Anlass und Wunschtermin — in zwei Minuten notiert.</p>
+            </div>
+            <div class="ablauf-schritt">
+              <span class="ablauf-nummer" aria-hidden="true">02</span>
+              <h3>Beraten</h3>
+              <p>Wir melden uns und besprechen, wonach Sie suchen.</p>
+            </div>
+            <div class="ablauf-schritt">
+              <span class="ablauf-nummer" aria-hidden="true">03</span>
+              <h3>Anprobieren</h3>
+              <p>Ihre Auswahl wartet zum Wunschtermin auf Sie im Laden.</p>
+            </div>
+          </div>
+          <p class="ablauf-hinweis">
+            Beispiel-Ablauf der Konzeptvorschau — den tatsächlichen Ablauf stimmt der Laden mit
+            Ihnen ab.
+          </p>
+        </div>
+      </section>
+
+      <!-- Anfrage-Teaser -->
+      <section class="section section--teaser" id="anfrage-sektion">
+        <div class="section-inhalt">
+          <div class="section-kopf">
+            <span class="eyebrow">Beratung anfragen</span>
+            <h2>Erzählen Sie uns, wofür Sie sich einkleiden</h2>
+            <p>
+              Bereich, Anlass und Wunschtermin — so ist Ihre Beratung schon vorbereitet, bevor
+              Sie im Laden stehen.
+            </p>
+          </div>
+          <p class="teaser-aktion">
+            <a class="btn btn--voll" href="anfrage.html">Zur Beratungs-Anfrage</a>
+          </p>
+          <p class="teaser-meta">
+            Erreichbar Mo–Sa (Beispielzeiten) · Kontaktdaten folgen nach Freigabe
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer-inhalt">
+        <div class="footer-spalten">
+          <a class="wortmarke" href="#inhalt" aria-label="Spitzer Moden — nach oben">
+            <svg class="ornament" viewBox="0 0 28 22" aria-hidden="true" focusable="false">
+              <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10 2c-1.7 0-3 1.1-3 2.5"/>
+                <path d="M10 4.5v2"/>
+                <path d="M2 15 10 6.5 18 15"/>
+                <path d="M2 15h16"/>
+                <g opacity=".55">
+                  <path d="M20 4c-1.4 0-2.5 1-2.5 2.1"/>
+                  <path d="M20 6.1v1.6"/>
+                  <path d="M14 15 20 8.5 26 15"/>
+                  <path d="M14 15h12"/>
+                </g>
+              </g>
+            </svg>
+            <span class="wortmarke-text">SPITZER<span class="wm-moden">MODEN</span></span>
+          </a>
+          <nav aria-label="Fußnavigation">
+            <a href="#looks">Looks</a>
+            <a href="#haus">Haus</a>
+            <a href="anfrage.html">Beratung anfragen</a>
+          </nav>
+        </div>
+        <p class="footer-klein">
+          <strong>Design-Entwurf von TOMORROWWORKS</strong> —
+          nicht die offizielle Website von Spitzer Moden.
+          Persönliche Konzeptvorschau ohne echte Kontaktdaten; Kontaktdaten folgen nach Freigabe.
+          Alle Fotos: Beispielfotos (Symbolbilder). Looks und Service:
+          Beispiel-Leistungsspektrum — kein Angebot des Betriebs.
+        </p>
+      </div>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
