@@ -15,5 +15,7 @@ siehe Spec §6).
 | besichtigung.jpg | Leeres, helles Zimmer mit Holzboden | `4YhNRgL59Fc` (photo-1757742690834-aa581b9f53b2) | Christian Lue (@christianlue) |
 | verpackung.jpg | Gestapelte, unbeschriftete Umzugskartons | `DevJkLB3hWE` (photo-1624137527136-66e631bdaa0e) | Kadarius Seegars (@kseegars) |
 | team.jpg | Paar richtet gemeinsam die neue Wohnung ein | `zK9xHBSzqks` (photo-1714647211923-a3881cd1300f) | Vitaly Gariev (@silverkblack) |
+| karriere-hero.jpg | Handschlag am Schreibtisch (Vertragsunterzeichnung) | `NbtIDoFKGO8` (photo-1549923746-c502d488b3ea) | Sebastian Herrmann (@officestock) |
+| unternehmen-team.jpg | Handschlag am Schreibtisch (Vertragsunterzeichnung), Hochformat-Crop | `NbtIDoFKGO8` (photo-1549923746-c502d488b3ea) | Sebastian Herrmann (@officestock) |
 
 favicon.svg: Eigenanfertigung TOMORROWWORKS (keine Fremdlizenz).
