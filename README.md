@@ -1,16 +1,20 @@
-# TOMORROWWORKS — Design-Demos
+# TOMORROWWORKS — Startseite & Design-Studien
 
-Unverbindliche Design-Entwürfe von TOMORROWWORKS (Mosbach) für Gespräche mit regionalen
-Betrieben. Jede Demo ist deutlich als Entwurf gekennzeichnet und stellt **nicht** die
-offizielle Website des jeweiligen Betriebs dar. Alle Seiten stehen auf `noindex`.
+Öffentliche Startseite des Digital-Studios TOMORROWWORKS (Mosbach) auf GitHub Pages:
+https://marcelgaertner1234.github.io/tomorrowworks-demos/
 
-Preise, Zeiten und Speisekarten sind Beispiele. Fotos sind lizenzierte Beispielbilder
-(Pexels-/Unsplash-Lizenz, Nachweis je Demo in `MEDIA-LICENSES.md`) und zeigen nicht die Betriebe.
+Die Startseite zeigt Live-Projekte, Design-Studien und das Team. Design-Studien sind
+unverbindliche Entwürfe von TOMORROWWORKS für Gespräche mit regionalen Betrieben —
+keine offiziellen Websites der genannten Unternehmen (jede Studie trägt einen
+entsprechenden Hinweis-Banner und ist auf `noindex` gestellt).
 
-## Demos
+## Design-Studien in diesem Repo
 
-- [Hotel Goldener Hirsch, Mosbach](goldener-hirsch/) — Design-Entwurf „Gasthaus-Chronik"
-- [CLEAN CUT, Mosbach](clean-cut/) — Design-Entwurf „Salon-Editorial" (Friseursalon, inkl. Termin-Demo)
-- [Goldschmiede Glanz und Gloria, Mosbach](glanz-und-gloria/) — Design-Entwurf „Smaragd-Atelier" (inkl. Beratungstermin-Demo)
-- [Kimberger Kosmetikinstitut, Sinsheim](kimberger/) — Design-Entwurf „Puderzimmer / Ein neues Kapitel" (inkl. Terminwunsch-Demo)
-- [Pension Am Waldrand, Mosbach-Waldstadt](am-waldrand/) — Design-Entwurf „Waldlicht / Stille Chesa" (inkl. Zimmeranfrage-Demo)
+- `glanz-und-gloria/` — Goldschmiede, Mosbach
+- `clean-cut/` — Friseursalon, Mosbach
+- `goldener-hirsch/` — Hotel & Gasthaus, Mosbach
+- `kimberger/` — Kosmetikinstitut, Sinsheim
+- `am-waldrand/` — Pension, Mosbach-Waldstadt
+- `mos-kebab/` — Imbiss, Mosbach-Neckarelz
+
+Offizielle Website des Studios: https://tomorrowworks-agentur.de

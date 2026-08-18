@@ -1,0 +1,1174 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>MOS Kebap & Pizza · Mosbach — Design-Entwurf</title>
+    <style>
+      :root {
+        --obsidian: #070605;
+        --kohle: #12100e;
+        --champagnergold: #c8a66a;
+        --kupfer: #9a5e32;
+        --granatapfel: #6f211f;
+        --elfenbein: #f1eadc;
+        --braun: #2b211b;
+        --grau: #a79f93;
+        --linie: #332b25;
+        --linie-hell: #d5cab7;
+        --schwarz: var(--obsidian);
+        --schwarz-2: var(--kohle);
+        --weiss: var(--elfenbein);
+        --glut: var(--kupfer);
+        /* prettier-ignore */
+        --serif: Georgia, "Times New Roman", serif;
+        --mono:
+          ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+        overflow-x: clip;
+      }
+      body {
+        background: var(--obsidian);
+        color: var(--weiss);
+        font-family: var(--mono);
+        font-size: 15px;
+        line-height: 1.75;
+        letter-spacing: 0.04em;
+        overflow-x: clip;
+      }
+      ::selection {
+        background: var(--champagnergold);
+        color: var(--obsidian);
+      }
+      a {
+        color: inherit;
+      }
+
+      /* ===== entwurfs-banner ===== */
+      .entwurf-banner {
+        position: sticky;
+        top: 0;
+        z-index: 30;
+        background: var(--weiss);
+        color: var(--schwarz);
+        font-size: 0.72rem;
+        text-align: center;
+        padding: 0.5rem 1rem;
+        letter-spacing: 0.06em;
+        border-bottom: 1px solid var(--linie-hell);
+      }
+
+      /* ===== top-nav ===== */
+      .top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.4rem clamp(1.2rem, 4vw, 3rem);
+      }
+      #top {
+        scroll-margin-top: 5rem;
+      }
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.8rem;
+        width: max-content;
+        color: var(--champagnergold);
+        text-decoration: none;
+      }
+      .brand-copy {
+        display: grid;
+        min-width: 0;
+      }
+      .brand-seal {
+        display: block;
+        flex: 0 0 62px;
+        width: 62px;
+        height: 62px;
+      }
+      .brand-name {
+        font-family: var(--serif);
+        font-size: 1.32rem;
+        line-height: 1;
+        letter-spacing: 0.09em;
+      }
+      .brand-claim {
+        margin-top: 0.32rem;
+        color: var(--elfenbein);
+        font-size: 0.62rem;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+      }
+      .brand-place {
+        margin-top: 0.18rem;
+        color: var(--grau);
+        font-size: 0.58rem;
+        letter-spacing: 0.08em;
+      }
+      .top nav {
+        display: flex;
+        gap: 1.6rem;
+        font-size: 0.78rem;
+        text-transform: lowercase;
+      }
+      .top nav a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        text-decoration: none;
+        color: var(--grau);
+        transition: color 0.2s;
+      }
+      .top nav a:hover {
+        color: var(--weiss);
+      }
+      @media (max-width: 560px) {
+        .top {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 0.75rem;
+        }
+        .brand {
+          gap: 0.7rem;
+          min-height: 54px;
+        }
+        .brand-seal {
+          flex-basis: 54px;
+          width: 54px;
+          height: 54px;
+        }
+        .top nav {
+          align-self: stretch;
+          justify-content: space-between;
+          gap: 0.5rem;
+          font-size: 0.72rem;
+        }
+      }
+
+      /* ===== hero ===== */
+      .hero {
+        display: grid;
+        align-items: center;
+        gap: 2.5rem;
+        padding: clamp(2.5rem, 7vh, 6rem) clamp(1.2rem, 4vw, 3rem) clamp(3.5rem, 9vh, 7rem);
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      @media (min-width: 860px) {
+        .hero {
+          grid-template-columns: 1.05fr 0.95fr;
+        }
+      }
+      .hero h1 {
+        font-size: clamp(1.7rem, 4.6vw, 3rem);
+        font-weight: 500;
+        line-height: 1.35;
+      }
+      .hero-eyebrow {
+        margin-bottom: 0.8rem;
+        color: var(--champagnergold);
+        font-size: 0.7rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+      }
+      h1,
+      h2 {
+        font-family: var(--serif);
+        letter-spacing: 0.015em;
+      }
+      .hero h1 .zeile {
+        display: block;
+      }
+      .hero-sub {
+        margin-top: 1.4rem;
+        color: var(--grau);
+        font-size: 0.85rem;
+        max-width: 44ch;
+      }
+      .open-status {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        margin-top: 1.6rem;
+        font-size: 0.78rem;
+        color: var(--grau);
+      }
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #4ade80;
+        animation: puls 1.8s ease-in-out infinite;
+      }
+      @keyframes puls {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.4;
+        }
+      }
+      .hero-cta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.9rem;
+        margin-top: 2.2rem;
+      }
+
+      /* ===== buttons (eckig, monospace) ===== */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.85rem 1.5rem;
+        font-family: var(--mono);
+        font-size: 0.8rem;
+        letter-spacing: 0.08em;
+        text-transform: lowercase;
+        text-decoration: none;
+        cursor: pointer;
+        min-height: 44px;
+        border: 1px solid var(--champagnergold);
+        background: transparent;
+        color: var(--champagnergold);
+        transition:
+          background 0.2s,
+          color 0.2s;
+      }
+      .btn:hover {
+        background: var(--champagnergold);
+        color: var(--obsidian);
+      }
+      .btn-primary {
+        background: var(--champagnergold);
+        border-color: var(--champagnergold);
+        color: var(--obsidian);
+      }
+      .btn-primary:hover {
+        background: #8c522a;
+        border-color: #8c522a;
+        color: var(--elfenbein);
+      }
+      .btn-whatsapp {
+        cursor: help;
+      }
+      .hell .btn {
+        border-color: var(--schwarz);
+        color: var(--schwarz);
+      }
+      .hell .btn:hover {
+        background: var(--schwarz);
+        color: var(--weiss);
+      }
+      .hell .btn-primary {
+        background: var(--schwarz);
+        color: var(--weiss);
+      }
+      .hell .btn-primary:hover {
+        background: var(--glut);
+        border-color: var(--glut);
+        color: var(--schwarz);
+      }
+
+      /* ===== schräg angeschnittenes bild ===== */
+      .bild-frame {
+        border: 0;
+      }
+      .bild-frame svg {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+      .bild-caption {
+        margin-top: 0.8rem;
+        font-size: 0.68rem;
+        line-height: 1.5;
+        color: var(--grau);
+        text-transform: lowercase;
+      }
+      .media-frame {
+        position: relative;
+        overflow: hidden;
+        aspect-ratio: 5 / 6;
+        background: #120c08;
+        clip-path: polygon(7% 0, 100% 3%, 94% 100%, 0 96%);
+        filter: saturate(0.92);
+      }
+      .media-frame.wide {
+        aspect-ratio: 5 / 4;
+      }
+      .media-poster,
+      .food-film {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .food-film {
+        opacity: 0;
+        transition: opacity 0.45s ease;
+      }
+      .media-frame.is-playing .food-film {
+        opacity: 1;
+      }
+      .media-frame::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        box-shadow:
+          inset 0 0 0 1px rgba(200, 166, 106, 0.82),
+          inset 0 0 0 4px rgba(200, 166, 106, 0.16);
+        background:
+          radial-gradient(circle at 75% 75%, rgba(154, 94, 50, 0.22), transparent 42%),
+          linear-gradient(180deg, rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.42));
+        mix-blend-mode: screen;
+      }
+      .media-frame::before {
+        content: '';
+        position: absolute;
+        z-index: 1;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.08;
+        background-image: repeating-radial-gradient(
+          circle at 20% 30%,
+          #fff 0 1px,
+          transparent 1px 4px
+        );
+      }
+      .video-toggle {
+        position: absolute;
+        z-index: 2;
+        left: 1rem;
+        bottom: 1rem;
+        border: 1px solid rgba(200, 166, 106, 0.88);
+        background: rgba(6, 6, 6, 0.78);
+        color: var(--champagnergold);
+        font: inherit;
+        line-height: 1.25;
+        min-height: 44px;
+        padding: 0.65rem 0.85rem;
+      }
+      .video-toggle:focus-visible {
+        outline: 2px solid var(--glut);
+        outline-offset: 3px;
+      }
+
+      .anatolian-band,
+      .footer-ornament {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='144' height='40' viewBox='0 0 144 40'%3E%3Cg fill='none' stroke='%23c8a66a' stroke-width='1.2' opacity='.78'%3E%3Cpath d='M4 20 20 4l16 16-16 16Z M36 20 52 4l16 16-16 16Z'/%3E%3Cpath d='m72 4 4.5 11.5L88 20l-11.5 4.5L72 36l-4.5-11.5L56 20l11.5-4.5Z'/%3E%3Cpath d='M108 4v32M92 20h32M96 8l24 24M120 8 96 32' opacity='.5'/%3E%3C/g%3E%3C/svg%3E");
+        background-repeat: repeat-x;
+        background-position: 0 50%;
+      }
+      .anatolian-band {
+        height: 42px;
+        border-block: 1px solid rgba(200, 166, 106, 0.48);
+        background-color: var(--kohle);
+        animation: muster-lauf 70s linear infinite;
+      }
+      @keyframes muster-lauf {
+        to {
+          background-position: 144px 50%;
+        }
+      }
+
+      .ticker {
+        overflow: hidden;
+        border-block: 1px solid var(--linie);
+        background: var(--schwarz-2);
+      }
+      .ticker-track {
+        display: flex;
+        width: max-content;
+        padding: 0.85rem 0;
+        color: var(--grau);
+        font-size: 0.72rem;
+        letter-spacing: 0.18em;
+        text-transform: lowercase;
+        animation: ticker-lauf 28s linear infinite;
+      }
+      .ticker-track span {
+        white-space: nowrap;
+        padding-right: 1.25rem;
+      }
+      @keyframes ticker-lauf {
+        to {
+          transform: translateX(-50%);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        .ticker-track {
+          animation: none;
+        }
+        .anatolian-band {
+          animation: none;
+        }
+      }
+
+      /* ===== sektionen ===== */
+      section {
+        scroll-margin-top: 3rem;
+      }
+      .inhalt {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: clamp(3rem, 8vh, 6rem) clamp(1.2rem, 4vw, 3rem);
+      }
+      .kicker {
+        font-size: 0.72rem;
+        color: var(--grau);
+        text-transform: lowercase;
+        letter-spacing: 0.18em;
+        margin-bottom: 0.6rem;
+      }
+      h2 {
+        font-size: clamp(1.5rem, 3.4vw, 2.2rem);
+        font-weight: 500;
+        margin-bottom: 1rem;
+        line-height: 1.3;
+      }
+      .section-note {
+        color: var(--grau);
+        font-size: 0.82rem;
+        max-width: 52ch;
+        margin-bottom: 2.8rem;
+      }
+
+      /* ===== weisse sektion mit diagonalen kanten ===== */
+      .hell {
+        background: var(--elfenbein);
+        color: var(--braun);
+        clip-path: polygon(0 2.2rem, 100% 0, 100% calc(100% - 2.2rem), 0 100%);
+        padding: 2.2rem 0;
+      }
+      .hell .kicker {
+        color: #625d54;
+      }
+      .hell .section-note {
+        color: #5c5952;
+      }
+
+      /* ===== speisekarte ===== */
+      .menu-grid {
+        display: grid;
+        gap: 2.8rem 4rem;
+      }
+      @media (min-width: 760px) {
+        .menu-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      .menu-cat h3 {
+        font-family: var(--serif);
+        color: var(--braun);
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: lowercase;
+        letter-spacing: 0.16em;
+        padding-bottom: 0.7rem;
+        margin-bottom: 0.9rem;
+        border-bottom: 1px solid rgba(43, 33, 27, 0.72);
+      }
+      .menu-cat h3::before {
+        content: '✦';
+        margin-right: 0.55rem;
+        color: #8b531f;
+      }
+      .menu-item {
+        display: flex;
+        align-items: baseline;
+        gap: 0.7rem;
+        padding: 0.42rem 0;
+        font-size: 0.88rem;
+      }
+      .menu-item s {
+        flex: 1;
+        border-bottom: 1px dotted #9a8b76;
+        text-decoration: none;
+        transform: translateY(-4px);
+      }
+      .menu-item .preis {
+        white-space: nowrap;
+        font-weight: 700;
+      }
+      .fav {
+        font-size: 0.62rem;
+        color: #9a3d0c;
+        margin-left: 0.5rem;
+        letter-spacing: 0.1em;
+      }
+      .menu-blessing {
+        margin-top: 3rem;
+        color: #715019;
+        font-family: var(--serif);
+        font-size: 1rem;
+        font-style: italic;
+        text-align: center;
+      }
+
+      /* ===== abholung ===== */
+      .steps {
+        list-style: none;
+        counter-reset: schritt;
+        display: grid;
+        gap: 0;
+        max-width: 620px;
+        margin-bottom: 2.6rem;
+      }
+      .step {
+        counter-increment: schritt;
+        display: grid;
+        grid-template-columns: 3.2rem 1fr;
+        gap: 1.2rem;
+        padding: 1.15rem 0;
+        border-bottom: 1px solid var(--linie);
+      }
+      .step:first-child {
+        border-top: 1px solid var(--linie);
+      }
+      .step::before {
+        content: '0' counter(schritt);
+        font-size: 0.8rem;
+        color: var(--champagnergold);
+        padding-top: 0.15rem;
+      }
+      .step strong {
+        display: block;
+        font-weight: 700;
+        font-size: 0.88rem;
+        text-transform: lowercase;
+        letter-spacing: 0.06em;
+      }
+      .step p {
+        color: var(--grau);
+        font-size: 0.82rem;
+      }
+      .demo-hint {
+        color: var(--grau);
+        font-size: 0.72rem;
+        margin-top: 1rem;
+        font-style: italic;
+      }
+
+      .abhol-grid {
+        display: grid;
+        gap: 3rem;
+        align-items: center;
+      }
+      @media (min-width: 860px) {
+        .abhol-grid {
+          grid-template-columns: 1.1fr 0.9fr;
+        }
+      }
+
+      /* ===== anfahrt ===== */
+      .info-grid {
+        display: grid;
+        gap: 3rem 4rem;
+      }
+      @media (min-width: 760px) {
+        .info-grid {
+          grid-template-columns: 0.9fr 1.1fr;
+        }
+      }
+      .zeiten-liste {
+        list-style: none;
+        max-width: 380px;
+      }
+      .zeiten-liste li {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.55rem 0;
+        border-bottom: 1px solid var(--linie);
+        font-size: 0.84rem;
+      }
+      .zeiten-liste li:first-child {
+        border-top: 1px solid var(--linie);
+      }
+      .zeiten-liste .tag {
+        color: var(--grau);
+        text-transform: lowercase;
+      }
+      .hell .zeiten-liste .tag {
+        color: #625d54;
+      }
+      .map-card svg {
+        display: block;
+        width: 100%;
+        clip-path: polygon(4% 0, 100% 2%, 96% 100%, 0 98%);
+      }
+      .map-card p {
+        margin-top: 1.2rem;
+        font-size: 0.86rem;
+      }
+      .map-card .btn {
+        margin-top: 1.3rem;
+      }
+
+      /* ===== footer ===== */
+      .site-footer {
+        border-top: 1px solid var(--linie);
+        background: var(--schwarz-2);
+        padding: 3rem clamp(1.2rem, 4vw, 3rem) 7rem;
+        font-size: 0.78rem;
+        color: var(--grau);
+      }
+      .footer-grid {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        gap: 2rem;
+      }
+      @media (min-width: 760px) {
+        .footer-grid {
+          grid-template-columns: 1fr 1fr 1fr;
+        }
+        .site-footer {
+          padding-bottom: 3rem;
+        }
+      }
+      .footer-grid h3 {
+        color: var(--weiss);
+        font-size: 0.78rem;
+        font-weight: 700;
+        text-transform: lowercase;
+        letter-spacing: 0.12em;
+        margin-bottom: 0.7rem;
+      }
+      .footer-brand {
+        color: var(--champagnergold);
+        font-family: var(--serif);
+        font-size: 1.1rem;
+        letter-spacing: 0.09em;
+      }
+      .footer-claim {
+        margin: 0.25rem 0 0.8rem;
+        color: var(--elfenbein);
+        font-size: 0.62rem;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+      }
+      .footer-ornament {
+        height: 22px;
+        max-width: 1200px;
+        margin: 2.5rem auto 0;
+        border-block: 1px solid rgba(200, 166, 106, 0.2);
+        background-size: 72px 20px;
+        opacity: 0.38;
+      }
+      .site-footer a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        color: var(--grau);
+      }
+      .site-footer a:hover {
+        color: var(--weiss);
+      }
+      .muted {
+        color: var(--grau);
+      }
+
+      /* ===== sticky call-bar (mobil) ===== */
+      .call-bar {
+        position: fixed;
+        z-index: 35;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        background: var(--schwarz);
+        border-top: 1px solid var(--linie);
+      }
+      .call-bar .btn {
+        flex: 1;
+        border: 0;
+        padding: 1.05rem 1rem;
+        font-size: 0.8rem;
+      }
+      .call-bar .btn + .btn {
+        border-left: 1px solid var(--linie);
+      }
+      .call-bar .btn-primary {
+        background: var(--champagnergold);
+        color: var(--obsidian);
+      }
+      @media (min-width: 760px) {
+        .call-bar {
+          display: none;
+        }
+      }
+
+      /* ===== reveal ===== */
+      .reveal {
+        opacity: 0;
+        transform: translateY(22px);
+        transition:
+          opacity 0.8s ease,
+          transform 0.8s ease;
+      }
+      .reveal.sichtbar {
+        opacity: 1;
+        transform: none;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .dot {
+          animation: none;
+        }
+        .reveal {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <aside class="entwurf-banner" aria-label="Hinweis zum Design-Entwurf">
+      Design-Entwurf von TOMORROWWORKS — nicht die offizielle Website von MOS Kebap
+    </aside>
+
+    <header id="top">
+      <div class="top">
+        <a class="brand" href="#top" aria-label="MOS Kebap — zum Seitenanfang">
+          <svg class="brand-seal" viewBox="0 0 160 160" aria-hidden="true" focusable="false">
+            <circle cx="80" cy="80" r="66" fill="none" stroke="#c8a66a" stroke-width="2" />
+            <circle
+              cx="80"
+              cy="80"
+              r="59"
+              fill="none"
+              stroke="#9a5e32"
+              stroke-width="0.8"
+              stroke-dasharray="2 5"
+            />
+            <text
+              x="80"
+              y="71"
+              fill="#c8a66a"
+              font-family="Georgia, 'Times New Roman', serif"
+              font-size="29"
+              letter-spacing="4"
+              text-anchor="middle"
+            >
+              MOS
+            </text>
+            <path d="M47 82h66" fill="none" stroke="#c8a66a" stroke-width="1" />
+            <text
+              x="80"
+              y="102"
+              fill="#f1eadc"
+              font-family="ui-monospace, monospace"
+              font-size="9"
+              letter-spacing="3"
+              text-anchor="middle"
+            >
+              KEBAP
+            </text>
+            <g class="brand-seal-rosette" fill="none" stroke="#c8a66a" stroke-width="1.6">
+              <path d="M80 110v24M68 122h24M71.5 113.5l17 17M88.5 113.5l-17 17" />
+              <circle cx="80" cy="122" r="2.4" fill="#c8a66a" stroke="none" />
+            </g>
+          </svg>
+          <span class="brand-copy">
+            <span class="brand-name">MOS KEBAP</span>
+            <span class="brand-claim">Premium beef &amp; more</span>
+            <span class="brand-place">mosbach-neckarelz</span>
+          </span>
+        </a>
+        <nav aria-label="Hauptnavigation">
+          <a href="#speisekarte">speisekarte</a>
+          <a href="#abholung">abholen</a>
+          <a href="#anfahrt">anfahrt</a>
+        </nav>
+      </div>
+
+      <div class="hero">
+        <div>
+          <p class="hero-eyebrow">hoş geldiniz</p>
+          <h1>
+            <span class="zeile">frisch vom spieß —</span>
+            <span class="zeile">döner &amp; pizza</span>
+            <span class="zeile">in mosbach-neckarelz</span>
+          </h1>
+          <p class="hero-sub">
+            alles wird erst auf bestellung frisch zubereitet. zum mitnehmen, täglich (beispiel).
+          </p>
+          <p class="open-status"><span class="dot"></span> jetzt geöffnet</p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="tel:+4962616744353">jetzt anrufen</a>
+            <a class="btn" href="#speisekarte">speisekarte</a>
+          </div>
+        </div>
+        <figure class="bild-frame reveal">
+          <div class="media-frame">
+            <img
+              class="media-poster"
+              src="assets/mos-doener-poster.webp"
+              alt="Knuspriger Dönerspieß am Grill"
+            />
+            <video
+              class="food-film"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+              poster="assets/mos-doener-poster.webp"
+              aria-label="Rotierender Dönerspieß am Grill"
+            >
+              <source src="assets/mos-doener-loop.mp4" type="video/mp4" />
+            </video>
+            <button
+              class="video-toggle"
+              type="button"
+              data-video-subject="Döner-Video"
+              aria-label="Döner-Video abspielen"
+            >
+              Film abspielen
+            </button>
+          </div>
+          <figcaption class="bild-caption">
+            echte food-aufnahme — beispielhafte bildwelt für ihren neuen auftritt.
+          </figcaption>
+        </figure>
+      </div>
+    </header>
+
+    <section class="anatolian-band" aria-label="Anatolisches Ornamentband"></section>
+
+    <main>
+      <section id="speisekarte" class="hell">
+        <div class="inhalt">
+          <p class="kicker reveal">frisch &amp; hausgemacht</p>
+          <h2 class="reveal">speisekarte</h2>
+          <p class="section-note reveal">
+            Beispielkarte — Gerichte und Preise werden gemeinsam mit Ihnen übernommen.
+          </p>
+          <div class="menu-grid">
+            <div class="menu-cat reveal">
+              <h3>döner &amp; dürüm</h3>
+              <div class="menu-item">
+                <span>Döner Kebap<span class="fav">№1</span></span
+                ><s></s><span class="preis">7,50 €</span>
+              </div>
+              <div class="menu-item">
+                <span>Dürüm Döner</span><s></s><span class="preis">8,50 €</span>
+              </div>
+              <div class="menu-item">
+                <span>Döner-Teller mit Pommes &amp; Salat</span><s></s
+                ><span class="preis">12,50 €</span>
+              </div>
+              <div class="menu-item">
+                <span>Döner-Box</span><s></s><span class="preis">6,50 €</span>
+              </div>
+            </div>
+            <div class="menu-cat reveal">
+              <h3>pizza</h3>
+              <div class="menu-item">
+                <span>Pizza Margherita</span><s></s><span class="preis">8,00 €</span>
+              </div>
+              <div class="menu-item">
+                <span>Pizza Salami</span><s></s><span class="preis">9,00 €</span>
+              </div>
+              <div class="menu-item">
+                <span>Pizza Sucuk<span class="fav">№1</span></span
+                ><s></s><span class="preis">9,50 €</span>
+              </div>
+              <div class="menu-item">
+                <span>Pizza MOS Spezial</span><s></s><span class="preis">10,50 €</span>
+              </div>
+            </div>
+            <div class="menu-cat reveal">
+              <h3>vegetarisch &amp; salate</h3>
+              <div class="menu-item">
+                <span>Falafel-Dürüm</span><s></s><span class="preis">7,50 €</span>
+              </div>
+              <div class="menu-item">
+                <span>Halloumi-Döner</span><s></s><span class="preis">8,50 €</span>
+              </div>
+              <div class="menu-item">
+                <span>Gemischter Salat mit Brot</span><s></s><span class="preis">7,00 €</span>
+              </div>
+            </div>
+            <div class="menu-cat reveal">
+              <h3>getränke</h3>
+              <div class="menu-item">
+                <span>Ayran</span><s></s><span class="preis">2,00 €</span>
+              </div>
+              <div class="menu-item">
+                <span>Softdrinks 0,33 l</span><s></s><span class="preis">2,50 €</span>
+              </div>
+              <div class="menu-item">
+                <span>Wasser 0,5 l</span><s></s><span class="preis">2,00 €</span>
+              </div>
+            </div>
+          </div>
+          <p class="menu-blessing reveal">afiyet olsun</p>
+        </div>
+      </section>
+
+      <section class="ticker" aria-label="Vom Spieß, aus dem Ofen, direkt in Neckarelz">
+        <div class="ticker-track">
+          <span>vom spieß · aus dem ofen · direkt in neckarelz · </span>
+          <span aria-hidden="true">vom spieß · aus dem ofen · direkt in neckarelz · </span>
+        </div>
+      </section>
+
+      <section id="abholung">
+        <div class="inhalt">
+          <div class="abhol-grid">
+            <div>
+              <p class="kicker reveal">ohne wartezeit</p>
+              <h2 class="reveal">vorbestellen &amp; abholen</h2>
+              <p class="section-note reveal">kein warten an der theke — einfach vorbestellen.</p>
+              <ol class="steps">
+                <li class="step reveal">
+                  <div>
+                    <strong>anrufen oder schreiben</strong>
+                    <p>bestellung durchgeben — dauert keine minute.</p>
+                  </div>
+                </li>
+                <li class="step reveal">
+                  <div>
+                    <strong>wir bereiten frisch zu</strong>
+                    <p>alles wird erst auf bestellung gemacht.</p>
+                  </div>
+                </li>
+                <li class="step reveal">
+                  <div>
+                    <strong>abholen &amp; genießen</strong>
+                    <p>fertig zur vereinbarten zeit.</p>
+                  </div>
+                </li>
+              </ol>
+              <div class="hero-cta">
+                <a class="btn btn-primary" href="tel:+4962616744353">06261 6744353</a>
+                <button
+                  class="btn btn-whatsapp"
+                  type="button"
+                  title="Im Entwurf noch ohne Funktion — wird bei Umsetzung mit Ihrer WhatsApp-Nummer verbunden"
+                >
+                  per whatsapp bestellen
+                </button>
+              </div>
+              <p class="demo-hint">
+                der whatsapp-knopf wird bei der umsetzung mit ihrer nummer verbunden.
+                (Beispiel-Entwurf)
+              </p>
+            </div>
+            <figure class="bild-frame reveal">
+              <div class="media-frame wide">
+                <img
+                  class="media-poster"
+                  src="assets/mos-pizza-poster.webp"
+                  alt="Pizza im Holzofen"
+                />
+                <video
+                  class="food-film"
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                  poster="assets/mos-pizza-poster.webp"
+                  aria-label="Pizza bäckt im heißen Holzofen"
+                >
+                  <source src="assets/mos-pizza-loop.mp4" type="video/mp4" />
+                </video>
+                <button
+                  class="video-toggle"
+                  type="button"
+                  data-video-subject="Pizza-Video"
+                  aria-label="Pizza-Video abspielen"
+                >
+                  Film abspielen
+                </button>
+              </div>
+              <figcaption class="bild-caption">
+                echte food-aufnahme — beispielhafte bildwelt für ihren neuen auftritt.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section id="anfahrt" class="hell">
+        <div class="inhalt">
+          <p class="kicker reveal">mitten in neckarelz</p>
+          <h2 class="reveal">öffnungszeiten &amp; anfahrt</h2>
+          <div class="info-grid">
+            <div class="reveal">
+              <ul class="zeiten-liste">
+                <li><span class="tag">montag – freitag</span><span>11:00 – 22:00</span></li>
+                <li><span class="tag">samstag</span><span>11:00 – 23:00</span></li>
+                <li><span class="tag">sonntag</span><span>12:00 – 22:00</span></li>
+              </ul>
+              <p class="section-note" style="margin-top: 1rem">
+                zeiten sind ein Beispiel — werden mit ihnen abgestimmt.
+              </p>
+            </div>
+            <div class="map-card reveal">
+              <svg
+                viewBox="0 0 560 300"
+                role="img"
+                aria-label="Stilisierte Karte: Alte Neckarelzer Straße 3, Mosbach"
+              >
+                <rect width="560" height="300" fill="#101010" />
+                <path
+                  d="M0 205 Q130 175 280 195 T560 172"
+                  stroke="#1f3d4a"
+                  stroke-width="30"
+                  fill="none"
+                />
+                <path
+                  d="M0 158 Q150 136 300 150 T560 134"
+                  stroke="#3a3a3a"
+                  stroke-width="14"
+                  fill="none"
+                />
+                <path d="M218 0 Q234 110 222 300" stroke="#3a3a3a" stroke-width="10" fill="none" />
+                <path
+                  d="M0 82 Q170 72 350 84 T560 76"
+                  stroke="#2b2b2b"
+                  stroke-width="6"
+                  fill="none"
+                />
+                <path d="M420 0 Q410 90 424 190" stroke="#2b2b2b" stroke-width="6" fill="none" />
+                <g fill="#242424">
+                  <rect x="60" y="40" width="44" height="26" rx="2" />
+                  <rect x="130" y="32" width="34" height="22" rx="2" />
+                  <rect x="300" y="38" width="48" height="27" rx="2" />
+                  <rect x="470" y="30" width="40" height="24" rx="2" />
+                  <rect x="70" y="105" width="40" height="24" rx="2" />
+                  <rect x="330" y="100" width="42" height="24" rx="2" />
+                  <rect x="465" y="205" width="46" height="27" rx="2" />
+                  <rect x="55" y="235" width="40" height="24" rx="2" />
+                </g>
+                <text
+                  x="368"
+                  y="222"
+                  fill="#c8a66a"
+                  font-size="15"
+                  font-style="italic"
+                  font-family="Georgia, serif"
+                >
+                  Neckar
+                </text>
+                <circle cx="280" cy="150" r="24" fill="#c8a66a2b" />
+                <circle cx="280" cy="150" r="12" fill="#c8a66a" />
+                <circle cx="280" cy="150" r="4.6" fill="#f4f2ee" />
+              </svg>
+              <p>Alte Neckarelzer Straße 3<br />74821 Mosbach</p>
+              <a
+                class="btn"
+                href="https://maps.apple.com/?address=Alte%20Neckarelzer%20Stra%C3%9Fe%203,%2074821%20Mosbach"
+                >route planen</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div>
+          <p class="footer-brand">MOS KEBAP</p>
+          <p class="footer-claim">Premium beef &amp; more</p>
+          <p>Alte Neckarelzer Straße 3<br />74821 Mosbach</p>
+        </div>
+        <div>
+          <h3>kontakt</h3>
+          <p><a href="tel:+4962616744353">06261 6744353</a><br />täglich geöffnet (Beispiel)</p>
+        </div>
+        <div>
+          <h3>rechtliches</h3>
+          <p>
+            Impressum folgt bei Umsetzung<br /><span class="muted"
+              >Design-Entwurf: TOMORROWWORKS, Mosbach</span
+            >
+          </p>
+        </div>
+      </div>
+      <div class="footer-ornament" aria-hidden="true"></div>
+    </footer>
+
+    <nav class="call-bar" aria-label="Schnellaktionen">
+      <a class="btn btn-primary" href="tel:+4962616744353">anrufen</a>
+      <a class="btn" href="#speisekarte">speisekarte</a>
+    </nav>
+
+    <script>
+      const beobachter = new IntersectionObserver(
+        (eintraege) => {
+          for (const e of eintraege) {
+            if (e.isIntersecting) {
+              e.target.classList.add('sichtbar');
+              beobachter.unobserve(e.target);
+            }
+          }
+        },
+        { threshold: 0.1 },
+      );
+      document.querySelectorAll('.reveal').forEach((el) => beobachter.observe(el));
+
+      const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const videos = [...document.querySelectorAll('.food-film')];
+
+      for (const video of videos) {
+        const frame = video.closest('.media-frame');
+        const button = frame.querySelector('.video-toggle');
+        const subject = button.dataset.videoSubject;
+
+        const updateVideoState = (isPlaying) => {
+          frame.classList.toggle('is-playing', isPlaying);
+          button.textContent = isPlaying ? 'Film pausieren' : 'Film abspielen';
+          button.setAttribute('aria-label', `${subject} ${isPlaying ? 'pausieren' : 'abspielen'}`);
+        };
+
+        const playVideo = () =>
+          video
+            .play()
+            .then(() => updateVideoState(true))
+            .catch(() => updateVideoState(false));
+
+        video.addEventListener('playing', () => updateVideoState(true));
+        video.addEventListener('pause', () => updateVideoState(false));
+        button.addEventListener('click', () => {
+          if (video.paused) playVideo();
+          else video.pause();
+        });
+
+        updateVideoState(false);
+        if (motionQuery.matches) {
+          video.autoplay = false;
+          video.pause();
+        } else {
+          playVideo();
+        }
+      }
+
+      motionQuery.addEventListener('change', ({ matches }) => {
+        if (matches) videos.forEach((video) => video.pause());
+      });
+    </script>
+  </body>
+</html>

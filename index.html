@@ -4,67 +4,365 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex, nofollow" />
-    <title>TOMORROWWORKS — Design-Demos</title>
-    <style>
-      body {
-        margin: 0;
-        background: #f7f1e5;
-        color: #2f261a;
-        font-family: Baskerville, 'Iowan Old Style', Palatino, Georgia, serif;
-        line-height: 1.7;
-        display: grid;
-        min-height: 100svh;
-        place-items: center;
-        text-align: center;
-        padding: 2rem 1.2rem;
-        box-sizing: border-box;
-      }
-      h1 {
-        font-weight: 500;
-        letter-spacing: 0.16em;
-        text-transform: uppercase;
-        font-size: 1.4rem;
-        margin: 0 0 0.4rem;
-      }
-      .hinweis {
-        color: #6f6353;
-        font-size: 0.92rem;
-        max-width: 52ch;
-        margin: 0.8rem auto 2rem;
-      }
-      a.demo {
-        display: inline-block;
-        border: 1px solid #2e4636;
-        color: #2e4636;
-        text-decoration: none;
-        padding: 0.9rem 1.8rem;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        font-size: 0.82rem;
-      }
-      a.demo:hover {
-        background: #2e4636;
-        color: #f7f1e5;
-      }
-    </style>
+    <meta
+      name="description"
+      content="TOMORROWWORKS — Digital-Studio für Betriebe in der Region Mosbach. Websites, Apps & Portale, Onlineshops und KI-Einstieg."
+    />
+    <title>TOMORROWWORKS — Digital-Studio Mosbach</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   </head>
   <body>
-    <main>
-      <h1>Tomorrowworks</h1>
-      <p style="letter-spacing: 0.24em; text-transform: uppercase; font-size: 0.66rem; color: #816018">
-        Design-Demos · Mosbach
-      </p>
-      <p class="hinweis">
-        Unverbindliche Design-Entwürfe für Gespräche mit regionalen Betrieben — keine offiziellen
-        Websites. Preise und Inhalte sind Beispiele.
-      </p>
-      <p style="display: grid; gap: 0.8rem; justify-items: center; margin: 0">
-        <a class="demo" href="goldener-hirsch/">Hotel Goldener Hirsch — Entwurf ansehen</a>
-        <a class="demo" href="clean-cut/">CLEAN CUT Mosbach — Entwurf ansehen</a>
-        <a class="demo" href="glanz-und-gloria/">Goldschmiede Glanz und Gloria — Entwurf ansehen</a>
-        <a class="demo" href="kimberger/">Kimberger Kosmetikinstitut, Sinsheim — Entwurf ansehen</a>
-        <a class="demo" href="am-waldrand/">Pension Am Waldrand, Mosbach-Waldstadt — Entwurf ansehen</a>
-      </p>
+    <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+
+    <header class="site-header">
+      <p class="wortmarke">TOMORROWWORKS</p>
+      <nav class="site-nav" aria-label="Hauptnavigation">
+        <ul id="nav-liste" class="nav-liste">
+          <li><a href="#arbeiten">Arbeiten</a></li>
+          <li><a href="#leistungen">Leistungen</a></li>
+          <li><a href="#ablauf">Ablauf</a></li>
+          <li><a href="#ansprechpartner">Team</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+      </nav>
+      <div class="header-aktionen">
+        <a class="cta-button header-cta" href="tel:+4915227706694">Erstgespräch</a>
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="nav-liste"
+        >
+          Menü
+        </button>
+      </div>
+    </header>
+
+    <main id="inhalt">
+      <section class="hero">
+        <div class="hero-text">
+          <p class="eyebrow">Digital-Studio · Mosbach</p>
+          <h1>Websites, die<br />Kunden bringen.</h1>
+          <p class="hero-subline">
+            TOMORROWWORKS gestaltet und baut digitale Auftritte für Betriebe in Mosbach, im
+            Neckar-Odenwald-Kreis, in Heilbronn und Sinsheim — klar, schnell und ehrlich.
+          </p>
+          <div class="hero-ctas">
+            <a class="cta-button cta-button--gross" href="tel:+4915227706694">Erstgespräch anrufen</a>
+            <a class="cta-sekundaer" href="#arbeiten">Arbeiten ansehen ↓</a>
+          </div>
+        </div>
+        <figure class="hero-team">
+          <img
+            src="assets/team/team-hero.jpg"
+            alt="Das TOMORROWWORKS-Team: Flavio, Christopher, Margita und Marcel"
+            width="1100"
+            height="733"
+          />
+          <figcaption>Flavio · Christopher · Margita · Marcel — Ihr Team, persönlich für Sie da</figcaption>
+        </figure>
+      </section>
+
+      <section id="arbeiten" class="section section--arbeiten">
+        <p class="eyebrow">Arbeiten</p>
+        <h2>Erst sehen, dann entscheiden.</h2>
+        <p class="sektion-intro">
+          Live-Projekte aus echten Betrieben — und Design-Studien, die vor der Beauftragung
+          entstehen: echte Entwürfe für echte Betriebe der Region, als Gesprächsgrundlage.
+        </p>
+        <div class="arbeiten-grid">
+          <figure class="arbeit-karte">
+            <a href="https://tomorrowworks-agentur.de/projekte.html">
+              <img
+                src="assets/projekte/rizzato-kuechen-homepage.jpg"
+                alt="Startseite der Website von Rizzato Küchen"
+                width="900"
+                height="675"
+                loading="lazy"
+              />
+              <figcaption>
+                <span class="arbeit-titel">Rizzato Küchen · Website &amp; Partnerportal</span>
+                <span class="status status--live">Live</span>
+              </figcaption>
+            </a>
+          </figure>
+          <figure class="arbeit-karte">
+            <a href="https://tomorrowworks-agentur.de/projekte.html">
+              <img
+                src="assets/projekte/auto-lackierzentrum-homepage.jpg"
+                alt="Startseite der Website von Gärtner Karosserie und Lack"
+                width="900"
+                height="675"
+                loading="lazy"
+              />
+              <figcaption>
+                <span class="arbeit-titel">Gärtner Karosserie &amp; Lack · Website</span>
+                <span class="status status--live">Live</span>
+              </figcaption>
+            </a>
+          </figure>
+          <figure class="arbeit-karte">
+            <a href="https://tomorrowworks-agentur.de/projekte.html">
+              <img
+                src="assets/projekte/autovermietung-mos-homepage.jpg"
+                alt="Startseite der Website der Autovermietung MOS"
+                width="900"
+                height="675"
+                loading="lazy"
+              />
+              <figcaption>
+                <span class="arbeit-titel">Autovermietung MOS · Mietwagen &amp; Abo</span>
+                <span class="status status--live">Live</span>
+              </figcaption>
+            </a>
+          </figure>
+          <figure class="arbeit-karte">
+            <a href="glanz-und-gloria/">
+              <img
+                src="assets/arbeiten/glanz-und-gloria.jpg"
+                alt="Startseite des Design-Entwurfs für eine Goldschmiede: dunkelgrüne Seite mit Goldschmiedin am Werktisch"
+                width="1280"
+                height="960"
+                loading="lazy"
+              />
+              <figcaption>
+                <span class="arbeit-titel">Goldschmiede · Mosbach</span>
+                <span class="status">Design-Studie</span>
+              </figcaption>
+            </a>
+          </figure>
+          <figure class="arbeit-karte">
+            <a href="clean-cut/">
+              <img
+                src="assets/arbeiten/clean-cut.jpg"
+                alt="Startseite des Design-Entwurfs für einen Friseursalon: heller Auftritt mit Vollbild-Foto eines Haarschnitts"
+                width="1280"
+                height="960"
+                loading="lazy"
+              />
+              <figcaption>
+                <span class="arbeit-titel">Friseursalon · Mosbach</span>
+                <span class="status">Design-Studie</span>
+              </figcaption>
+            </a>
+          </figure>
+          <figure class="arbeit-karte">
+            <a href="goldener-hirsch/">
+              <img
+                src="assets/arbeiten/goldener-hirsch.jpg"
+                alt="Startseite des Design-Entwurfs für ein Fachwerk-Hotel: helles Editorial-Layout mit Serifen-Typografie"
+                width="1280"
+                height="960"
+                loading="lazy"
+              />
+              <figcaption>
+                <span class="arbeit-titel">Hotel &amp; Gasthaus · Mosbach</span>
+                <span class="status">Design-Studie</span>
+              </figcaption>
+            </a>
+          </figure>
+          <figure class="arbeit-karte">
+            <a href="kimberger/">
+              <img
+                src="assets/arbeiten/kimberger.jpg"
+                alt="Startseite des Design-Entwurfs für ein Kosmetikinstitut: helle Seite in Altrosé mit Behandlungsfoto"
+                width="1280"
+                height="960"
+                loading="lazy"
+              />
+              <figcaption>
+                <span class="arbeit-titel">Kosmetikinstitut · Sinsheim</span>
+                <span class="status">Design-Studie</span>
+              </figcaption>
+            </a>
+          </figure>
+          <figure class="arbeit-karte">
+            <a href="am-waldrand/">
+              <img
+                src="assets/arbeiten/am-waldrand.jpg"
+                alt="Startseite des Design-Entwurfs für eine Pension: naturhelles Layout mit großem Waldfoto"
+                width="1280"
+                height="960"
+                loading="lazy"
+              />
+              <figcaption>
+                <span class="arbeit-titel">Pension · Mosbach-Waldstadt</span>
+                <span class="status">Design-Studie</span>
+              </figcaption>
+            </a>
+          </figure>
+          <figure class="arbeit-karte">
+            <a href="mos-kebab/">
+              <img
+                src="assets/arbeiten/mos-kebab.jpg"
+                alt="Startseite des Design-Entwurfs für einen Imbiss: dunkle Seite mit Foto eines Dönerspießes"
+                width="1280"
+                height="960"
+                loading="lazy"
+              />
+              <figcaption>
+                <span class="arbeit-titel">Imbiss · Mosbach-Neckarelz</span>
+                <span class="status">Design-Studie</span>
+              </figcaption>
+            </a>
+          </figure>
+          <figure class="arbeit-karte">
+            <a href="https://marcelgaertner1234.github.io/wohnsignal/">
+              <img
+                src="assets/arbeiten/wohnsignal.jpg"
+                alt="Startseite des Immobilienportals wohnsignal: helle Suche mit Foto eines modernen Wohnhauses"
+                width="1280"
+                height="960"
+                loading="lazy"
+              />
+              <figcaption>
+                <span class="arbeit-titel">Immobilienportal · Baden-Württemberg</span>
+                <span class="status status--produkt">Eigenes Produkt</span>
+              </figcaption>
+            </a>
+          </figure>
+        </div>
+      </section>
+
+      <section id="leistungen" class="section section--leistungen">
+        <p class="eyebrow">Leistungen</p>
+        <h2>Vier Dinge. Richtig gemacht.</h2>
+        <div class="leistungen-grid">
+          <article class="leistung">
+            <img src="assets/leistungen/websites.jpg" alt="Websites-Leistungsseite von TOMORROWWORKS" width="1280" height="960" loading="lazy" />
+            <div class="leistung-text">
+              <h3>Websites</h3>
+              <p>
+                Neue Website oder Neuauflage eines veralteten Auftritts: klares Design,
+                verständliche Inhalte, schnell auf jedem Handy — mit direktem Weg zur
+                Anfrage oder Terminbuchung.
+              </p>
+            </div>
+          </article>
+          <article class="leistung">
+            <img src="assets/leistungen/apps.jpg" alt="Apps-und-Portale-Leistungsseite von TOMORROWWORKS mit Portal-Ansicht" width="1280" height="960" loading="lazy" />
+            <div class="leistung-text">
+              <h3>Apps &amp; Portale</h3>
+              <p>
+                Vorgänge, Termine und Dokumente an einem Ort: Web-Apps und Portale,
+                passend zu Ihrem realen Betrieb — einfach für die Menschen, die täglich
+                damit arbeiten.
+              </p>
+            </div>
+          </article>
+          <article class="leistung">
+            <img src="assets/projekte/fs-form-style-homepage.jpg" alt="E-Commerce-Konzept F/S Form und Style" width="900" height="675" loading="lazy" />
+            <div class="leistung-text">
+              <h3>Onlineshops</h3>
+              <p>
+                Vom ersten Produkt bis zur Kasse: schlanke Shops für Händler und
+                Direktvermarkter aus der Region — ohne Ballast, dafür mit klarem Weg zum Kauf.
+              </p>
+            </div>
+          </article>
+          <article class="leistung">
+            <img src="assets/leistungen/ki.jpg" alt="KI-Einstieg-Leistungsseite von TOMORROWWORKS" width="1280" height="960" loading="lazy" />
+            <div class="leistung-text">
+              <h3>KI-Einstieg &amp; Automatisierung</h3>
+              <p>
+                Erst Zeitfresser sichtbar machen, dann Routine vorbereiten: digitale
+                Unterstützung dort, wo sie verlässlich Zeit spart — fachliche
+                Entscheidungen bleiben beim Menschen.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="band" aria-label="Leitgedanke">
+        <div class="band-inhalt">
+          <p class="band-satz">Der erste Eindruck entsteht heute online.<br />Wir gestalten ihn.</p>
+          <p class="band-hinweis">Beispielfoto aus unserer Goldschmiede-Studie</p>
+        </div>
+      </section>
+
+      <section id="ablauf" class="section section--ablauf">
+        <p class="eyebrow">Ablauf</p>
+        <h2>So arbeiten wir.</h2>
+        <ol class="ablauf-liste">
+          <li class="ablauf-schritt">
+            <span class="schritt-nummer" aria-hidden="true">1</span>
+            <h3>Erstgespräch</h3>
+            <p>Kostenlos und unverbindlich, 20 Minuten: Wir schauen gemeinsam auf Ihren Auftritt — und auf das, was er können muss.</p>
+          </li>
+          <li class="ablauf-schritt ablauf-schritt--usp">
+            <span class="schritt-nummer" aria-hidden="true">2</span>
+            <h3>Ihr Entwurf — vor dem Auftrag</h3>
+            <p class="usp-satz">Sie sehen Ihren fertigen Design-Entwurf, bevor Sie etwas bezahlen.</p>
+            <p>Wir gestalten zuerst. Überzeugt Sie der Entwurf nicht, schulden Sie uns nichts.</p>
+          </li>
+          <li class="ablauf-schritt">
+            <span class="schritt-nummer" aria-hidden="true">3</span>
+            <h3>Umsetzung &amp; Betreuung</h3>
+            <p>Nach Ihrem Go setzen wir um, stellen live und entwickeln schrittweise weiter — ohne Warteschleife.</p>
+          </li>
+        </ol>
+      </section>
+
+      <section id="ansprechpartner" class="section section--team">
+        <p class="eyebrow">Ihre Ansprechpartner</p>
+        <h2>Unternehmerische Praxis.<br />Digitale Umsetzung.</h2>
+        <p class="sektion-intro">
+          TOMORROWWORKS ist das Digital Studio von Christopher Gärtner. Entstanden ist es
+          aus digitalen Lösungen für den eigenen Werkstattbetrieb — heute begleiten wir
+          damit auch andere Unternehmen.
+        </p>
+        <div class="team-grid">
+          <article class="team-karte">
+            <img src="assets/team/christopher-gaertner-portrait.jpg" alt="Porträt von Christopher Gärtner" width="800" height="1000" loading="lazy" />
+            <h3>Christopher Gärtner</h3>
+            <p class="team-rolle">Gründer &amp; Inhaber</p>
+            <p>Verbindet Anforderungen aus dem eigenen Betrieb mit Konzeption, Gestaltung und technischer Umsetzung.</p>
+          </article>
+          <article class="team-karte">
+            <img src="assets/team/flavio-rizzato-portrait.jpg" alt="Porträt von Flavio Rizzato" width="800" height="1422" loading="lazy" />
+            <h3>Flavio Rizzato</h3>
+            <p class="team-rolle">Mitarbeiter &amp; Ansprechpartner</p>
+            <p>Ist im Team einer Ihrer direkten Kontakte für Fragen und die persönliche Abstimmung.</p>
+          </article>
+          <article class="team-karte">
+            <img src="assets/team/marcel-gaertner-portrait.jpg" alt="Porträt von Marcel Gärtner" width="800" height="1000" loading="lazy" />
+            <h3>Marcel Gärtner</h3>
+            <p class="team-rolle">Ansprechpartner im Team</p>
+            <p>Steht Ihnen als direkter Kontakt für Fragen und die persönliche Abstimmung zur Verfügung.</p>
+          </article>
+          <article class="team-karte">
+            <img src="assets/team/margita-hoefer-portrait.jpg" alt="Porträt von Margita Höfer" width="800" height="1251" loading="lazy" />
+            <h3>Margita Höfer</h3>
+            <p class="team-rolle">Mitarbeiterin &amp; Ansprechpartnerin</p>
+            <p>Ist im Team eine Ihrer direkten Ansprechpartnerinnen für Fragen und die persönliche Abstimmung.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="kontakt" class="section section--kontakt">
+        <h2>Sprechen wir über Ihren Auftritt.</h2>
+        <p>
+          Das Erstgespräch ist kostenlos und unverbindlich — persönlich in Mosbach oder
+          online. Danach entscheiden Sie in Ruhe, ob wir für Sie gestalten dürfen.
+        </p>
+        <div class="kontakt-wege">
+          <a class="cta-button cta-button--gross" href="tel:+4915227706694">+49 1522 7706694</a>
+          <a class="cta-sekundaer" href="https://wa.me/4915227706694">WhatsApp schreiben</a>
+          <a class="cta-sekundaer" href="mailto:info@tomorrowworks-agentur.de">info@tomorrowworks-agentur.de</a>
+        </div>
+      </section>
     </main>
+
+    <footer class="site-footer">
+      <p class="wortmarke wortmarke--klein">TOMORROWWORKS</p>
+      <ul class="footer-links">
+        <li><a href="impressum.html">Impressum</a></li>
+        <li><a href="datenschutz.html">Datenschutz</a></li>
+      </ul>
+    </footer>
+
+    <script src="app.js"></script>
   </body>
 </html>
