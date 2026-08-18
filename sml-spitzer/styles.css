@@ -13,6 +13,11 @@
   --stahl-text: #545d66;
   --weiss: #ffffff;
   --sans: "Helvetica Neue", Helvetica, Arial, "Segoe UI", sans-serif;
+  --radius-l: 20px;
+  --radius-m: 14px;
+  --radius-s: 10px;
+  --schatten: 0 1px 2px rgba(34, 38, 43, 0.05), 0 10px 30px -10px rgba(34, 38, 43, 0.16);
+  --schatten-hover: 0 4px 10px rgba(34, 38, 43, 0.08), 0 20px 40px -14px rgba(34, 38, 43, 0.24);
 }
 
 * {
@@ -83,6 +88,10 @@ a {
 .site-header {
   background: var(--papier);
   border-bottom: 1px solid var(--hairline);
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  box-shadow: 0 1px 0 rgba(34, 38, 43, 0.03), 0 12px 24px -18px rgba(34, 38, 43, 0.35);
 }
 
 .site-header-inhalt {
@@ -159,25 +168,29 @@ a {
   font-family: var(--sans);
   font-size: 13px;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   text-decoration: none;
   text-align: center;
-  padding: 14px 26px;
-  border-radius: 3px;
+  padding: 15px 30px;
+  border-radius: 999px;
   border: 1.5px solid var(--rot);
   cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease,
+    transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .btn--voll {
   background: var(--rot);
   color: var(--weiss);
+  box-shadow: 0 1px 2px rgba(122, 31, 24, 0.15), 0 10px 24px -10px rgba(122, 31, 24, 0.55);
 }
 
 .btn--voll:hover {
   background: var(--rot-tief);
   border-color: var(--rot-tief);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(122, 31, 24, 0.18), 0 18px 32px -12px rgba(122, 31, 24, 0.62);
 }
 
 .btn--kontur {
@@ -187,15 +200,18 @@ a {
 
 .btn--kontur:hover {
   background: #f5e7e5;
+  transform: translateY(-2px);
 }
 
 .btn--kontur-hell {
-  border-color: var(--papier);
+  border-color: rgba(247, 245, 242, 0.55);
   color: var(--papier);
 }
 
 .btn--kontur-hell:hover {
   background: rgba(247, 245, 242, 0.14);
+  border-color: var(--papier);
+  transform: translateY(-2px);
 }
 
 /* --- Typografie-Bausteine --- */
@@ -214,10 +230,10 @@ a {
 }
 
 h1 {
-  font-size: clamp(34px, 5.6vw, 56px);
+  font-size: clamp(36px, 6vw, 62px);
   font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -0.005em;
+  line-height: 1.06;
+  letter-spacing: -0.02em;
   color: var(--anthrazit);
 }
 
@@ -228,9 +244,10 @@ h2 em {
 }
 
 h2 {
-  font-size: clamp(26px, 3.6vw, 38px);
+  font-size: clamp(27px, 3.8vw, 42px);
   font-weight: 800;
-  line-height: 1.16;
+  line-height: 1.14;
+  letter-spacing: -0.01em;
   color: var(--anthrazit);
 }
 
@@ -274,13 +291,14 @@ h3 {
 
 .foto-tag {
   position: absolute;
-  left: 10px;
-  bottom: 10px;
+  left: 14px;
+  bottom: 14px;
   font-size: 11px;
   letter-spacing: 0.08em;
   color: var(--papier);
   background: rgba(34, 38, 43, 0.68);
-  padding: 4px 10px;
+  padding: 5px 12px;
+  border-radius: 999px;
   z-index: 2;
 }
 
@@ -333,6 +351,20 @@ h3 {
   color: var(--papier);
 }
 
+.hero-badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--papier);
+  background: rgba(247, 245, 242, 0.12);
+  border: 1px solid rgba(247, 245, 242, 0.35);
+  border-radius: 999px;
+  padding: 7px 16px;
+  margin-bottom: 20px;
+  backdrop-filter: blur(6px);
+}
+
 .hero-sub {
   margin-top: 18px;
   max-width: 50ch;
@@ -356,10 +388,35 @@ h3 {
 
 .leistungs-kachel {
   display: block;
+  position: relative;
   background: var(--weiss);
   border: 1px solid var(--hairline);
-  padding: 22px 22px 24px;
+  border-radius: var(--radius-m);
+  padding: 26px 24px 24px;
   text-decoration: none;
+  box-shadow: var(--schatten);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  counter-increment: leistung;
+}
+
+.leistungs-grid {
+  counter-reset: leistung;
+}
+
+.leistungs-kachel::before {
+  content: counter(leistung, decimal-leading-zero);
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--rot);
+  margin-bottom: 10px;
+}
+
+a.leistungs-kachel:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--schatten-hover);
+  border-color: transparent;
 }
 
 .leistungs-kachel h3 {
@@ -376,12 +433,17 @@ h3 {
   grid-column: span 2;
   background: var(--anthrazit);
   border-color: var(--anthrazit);
-  transition: background-color 0.2s ease;
+  box-shadow: 0 1px 2px rgba(34, 38, 43, 0.2), 0 20px 40px -14px rgba(34, 38, 43, 0.5);
+}
+
+.leistungs-kachel--gross::before {
+  color: #e8b6ae;
+  opacity: 0.85;
 }
 
 .leistungs-kachel--gross h3 {
   color: var(--weiss);
-  font-size: 20px;
+  font-size: 22px;
 }
 
 .leistungs-kachel--gross p {
@@ -401,6 +463,11 @@ h3 {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--weiss);
+  transition: transform 0.2s ease;
+}
+
+.leistungs-kachel--gross:hover .leistungs-cta {
+  transform: translateX(4px);
 }
 
 @media (max-width: 640px) {
@@ -412,7 +479,7 @@ h3 {
 /* --- Statement-Band --- */
 .statement-band {
   position: relative;
-  min-height: 300px;
+  min-height: 420px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -445,17 +512,28 @@ h3 {
 .statement-band-inhalt {
   position: relative;
   z-index: 2;
-  padding: 44px 20px;
+  padding: 64px 20px;
+}
+
+.statement-seit {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: #e8b6ae;
+  margin-bottom: 4px;
 }
 
 .statement-zahl {
-  font-size: clamp(38px, 6vw, 58px);
+  font-size: clamp(64px, 13vw, 148px);
   font-weight: 800;
-  letter-spacing: 0.02em;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
 }
 
 .statement-text {
-  margin-top: 10px;
+  margin-top: 14px;
   max-width: 46ch;
   margin-left: auto;
   margin-right: auto;
@@ -485,6 +563,7 @@ h3 {
   width: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
+  border-radius: var(--radius-l);
 }
 
 .ablauf-liste {
@@ -529,7 +608,9 @@ h3 {
   align-items: center;
   background: var(--weiss);
   border: 1px solid var(--hairline);
+  border-radius: var(--radius-l);
   padding: 28px;
+  box-shadow: var(--schatten);
 }
 
 .zusatzleistungen-bild {
@@ -540,6 +621,7 @@ h3 {
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
+  border-radius: var(--radius-m);
 }
 
 .zusatzleistungen-liste {
@@ -587,6 +669,7 @@ h3 {
   width: 100%;
   aspect-ratio: 3 / 2;
   object-fit: cover;
+  border-radius: var(--radius-l);
 }
 
 .section--unternehmen h2 {
@@ -631,7 +714,15 @@ h3 {
 .ablauf-schritt {
   background: var(--weiss);
   border: 1px solid var(--hairline);
-  padding: 26px 24px;
+  border-radius: var(--radius-m);
+  padding: 28px 26px;
+  box-shadow: var(--schatten);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.ablauf-schritt:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--schatten-hover);
 }
 
 .ablauf-nummer {
@@ -753,9 +844,11 @@ h3 {
 
 fieldset {
   border: 1px solid var(--hairline);
+  border-radius: var(--radius-m);
   background: var(--weiss);
   padding: 24px 22px 26px;
   margin-bottom: 22px;
+  box-shadow: var(--schatten);
 }
 
 legend {
@@ -779,10 +872,16 @@ legend {
 .checkbox-karte {
   display: block;
   border: 1.5px solid var(--hairline);
+  border-radius: var(--radius-s);
   padding: 14px 16px;
   cursor: pointer;
   background: var(--papier);
-  transition: border-color 0.2s ease, background-color 0.2s ease;
+  transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+}
+
+.radio-karte:hover,
+.checkbox-karte:hover {
+  transform: translateY(-2px);
 }
 
 .radio-karte strong,
@@ -832,7 +931,7 @@ legend {
   color: var(--tinte);
   background: var(--papier);
   border: 1.5px solid var(--hairline);
-  border-radius: 4px;
+  border-radius: var(--radius-s);
   padding: 11px 14px;
 }
 
@@ -861,6 +960,7 @@ legend {
 
 .dropzone {
   border: 1.5px dashed var(--rot);
+  border-radius: var(--radius-s);
   background: #f5e7e5;
   padding: 18px 16px;
   position: relative;
@@ -890,6 +990,7 @@ legend {
 .fehler {
   background: #f5e0dd;
   border: 1.5px solid var(--rot);
+  border-radius: var(--radius-s);
   color: var(--rot-tief);
   padding: 14px 18px;
   margin-bottom: 18px;
@@ -905,8 +1006,10 @@ legend {
 
 .bestaetigung {
   border: 1.5px solid var(--rot);
+  border-radius: var(--radius-m);
   background: var(--weiss);
   padding: 30px 26px;
+  box-shadow: var(--schatten);
 }
 
 .bestaetigung h2 {
@@ -921,6 +1024,7 @@ legend {
 .zusammenfassung {
   background: var(--flaeche);
   border: 1px solid var(--hairline);
+  border-radius: var(--radius-s);
   padding: 14px 16px;
   color: var(--anthrazit) !important;
   font-size: 15px;
