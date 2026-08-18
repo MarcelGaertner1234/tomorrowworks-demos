@@ -10,6 +10,7 @@ entsprechenden Hinweis-Banner und ist auf `noindex` gestellt).
 
 ## Design-Studien in diesem Repo
 
+- `gassert/` — Autohaus (Renault & Dacia, Werkstatt, Pannenhilfe 24/7), Fahrenbach-Trienz
 - `jost-maler/` — Maler-, Tapezier- & Gipserbetrieb, Mosbach
 - `glanz-und-gloria/` — Goldschmiede, Mosbach
 - `clean-cut/` — Friseursalon, Mosbach

@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Design-Entwurf von TOMORROWWORKS: Terminwunsch-Demo des Autohauses Gassert in Fahrenbach-Trienz — Anliegen wählen, Wunschzeit senden.">
+  <title>Terminwunsch · Autohaus Gassert — Design-Entwurf</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#hauptinhalt">Zum Inhalt springen</a>
+
+  <aside class="draft-banner" aria-label="Hinweis zum Entwurfsstatus">
+    <strong>Design-Entwurf von TOMORROWWORKS</strong> — nicht die offizielle Website des Autohauses Gassert ·
+    Persönliche Konzeptvorschau · Terminwunsch ist eine Demo · Angaben werden bestätigt
+  </aside>
+
+  <header class="site-header site-header--schmal">
+    <a class="wordmark" href="index.html" aria-label="Zurück zur Startseite">
+      <strong>Autohaus Gassert</strong>
+      <span>Renault &amp; Dacia · Werkstatt · Fahrenbach-Trienz</span>
+    </a>
+    <nav class="site-nav" aria-label="Hauptnavigation">
+      <a href="index.html">← Zur Homepage</a>
+      <a href="index.html#leistungen">Leistungen</a>
+      <a class="btn btn--primary nav-cta" href="termin.html" aria-current="page">Termin anfragen</a>
+    </nav>
+  </header>
+
+  <main id="hauptinhalt">
+    <section class="section" id="planer">
+      <div class="wrap wrap--planer">
+        <p class="eyebrow">Terminwunsch · Demo</p>
+        <h1>Ihr Terminwunsch</h1>
+        <p class="lede">Wählen Sie Anliegen und Wunschzeit — in dieser Konzeptvorschau wird nichts gesendet oder gespeichert.</p>
+        <p class="demo-chip">DEMO · KEINE SPEICHERUNG</p>
+
+        <form id="termin-form" novalidate>
+          <fieldset class="planer-schritt">
+            <legend><span class="schritt-nr">01</span> Anliegen wählen</legend>
+            <div class="anliegen-wahl">
+              <label class="wahl-card">
+                <input type="radio" name="anliegen" value="service" checked>
+                <span class="wahl-titel">Service / Inspektion</span>
+                <span class="wahl-text">Anfrage für den regelmäßigen Service Ihres Wagens.</span>
+                <span class="wahl-meta">Umfang und Zeit werden bestätigt</span>
+              </label>
+              <label class="wahl-card">
+                <input type="radio" name="anliegen" value="reparatur">
+                <span class="wahl-titel">Reparatur</span>
+                <span class="wahl-text">Etwas klappert, leuchtet oder zieht? Kurz schildern, wir schauen drauf.</span>
+                <span class="wahl-meta">Umfang und Zeit werden bestätigt</span>
+              </label>
+              <label class="wahl-card">
+                <input type="radio" name="anliegen" value="gebrauchtwagen">
+                <span class="wahl-titel">Gebrauchtwagen-Besichtigung</span>
+                <span class="wahl-text">Einen Wagen aus dem Bestand ansehen und Probe sitzen.</span>
+                <span class="wahl-meta">Fahrzeug und Zeit werden bestätigt</span>
+              </label>
+              <label class="wahl-card">
+                <input type="radio" name="anliegen" value="neuwagen">
+                <span class="wahl-titel">Neuwagen-Beratung</span>
+                <span class="wahl-text">Beratung zu Renault, Dacia — oder auf Wunsch anderen Marken.</span>
+                <span class="wahl-meta">Termin wird bestätigt</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset class="planer-schritt">
+            <legend><span class="schritt-nr">02</span> Wunschzeit wählen</legend>
+            <p class="small">Bisherige Zeiten — werden bestätigt: Mo–Fr 8:00–18:00 · Sa 9:00–12:00 · Pannenhilfe rund um die Uhr. Alle Zeiten sind illustrative Platzhalter und keine echte Verfügbarkeit.</p>
+            <div class="zeiten-grid" role="group" aria-label="Beispielhafte Wunschzeiten">
+              <div class="zeiten-tag">
+                <p class="zeiten-titel">Beispieltag Montag</p>
+                <div class="slot-reihe">
+                  <button type="button" class="slot" data-slot="Montag, Vormittag">Vormittag</button>
+                  <button type="button" class="slot" data-slot="Montag, Nachmittag">Nachmittag</button>
+                </div>
+              </div>
+              <div class="zeiten-tag">
+                <p class="zeiten-titel">Beispieltag Freitag</p>
+                <div class="slot-reihe">
+                  <button type="button" class="slot" data-slot="Freitag, Vormittag">Vormittag</button>
+                  <button type="button" class="slot" data-slot="Freitag, Nachmittag">Nachmittag</button>
+                </div>
+              </div>
+              <div class="zeiten-tag">
+                <p class="zeiten-titel">Beispieltag Samstag</p>
+                <div class="slot-reihe">
+                  <button type="button" class="slot" data-slot="Samstag, früher Vormittag">Früher Vormittag</button>
+                  <button type="button" class="slot" data-slot="Samstag, später Vormittag">Später Vormittag</button>
+                </div>
+              </div>
+            </div>
+            <p class="small slot-auswahl" data-slot-anzeige hidden>Gewählte Wunschzeit: <strong data-slot-wert></strong></p>
+          </fieldset>
+
+          <fieldset class="planer-schritt">
+            <legend><span class="schritt-nr">03</span> Ihre Angaben</legend>
+            <div class="feld-grid">
+              <div class="feld">
+                <label for="vorname">Vorname</label>
+                <input id="vorname" name="vorname" type="text" autocomplete="given-name" required>
+              </div>
+              <div class="feld">
+                <label for="nachname">Nachname</label>
+                <input id="nachname" name="nachname" type="text" autocomplete="family-name" required>
+              </div>
+              <div class="feld feld--breit">
+                <label for="handy">Handynummer für die Rückmeldung</label>
+                <input id="handy" name="handy" type="tel" inputmode="tel" autocomplete="tel" required>
+                <p class="small">Mindestens 7 Ziffern · wird in dieser Demo nicht gespeichert.</p>
+              </div>
+              <div class="feld feld--breit">
+                <label for="fahrzeug">Fahrzeug / Kennzeichen</label>
+                <input id="fahrzeug" name="fahrzeug" type="text">
+                <p class="small">Optional · wird in dieser Demo nicht gespeichert — hilft der Werkstatt bei der Vorbereitung.</p>
+              </div>
+              <div class="feld feld--breit">
+                <label for="nachricht">Nachricht (optional)</label>
+                <textarea id="nachricht" name="nachricht" rows="3"></textarea>
+              </div>
+            </div>
+            <p class="fehler" data-fehler hidden></p>
+            <button type="submit" class="btn btn--primary">Terminwunsch senden (Demo) <span class="arrow" aria-hidden="true">→</span></button>
+          </fieldset>
+        </form>
+
+        <div class="bestaetigung" data-bestaetigung hidden>
+          <h2>Danke — Ihr Terminwunsch ist angekommen. <em>Fast.</em></h2>
+          <p>Das ist eine Konzeptvorschau: <strong>es wurden keine Daten gespeichert oder versendet</strong>. Auf der echten Website würde das Autohaus Ihren Wunsch jetzt erhalten und sich zur Bestätigung zurückmelden.</p>
+          <p class="small" data-zusammenfassung></p>
+          <button type="button" class="btn btn--ghost" data-neustart>Demo neu starten</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p><strong>Design-Entwurf von TOMORROWWORKS</strong> — nicht die offizielle Website des Autohauses Gassert.</p>
+      <p class="small">Konzeptvorschau · keine echte Verfügbarkeit · keine Buchung · keine Datenübertragung</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

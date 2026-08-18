@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Stilisierte Straße auf Stahlblau">
+  <rect width="64" height="64" rx="12" fill="#24557e"/>
+  <path d="M32 10 L44 54 L20 54 Z" fill="#ffffff" opacity="0.94"/>
+  <g fill="#24557e">
+    <rect x="30.6" y="16" width="2.8" height="7" rx="1.2"/>
+    <rect x="30.4" y="27" width="3.2" height="8" rx="1.4"/>
+    <rect x="30.2" y="39" width="3.6" height="9" rx="1.6"/>
+  </g>
+</svg>

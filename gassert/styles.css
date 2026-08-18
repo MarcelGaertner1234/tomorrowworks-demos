@@ -1,0 +1,592 @@
+/* Autohaus Gassert — Design „Klare Kante" (Tesla-DNA hell übersetzt).
+   Fundament Weiß/helles Grau, EIN Stahlblau-Akzent, geometrische Sans,
+   kleine Radien, viel Weißraum. Palette per Kontaktbogen — Tokens unten. */
+
+:root {
+  --grund: #ffffff;
+  --flaeche: #f2f4f6;
+  --linie: #dde3e8;
+  --text: #171c21;
+  --text-soft: #4c5a66;
+  --akzent: #24557e;        /* Kontaktbogen-Variante A „Stahlblau" (Platzhalter) */
+  --akzent-tief: #1b4062;
+  --akzent-hell: #e8eff5;
+  --band-text-soft: #dce8f2;
+  --fehler: #9f1f1b;
+  --radius: 4px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Avenir Next", Avenir, "Helvetica Neue", Helvetica, "Segoe UI", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--text);
+  background: var(--grund);
+  -webkit-font-smoothing: antialiased;
+}
+
+img { display: block; max-width: 100%; height: auto; }
+
+a { color: var(--akzent); text-decoration: none; }
+a:hover { color: var(--akzent-tief); }
+
+:focus-visible { outline: 3px solid var(--akzent); outline-offset: 2px; }
+.band :focus-visible { outline-color: #ffffff; }
+
+h1, h2, h3 { font-weight: 600; line-height: 1.12; letter-spacing: -0.015em; }
+h1 { font-size: clamp(2.1rem, 6vw, 3.4rem); letter-spacing: -0.022em; }
+h2 { font-size: clamp(1.55rem, 4vw, 2.3rem); }
+h3 { font-size: 1.12rem; }
+
+.small { font-size: 0.82rem; color: var(--text-soft); }
+
+.lede { font-size: 1.08rem; color: var(--text-soft); max-width: 56ch; }
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--akzent);
+  margin-bottom: 0.7rem;
+}
+.eyebrow--hell { color: var(--band-text-soft); }
+
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2rem); }
+.wrap--narrow { max-width: 760px; }
+.wrap--planer { max-width: 780px; }
+
+/* ---------- Skip-Link & Entwurfs-Banner ---------- */
+
+.skip-link {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 60;
+  background: var(--akzent);
+  color: #fff;
+  padding: 0.7rem 1rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  transform: translateY(-300%);
+}
+.skip-link:focus-visible { transform: none; color: #fff; }
+
+.draft-banner {
+  background: var(--akzent-hell);
+  color: var(--text);
+  border-bottom: 1px solid var(--linie);
+  font-size: 0.8rem;
+  text-align: center;
+  padding: 0.55rem clamp(1rem, 4vw, 2rem);
+}
+.draft-banner strong { color: var(--akzent-tief); }
+
+/* ---------- Header ---------- */
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 1.5rem;
+  flex-wrap: wrap;
+  padding: 0.9rem clamp(1rem, 4vw, 2rem);
+  border-bottom: 1px solid var(--linie);
+  background: var(--grund);
+}
+
+.wordmark { display: block; color: var(--text); }
+.wordmark strong {
+  display: block;
+  font-size: 1.02rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+.wordmark span {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: var(--text-soft);
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.2rem 0.4rem;
+}
+.site-nav > a:not(.btn) {
+  color: var(--text);
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.55rem 0.6rem;
+  border-radius: var(--radius);
+}
+.site-nav > a:not(.btn):hover { background: var(--flaeche); }
+.nav-cta { margin-left: 0.4rem; }
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 46px;
+  padding: 0.7rem 1.5rem;
+  border: 0;
+  border-radius: var(--radius);
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+}
+.btn--primary { background: var(--akzent); color: #fff; }
+.btn--primary:hover { background: var(--akzent-tief); color: #fff; }
+.btn--ghost { background: #e7ebef; color: var(--text); }
+.btn--ghost:hover { background: var(--linie); color: var(--text); }
+.arrow { font-weight: 400; }
+
+/* ---------- Hero ---------- */
+
+.hero {
+  position: relative;
+  min-height: clamp(560px, 92vh, 900px);
+  display: grid;
+  place-items: center;
+}
+
+.hero-figure { position: absolute; inset: 0; overflow: hidden; }
+.hero-figure img { width: 100%; height: 100%; object-fit: cover; }
+
+.hero-caption {
+  position: absolute;
+  left: 0.9rem;
+  bottom: 0.9rem;
+  max-width: calc(100% - 1.8rem);
+  background: rgba(255, 255, 255, 0.92);
+  padding: 0.3rem 0.6rem;
+  border-radius: 3px;
+}
+
+.hero-claim {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+  margin: clamp(4rem, 10vh, 7rem) 1rem 5rem;
+  padding: clamp(1.6rem, 4.5vw, 3rem);
+  background: rgba(255, 255, 255, 0.94);
+  border-radius: 6px;
+  text-align: center;
+}
+.hero-claim .lede { margin: 1rem auto 0; }
+
+.hero-ctas {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1.6rem;
+}
+.hero-ctas .btn { flex: 0 1 auto; min-width: min(230px, 100%); }
+
+/* ---------- Sektionen ---------- */
+
+.section { padding: clamp(3.5rem, 8vw, 6rem) 0; }
+.section--flaeche { background: var(--flaeche); }
+
+.section-kopf {
+  max-width: 640px;
+  margin: 0 auto 2.6rem;
+  text-align: center;
+}
+.section-kopf .lede { margin: 0.8rem auto 0; }
+
+/* ---------- Leistungs-Karten ---------- */
+
+.leistung-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.2rem;
+}
+
+.leistung-card {
+  background: var(--grund);
+  border: 1px solid var(--linie);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.leistung-card figure,
+.fahrzeug-karte figure {
+  position: relative;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+}
+.leistung-card figure img,
+.fahrzeug-karte figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.leistung-card figcaption,
+.fahrzeug-karte figcaption {
+  position: absolute;
+  left: 0.6rem;
+  bottom: 0.6rem;
+  background: rgba(255, 255, 255, 0.92);
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.72rem;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding: 1.3rem 1.4rem 1.4rem;
+  flex: 1;
+}
+.card-body p { color: var(--text-soft); font-size: 0.95rem; flex: 1; }
+
+.card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 44px;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* ---------- Statement-Band 24/7 ---------- */
+
+.band {
+  background: var(--akzent);
+  color: #fff;
+  text-align: center;
+}
+.band-inhalt { padding-top: clamp(4rem, 9vw, 6.5rem); padding-bottom: clamp(4rem, 9vw, 6.5rem); }
+.band h2 { color: #fff; }
+.band p { max-width: 58ch; margin-left: auto; margin-right: auto; }
+.band strong { color: #fff; }
+
+.statement {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1.8rem 0;
+}
+.statement-zahl {
+  font-size: clamp(4.5rem, 15vw, 8.5rem);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+}
+.statement-nach {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--band-text-soft);
+}
+
+.band-hinweis {
+  display: inline-block;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: var(--radius);
+  padding: 0.7rem 1.1rem;
+  font-size: 0.86rem;
+  margin-top: 1.6rem;
+}
+
+/* ---------- Fahrzeug-Karten ---------- */
+
+.fahrzeug-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.2rem;
+}
+
+.fahrzeug-karte {
+  background: var(--grund);
+  border: 1px solid var(--linie);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.chip {
+  align-self: flex-start;
+  display: inline-block;
+  background: var(--akzent-hell);
+  color: var(--akzent-tief);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 0.25rem 0.55rem;
+  border-radius: 3px;
+}
+
+.fahrzeug-hinweis { text-align: center; margin-top: 2.2rem; }
+
+/* ---------- Region / Über uns ---------- */
+
+.region-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: clamp(1.6rem, 4vw, 3.5rem);
+  align-items: center;
+}
+
+.region-figure img { border-radius: var(--radius); }
+.region-figure figcaption { margin-top: 0.5rem; }
+
+.region-copy h2 { margin-bottom: 1rem; }
+.region-copy p { margin-bottom: 0.9rem; color: var(--text-soft); }
+.region-copy address {
+  font-style: normal;
+  font-weight: 600;
+  color: var(--text);
+  border-left: 3px solid var(--akzent);
+  padding-left: 0.9rem;
+  margin-top: 1.2rem;
+}
+
+/* ---------- Termin-Teaser + Zeiten ---------- */
+
+.termin-teaser { text-align: center; }
+.termin-teaser .lede { margin: 0.8rem auto 1.6rem; }
+
+.termin-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.6rem;
+  margin: 2.6rem 0 1.4rem;
+  text-align: left;
+}
+.termin-info h3 {
+  font-size: 0.88rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-top: 2px solid var(--akzent);
+  padding-top: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.zeiten-liste { list-style: none; }
+.zeiten-liste li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid var(--linie);
+  font-size: 0.92rem;
+}
+.zeiten-liste li span:last-child { font-weight: 600; white-space: nowrap; }
+
+/* ---------- FAQ ---------- */
+
+#faq h2 { margin-bottom: 1.2rem; }
+#faq details { border-bottom: 1px solid var(--linie); }
+#faq summary {
+  padding: 1.05rem 0;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+  position: relative;
+  padding-right: 2rem;
+}
+#faq summary::-webkit-details-marker { display: none; }
+#faq summary::after {
+  content: "+";
+  position: absolute;
+  right: 0.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--akzent);
+}
+#faq details[open] summary::after { content: "–"; }
+#faq details p { padding: 0 0 1.1rem; color: var(--text-soft); max-width: 62ch; }
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  border-top: 1px solid var(--linie);
+  padding: 2.4rem 0 2.8rem;
+  text-align: center;
+}
+.site-footer p { margin-bottom: 0.4rem; }
+.site-footer .small a { font-weight: 600; }
+
+/* ---------- Terminwunsch-Planer ---------- */
+
+#planer h1 { margin-bottom: 0.4rem; }
+
+.demo-chip {
+  display: inline-block;
+  border: 1.5px solid var(--akzent);
+  color: var(--akzent-tief);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  padding: 0.45rem 0.8rem;
+  border-radius: 3px;
+  margin: 1rem 0 1.8rem;
+}
+
+.planer-schritt {
+  border: 0;
+  margin-bottom: 2.6rem;
+}
+.planer-schritt legend {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.schritt-nr {
+  color: var(--akzent);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin-right: 0.4rem;
+}
+
+.anliegen-wahl {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0.9rem;
+}
+
+.wahl-card {
+  position: relative;
+  display: block;
+  border: 1px solid var(--linie);
+  border-radius: var(--radius);
+  background: var(--grund);
+  padding: 1rem 1.1rem;
+  cursor: pointer;
+}
+.wahl-card input {
+  position: absolute;
+  top: 1.05rem;
+  right: 1rem;
+  width: 1.15rem;
+  height: 1.15rem;
+  accent-color: var(--akzent);
+}
+.wahl-card:has(input:checked) {
+  border-color: var(--akzent);
+  box-shadow: inset 0 0 0 1px var(--akzent);
+  background: var(--akzent-hell);
+}
+.wahl-titel { display: block; font-weight: 600; padding-right: 1.8rem; }
+.wahl-text { display: block; font-size: 0.85rem; color: var(--text-soft); margin: 0.3rem 0 0.5rem; }
+.wahl-meta {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--akzent-tief);
+}
+
+.zeiten-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.zeiten-titel { font-weight: 600; font-size: 0.9rem; margin-bottom: 0.5rem; }
+.slot-reihe { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+.slot {
+  min-height: 46px;
+  min-width: 44px;
+  padding: 0.65rem 1rem;
+  border: 1px solid var(--linie);
+  border-radius: var(--radius);
+  background: var(--grund);
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text);
+  cursor: pointer;
+}
+.slot:hover { border-color: var(--akzent); }
+.slot.is-active {
+  background: var(--akzent);
+  border-color: var(--akzent);
+  color: #fff;
+  font-weight: 600;
+}
+
+.slot-auswahl { margin-top: 0.9rem; }
+.slot-auswahl strong { color: var(--akzent-tief); }
+
+.feld-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.1rem;
+}
+.feld--breit { grid-column: 1 / -1; }
+.feld label { display: block; font-weight: 600; font-size: 0.92rem; margin-bottom: 0.35rem; }
+.feld input,
+.feld textarea {
+  width: 100%;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid var(--linie);
+  border-radius: var(--radius);
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--text);
+  background: var(--grund);
+}
+.feld input:focus,
+.feld textarea:focus { border-color: var(--akzent); }
+.feld .small { margin-top: 0.3rem; }
+
+.fehler {
+  color: var(--fehler);
+  font-weight: 600;
+  margin: 1rem 0;
+}
+
+#termin-form button[type="submit"] { margin-top: 0.6rem; }
+
+.bestaetigung {
+  border: 1px solid var(--linie);
+  border-left: 4px solid var(--akzent);
+  border-radius: var(--radius);
+  padding: clamp(1.4rem, 4vw, 2.2rem);
+  margin-top: 1rem;
+}
+.bestaetigung h2 { margin-bottom: 0.8rem; }
+.bestaetigung p { margin-bottom: 0.9rem; }
+.bestaetigung em { color: var(--akzent-tief); font-style: normal; }
+
+/* ---------- Responsiv ---------- */
+
+@media (max-width: 720px) {
+  .site-header { justify-content: center; text-align: center; }
+  .site-nav { justify-content: center; }
+  .region-grid { grid-template-columns: 1fr; }
+  .feld-grid { grid-template-columns: 1fr; }
+  .hero-claim { margin-left: 0.8rem; margin-right: 0.8rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
