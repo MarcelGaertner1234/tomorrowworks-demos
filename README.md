@@ -10,6 +10,7 @@ entsprechenden Hinweis-Banner und ist auf `noindex` gestellt).
 
 ## Design-Studien in diesem Repo
 
+- `jost-maler/` — Maler-, Tapezier- & Gipserbetrieb, Mosbach
 - `glanz-und-gloria/` — Goldschmiede, Mosbach
 - `clean-cut/` — Friseursalon, Mosbach
 - `goldener-hirsch/` — Hotel & Gasthaus, Mosbach

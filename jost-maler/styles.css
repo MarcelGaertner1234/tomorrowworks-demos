@@ -1,0 +1,1108 @@
+/* Jost Maler — Demo „Meisterstück"
+   Kalkweiße Bühne mit feiner Putz-Textur, EIN Arbeitsblau-Akzent.
+   Referenz-DNA (dieselpainting.com, Spec §3b): riesige dünne Versalien,
+   zentrierte schmale Textspalten, Outline-Pills als einzige runde Form,
+   eckige Fotos, heller Hairline-Footer. */
+
+:root {
+  --kalk: #f6f5f1;
+  --kalk-tief: #edebe3;
+  --putz: #ddd9cf;
+  --blau: #1c4e80;
+  --blau-tief: #143a61;
+  --tinte: #28261f;
+  --grau: #5f5c55;
+  --font:
+    'Avenir Next', 'Avenir', Futura, 'Century Gothic', 'Segoe UI', Arial,
+    sans-serif;
+  --breite: 1160px;
+  --spalte: 46rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  color: var(--tinte);
+  font-family: var(--font);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  background-color: var(--kalk);
+  /* Feine Putz-Textur: SVG-Grain als data-URI (kein Foto-Ersatz, keine externe Ressource) */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.16 0 0 0 0 0.15 0 0 0 0 0.12 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--blau);
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 500;
+  line-height: 1.15;
+  margin: 0 0 1rem;
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+:focus-visible {
+  outline: 3px solid var(--blau);
+  outline-offset: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--blau);
+  color: #fff;
+  padding: 0.8rem 1.2rem;
+  z-index: 60;
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
+/* ---------- Pflicht-Banner ---------- */
+
+.banner {
+  background: var(--tinte);
+  color: #f4f2ec;
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  text-align: center;
+  padding: 0.55rem 1rem;
+}
+
+.banner strong {
+  color: #fff;
+}
+
+/* ---------- Header ---------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: var(--kalk);
+  border-bottom: 1px solid var(--putz);
+}
+
+.site-header-inhalt {
+  max-width: var(--breite);
+  margin: 0 auto;
+  padding: 0.7rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.wortmarke {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  text-decoration: none;
+  color: var(--tinte);
+  min-height: 44px;
+}
+
+.swatch {
+  width: 18px;
+  height: 18px;
+  background: var(--blau);
+  flex: none;
+}
+
+.wortmarke-text strong {
+  display: block;
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  line-height: 1.1;
+}
+
+.wortmarke-text span {
+  display: block;
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--grau);
+}
+
+.site-nav {
+  display: flex;
+  gap: 0.4rem;
+  margin-left: auto;
+  flex-wrap: wrap;
+}
+
+.site-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 0.75rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--tinte);
+}
+
+.site-nav a:hover {
+  color: var(--blau);
+}
+
+/* ---------- Pills (einzige runde Form der Seite) ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 46px;
+  padding: 0.65rem 1.7rem;
+  border-radius: 999px;
+  font-family: var(--font);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn--voll {
+  background: var(--blau);
+  border: 1.5px solid var(--blau);
+  color: #fff;
+}
+
+.btn--voll:hover {
+  background: var(--blau-tief);
+  border-color: var(--blau-tief);
+}
+
+.btn--kontur {
+  background: transparent;
+  border: 1.5px solid var(--tinte);
+  color: var(--tinte);
+}
+
+.btn--kontur:hover {
+  border-color: var(--blau);
+  color: var(--blau);
+}
+
+.btn--hell {
+  background: transparent;
+  border: 1.5px solid #fff;
+  color: #fff;
+}
+
+.btn--hell:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  position: relative;
+  min-height: min(88vh, 780px);
+  display: grid;
+  overflow: hidden;
+}
+
+.hero img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(18, 22, 27, 0.42),
+    rgba(18, 22, 27, 0.28) 45%,
+    rgba(18, 22, 27, 0.55)
+  );
+}
+
+.hero-inhalt {
+  position: relative;
+  z-index: 1;
+  align-self: center;
+  justify-self: center;
+  text-align: center;
+  padding: 5rem 1.25rem;
+  max-width: 60rem;
+}
+
+.hero-titel {
+  color: #fff;
+  font-size: clamp(1.9rem, 7.5vw, 5.2rem);
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 1.4rem;
+}
+
+.hero-sub {
+  color: #f0eee8;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  max-width: 38rem;
+  margin: 0 auto 2.2rem;
+}
+
+.hero-aktionen {
+  display: flex;
+  gap: 0.9rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.hero-credit {
+  position: absolute;
+  right: 0.8rem;
+  bottom: 0.6rem;
+  z-index: 1;
+  color: #d8d5cd;
+  font-size: 0.66rem;
+  letter-spacing: 0.04em;
+}
+
+/* ---------- Sektionen ---------- */
+
+.section {
+  padding: clamp(3.5rem, 8vw, 6.5rem) 1.25rem;
+}
+
+.section-inhalt {
+  max-width: var(--breite);
+  margin: 0 auto;
+}
+
+.section-kopf {
+  text-align: center;
+  max-width: var(--spalte);
+  margin: 0 auto clamp(2rem, 5vw, 3.5rem);
+}
+
+.eyebrow {
+  display: block;
+  color: var(--blau);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.section h2 {
+  font-size: clamp(1.6rem, 4.4vw, 2.9rem);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  hyphens: manual;
+}
+
+.section-kopf p {
+  color: var(--grau);
+  font-size: 1.05rem;
+}
+
+/* Intro: zentrierte schmale Textspalte (Referenz-Dramaturgie) */
+
+.intro {
+  text-align: center;
+}
+
+.intro-statement {
+  font-size: clamp(1.35rem, 3vw, 1.9rem);
+  font-weight: 400;
+  line-height: 1.45;
+  max-width: 44rem;
+  margin: 0 auto 1.4rem;
+}
+
+.intro p:not(.intro-statement) {
+  max-width: var(--spalte);
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--grau);
+}
+
+/* ---------- Leistungs-Kacheln ---------- */
+
+.leistungen-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1.4rem;
+}
+
+.kachel {
+  grid-column: span 2;
+  display: flex;
+  flex-direction: column;
+  background: var(--kalk-tief);
+  border: 1px solid var(--putz);
+}
+
+.kachel--breit {
+  grid-column: span 3;
+}
+
+.kachel-bild {
+  position: relative;
+  aspect-ratio: 3 / 2;
+  background: var(--putz);
+  overflow: hidden;
+}
+
+.kachel--breit .kachel-bild {
+  aspect-ratio: 16 / 9;
+}
+
+.kachel-bild img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.kachel-text {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.4rem 1.5rem 1.5rem;
+}
+
+.kachel h3 {
+  font-size: 1.18rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  margin-bottom: 0.5rem;
+}
+
+.kachel p {
+  color: var(--grau);
+  font-size: 0.95rem;
+  margin-bottom: 1.1rem;
+}
+
+.kachel-cta {
+  margin-top: auto;
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--blau);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.kachel-cta:hover {
+  color: var(--blau-tief);
+  text-decoration: underline;
+}
+
+/* ---------- Vorher / Nachher ---------- */
+
+.section--vn {
+  background: var(--kalk-tief);
+  border-top: 1px solid var(--putz);
+  border-bottom: 1px solid var(--putz);
+}
+
+.symbolbild-hinweis {
+  display: inline-block;
+  background: var(--tinte);
+  color: #f4f2ec;
+  font-size: 0.76rem;
+  letter-spacing: 0.04em;
+  padding: 0.45rem 0.9rem;
+  margin-bottom: 1.6rem;
+}
+
+.vergleich {
+  position: relative;
+  max-width: 62rem;
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--putz);
+}
+
+.vergleich img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.vergleich-nachher {
+  position: absolute;
+  inset: 0;
+  clip-path: inset(0 0 0 50%);
+}
+
+.vergleich-linie {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  margin-left: -1px;
+  background: #fff;
+  pointer-events: none;
+}
+
+.vergleich-linie::after {
+  content: '⟨ ⟩';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  background: var(--blau);
+  color: #fff;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+}
+
+.vergleich-regler {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: ew-resize;
+}
+
+.vergleich:has(.vergleich-regler:focus-visible) {
+  outline: 3px solid var(--blau);
+  outline-offset: 3px;
+}
+
+.tag {
+  position: absolute;
+  top: 0.9rem;
+  z-index: 1;
+  background: var(--blau-tief);
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 0.45rem 0.85rem;
+  pointer-events: none;
+}
+
+.tag--vorher {
+  left: 0.9rem;
+}
+
+.tag--nachher {
+  right: 0.9rem;
+  background: var(--blau);
+}
+
+.vergleich-hilfe {
+  text-align: center;
+  color: var(--grau);
+  font-size: 0.88rem;
+  max-width: 40rem;
+  margin: 1rem auto 0;
+}
+
+.vn-paare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.4rem;
+  max-width: 62rem;
+  margin: clamp(2rem, 5vw, 3.2rem) auto 0;
+}
+
+.vn-karte {
+  background: var(--kalk);
+  border: 1px solid var(--putz);
+  padding: 1.1rem;
+}
+
+.vn-bilder {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+}
+
+.vn-bild {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--putz);
+}
+
+.vn-bild img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.vn-bild .tag {
+  top: 0.6rem;
+}
+
+.vn-bild .tag--vorher {
+  left: 0.6rem;
+}
+
+.vn-bild .tag--nachher {
+  right: auto;
+  left: 0.6rem;
+}
+
+.vn-karte figcaption {
+  padding-top: 0.9rem;
+  font-size: 0.88rem;
+  color: var(--grau);
+}
+
+.vn-karte figcaption strong {
+  display: block;
+  color: var(--tinte);
+  font-size: 0.98rem;
+  letter-spacing: 0.02em;
+}
+
+/* ---------- Betrieb ---------- */
+
+.betrieb-split {
+  display: grid;
+  grid-template-columns: 5fr 6fr;
+  gap: clamp(1.6rem, 4vw, 3.5rem);
+  align-items: center;
+}
+
+.betrieb-bild {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--putz);
+}
+
+.betrieb-bild img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.betrieb-text h2 {
+  text-align: left;
+}
+
+.betrieb-text .eyebrow {
+  text-align: left;
+}
+
+.betrieb-text p {
+  color: var(--grau);
+}
+
+.betrieb-punkte {
+  list-style: none;
+  padding: 0;
+  margin: 1.4rem 0 2rem;
+}
+
+.betrieb-punkte li {
+  position: relative;
+  padding: 0.35rem 0 0.35rem 1.6rem;
+}
+
+.betrieb-punkte li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.85rem;
+  width: 10px;
+  height: 10px;
+  background: var(--blau);
+}
+
+/* ---------- Ablauf ---------- */
+
+.ablauf-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.4rem;
+  counter-reset: schritt;
+}
+
+.ablauf-schritt {
+  background: var(--kalk-tief);
+  border: 1px solid var(--putz);
+  padding: 1.8rem 1.6rem;
+}
+
+.ablauf-nummer {
+  display: block;
+  color: var(--blau);
+  font-size: 2.6rem;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  margin-bottom: 0.9rem;
+}
+
+.ablauf-schritt h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.5rem;
+}
+
+.ablauf-schritt p {
+  color: var(--grau);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.ablauf-hinweis {
+  text-align: center;
+  color: var(--grau);
+  font-size: 0.88rem;
+  margin: 1.6rem 0 0;
+}
+
+/* ---------- Anfrage-Teaser (ruhige zentrierte Sektion) ---------- */
+
+.section--teaser {
+  background: var(--blau-tief);
+  color: #f2f4f7;
+}
+
+.section--teaser .eyebrow {
+  color: #9fc0e2;
+}
+
+.section--teaser h2 {
+  color: #fff;
+}
+
+.section--teaser .section-kopf p {
+  color: #cdd9e6;
+}
+
+.teaser-meta {
+  color: #cdd9e6;
+  font-size: 0.9rem;
+  text-align: center;
+  margin: 1.6rem 0 0;
+}
+
+.section--teaser .btn--voll {
+  background: #fff;
+  border-color: #fff;
+  color: var(--blau-tief);
+}
+
+.section--teaser .btn--voll:hover {
+  background: var(--kalk);
+  border-color: var(--kalk);
+}
+
+.teaser-aktion {
+  text-align: center;
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  border-top: 1px solid var(--putz);
+  padding: 2.6rem 1.25rem 2.2rem;
+  background: var(--kalk);
+}
+
+.site-footer-inhalt {
+  max-width: var(--breite);
+  margin: 0 auto;
+  display: grid;
+  gap: 1.6rem;
+}
+
+.footer-spalten {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.footer-spalten nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem 1rem;
+}
+
+.footer-spalten nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--grau);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.footer-spalten nav a:hover {
+  color: var(--blau);
+}
+
+.footer-klein {
+  color: var(--grau);
+  font-size: 0.78rem;
+  border-top: 1px solid var(--putz);
+  padding-top: 1.2rem;
+}
+
+/* ---------- Anfrage-Seite (Planer) ---------- */
+
+.planer {
+  max-width: 47rem;
+  margin: 0 auto;
+  padding: clamp(2.5rem, 6vw, 4.5rem) 1.25rem 4rem;
+}
+
+.planer-kopf {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.planer-kopf h1 {
+  font-size: clamp(1.7rem, 5vw, 2.7rem);
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.demo-chip {
+  display: inline-block;
+  background: var(--tinte);
+  color: #f4f2ec;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  padding: 0.45rem 0.9rem;
+  margin-bottom: 1.4rem;
+}
+
+.planer fieldset {
+  border: 1px solid var(--putz);
+  background: var(--kalk-tief);
+  padding: 1.6rem 1.5rem 1.8rem;
+  margin: 0 0 1.6rem;
+}
+
+.planer legend {
+  background: var(--kalk);
+  border: 1px solid var(--putz);
+  padding: 0.4rem 0.9rem;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--blau);
+}
+
+.radio-karten {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+}
+
+.radio-karte {
+  position: relative;
+  display: block;
+  background: var(--kalk);
+  border: 1.5px solid var(--putz);
+  padding: 1rem 1.1rem;
+  cursor: pointer;
+  min-height: 44px;
+}
+
+.radio-karte:hover {
+  border-color: var(--blau);
+}
+
+.radio-karte input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.radio-karte strong {
+  display: block;
+  font-size: 0.98rem;
+  letter-spacing: 0.02em;
+}
+
+.radio-karte span {
+  color: var(--grau);
+  font-size: 0.85rem;
+}
+
+.radio-karte:has(input:checked) {
+  border-color: var(--blau);
+  box-shadow: inset 0 0 0 1.5px var(--blau);
+}
+
+.radio-karte:has(input:focus-visible) {
+  outline: 3px solid var(--blau);
+  outline-offset: 2px;
+}
+
+.feld {
+  margin-bottom: 1.1rem;
+}
+
+.feld:last-child {
+  margin-bottom: 0;
+}
+
+.feld label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+.feld input,
+.feld select,
+.feld textarea {
+  width: 100%;
+  min-height: 46px;
+  border: 1.5px solid var(--putz);
+  background: var(--kalk);
+  color: var(--tinte);
+  font-family: var(--font);
+  font-size: 1rem;
+  padding: 0.6rem 0.85rem;
+}
+
+.feld textarea {
+  min-height: 7rem;
+  resize: vertical;
+}
+
+.feld input:focus-visible,
+.feld select:focus-visible,
+.feld textarea:focus-visible {
+  outline: 3px solid var(--blau);
+  outline-offset: 1px;
+  border-color: var(--blau);
+}
+
+.feld-hinweis {
+  color: var(--grau);
+  font-size: 0.82rem;
+  margin: 0.35rem 0 0;
+}
+
+.feld-reihe {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.dropzone {
+  border: 1.5px dashed var(--blau);
+  background: var(--kalk);
+  padding: 1.2rem 1.1rem;
+}
+
+.dropzone-hinweis {
+  display: inline-block;
+  background: var(--blau);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.7rem;
+  margin-bottom: 0.8rem;
+}
+
+.dropzone input[type='file'] {
+  width: 100%;
+  min-height: 46px;
+  font-family: var(--font);
+  font-size: 0.92rem;
+  color: var(--tinte);
+}
+
+.foto-liste {
+  list-style: none;
+  padding: 0;
+  margin: 0.8rem 0 0;
+  color: var(--grau);
+  font-size: 0.85rem;
+}
+
+.foto-liste li {
+  padding: 0.15rem 0;
+}
+
+.fehler {
+  background: #fdf3f2;
+  border: 1.5px solid #b3442f;
+  color: #7d2c1c;
+  padding: 0.9rem 1.1rem;
+  margin: 0 0 1.4rem;
+  font-size: 0.95rem;
+}
+
+.planer-aktionen {
+  display: flex;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.bestaetigung {
+  border: 1.5px solid var(--blau);
+  background: var(--kalk-tief);
+  padding: 2rem 1.8rem;
+}
+
+.bestaetigung h2 {
+  font-size: 1.4rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.bestaetigung p {
+  color: var(--grau);
+}
+
+.zusammenfassung {
+  background: var(--kalk);
+  border: 1px solid var(--putz);
+  padding: 1rem 1.2rem;
+  font-size: 0.95rem;
+  margin: 1.2rem 0 1.6rem;
+}
+
+.planer-fuss {
+  text-align: center;
+  color: var(--grau);
+  font-size: 0.82rem;
+  margin-top: 2.4rem;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 900px) {
+  .leistungen-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .kachel,
+  .kachel--breit {
+    grid-column: span 1;
+  }
+
+  .betrieb-split {
+    grid-template-columns: 1fr;
+  }
+
+  .betrieb-bild {
+    aspect-ratio: 16 / 10;
+  }
+
+  .ablauf-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vn-paare {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .leistungen-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .radio-karten,
+  .feld-reihe {
+    grid-template-columns: 1fr;
+  }
+
+  .site-header-inhalt {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .site-nav {
+    margin-left: 0;
+    justify-content: center;
+  }
+
+  .vergleich {
+    aspect-ratio: 4 / 3;
+  }
+}
