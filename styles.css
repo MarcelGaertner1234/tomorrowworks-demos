@@ -649,3 +649,243 @@ h3 {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Leistung-Link (Unterseiten-Verweis) */
+
+.leistung-link {
+  display: inline-block;
+  margin-top: 0.9rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--accent);
+}
+
+.leistung-link:hover,
+.leistung-link:focus-visible {
+  text-decoration: underline;
+}
+
+/* Unterseiten */
+
+.seiten-hero {
+  max-width: var(--mass);
+  margin: 0 auto;
+  padding: 3.5rem 1.25rem 3rem;
+}
+
+.seiten-hero h1 {
+  font-size: clamp(2.1rem, 6vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0 0 1.2rem;
+  max-width: 46rem;
+}
+
+.seiten-hero .hero-subline {
+  margin-bottom: 1.6rem;
+}
+
+.haken-liste {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.6rem;
+  margin: 1.6rem 0 0;
+  padding: 0;
+}
+
+.haken-liste li {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+}
+
+.haken-liste li::before {
+  content: '✓ ';
+  color: var(--accent);
+}
+
+.fakten-liste {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  background: var(--card);
+  border: 1px solid var(--linie);
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.fakten-liste > div {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.2rem 1.5rem;
+  padding: 1rem 1.4rem;
+  border-bottom: 1px solid var(--linie);
+}
+
+.fakten-liste > div:last-child {
+  border-bottom: none;
+}
+
+@media (min-width: 700px) {
+  .fakten-liste > div {
+    grid-template-columns: 14rem 1fr;
+  }
+}
+
+.fakten-liste dt {
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+
+.fakten-liste dd {
+  margin: 0;
+  color: var(--ink-soft);
+}
+
+.beispiel-karte {
+  display: grid;
+  gap: 0;
+  background: var(--card);
+  border: 1px solid var(--linie);
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+@media (min-width: 860px) {
+  .beispiel-karte {
+    grid-template-columns: 1.1fr 1fr;
+    align-items: center;
+  }
+}
+
+.beispiel-karte img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.beispiel-text {
+  padding: 1.8rem 1.8rem 2rem;
+}
+
+.beispiel-text p {
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+.einordnung {
+  border: 2px solid var(--accent-surface);
+  border-radius: 0.75rem;
+  background: var(--card);
+  padding: 1.8rem 1.6rem;
+}
+
+.einordnung ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  color: var(--ink-soft);
+}
+
+.einordnung li + li {
+  margin-top: 0.5rem;
+}
+
+.wortmarke-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.wortmarke-link:hover,
+.wortmarke-link:focus-visible {
+  color: var(--accent);
+}
+
+@media (min-width: 820px) {
+  .leistungen-grid--drei {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Statische Projekt-Karten (ohne Link) */
+
+.arbeit-karte--statisch {
+  background: var(--card);
+  border: 1px solid var(--linie);
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.arbeit-karte--statisch img {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: top;
+  width: 100%;
+}
+
+.arbeit-karte--statisch figcaption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.6rem 1rem;
+  padding: 0.9rem 1.1rem 0.2rem;
+}
+
+.arbeit-text {
+  margin: 0.3rem 0 0;
+  padding: 0 1.1rem 1.2rem;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+}
+
+/* Preise */
+
+.preis-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 820px) {
+  .preis-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.preis-karte {
+  background: var(--card);
+  border: 1px solid var(--linie);
+  border-radius: 0.75rem;
+  padding: 1.8rem 1.7rem;
+}
+
+.preis-karte--laufend {
+  border: 2px solid var(--accent-surface);
+}
+
+.preis-karte p:last-child {
+  color: var(--ink-soft);
+  margin-bottom: 0;
+}
+
+.preis-betrag {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  margin: 0.4rem 0 0.9rem;
+}
+
+.preis-einheit {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.preis-summe {
+  margin: 1.6rem 0 0;
+  font-size: 1.1rem;
+}
