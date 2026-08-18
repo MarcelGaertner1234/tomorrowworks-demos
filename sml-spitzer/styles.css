@@ -1,0 +1,996 @@
+/* SML Spitzer — Konzept-Gate Option A: bestehende Rot/Anthrazit-Identitaet aufgreifen.
+   Palette A "Markenrot pur" (echtes Logo-Rot #a72920 per Pixel-Sample ermittelt). */
+
+:root {
+  --papier: #f7f5f2;
+  --flaeche: #efe9e0;
+  --hairline: #ddd6c9;
+  --rot: #a72920;
+  --rot-tief: #7a1f18;
+  --anthrazit: #22262b;
+  --tinte: #23211d;
+  --stahl: #6b7480;
+  --stahl-text: #545d66;
+  --weiss: #ffffff;
+  --sans: "Helvetica Neue", Helvetica, Arial, "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--tinte);
+  background: var(--papier);
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--rot);
+}
+
+:focus-visible {
+  outline: 2px solid var(--rot);
+  outline-offset: 3px;
+}
+
+/* --- Skip-Link --- */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--anthrazit);
+  color: var(--weiss);
+  padding: 12px 20px;
+  z-index: 40;
+}
+
+.skip-link:focus {
+  left: 12px;
+  top: 12px;
+}
+
+/* --- Pflicht-Banner --- */
+.banner {
+  background: var(--anthrazit);
+  color: var(--papier);
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: center;
+  padding: 9px 16px;
+}
+
+.banner strong {
+  color: var(--weiss);
+}
+
+/* --- Header --- */
+.site-header {
+  background: var(--papier);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.site-header-inhalt {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 20px;
+  flex-wrap: wrap;
+}
+
+.wortmarke {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  padding: 4px 0;
+}
+
+.ornament {
+  width: 26px;
+  height: 26px;
+  flex: none;
+}
+
+.wortmarke-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.05;
+}
+
+.wortmarke-text small {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--anthrazit);
+}
+
+.wortmarke-text strong {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--rot);
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 6px;
+}
+
+.site-nav a,
+.footer-spalten nav a {
+  display: inline-block;
+  padding: 13px 10px;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  color: var(--anthrazit);
+}
+
+.site-nav a:hover,
+.footer-spalten nav a:hover {
+  color: var(--rot);
+}
+
+/* --- Buttons --- */
+.btn {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  padding: 14px 26px;
+  border-radius: 3px;
+  border: 1.5px solid var(--rot);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn--voll {
+  background: var(--rot);
+  color: var(--weiss);
+}
+
+.btn--voll:hover {
+  background: var(--rot-tief);
+  border-color: var(--rot-tief);
+}
+
+.btn--kontur {
+  background: transparent;
+  color: var(--rot);
+}
+
+.btn--kontur:hover {
+  background: #f5e7e5;
+}
+
+.btn--kontur-hell {
+  border-color: var(--papier);
+  color: var(--papier);
+}
+
+.btn--kontur-hell:hover {
+  background: rgba(247, 245, 242, 0.14);
+}
+
+/* --- Typografie-Bausteine --- */
+.eyebrow {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--rot);
+  margin-bottom: 12px;
+}
+
+.eyebrow--hell {
+  color: #e8b6ae;
+}
+
+h1 {
+  font-size: clamp(34px, 5.6vw, 56px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.005em;
+  color: var(--anthrazit);
+}
+
+h1 em,
+h2 em {
+  font-style: normal;
+  color: var(--rot);
+}
+
+h2 {
+  font-size: clamp(26px, 3.6vw, 38px);
+  font-weight: 800;
+  line-height: 1.16;
+  color: var(--anthrazit);
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--anthrazit);
+}
+
+/* --- Sektionen --- */
+.section {
+  padding: 76px 20px;
+}
+
+.section-inhalt {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.section-kopf {
+  max-width: 640px;
+  margin: 0 auto 44px;
+  text-align: center;
+}
+
+.section-kopf p {
+  margin-top: 14px;
+  color: var(--stahl-text);
+}
+
+.symbolbild-hinweis {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: 12.5px;
+  color: var(--stahl-text);
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  padding: 6px 14px;
+  background: var(--weiss);
+}
+
+.foto-tag {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--papier);
+  background: rgba(34, 38, 43, 0.68);
+  padding: 4px 10px;
+  z-index: 2;
+}
+
+/* --- Hero: dunkle Buehne mit Rot-Overlay (Referenz an die echte Seite) --- */
+.hero {
+  position: relative;
+  min-height: 72vh;
+  display: flex;
+  align-items: flex-end;
+  color: var(--papier);
+  overflow: hidden;
+}
+
+.hero-bild {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-bild img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-bild::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(20, 22, 24, 0.38) 0%,
+    rgba(20, 22, 24, 0.62) 48%,
+    rgba(122, 31, 24, 0.82) 100%
+  );
+  z-index: 1;
+}
+
+.hero-inhalt {
+  position: relative;
+  z-index: 2;
+  max-width: 1160px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 20px 60px;
+}
+
+.hero-inhalt h1,
+.hero-inhalt h1 em {
+  color: var(--papier);
+}
+
+.hero-sub {
+  margin-top: 18px;
+  max-width: 50ch;
+  color: rgba(247, 245, 242, 0.88);
+  font-size: 18px;
+}
+
+.hero-aktionen {
+  margin-top: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* --- Leistungs-Uebersicht --- */
+.leistungs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 18px;
+}
+
+.leistungs-kachel {
+  display: block;
+  background: var(--weiss);
+  border: 1px solid var(--hairline);
+  padding: 22px 22px 24px;
+  text-decoration: none;
+}
+
+.leistungs-kachel h3 {
+  font-size: 16px;
+}
+
+.leistungs-kachel p {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--stahl-text);
+}
+
+.leistungs-kachel--gross {
+  grid-column: span 2;
+  background: var(--anthrazit);
+  border-color: var(--anthrazit);
+  transition: background-color 0.2s ease;
+}
+
+.leistungs-kachel--gross h3 {
+  color: var(--weiss);
+  font-size: 20px;
+}
+
+.leistungs-kachel--gross p {
+  color: rgba(247, 245, 242, 0.8);
+}
+
+.leistungs-kachel--gross:hover {
+  background: var(--rot-tief);
+  border-color: var(--rot-tief);
+}
+
+.leistungs-cta {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--weiss);
+}
+
+@media (max-width: 640px) {
+  .leistungs-kachel--gross {
+    grid-column: span 1;
+  }
+}
+
+/* --- Statement-Band --- */
+.statement-band {
+  position: relative;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--papier);
+  overflow: hidden;
+}
+
+.statement-band img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.statement-band::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(34, 38, 43, 0.74) 0%,
+    rgba(122, 31, 24, 0.76) 100%
+  );
+  z-index: 1;
+}
+
+.statement-band-inhalt {
+  position: relative;
+  z-index: 2;
+  padding: 44px 20px;
+}
+
+.statement-zahl {
+  font-size: clamp(38px, 6vw, 58px);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.statement-text {
+  margin-top: 10px;
+  max-width: 46ch;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 17px;
+  color: rgba(247, 245, 242, 0.9);
+}
+
+/* --- Privatumzuege (Herzstueck) --- */
+.section--herzstueck {
+  background: var(--flaeche);
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.privatumzug-split {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: 48px;
+  align-items: center;
+}
+
+.privatumzug-bild {
+  position: relative;
+}
+
+.privatumzug-bild img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.ablauf-liste {
+  list-style: none;
+  counter-reset: schritt;
+  margin: 20px 0 28px;
+}
+
+.ablauf-liste li {
+  position: relative;
+  counter-increment: schritt;
+  padding: 10px 0 10px 40px;
+}
+
+.ablauf-liste li::before {
+  content: counter(schritt);
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--rot);
+  color: var(--weiss);
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ablauf-liste strong {
+  display: block;
+  color: var(--anthrazit);
+}
+
+.zusatzleistungen {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+  gap: 32px;
+  align-items: center;
+  background: var(--weiss);
+  border: 1px solid var(--hairline);
+  padding: 28px;
+}
+
+.zusatzleistungen-bild {
+  position: relative;
+}
+
+.zusatzleistungen-bild img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.zusatzleistungen-liste {
+  list-style: none;
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 18px;
+}
+
+.zusatzleistungen-liste li {
+  position: relative;
+  padding: 6px 0 6px 20px;
+  font-size: 15px;
+}
+
+.zusatzleistungen-liste li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 15px;
+  width: 8px;
+  height: 8px;
+  background: var(--rot);
+}
+
+/* --- Unternehmen --- */
+.section--unternehmen {
+  background: var(--anthrazit);
+  color: var(--papier);
+}
+
+.unternehmen-split {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: 48px;
+  align-items: center;
+}
+
+.unternehmen-bild {
+  position: relative;
+}
+
+.unternehmen-bild img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+.section--unternehmen h2 {
+  color: var(--weiss);
+}
+
+.section--unternehmen p {
+  margin-top: 14px;
+  color: rgba(247, 245, 242, 0.84);
+  max-width: 52ch;
+}
+
+.unternehmen-punkte {
+  list-style: none;
+  margin: 20px 0 26px;
+}
+
+.unternehmen-punkte li {
+  position: relative;
+  padding: 6px 0 6px 26px;
+  color: var(--papier);
+}
+
+.unternehmen-punkte li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 14px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--rot);
+}
+
+/* --- Ablauf --- */
+.ablauf-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 26px;
+}
+
+.ablauf-schritt {
+  background: var(--weiss);
+  border: 1px solid var(--hairline);
+  padding: 26px 24px;
+}
+
+.ablauf-nummer {
+  display: block;
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--rot);
+  margin-bottom: 12px;
+}
+
+.ablauf-schritt p {
+  margin-top: 8px;
+  font-size: 15px;
+  color: var(--stahl-text);
+}
+
+.ablauf-hinweis {
+  margin-top: 26px;
+  text-align: center;
+  font-size: 12.5px;
+  color: var(--stahl-text);
+}
+
+/* --- Anfrage-Teaser --- */
+.section--teaser {
+  background: var(--anthrazit);
+}
+
+.section--teaser .eyebrow {
+  color: #e8b6ae;
+}
+
+.section--teaser h2 {
+  color: var(--weiss);
+}
+
+.section--teaser .section-kopf p {
+  color: rgba(247, 245, 242, 0.82);
+}
+
+.teaser-aktion {
+  text-align: center;
+}
+
+.teaser-meta {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 13px;
+  color: rgba(247, 245, 242, 0.82);
+}
+
+/* --- Footer --- */
+.site-footer {
+  border-top: 1px solid var(--hairline);
+  background: var(--papier);
+}
+
+.site-footer-inhalt {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 36px 20px 44px;
+}
+
+.footer-spalten {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 24px;
+  flex-wrap: wrap;
+}
+
+.footer-spalten nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 6px;
+}
+
+.footer-klein {
+  margin-top: 22px;
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--stahl-text);
+  max-width: 78ch;
+}
+
+/* --- Umzugs-Anfrage (Planer) --- */
+.planer {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 48px 20px 72px;
+}
+
+.planer-kopf {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.planer-kopf p {
+  margin-top: 12px;
+  color: var(--stahl-text);
+  max-width: 54ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.demo-chip {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--rot-tief);
+  border: 1px solid var(--rot);
+  border-radius: 999px;
+  padding: 6px 14px;
+  margin-bottom: 18px;
+  background: var(--weiss);
+}
+
+fieldset {
+  border: 1px solid var(--hairline);
+  background: var(--weiss);
+  padding: 24px 22px 26px;
+  margin-bottom: 22px;
+}
+
+legend {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--rot);
+  padding: 0 10px;
+}
+
+.radio-karten,
+.checkbox-karten {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.radio-karte,
+.checkbox-karte {
+  display: block;
+  border: 1.5px solid var(--hairline);
+  padding: 14px 16px;
+  cursor: pointer;
+  background: var(--papier);
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.radio-karte strong,
+.checkbox-karte strong {
+  display: block;
+  font-size: 15px;
+  color: var(--anthrazit);
+}
+
+.radio-karte span {
+  display: block;
+  margin-top: 2px;
+  font-size: 13px;
+  color: var(--stahl-text);
+}
+
+.radio-karte input,
+.checkbox-karte input {
+  accent-color: var(--rot);
+  margin-bottom: 8px;
+}
+
+.radio-karte:has(input:checked),
+.checkbox-karte:has(input:checked) {
+  border-color: var(--rot);
+  background: #f5e7e5;
+}
+
+.feld {
+  margin-top: 16px;
+}
+
+.feld label {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--anthrazit);
+  margin-bottom: 6px;
+}
+
+.feld input,
+.feld select,
+.feld textarea {
+  width: 100%;
+  min-height: 46px;
+  font: inherit;
+  color: var(--tinte);
+  background: var(--papier);
+  border: 1.5px solid var(--hairline);
+  border-radius: 4px;
+  padding: 11px 14px;
+}
+
+.feld textarea {
+  resize: vertical;
+}
+
+.feld input:focus,
+.feld select:focus,
+.feld textarea:focus {
+  border-color: var(--rot);
+  outline: none;
+}
+
+.feld-hinweis {
+  margin-top: 6px;
+  font-size: 12.5px;
+  color: var(--stahl-text);
+}
+
+.feld-reihe {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 18px;
+}
+
+.dropzone {
+  border: 1.5px dashed var(--rot);
+  background: #f5e7e5;
+  padding: 18px 16px;
+  position: relative;
+}
+
+.dropzone-hinweis {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--rot-tief);
+  margin-bottom: 10px;
+}
+
+.foto-liste {
+  list-style: none;
+  margin-top: 12px;
+  font-size: 13.5px;
+  color: var(--anthrazit);
+}
+
+.foto-liste li {
+  padding: 3px 0;
+}
+
+.fehler {
+  background: #f5e0dd;
+  border: 1.5px solid var(--rot);
+  color: var(--rot-tief);
+  padding: 14px 18px;
+  margin-bottom: 18px;
+  font-size: 15px;
+}
+
+.planer-aktionen {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.bestaetigung {
+  border: 1.5px solid var(--rot);
+  background: var(--weiss);
+  padding: 30px 26px;
+}
+
+.bestaetigung h2 {
+  font-size: 26px;
+}
+
+.bestaetigung p {
+  margin-top: 12px;
+  color: var(--stahl-text);
+}
+
+.zusammenfassung {
+  background: var(--flaeche);
+  border: 1px solid var(--hairline);
+  padding: 14px 16px;
+  color: var(--anthrazit) !important;
+  font-size: 15px;
+}
+
+.bestaetigung .planer-aktionen {
+  margin-top: 22px;
+}
+
+.planer-fuss {
+  margin-top: 26px;
+  text-align: center;
+  font-size: 12.5px;
+  color: var(--stahl-text);
+}
+
+/* --- Mobil --- */
+@media (max-width: 900px) {
+  .privatumzug-split,
+  .unternehmen-split {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+
+  .zusatzleistungen {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding: 56px 20px;
+  }
+
+  .leistungs-kachel--gross {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 560px) {
+  .feld-reihe {
+    grid-template-columns: 1fr;
+  }
+
+  .zusatzleistungen-liste {
+    grid-template-columns: 1fr;
+  }
+
+  .site-header-inhalt {
+    justify-content: center;
+  }
+
+  .site-header-inhalt .btn {
+    width: 100%;
+  }
+
+  .hero-aktionen .btn,
+  .planer-aktionen .btn {
+    width: 100%;
+  }
+}
+
+/* --- Reduzierte Bewegung --- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}

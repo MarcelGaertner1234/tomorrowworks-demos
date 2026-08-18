@@ -10,6 +10,7 @@ entsprechenden Hinweis-Banner und ist auf `noindex` gestellt).
 
 ## Design-Studien in diesem Repo
 
+- `sml-spitzer/` — Spedition (Umzüge & Logistik), Mosbach
 - `spitzer-moden/` — Modehaus (Damen & Herren), Mosbach
 - `blumen-viva/` — Blumenladen (Floristik), Mosbach-Neckarelz
 - `gassert/` — Autohaus (Renault & Dacia, Werkstatt, Pannenhilfe 24/7), Fahrenbach-Trienz

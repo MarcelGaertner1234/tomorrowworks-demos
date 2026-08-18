@@ -14,6 +14,8 @@ Screenshots eigener Live-Seiten bzw. des eigenen lokalen Demo-Stands (1280×960,
 
 | Datei | Quelle |
 | --- | --- |
+| arbeiten/sml-spitzer.jpg | Eigenwerk: Screenshot des lokalen Demo-Stands `demos/sml-spitzer/` (Repo) |
+| arbeiten/spitzer-moden.jpg | Eigenwerk: Screenshot des lokalen Demo-Stands `demos/spitzer-moden/` (Repo) |
 | arbeiten/blumen-viva.jpg | Eigenwerk: Screenshot des lokalen Demo-Stands `demos/blumen-viva/` (Repo) |
 | arbeiten/gassert.jpg | Eigenwerk: Screenshot des lokalen Demo-Stands `demos/gassert/` (Repo) |
 | arbeiten/jost-maler.jpg | Eigenwerk: Screenshot des lokalen Demo-Stands `demos/jost-maler/` (Repo) |
