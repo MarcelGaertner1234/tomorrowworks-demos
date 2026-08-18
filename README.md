@@ -13,3 +13,4 @@ Preise, Zeiten und Speisekarten sind Beispiele. Fotos sind lizenzierte Beispielb
 - [CLEAN CUT, Mosbach](clean-cut/) — Design-Entwurf „Salon-Editorial" (Friseursalon, inkl. Termin-Demo)
 - [Goldschmiede Glanz und Gloria, Mosbach](glanz-und-gloria/) — Design-Entwurf „Smaragd-Atelier" (inkl. Beratungstermin-Demo)
 - [Kimberger Kosmetikinstitut, Sinsheim](kimberger/) — Design-Entwurf „Puderzimmer / Ein neues Kapitel" (inkl. Terminwunsch-Demo)
+- [Pension Am Waldrand, Mosbach-Waldstadt](am-waldrand/) — Design-Entwurf „Waldlicht / Stille Chesa" (inkl. Zimmeranfrage-Demo)

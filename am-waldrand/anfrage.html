@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Design-Entwurf von TOMORROWWORKS: Zimmeranfrage-Demo der Pension Am Waldrand in Mosbach-Waldstadt — Einzelzimmer, Doppelzimmer, Familienzimmer, Chalet.">
+  <title>Zimmer anfragen · Am Waldrand — Design-Entwurf</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#hauptinhalt">Zum Inhalt springen</a>
+
+  <aside class="draft-banner" aria-label="Hinweis zum Entwurfsstatus">
+    <strong>Design-Entwurf von TOMORROWWORKS</strong> — nicht die offizielle Website von Pension Am Waldrand ·
+    Persönliche Konzeptvorschau · Zimmeranfrage ist eine Demo · Angaben werden bestätigt
+  </aside>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="wordmark" href="index.html" aria-label="Zurück zur Startseite">
+        <span class="wordmark-ueber">Pension · Mosbach-Waldstadt</span>
+        <span class="wordmark-name">Am Waldrand</span>
+        <svg class="wordmark-ornament" viewBox="0 0 96 24" aria-hidden="true" focusable="false">
+          <path d="M18 4 L26 16 L21.5 16 L28 22 L8 22 L14.5 16 L10 16 Z M48 2 L57 15.5 L52 15.5 L59 22 L37 22 L44 15.5 L39 15.5 Z M78 4 L86 16 L81.5 16 L88 22 L68 22 L74.5 16 L70 16 Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <nav class="site-nav" aria-label="Hauptnavigation">
+        <a href="index.html">← Zur Homepage</a>
+        <a href="index.html#zimmer">Zimmer</a>
+        <a class="nav-cta" href="anfrage.html" aria-current="page">Zimmer anfragen</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="hauptinhalt">
+    <section class="section" id="planer">
+      <div class="wrap wrap--planer">
+        <div class="planer-kopf">
+          <p class="eyebrow">Zimmeranfrage · Demo</p>
+          <h1>Dein Zimmerwunsch</h1>
+          <p class="lede">Sag uns, wann du kommen möchtest — wir melden uns bei dir. In dieser Konzeptvorschau wird nichts gesendet oder gespeichert.</p>
+          <p class="demo-chip">DEMO · KEINE SPEICHERUNG</p>
+        </div>
+
+        <form id="anfrage-form" novalidate>
+          <fieldset class="planer-schritt">
+            <legend><span class="schritt-nr">01</span> Zimmer wählen</legend>
+            <div class="zimmer-wahl-grid">
+              <label class="zimmer-wahl">
+                <input type="radio" name="zimmer" value="einzelzimmer" checked>
+                <span class="zimmer-wahl-titel">Einzelzimmer</span>
+                <span class="zimmer-wahl-text">Für dich allein — gemütlich und ruhig gelegen.</span>
+                <span class="zimmer-wahl-meta">Kühlschrank · Safe · Flachbild-TV</span>
+              </label>
+              <label class="zimmer-wahl">
+                <input type="radio" name="zimmer" value="doppelzimmer">
+                <span class="zimmer-wahl-titel">Doppelzimmer</span>
+                <span class="zimmer-wahl-text">Für zwei — Platz zum Ankommen und Durchatmen.</span>
+                <span class="zimmer-wahl-meta">Kühlschrank · Safe · Flachbild-TV</span>
+              </label>
+              <label class="zimmer-wahl">
+                <input type="radio" name="zimmer" value="familienzimmer">
+                <span class="zimmer-wahl-titel">Familienzimmer</span>
+                <span class="zimmer-wahl-text">Für die ganze Familie — mit Platz für alle.</span>
+                <span class="zimmer-wahl-meta">Kühlschrank · Safe · Flachbild-TV</span>
+              </label>
+              <label class="zimmer-wahl">
+                <input type="radio" name="zimmer" value="chalet">
+                <span class="zimmer-wahl-titel">Chalet</span>
+                <span class="zimmer-wahl-text">Dein eigenes kleines Zuhause am Waldrand.</span>
+                <span class="zimmer-wahl-meta">Kühlschrank · Safe · Flachbild-TV</span>
+              </label>
+            </div>
+            <p class="small">In einigen Zimmern zusätzlich: Küche, Waschmaschine &amp; Trockner — frag uns einfach, was zu deinem Aufenthalt passt.</p>
+          </fieldset>
+
+          <fieldset class="planer-schritt">
+            <legend><span class="schritt-nr">02</span> Deine Reisedaten</legend>
+            <p class="small">Demo-Planer ohne echte Verfügbarkeit — Beispieldaten genügen.</p>
+            <div class="reise-grid">
+              <div class="feld">
+                <label for="anreise">Anreise</label>
+                <input id="anreise" name="anreise" type="date">
+              </div>
+              <div class="feld">
+                <label for="abreise">Abreise</label>
+                <input id="abreise" name="abreise" type="date">
+              </div>
+              <div class="feld">
+                <label for="personen">Personen</label>
+                <input id="personen" name="personen" type="number" inputmode="numeric" min="1" max="17" value="2">
+                <p class="small">Wir haben Platz für bis zu 17 Gäste.</p>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="planer-schritt">
+            <legend><span class="schritt-nr">03</span> Deine Angaben</legend>
+            <div class="feld-grid">
+              <div class="feld">
+                <label for="vorname">Vorname</label>
+                <input id="vorname" name="vorname" type="text" autocomplete="given-name" required>
+              </div>
+              <div class="feld">
+                <label for="nachname">Nachname</label>
+                <input id="nachname" name="nachname" type="text" autocomplete="family-name" required>
+              </div>
+              <div class="feld feld--breit">
+                <label for="handy">Handynummer für die Rückmeldung</label>
+                <input id="handy" name="handy" type="tel" inputmode="tel" autocomplete="tel" required>
+                <p class="small">Mindestens 7 Ziffern · wird in dieser Demo nicht gespeichert.</p>
+              </div>
+              <div class="feld feld--breit">
+                <label for="nachricht">Nachricht (optional)</label>
+                <textarea id="nachricht" name="nachricht" rows="3" placeholder="Zum Beispiel: Du kommst mit dem Bike und brauchst einen Platz fürs Rad."></textarea>
+              </div>
+            </div>
+            <p class="fehler" data-fehler hidden></p>
+            <button type="submit" class="btn btn--primary">Anfrage senden (Demo) <span class="arrow" aria-hidden="true">→</span></button>
+          </fieldset>
+        </form>
+
+        <div class="bestaetigung" data-bestaetigung hidden>
+          <h2>Danke — deine Anfrage ist angekommen. <em>Fast.</em></h2>
+          <p>Das ist eine Konzeptvorschau: <strong>es wurden keine Daten gespeichert oder versendet</strong>. Auf der echten Website würde die Pension deine Anfrage jetzt erhalten und sich direkt bei dir melden — ohne Umweg über ein Portal.</p>
+          <p class="small" data-zusammenfassung></p>
+          <button type="button" class="btn btn--ghost" data-neustart>Demo neu starten</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p><strong>Design-Entwurf von TOMORROWWORKS</strong> — nicht die offizielle Website von Pension Am Waldrand.</p>
+      <p class="small">Konzeptvorschau · keine echte Verfügbarkeit · keine Buchung · keine Datenübertragung</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

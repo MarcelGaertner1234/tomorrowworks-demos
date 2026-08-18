@@ -1,0 +1,1121 @@
+/* ==========================================================================
+   Pension „Am Waldrand" — Design v2 „Stille Chesa" (Demo, TOMORROWWORKS)
+   Referenz-DNA rosatsch.ch (Spec §3b), übersetzt: warme Birken-Bühne statt
+   kaltem Weiß, Tannengrün als Akzent, Du-Ton. Serif-Versalien-Headlines
+   (Cochin-Stack), große Sans, eckige Inset-Bilder — Pills sind die einzige
+   runde Form. Geschlossene Offline-Demo, keine externen Ressourcen.
+   ========================================================================== */
+
+:root {
+  --birke: #faf7f0;
+  --birke-tief: #f3eee3;
+  --karte: #fffdf9;
+  --tanne: #2d4438;
+  --tanne-tief: #22362c;
+  --moos: #55705d;
+  --moos-hell: #e9efe4;
+  --holz-text: #75593c;
+  --rinde: #34312a;
+  --linie: rgba(45, 68, 56, 0.2);
+  --font:
+    "Avenir Next", Avenir, Seravek, "Gill Sans", "Trebuchet MS",
+    "Segoe UI", sans-serif;
+  --serif: Cochin, "Iowan Old Style", Georgia, "Times New Roman", serif;
+}
+
+/* --- Reset --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--birke);
+  color: var(--rinde);
+  font-family: var(--font);
+  font-size: 1.125rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+ol,
+figure {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: var(--tanne);
+}
+
+button {
+  font: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* --- Utilities --- */
+.wrap {
+  margin-inline: auto;
+  max-width: 1080px;
+  padding-inline: clamp(1.1rem, 4vw, 2.5rem);
+}
+
+.wrap--breit {
+  max-width: 1320px;
+}
+
+.small {
+  font-size: 0.85rem;
+  line-height: 1.55;
+}
+
+.eyebrow {
+  color: var(--holz-text);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.skip-link {
+  background: var(--tanne);
+  border-radius: 999px;
+  color: #fff;
+  left: 1rem;
+  padding: 0.7rem 1.2rem;
+  position: absolute;
+  top: -4rem;
+  z-index: 80;
+}
+
+.skip-link:focus {
+  top: 4.2rem;
+}
+
+/* --- Überschriften: Serif-Versalien --- */
+h1,
+h2 {
+  font-family: var(--serif);
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  line-height: 1.18;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: clamp(1.55rem, 3.6vw, 2.3rem);
+  margin-bottom: 1.1rem;
+}
+
+h3 {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+figcaption {
+  color: var(--moos);
+}
+
+.lede {
+  font-size: clamp(1.15rem, 2vw, 1.3rem);
+  line-height: 1.65;
+}
+
+.sektion-intro {
+  max-width: 44rem;
+}
+
+.wrap--narrow {
+  max-width: 780px;
+}
+
+/* --- Entwurfs-Banner (Pflicht-Kennzeichnung, bleibt dunkel) --- */
+.draft-banner {
+  background: var(--tanne-tief);
+  color: #f0ede4;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  padding: 0.55rem clamp(1rem, 4vw, 2.5rem);
+  text-align: center;
+}
+
+.draft-banner strong {
+  color: #fff;
+}
+
+/* --- Buttons: Pills als einzige runde Form --- */
+.btn {
+  align-items: center;
+  background: transparent;
+  border: 1px solid var(--rinde);
+  border-radius: 999px;
+  color: var(--rinde);
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 1rem;
+  font-weight: 500;
+  gap: 0.5rem;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0.55rem 1.7rem;
+  text-decoration: none;
+  transition: background-color 180ms ease, border-color 180ms ease,
+    color 180ms ease;
+}
+
+.btn:hover {
+  background: var(--moos-hell);
+  border-color: var(--tanne);
+  color: var(--tanne);
+}
+
+.btn--primary {
+  background: var(--tanne);
+  border-color: var(--tanne);
+  color: #fff;
+}
+
+.btn--primary:hover {
+  background: var(--tanne-tief);
+  border-color: var(--tanne-tief);
+  color: #fff;
+}
+
+.btn .arrow {
+  transition: transform 180ms ease;
+}
+
+.btn:hover .arrow {
+  transform: translateX(3px);
+}
+
+/* Schwebende Anfrage-Pill (erscheint beim Scrollen) */
+.pill-fix {
+  background: var(--karte);
+  box-shadow: 0 6px 22px rgba(45, 68, 56, 0.14);
+  left: clamp(0.8rem, 2vw, 1.6rem);
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
+  top: clamp(0.8rem, 2vw, 1.4rem);
+  transform: translateY(-8px);
+  transition: opacity 220ms ease, transform 220ms ease;
+  z-index: 70;
+}
+
+.pill-fix.is-sichtbar {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* --- Zentrierter Kopf --- */
+.site-header {
+  padding-block: clamp(1.6rem, 4vw, 2.8rem) 0;
+  text-align: center;
+}
+
+.wordmark {
+  color: var(--rinde);
+  display: inline-grid;
+  gap: 0.3rem;
+  justify-items: center;
+  text-decoration: none;
+}
+
+.wordmark-ueber {
+  color: var(--moos);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+}
+
+.wordmark-name {
+  font-family: var(--serif);
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.wordmark-ornament {
+  color: var(--tanne);
+  height: 1.15rem;
+  margin-top: 0.35rem;
+  width: auto;
+}
+
+.site-nav {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.1rem 0.4rem;
+  justify-content: center;
+  margin-top: clamp(0.9rem, 2.5vw, 1.5rem);
+}
+
+.site-nav a {
+  align-items: center;
+  border-radius: 999px;
+  color: var(--rinde);
+  display: inline-flex;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  min-height: 44px;
+  padding: 0.3rem 0.9rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 160ms ease;
+}
+
+.site-nav a:hover {
+  color: var(--moos);
+}
+
+.site-nav .nav-cta {
+  border: 1px solid var(--rinde);
+  margin-left: 0.5rem;
+}
+
+.site-nav .nav-cta:hover {
+  background: var(--moos-hell);
+  border-color: var(--tanne);
+  color: var(--tanne);
+}
+
+/* --- Sektionen --- */
+.section {
+  padding-block: clamp(3rem, 8vw, 6rem);
+}
+
+/* --- Hero: eckiges Inset-Bild + zentrierter Claim --- */
+.hero {
+  padding-block: clamp(1.8rem, 4vw, 3rem) 0;
+}
+
+.hero-figure img {
+  aspect-ratio: 16 / 8.2;
+  object-fit: cover;
+  width: 100%;
+}
+
+.hero-figure figcaption {
+  margin-top: 0.55rem;
+  text-align: right;
+}
+
+.hero-intro {
+  margin-inline: auto;
+  max-width: 50rem;
+  padding-block: clamp(2.6rem, 6vw, 4.2rem) 0;
+  text-align: center;
+}
+
+.hero-intro h1 {
+  font-size: clamp(1.8rem, 4.2vw, 2.75rem);
+  margin-bottom: 1.1rem;
+}
+
+.hero-intro .lede {
+  margin-inline: auto;
+  max-width: 42rem;
+}
+
+.hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  justify-content: center;
+  margin-top: 1.7rem;
+}
+
+@media (max-width: 640px) {
+  .hero-figure img {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+/* --- USP-Band: ruhige Zeile zwischen Hairlines --- */
+.section--usp {
+  padding-block: 0;
+}
+
+.section--usp .wrap {
+  border-block: 1px solid var(--linie);
+  padding-block: clamp(1.8rem, 4vw, 2.6rem);
+}
+
+.usp-grid {
+  display: grid;
+  gap: 1.6rem 1.2rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.usp {
+  display: grid;
+  gap: 0.25rem;
+  justify-items: center;
+  text-align: center;
+}
+
+.usp-icon {
+  color: var(--moos);
+  height: 1.7rem;
+  margin-bottom: 0.35rem;
+  width: 1.7rem;
+}
+
+.usp strong {
+  font-family: var(--serif);
+  font-size: 1.02rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.usp span {
+  color: var(--rinde);
+  font-size: 0.87rem;
+  line-height: 1.55;
+  max-width: 15rem;
+}
+
+@media (max-width: 899px) {
+  .usp-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 540px) {
+  .usp-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- Drei Themenkacheln: Text auf Foto --- */
+.themen-grid {
+  display: grid;
+  gap: clamp(0.9rem, 2vw, 1.4rem);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.thema-kachel {
+  color: #fff;
+  display: block;
+  overflow: hidden;
+  position: relative;
+  text-decoration: none;
+}
+
+.thema-kachel img {
+  aspect-ratio: 3 / 4;
+  filter: brightness(0.72);
+  object-fit: cover;
+  transition: transform 400ms ease, filter 400ms ease;
+  width: 100%;
+}
+
+.thema-kachel:hover img {
+  filter: brightness(0.6);
+  transform: scale(1.03);
+}
+
+.kachel-inhalt {
+  align-items: center;
+  display: grid;
+  gap: 0.6rem;
+  inset: 0;
+  justify-items: center;
+  padding: 1.4rem;
+  position: absolute;
+  text-align: center;
+  text-shadow: 0 1px 16px rgba(15, 22, 18, 0.5);
+}
+
+.kachel-copy {
+  align-self: center;
+  display: grid;
+  gap: 0.55rem;
+  justify-items: center;
+}
+
+.thema-kachel h2 {
+  color: #fff;
+  font-size: clamp(1.4rem, 2.4vw, 1.85rem);
+  margin: 0;
+}
+
+.thema-kachel p {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  max-width: 17rem;
+}
+
+.kachel-cta {
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 999px;
+  display: inline-flex;
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-top: 0.4rem;
+  min-height: 46px;
+  padding: 0.45rem 1.5rem;
+  transition: background-color 180ms ease;
+}
+
+.thema-kachel:hover .kachel-cta {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.kachel-hinweis {
+  bottom: 0.6rem;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.7rem;
+  left: 0;
+  position: absolute;
+  right: 0;
+  text-align: center;
+}
+
+@media (max-width: 899px) {
+  .themen-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .thema-kachel img {
+    aspect-ratio: 3 / 2;
+  }
+}
+
+/* --- Zimmer --- */
+#zimmer {
+  text-align: center;
+}
+
+#zimmer .sektion-intro {
+  margin-inline: auto;
+}
+
+.zimmer-grid {
+  display: grid;
+  gap: clamp(2rem, 4vw, 3rem) clamp(1.4rem, 3vw, 2.4rem);
+  margin-top: clamp(2rem, 5vw, 3.2rem);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  text-align: left;
+}
+
+.zimmer-karte {
+  display: flex;
+  flex-direction: column;
+}
+
+.zimmer-karte figure img {
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  width: 100%;
+}
+
+.zimmer-karte figcaption {
+  margin-top: 0.45rem;
+}
+
+.zimmer-karte-copy {
+  display: grid;
+  flex: 1;
+  gap: 0.45rem;
+  justify-items: start;
+  padding-top: 0.9rem;
+}
+
+.zimmer-karte-copy p {
+  font-size: 0.98rem;
+}
+
+.zimmer-meta {
+  color: var(--holz-text);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.card-cta {
+  align-items: center;
+  border: 1px solid var(--rinde);
+  border-radius: 999px;
+  color: var(--rinde);
+  display: inline-flex;
+  font-size: 0.95rem;
+  font-weight: 500;
+  gap: 0.45rem;
+  margin-top: 0.7rem;
+  min-height: 46px;
+  padding: 0.45rem 1.4rem;
+  text-decoration: none;
+  transition: background-color 180ms ease, border-color 180ms ease,
+    color 180ms ease;
+}
+
+.card-cta:hover {
+  background: var(--moos-hell);
+  border-color: var(--tanne);
+  color: var(--tanne);
+}
+
+@media (max-width: 759px) {
+  .zimmer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- Für Aktive: asymmetrischer Split (Text links, Bild rechts breit) --- */
+.aktive-grid {
+  align-items: start;
+  display: grid;
+  gap: clamp(1.8rem, 5vw, 4rem);
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  margin-top: clamp(1.6rem, 4vw, 2.6rem);
+}
+
+.aktive-copy {
+  display: grid;
+  gap: 0.7rem;
+  justify-items: start;
+  padding-top: clamp(0rem, 3vw, 2.4rem);
+}
+
+.aktive-copy h3 {
+  margin-top: 0.7rem;
+}
+
+.aktive-copy h3:first-child {
+  margin-top: 0;
+}
+
+.aktive-copy p {
+  font-size: 1rem;
+}
+
+.ziele-liste {
+  margin-block: 0.3rem 0.5rem;
+  width: 100%;
+}
+
+.ziele-liste li {
+  align-items: center;
+  border-top: 1px solid var(--linie);
+  display: flex;
+  font-weight: 500;
+  gap: 0.7rem;
+  padding-block: 0.6rem;
+}
+
+.ziele-liste li:last-child {
+  border-bottom: 1px solid var(--linie);
+}
+
+.ziele-liste li::before {
+  background: var(--moos);
+  border-radius: 50% 0 50% 50%;
+  content: "";
+  flex: none;
+  height: 0.5rem;
+  transform: rotate(45deg);
+  width: 0.5rem;
+}
+
+.aktive-figuren {
+  display: grid;
+  gap: 1.1rem;
+}
+
+.aktive-figure img {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  width: 100%;
+}
+
+.aktive-figure figcaption {
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 759px) {
+  .aktive-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- Wir sind grün: helles Moos-Band --- */
+.section--gruen {
+  background: var(--moos-hell);
+}
+
+.gruen-grid {
+  display: grid;
+  gap: 1.5rem;
+  justify-items: center;
+  margin-inline: auto;
+  max-width: 56rem;
+  text-align: center;
+}
+
+.gruen-copy > p {
+  max-width: 38rem;
+}
+
+.gruen-liste {
+  display: grid;
+  gap: 1.4rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 1.8rem;
+  text-align: left;
+}
+
+.gruen-liste li {
+  border-left: 2px solid var(--tanne);
+  display: grid;
+  gap: 0.2rem;
+  padding-left: 0.95rem;
+}
+
+.gruen-liste strong {
+  font-family: var(--serif);
+  font-size: 0.98rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.gruen-liste span {
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.gruen-blatt {
+  color: var(--moos);
+  height: 2.4rem;
+  opacity: 0.8;
+  width: auto;
+}
+
+@media (max-width: 759px) {
+  .gruen-liste {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- Lage: Split, Bild links schmal --- */
+.lage-grid {
+  align-items: start;
+  display: grid;
+  gap: clamp(1.8rem, 5vw, 4rem);
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  margin-top: clamp(1.6rem, 4vw, 2.6rem);
+}
+
+.lage-figure img {
+  aspect-ratio: 3 / 3.6;
+  object-fit: cover;
+  width: 100%;
+}
+
+.lage-figure figcaption {
+  margin-top: 0.5rem;
+}
+
+.lage-copy {
+  display: grid;
+  gap: 0.9rem;
+  padding-top: clamp(0rem, 3vw, 2.2rem);
+}
+
+.lage-copy p {
+  font-size: 1rem;
+}
+
+.fakten-liste {
+  margin-top: 0.4rem;
+}
+
+.fakten-liste li {
+  align-items: center;
+  border-top: 1px solid var(--linie);
+  display: flex;
+  font-weight: 500;
+  gap: 0.7rem;
+  padding-block: 0.6rem;
+}
+
+.fakten-liste li:last-child {
+  border-bottom: 1px solid var(--linie);
+}
+
+.fakten-liste li::before {
+  background: var(--moos);
+  border-radius: 50% 0 50% 50%;
+  content: "";
+  flex: none;
+  height: 0.5rem;
+  transform: rotate(45deg);
+  width: 0.5rem;
+}
+
+@media (max-width: 759px) {
+  .lage-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lage-figure img {
+    aspect-ratio: 3 / 2;
+  }
+}
+
+/* --- Anfrage-Teaser --- */
+.section--teaser {
+  text-align: center;
+}
+
+.section--teaser .lede {
+  margin-inline: auto;
+  max-width: 40rem;
+}
+
+.section--teaser .btn {
+  margin-top: 1.5rem;
+}
+
+.teaser-info {
+  border-top: 1px solid var(--linie);
+  display: grid;
+  gap: 1.8rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 2.4rem;
+  padding-top: 1.8rem;
+  text-align: left;
+}
+
+.teaser-info h3 {
+  font-size: 0.95rem;
+  margin-bottom: 0.4rem;
+}
+
+.teaser-info .small {
+  color: var(--moos);
+  margin-bottom: 0.6rem;
+}
+
+.zeiten-liste {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.zeiten-liste li {
+  border-bottom: 1px solid var(--linie);
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  padding-block: 0.3rem;
+}
+
+.zeiten-liste li span:first-child {
+  font-weight: 600;
+}
+
+@media (max-width: 640px) {
+  .teaser-info {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- Zimmeranfrage-Planer --- */
+.wrap--planer {
+  max-width: 860px;
+}
+
+.planer-kopf {
+  text-align: center;
+}
+
+.planer-kopf h1 {
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
+  margin-bottom: 1rem;
+}
+
+.planer-kopf .lede {
+  margin-inline: auto;
+  max-width: 38rem;
+}
+
+.demo-chip {
+  background: var(--moos-hell);
+  border-radius: 999px;
+  color: var(--tanne);
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  margin-top: 1.2rem;
+  padding: 0.4rem 1rem;
+}
+
+.planer-schritt {
+  background: var(--karte);
+  border: 1px solid var(--linie);
+  margin-top: 1.8rem;
+  padding: clamp(1.3rem, 3vw, 2.1rem);
+}
+
+.planer-schritt legend {
+  align-items: baseline;
+  display: flex;
+  float: left;
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-weight: 600;
+  gap: 0.7rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 1.2rem;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.planer-schritt legend + * {
+  clear: both;
+}
+
+.schritt-nr {
+  color: var(--moos);
+  font-family: var(--serif);
+  font-size: 1rem;
+}
+
+.planer-schritt > .small {
+  color: var(--moos);
+  margin-top: 1rem;
+}
+
+.zimmer-wahl-grid {
+  display: grid;
+  gap: 0.9rem;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+}
+
+.zimmer-wahl {
+  background: var(--birke);
+  border: 1px solid var(--linie);
+  cursor: pointer;
+  display: grid;
+  gap: 0.3rem;
+  padding: 1rem 1.1rem;
+  transition: border-color 160ms ease, background-color 160ms ease;
+}
+
+.zimmer-wahl:hover {
+  border-color: var(--moos);
+}
+
+.zimmer-wahl:has(input:checked) {
+  background: var(--moos-hell);
+  border-color: var(--tanne);
+}
+
+.zimmer-wahl input {
+  accent-color: var(--tanne);
+  height: 1.15rem;
+  margin: 0 0 0.3rem;
+  width: 1.15rem;
+}
+
+.zimmer-wahl-titel {
+  font-family: var(--serif);
+  font-size: 1.02rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.zimmer-wahl-text {
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.zimmer-wahl-meta {
+  color: var(--holz-text);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  margin-top: 0.35rem;
+  text-transform: uppercase;
+}
+
+.reise-grid {
+  display: grid;
+  gap: 0.9rem;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  margin-top: 0.9rem;
+}
+
+.feld-grid {
+  display: grid;
+  gap: 0.9rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+.feld {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.feld--breit {
+  grid-column: 1 / -1;
+}
+
+.feld label {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.feld input,
+.feld textarea {
+  background: var(--birke);
+  border: 1px solid var(--linie);
+  border-radius: 0;
+  color: var(--rinde);
+  font: inherit;
+  min-height: 48px;
+  padding: 0.6rem 0.9rem;
+  width: 100%;
+}
+
+.feld textarea {
+  min-height: 0;
+  resize: vertical;
+}
+
+.feld input:focus-visible,
+.feld textarea:focus-visible,
+.btn:focus-visible,
+.zimmer-wahl input:focus-visible,
+.card-cta:focus-visible,
+.thema-kachel:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--moos);
+  outline-offset: 2px;
+}
+
+.feld .small {
+  color: var(--moos);
+}
+
+.fehler {
+  background: #f7e8df;
+  border-left: 4px solid #a3502c;
+  color: #7c3a1d;
+  font-weight: 500;
+  margin-block: 1rem 0.4rem;
+  padding: 0.7rem 1rem;
+}
+
+#anfrage-form .btn {
+  margin-top: 1.1rem;
+}
+
+.bestaetigung {
+  background: var(--karte);
+  border: 1px solid var(--tanne);
+  margin-top: 1.8rem;
+  padding: clamp(1.5rem, 4vw, 2.4rem);
+  text-align: center;
+}
+
+.bestaetigung h2 {
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  margin-bottom: 0.9rem;
+}
+
+.bestaetigung h2 em {
+  color: var(--holz-text);
+  font-style: italic;
+  text-transform: none;
+}
+
+.bestaetigung > p {
+  margin-inline: auto;
+  max-width: 36rem;
+}
+
+.bestaetigung p + p {
+  margin-top: 0.6rem;
+}
+
+.bestaetigung .btn {
+  margin-top: 1.4rem;
+}
+
+@media (max-width: 640px) {
+  .feld-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- Heller Footer --- */
+.site-footer {
+  border-top: 1px solid var(--linie);
+  margin-top: clamp(1rem, 3vw, 2rem);
+  padding-block: 2.6rem;
+  text-align: center;
+}
+
+.site-footer strong {
+  color: var(--tanne);
+}
+
+.site-footer .small {
+  color: var(--moos);
+}
+
+.site-footer p + p {
+  margin-top: 0.5rem;
+}
