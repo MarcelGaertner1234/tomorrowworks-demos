@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Strauß anfragen — Blumen Viva, Mosbach-Neckarelz (Design-Entwurf)</title>
+    <meta
+      name="description"
+      content="Design-Entwurf von TOMORROWWORKS — Persönliche Konzeptvorschau, nicht die offizielle Website des Betriebs."
+    >
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+
+    <header>
+      <div class="banner">
+        <strong>Design-Entwurf von TOMORROWWORKS</strong> —
+        nicht die offizielle Website von Blumen Viva ·
+        Persönliche Konzeptvorschau
+      </div>
+      <div class="site-header">
+        <div class="site-header-inhalt">
+          <a class="wortmarke" href="index.html" aria-label="Blumen Viva — zur Startseite">
+            <svg class="ornament" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round">
+                <path d="M12 12V3.5"/>
+                <path d="M12 12l7.4-4.3"/>
+                <path d="M12 12l7.4 4.3"/>
+                <path d="M12 12l-7.4 4.3"/>
+                <path d="M12 12L4.6 7.7"/>
+              </g>
+              <circle cx="12" cy="12" r="2.5" fill="var(--gruen)" stroke="none"/>
+            </svg>
+            <span class="wortmarke-text">
+              <small>Blumen</small>
+              <em>Viva</em>
+            </span>
+          </a>
+          <nav class="site-nav" aria-label="Hauptnavigation">
+            <a href="index.html">← Zur Homepage</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main id="inhalt">
+      <div class="planer">
+        <div class="planer-kopf">
+          <span class="demo-chip">DEMO · KEINE SPEICHERUNG</span>
+          <h1>Strauß anfragen</h1>
+          <p>
+            Fünf kurze Schritte — Anlass, Farbwelt, Wunschtermin, Grußkarte. In dieser
+            Konzeptvorschau wird nichts gespeichert oder versendet.
+          </p>
+        </div>
+
+        <form id="anfrage-form" novalidate>
+          <fieldset>
+            <legend>01 · Der Anlass</legend>
+            <div class="radio-karten">
+              <label class="radio-karte">
+                <input type="radio" name="anlass" value="geburtstag" checked>
+                <strong>Geburtstag</strong>
+                <span>Freude schenken</span>
+              </label>
+              <label class="radio-karte">
+                <input type="radio" name="anlass" value="liebe-danke">
+                <strong>Liebe &amp; Danke</strong>
+                <span>Einfach so, von Herzen</span>
+              </label>
+              <label class="radio-karte">
+                <input type="radio" name="anlass" value="hochzeit">
+                <strong>Hochzeit &amp; Feste</strong>
+                <span>Für den großen Tag</span>
+              </label>
+              <label class="radio-karte radio-karte--still">
+                <input type="radio" name="anlass" value="trauer">
+                <strong>Trauer</strong>
+                <span>Ruhig und persönlich</span>
+              </label>
+              <label class="radio-karte">
+                <input type="radio" name="anlass" value="pflanzen">
+                <strong>Pflanzen</strong>
+                <span>Grünes fürs Zuhause</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>02 · Farbwelt &amp; Umfang</legend>
+            <div class="radio-karten">
+              <label class="radio-karte">
+                <input type="radio" name="stil" value="zart">
+                <strong>Zart &amp; Pastell</strong>
+                <span>z.&nbsp;B. Rosen, Ranunkeln</span>
+              </label>
+              <label class="radio-karte">
+                <input type="radio" name="stil" value="sonnig">
+                <strong>Warm &amp; Sonnig</strong>
+                <span>z.&nbsp;B. Sonnenblumen, Dahlien</span>
+              </label>
+              <label class="radio-karte">
+                <input type="radio" name="stil" value="wildwiese">
+                <strong>Wildwiese bunt</strong>
+                <span>z.&nbsp;B. Margeriten, Gräser</span>
+              </label>
+              <label class="radio-karte">
+                <input type="radio" name="stil" value="weissgruen">
+                <strong>Weiß &amp; Grün</strong>
+                <span>z.&nbsp;B. Calla, Eukalyptus</span>
+              </label>
+              <label class="radio-karte">
+                <input type="radio" name="stil" value="offen" checked>
+                <strong>Überraschen Sie mich</strong>
+                <span>Die Floristik entscheidet</span>
+              </label>
+            </div>
+            <div class="feld">
+              <label for="umfang">Umfang</label>
+              <select id="umfang" name="umfang">
+                <option value="beratung" selected>Besprechen wir bei der Beratung</option>
+                <option value="kleiner-gruss">Kleiner Gruß</option>
+                <option value="klassisch">Klassisch</option>
+                <option value="ueppig">Üppig</option>
+              </select>
+              <p class="feld-hinweis">Ohne Preisangaben — den Rahmen besprechen Sie direkt mit dem Laden.</p>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>03 · Abholung</legend>
+            <div class="feld-reihe">
+              <div class="feld">
+                <label for="datum">Wunschtermin (Abholung)</label>
+                <input id="datum" name="datum" type="date">
+                <p class="feld-hinweis">Beispielangabe genügt — es wird nichts gespeichert.</p>
+              </div>
+              <div class="feld">
+                <label for="uhrzeit">Uhrzeit</label>
+                <select id="uhrzeit" name="uhrzeit">
+                  <option value="">Bitte wählen</option>
+                  <option value="vormittags">Vormittags (Beispielzeit: 9–12 Uhr)</option>
+                  <option value="nachmittags">Nachmittags (Beispielzeit: 14–17 Uhr)</option>
+                  <option value="telefon">Bespreche ich am Telefon</option>
+                </select>
+                <p class="feld-hinweis">Beispielzeiten der Konzeptvorschau — die echten Abholzeiten nennt Ihnen der Laden.</p>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>04 · Persönliches (optional)</legend>
+            <div class="feld">
+              <label for="gruss">Grußkarten-Text</label>
+              <textarea id="gruss" name="gruss" rows="3"></textarea>
+              <p class="feld-hinweis">Kommt von Hand auf die Karte · wird in dieser Demo nicht gespeichert.</p>
+            </div>
+            <div class="feld dropzone">
+              <span class="dropzone-hinweis">Demo — Fotos werden nicht übertragen</span>
+              <label for="fotos">Inspirationsfoto anhängen</label>
+              <input id="fotos" name="fotos" type="file" multiple accept="image/*">
+              <p class="feld-hinweis">
+                Ein Foto von einem Strauß, der Ihnen gefällt — als Anhaltspunkt für Farben
+                und Stil. In dieser Demo bleiben die Fotos auf Ihrem Gerät.
+              </p>
+              <ul class="foto-liste" data-foto-liste hidden></ul>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>05 · Kontakt</legend>
+            <div class="feld-reihe">
+              <div class="feld">
+                <label for="vorname">Vorname</label>
+                <input id="vorname" name="vorname" type="text" autocomplete="off">
+              </div>
+              <div class="feld">
+                <label for="nachname">Nachname</label>
+                <input id="nachname" name="nachname" type="text" autocomplete="off">
+              </div>
+            </div>
+            <div class="feld">
+              <label for="handy">Handynummer</label>
+              <input id="handy" name="handy" type="tel" inputmode="tel" autocomplete="off">
+              <p class="feld-hinweis">Mindestens 7 Ziffern · wird in dieser Demo nicht gespeichert.</p>
+            </div>
+          </fieldset>
+
+          <p class="fehler" data-fehler hidden></p>
+
+          <div class="planer-aktionen">
+            <button class="btn btn--voll" type="submit">Anfrage prüfen</button>
+            <a class="btn btn--kontur" href="index.html">Abbrechen</a>
+          </div>
+        </form>
+
+        <section class="bestaetigung" data-bestaetigung hidden aria-label="Bestätigung">
+          <h2>Ihre Demo-Anfrage steht</h2>
+          <p>
+            So würde Ihre Strauß-Anfrage beim Laden ankommen — in dieser Konzeptvorschau
+            wurde sie nur angezeigt:
+            <strong>es wurden keine Daten gespeichert oder versendet.</strong>
+          </p>
+          <p class="zusammenfassung" data-zusammenfassung></p>
+          <div class="planer-aktionen">
+            <button class="btn btn--kontur" type="button" data-neustart>Neue Demo-Anfrage</button>
+            <a class="btn btn--voll" href="index.html">← Zur Homepage</a>
+          </div>
+        </section>
+
+        <p class="planer-fuss">
+          Konzeptvorschau · kein Angebot · keine Bestellung · keine Datenübertragung
+        </p>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer-inhalt">
+        <p class="footer-klein">
+          <strong>Design-Entwurf von TOMORROWWORKS</strong> —
+          nicht die offizielle Website von Blumen Viva.
+          Persönliche Konzeptvorschau ohne echte Kontaktdaten; Kontaktdaten folgen nach Freigabe.
+        </p>
+      </div>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>

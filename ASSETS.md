@@ -14,6 +14,7 @@ Screenshots eigener Live-Seiten bzw. des eigenen lokalen Demo-Stands (1280×960,
 
 | Datei | Quelle |
 | --- | --- |
+| arbeiten/blumen-viva.jpg | Eigenwerk: Screenshot des lokalen Demo-Stands `demos/blumen-viva/` (Repo) |
 | arbeiten/gassert.jpg | Eigenwerk: Screenshot des lokalen Demo-Stands `demos/gassert/` (Repo) |
 | arbeiten/jost-maler.jpg | Eigenwerk: Screenshot des lokalen Demo-Stands `demos/jost-maler/` (Repo) |
 | arbeiten/glanz-und-gloria.jpg | Eigenwerk: Screenshot von https://marcelgaertner1234.github.io/tomorrowworks-demos/glanz-und-gloria/ |

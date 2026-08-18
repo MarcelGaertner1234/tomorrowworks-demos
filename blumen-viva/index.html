@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Blumen Viva — Floristik in Mosbach-Neckarelz (Design-Entwurf)</title>
+    <meta
+      name="description"
+      content="Design-Entwurf von TOMORROWWORKS — Persönliche Konzeptvorschau, nicht die offizielle Website des Betriebs."
+    >
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+
+    <header>
+      <div class="banner">
+        <strong>Design-Entwurf von TOMORROWWORKS</strong> —
+        nicht die offizielle Website von Blumen Viva ·
+        Persönliche Konzeptvorschau
+      </div>
+      <div class="site-header">
+        <div class="site-header-inhalt">
+          <a class="wortmarke" href="#inhalt" aria-label="Blumen Viva — zur Startseite">
+            <svg class="ornament" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round">
+                <path d="M12 12V3.5"/>
+                <path d="M12 12l7.4-4.3"/>
+                <path d="M12 12l7.4 4.3"/>
+                <path d="M12 12l-7.4 4.3"/>
+                <path d="M12 12L4.6 7.7"/>
+              </g>
+              <circle cx="12" cy="12" r="2.5" fill="var(--gruen)" stroke="none"/>
+            </svg>
+            <span class="wortmarke-text">
+              <small>Blumen</small>
+              <em>Viva</em>
+            </span>
+          </a>
+          <nav class="site-nav" aria-label="Hauptnavigation">
+            <a href="#anlaesse">Anlässe</a>
+            <a href="#farbwelten">Farbwelten</a>
+            <a href="#laden">Der Laden</a>
+            <a href="#ablauf">Ablauf</a>
+          </nav>
+          <a class="btn btn--voll" href="anfrage.html">Strauß anfragen</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="inhalt">
+      <!-- Hero: heller Split — Text auf der Bühne, großes Blumenmotiv rechts -->
+      <section class="hero" aria-label="Einstieg">
+        <div class="hero-inhalt">
+          <span class="eyebrow eyebrow--pink">Floristik in Mosbach-Neckarelz</span>
+          <h1>Frisch gebunden, <em>persönlich</em> gedacht.</h1>
+          <p class="hero-sub">
+            Sträuße, Pflanzen und Floristik für jeden Anlass — erzählen Sie uns, wofür es
+            blühen soll, und holen Sie Ihren Strauß frisch gebunden im Laden ab.
+          </p>
+          <div class="hero-aktionen">
+            <a class="btn btn--voll" href="anfrage.html">Strauß anfragen</a>
+            <a class="btn btn--kontur" href="#anlaesse">Anlässe ansehen</a>
+          </div>
+        </div>
+        <div class="hero-bild">
+          <img
+            src="assets/hero.jpg"
+            alt="Frische Blumen in der Floristik-Werkstatt — Beispielfoto"
+            width="1600"
+            height="1200"
+            fetchpriority="high"
+          >
+          <span class="foto-tag">Beispielfoto (Symbolbild)</span>
+        </div>
+      </section>
+
+      <!-- Intro: zentrierte schmale Textspalte -->
+      <section class="section intro" aria-label="Einleitung">
+        <div class="section-inhalt">
+          <p class="intro-statement">Blumen kauft man mit den Augen.</p>
+          <p>
+            Manche Dinge sucht man nicht in Listen — man sieht sie und weiß: die sind es.
+            Deshalb zeigt diese Seite Blumen statt Absätzen: Anlässe, Farbwelten und ein
+            kurzer Weg zu Ihrem Strauß.
+          </p>
+        </div>
+      </section>
+
+      <!-- Anlass-Kacheln (Galerie-Stil: Caption UNTER dem Bild) -->
+      <section class="section" id="anlaesse">
+        <div class="section-inhalt">
+          <div class="section-kopf">
+            <span class="eyebrow">Anlässe</span>
+            <h2>Wofür darf es blühen?</h2>
+            <p>
+              Fünf Anlässe als Startpunkt — jede Kachel führt direkt zur Anfrage.
+            </p>
+            <span class="symbolbild-hinweis">
+              Beispiel-Leistungsspektrum dieser Konzeptvorschau — das echte Sortiment stimmt der Laden mit Ihnen ab.
+            </span>
+          </div>
+          <div class="anlass-grid">
+            <a class="anlass-kachel" data-anlass="geburtstag" href="anfrage.html?anlass=geburtstag">
+              <div class="anlass-bild">
+                <img
+                  src="assets/anlass-geburtstag.jpg"
+                  alt="Bunter Geburtstagsstrauß — Beispielfoto"
+                  loading="lazy"
+                  width="1200"
+                  height="900"
+                >
+              </div>
+              <div class="anlass-caption">
+                <h3>Geburtstag</h3>
+                <span class="anlass-sub">Freude schenken</span>
+              </div>
+            </a>
+            <a class="anlass-kachel" data-anlass="liebe-danke" href="anfrage.html?anlass=liebe-danke">
+              <div class="anlass-bild">
+                <img
+                  src="assets/anlass-liebe.jpg"
+                  alt="Zarter Strauß als kleines Dankeschön — Beispielfoto"
+                  loading="lazy"
+                  width="1200"
+                  height="900"
+                >
+              </div>
+              <div class="anlass-caption">
+                <h3>Liebe &amp; Danke</h3>
+                <span class="anlass-sub">Einfach so, von Herzen</span>
+              </div>
+            </a>
+            <a class="anlass-kachel" data-anlass="hochzeit" href="anfrage.html?anlass=hochzeit">
+              <div class="anlass-bild">
+                <img
+                  src="assets/anlass-hochzeit.jpg"
+                  alt="Brautstrauß in hellen Tönen — Beispielfoto"
+                  loading="lazy"
+                  width="1200"
+                  height="900"
+                >
+              </div>
+              <div class="anlass-caption">
+                <h3>Hochzeit &amp; Feste</h3>
+                <span class="anlass-sub">Für den großen Tag</span>
+              </div>
+            </a>
+            <a class="anlass-kachel anlass-kachel--still" data-anlass="trauer" href="anfrage.html?anlass=trauer">
+              <div class="anlass-bild">
+                <img
+                  src="assets/anlass-trauer.jpg"
+                  alt="Stille weiße Blumen — Beispielfoto"
+                  loading="lazy"
+                  width="1200"
+                  height="900"
+                >
+              </div>
+              <div class="anlass-caption">
+                <h3>Trauer</h3>
+                <span class="anlass-sub">Ruhig und persönlich</span>
+              </div>
+            </a>
+            <a class="anlass-kachel" data-anlass="pflanzen" href="anfrage.html?anlass=pflanzen">
+              <div class="anlass-bild">
+                <img
+                  src="assets/anlass-pflanzen.jpg"
+                  alt="Grüne Topfpflanzen im Laden — Beispielfoto"
+                  loading="lazy"
+                  width="1200"
+                  height="900"
+                >
+              </div>
+              <div class="anlass-caption">
+                <h3>Pflanzen</h3>
+                <span class="anlass-sub">Grünes fürs Zuhause</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Farbwelten — Herzstück, verzahnt mit der Anfrage -->
+      <section class="section section--farbwelten" id="farbwelten">
+        <div class="section-inhalt">
+          <div class="section-kopf">
+            <span class="eyebrow">Farbwelten</span>
+            <h2>Welche Farben sollen es sein?</h2>
+            <p>
+              Vier Beispiel-Farbwelten als Startpunkt — in der Anfrage wählen Sie Ihre
+              Farbwelt direkt aus, den Rest besprechen wir bei der Beratung.
+            </p>
+          </div>
+          <div class="farbwelt-grid">
+            <a class="farbwelt-karte" data-stil="zart" href="anfrage.html?stil=zart">
+              <div class="farbwelt-bild">
+                <img
+                  src="assets/farbwelt-zart.jpg"
+                  alt="Strauß in zarten Pastelltönen — Beispielfoto"
+                  loading="lazy"
+                  width="1000"
+                  height="1250"
+                >
+              </div>
+              <div class="farbwelt-text">
+                <span class="farbwelt-punkte" aria-hidden="true">
+                  <i style="background:#efc9d8"></i><i style="background:#dfa8bf"></i><i style="background:#f4ecdf"></i>
+                </span>
+                <h3>Zart &amp; Pastell</h3>
+                <span class="farbwelt-sub">z.&nbsp;B. Rosen, Ranunkeln, Schleierkraut</span>
+                <span class="farbwelt-cta">Diese Farbwelt anfragen →</span>
+              </div>
+            </a>
+            <a class="farbwelt-karte" data-stil="sonnig" href="anfrage.html?stil=sonnig">
+              <div class="farbwelt-bild">
+                <img
+                  src="assets/farbwelt-sonnig.jpg"
+                  alt="Warmer Strauß in Gelb- und Orangetönen — Beispielfoto"
+                  loading="lazy"
+                  width="1000"
+                  height="1250"
+                >
+              </div>
+              <div class="farbwelt-text">
+                <span class="farbwelt-punkte" aria-hidden="true">
+                  <i style="background:#eeb63c"></i><i style="background:#d98a4a"></i><i style="background:#f6e9c9"></i>
+                </span>
+                <h3>Warm &amp; Sonnig</h3>
+                <span class="farbwelt-sub">z.&nbsp;B. Sonnenblumen, Dahlien, Craspedia</span>
+                <span class="farbwelt-cta">Diese Farbwelt anfragen →</span>
+              </div>
+            </a>
+            <a class="farbwelt-karte" data-stil="wildwiese" href="anfrage.html?stil=wildwiese">
+              <div class="farbwelt-bild">
+                <img
+                  src="assets/farbwelt-wildwiese.jpg"
+                  alt="Bunter Wiesenstrauß mit Gräsern — Beispielfoto"
+                  loading="lazy"
+                  width="1000"
+                  height="1250"
+                >
+              </div>
+              <div class="farbwelt-text">
+                <span class="farbwelt-punkte" aria-hidden="true">
+                  <i style="background:#c94f7c"></i><i style="background:#7d6bb0"></i><i style="background:#eeb63c"></i>
+                </span>
+                <h3>Wildwiese bunt</h3>
+                <span class="farbwelt-sub">z.&nbsp;B. Margeriten, Kornblumen, Gräser</span>
+                <span class="farbwelt-cta">Diese Farbwelt anfragen →</span>
+              </div>
+            </a>
+            <a class="farbwelt-karte" data-stil="weissgruen" href="anfrage.html?stil=weissgruen">
+              <div class="farbwelt-bild">
+                <img
+                  src="assets/farbwelt-weissgruen.jpg"
+                  alt="Strauß in Weiß und Grün — Beispielfoto"
+                  loading="lazy"
+                  width="1000"
+                  height="1250"
+                >
+              </div>
+              <div class="farbwelt-text">
+                <span class="farbwelt-punkte" aria-hidden="true">
+                  <i style="background:#f4f3ec"></i><i style="background:#cdd8c4"></i><i style="background:#2e7d4f"></i>
+                </span>
+                <h3>Weiß &amp; Grün</h3>
+                <span class="farbwelt-sub">z.&nbsp;B. Calla, Eukalyptus, weiße Rosen</span>
+                <span class="farbwelt-cta">Diese Farbwelt anfragen →</span>
+              </div>
+            </a>
+          </div>
+          <p class="farbwelt-hinweis">
+            Beispiel-Farbwelten mit Beispielfotos (Symbolbilder) — was gerade Saison hat, sehen Sie im Laden.
+          </p>
+        </div>
+      </section>
+
+      <!-- Trauerfloristik — ruhig und pietätvoll abgesetzt (belegte Leistung) -->
+      <section class="section section--still" id="trauer">
+        <div class="section-inhalt">
+          <div class="still-split">
+            <div class="still-text">
+              <span class="eyebrow eyebrow--still">Trauerfloristik</span>
+              <h2>In schweren Stunden</h2>
+              <p>
+                Trauergestecke und stille Sträuße sagen, wofür Worte fehlen. Kommen Sie
+                gern persönlich vorbei — wir nehmen uns Zeit und beraten Sie in Ruhe.
+              </p>
+              <p>
+                Wenn es Ihnen leichter fällt, können Sie Ihre Anfrage auch vorab notieren;
+                alles Weitere besprechen wir gemeinsam im Laden.
+              </p>
+              <a class="btn btn--still" href="anfrage.html?anlass=trauer">Trauerfloristik anfragen</a>
+            </div>
+            <div class="still-bild">
+              <img
+                src="assets/trauer-still.jpg"
+                alt="Ruhige weiße Blumen in sanftem Licht — Beispielfoto"
+                loading="lazy"
+                width="1200"
+                height="1500"
+              >
+              <span class="foto-tag">Beispielfoto (Symbolbild)</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Der Laden — rollenbasiert -->
+      <section class="section" id="laden">
+        <div class="section-inhalt">
+          <div class="laden-split">
+            <div class="laden-bild">
+              <img
+                src="assets/laden.jpg"
+                alt="Floristin bindet einen Strauß an der Werkbank — Beispielfoto"
+                loading="lazy"
+                width="1200"
+                height="1500"
+              >
+              <span class="foto-tag">Beispielfoto (Symbolbild)</span>
+            </div>
+            <div class="laden-text">
+              <span class="eyebrow">Der Laden</span>
+              <h2>Ihr Blumenladen in Neckarelz</h2>
+              <p>
+                Frische Blumen und Pflanzen, gebunden am Ladentisch: Sie erzählen, wofür
+                es sein soll — wir stellen zusammen, was dazu passt und gerade am
+                schönsten blüht.
+              </p>
+              <ul class="laden-punkte">
+                <li>Beratung am Ladentisch — persönlich und ohne Eile</li>
+                <li>Sträuße frisch gebunden, auf Wunsch vorbestellt</li>
+                <li>Blumen und Pflanzen fürs Zuhause</li>
+              </ul>
+              <a class="btn btn--kontur" href="anfrage.html">Strauß anfragen</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Ablauf -->
+      <section class="section section--ablauf" id="ablauf">
+        <div class="section-inhalt">
+          <div class="section-kopf">
+            <span class="eyebrow">So läuft es</span>
+            <h2>In drei Schritten zum Strauß</h2>
+          </div>
+          <div class="ablauf-grid">
+            <div class="ablauf-schritt">
+              <span class="ablauf-nummer" aria-hidden="true">01</span>
+              <h3>Anfragen</h3>
+              <p>Anlass, Farbwelt und Wunschtermin — in zwei Minuten notiert.</p>
+            </div>
+            <div class="ablauf-schritt">
+              <span class="ablauf-nummer" aria-hidden="true">02</span>
+              <h3>Beraten</h3>
+              <p>Wir melden uns, besprechen Blumen und Umfang und klären Ihre Wünsche.</p>
+            </div>
+            <div class="ablauf-schritt">
+              <span class="ablauf-nummer" aria-hidden="true">03</span>
+              <h3>Abholen</h3>
+              <p>Ihr Strauß steht frisch gebunden zum Wunschtermin für Sie bereit.</p>
+            </div>
+          </div>
+          <p class="ablauf-hinweis">
+            Beispiel-Ablauf der Konzeptvorschau — den tatsächlichen Ablauf stimmt der Laden mit Ihnen ab.
+          </p>
+        </div>
+      </section>
+
+      <!-- Anfrage-Teaser -->
+      <section class="section section--teaser" id="anfrage-sektion">
+        <div class="section-inhalt">
+          <div class="section-kopf">
+            <span class="eyebrow">Strauß anfragen</span>
+            <h2>Erzählen Sie uns, wofür es blühen soll</h2>
+            <p>
+              Anlass, Farbwelt, Wunschtermin und auf Wunsch ein Grußkarten-Text — so ist
+              Ihr Strauß schon halb gebunden, bevor Sie im Laden stehen.
+            </p>
+          </div>
+          <p class="teaser-aktion">
+            <a class="btn btn--voll" href="anfrage.html">Zur Strauß-Anfrage</a>
+          </p>
+          <p class="teaser-meta">
+            Erreichbar Mo–Sa vormittags (Beispielzeiten) · Kontaktdaten folgen nach Freigabe
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer-inhalt">
+        <div class="footer-spalten">
+          <a class="wortmarke" href="#inhalt" aria-label="Blumen Viva — nach oben">
+            <svg class="ornament" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round">
+                <path d="M12 12V3.5"/>
+                <path d="M12 12l7.4-4.3"/>
+                <path d="M12 12l7.4 4.3"/>
+                <path d="M12 12l-7.4 4.3"/>
+                <path d="M12 12L4.6 7.7"/>
+              </g>
+              <circle cx="12" cy="12" r="2.5" fill="var(--gruen)" stroke="none"/>
+            </svg>
+            <span class="wortmarke-text">
+              <small>Blumen</small>
+              <em>Viva</em>
+            </span>
+          </a>
+          <nav aria-label="Fußnavigation">
+            <a href="#anlaesse">Anlässe</a>
+            <a href="#farbwelten">Farbwelten</a>
+            <a href="#laden">Der Laden</a>
+            <a href="anfrage.html">Strauß anfragen</a>
+          </nav>
+        </div>
+        <p class="footer-klein">
+          <strong>Design-Entwurf von TOMORROWWORKS</strong> —
+          nicht die offizielle Website von Blumen Viva.
+          Persönliche Konzeptvorschau ohne echte Kontaktdaten; Kontaktdaten folgen nach Freigabe.
+          Alle Fotos: Beispielfotos (Symbolbilder). Anlässe und Farbwelten:
+          Beispiel-Leistungsspektrum — kein Angebot des Betriebs.
+        </p>
+      </div>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>

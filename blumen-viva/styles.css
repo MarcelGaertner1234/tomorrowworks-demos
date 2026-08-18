@@ -1,0 +1,986 @@
+/* Blumen Viva — „Frisches Schaufenster" (Palette A: Blattgrün & Pfingstrose).
+   Helle, luftige Bühne; die Blumenfotos tragen die Farbe, das UI bleibt still. */
+
+:root {
+  --buehne: #fbfaf6;
+  --flaeche: #f3f1e9;
+  --hairline: #e4e1d6;
+  --gruen: #2e7d4f;
+  --gruen-text: #276b43;
+  --gruen-tief: #22402f;
+  --gruen-zart: #e9f1ea;
+  --pink: #c94f7c;
+  --pink-tief: #a63a61;
+  --tinte: #26251f;
+  --grau: #5d5c53;
+  --still: #f2f1ec;
+  --still-rand: #d8d6cc;
+  --weiss: #ffffff;
+  --sans: "Avenir Next", Avenir, "Helvetica Neue", "Segoe UI", Arial, sans-serif;
+  --serif: Didot, "Bodoni 72", "Playfair Display", Georgia, serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--tinte);
+  background: var(--buehne);
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--gruen);
+}
+
+:focus-visible {
+  outline: 2px solid var(--gruen);
+  outline-offset: 3px;
+}
+
+/* --- Skip-Link --- */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--gruen-tief);
+  color: var(--weiss);
+  padding: 12px 20px;
+  z-index: 40;
+}
+
+.skip-link:focus {
+  left: 12px;
+  top: 12px;
+}
+
+/* --- Pflicht-Banner --- */
+.banner {
+  background: var(--gruen-tief);
+  color: #f2f7f3;
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: center;
+  padding: 9px 16px;
+}
+
+.banner strong {
+  color: var(--weiss);
+}
+
+/* --- Header --- */
+.site-header {
+  background: var(--buehne);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.site-header-inhalt {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 20px;
+  flex-wrap: wrap;
+}
+
+.wortmarke {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--pink);
+  padding: 4px 0;
+}
+
+.ornament {
+  width: 26px;
+  height: 26px;
+  flex: none;
+}
+
+.wortmarke-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.05;
+}
+
+.wortmarke-text small {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--gruen);
+}
+
+.wortmarke-text em {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 26px;
+  color: var(--gruen-tief);
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 6px;
+}
+
+.site-nav a,
+.footer-spalten nav a {
+  display: inline-block;
+  padding: 13px 10px;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  color: var(--gruen-tief);
+}
+
+.site-nav a:hover,
+.footer-spalten nav a:hover {
+  color: var(--pink-tief);
+}
+
+/* --- Buttons (Pills — die einzige runde Form) --- */
+.btn {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  padding: 14px 26px;
+  border-radius: 999px;
+  border: 1.5px solid var(--gruen);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn--voll {
+  background: var(--gruen);
+  color: var(--weiss);
+}
+
+.btn--voll:hover {
+  background: var(--gruen-tief);
+  border-color: var(--gruen-tief);
+}
+
+.btn--kontur {
+  background: transparent;
+  color: var(--gruen);
+}
+
+.btn--kontur:hover {
+  background: var(--gruen-zart);
+}
+
+.btn--still {
+  background: transparent;
+  border-color: var(--grau);
+  color: #45443c;
+}
+
+.btn--still:hover {
+  background: var(--weiss);
+}
+
+/* --- Typografie-Bausteine --- */
+.eyebrow {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--gruen-text);
+  margin-bottom: 12px;
+}
+
+.eyebrow--pink {
+  color: var(--pink-tief);
+}
+
+.eyebrow--still {
+  color: var(--grau);
+}
+
+h1 {
+  font-size: clamp(34px, 5.6vw, 56px);
+  font-weight: 500;
+  line-height: 1.12;
+  letter-spacing: 0.01em;
+  color: var(--gruen-tief);
+}
+
+h1 em,
+h2 em {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+}
+
+h2 {
+  font-size: clamp(26px, 3.6vw, 38px);
+  font-weight: 500;
+  line-height: 1.18;
+  color: var(--gruen-tief);
+}
+
+h3 {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gruen-tief);
+}
+
+/* --- Sektionen --- */
+.section {
+  padding: 76px 20px;
+}
+
+.section-inhalt {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.section-kopf {
+  max-width: 640px;
+  margin: 0 auto 44px;
+  text-align: center;
+}
+
+.section-kopf p {
+  margin-top: 14px;
+  color: var(--grau);
+}
+
+.symbolbild-hinweis {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: 12.5px;
+  color: var(--grau);
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  padding: 6px 14px;
+  background: var(--weiss);
+}
+
+.foto-tag {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: #f5f4ee;
+  background: rgba(34, 38, 33, 0.62);
+  padding: 4px 10px;
+}
+
+/* --- Hero --- */
+.hero {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 40px 20px 24px;
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: 40px;
+  align-items: center;
+}
+
+.hero-inhalt {
+  padding: 20px 0;
+}
+
+.hero-sub {
+  margin-top: 18px;
+  max-width: 46ch;
+  color: var(--grau);
+  font-size: 18px;
+}
+
+.hero-aktionen {
+  margin-top: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.hero-bild {
+  position: relative;
+}
+
+.hero-bild img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+@media (min-width: 901px) {
+  .hero-bild img {
+    aspect-ratio: 6 / 5;
+  }
+}
+
+/* --- Intro --- */
+.intro {
+  padding-top: 56px;
+  padding-bottom: 40px;
+}
+
+.intro .section-inhalt {
+  max-width: 620px;
+  text-align: center;
+}
+
+.intro-statement {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(24px, 3.4vw, 34px);
+  line-height: 1.3;
+  color: var(--gruen-tief);
+  margin-bottom: 16px;
+}
+
+.intro p:not(.intro-statement) {
+  color: var(--grau);
+}
+
+/* --- Anlass-Kacheln (Galerie-Stil: Caption unter dem Bild) --- */
+.anlass-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 36px 26px;
+}
+
+/* Desktop: alle fünf Anlässe in EINER Galerie-Reihe (keine Waisen-Kachel) */
+@media (min-width: 1000px) {
+  .anlass-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 30px 20px;
+  }
+}
+
+.anlass-kachel {
+  display: block;
+  text-decoration: none;
+}
+
+.anlass-bild {
+  overflow: hidden;
+  background: var(--flaeche);
+}
+
+.anlass-bild img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.anlass-kachel:hover .anlass-bild img {
+  transform: scale(1.04);
+}
+
+.anlass-caption {
+  padding: 14px 2px 0;
+  text-align: center;
+}
+
+.anlass-kachel:hover h3 {
+  color: var(--pink-tief);
+}
+
+.anlass-kachel--still:hover h3 {
+  color: var(--grau);
+}
+
+.anlass-sub {
+  display: block;
+  margin-top: 4px;
+  font-size: 13.5px;
+  color: var(--grau);
+}
+
+/* --- Farbwelten (Herzstück) --- */
+.section--farbwelten {
+  background: var(--flaeche);
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.farbwelt-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 26px;
+}
+
+.farbwelt-karte {
+  display: block;
+  background: var(--weiss);
+  border: 1px solid var(--hairline);
+  text-decoration: none;
+  transition: border-color 0.2s ease, transform 0.3s ease;
+}
+
+.farbwelt-karte:hover {
+  border-color: var(--gruen);
+  transform: translateY(-3px);
+}
+
+.farbwelt-bild {
+  overflow: hidden;
+}
+
+.farbwelt-bild img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.farbwelt-text {
+  padding: 16px 18px 18px;
+}
+
+.farbwelt-punkte {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.farbwelt-punkte i {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  border: 1px solid rgba(38, 37, 31, 0.14);
+}
+
+.farbwelt-sub {
+  display: block;
+  margin-top: 5px;
+  font-size: 13.5px;
+  color: var(--grau);
+}
+
+.farbwelt-cta {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gruen-text);
+}
+
+.farbwelt-karte:hover .farbwelt-cta {
+  color: var(--pink-tief);
+}
+
+.farbwelt-hinweis {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 12.5px;
+  color: var(--grau);
+}
+
+/* --- Trauerfloristik: ruhig, gedämpft, ohne Pink --- */
+.section--still {
+  background: var(--still);
+}
+
+.still-split {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  gap: 48px;
+  align-items: center;
+}
+
+.still-text h2 {
+  color: #3a3931;
+}
+
+.still-text p {
+  margin-top: 14px;
+  color: #45443c;
+  max-width: 52ch;
+}
+
+.still-text .btn {
+  margin-top: 24px;
+}
+
+.still-bild {
+  position: relative;
+}
+
+.still-bild img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  filter: saturate(0.85);
+}
+
+/* --- Der Laden --- */
+.laden-split {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: 48px;
+  align-items: center;
+}
+
+.laden-bild {
+  position: relative;
+}
+
+.laden-bild img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+.laden-text p {
+  margin-top: 14px;
+  color: var(--grau);
+  max-width: 52ch;
+}
+
+.laden-punkte {
+  list-style: none;
+  margin: 20px 0 26px;
+}
+
+.laden-punkte li {
+  position: relative;
+  padding: 6px 0 6px 26px;
+}
+
+.laden-punkte li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 14px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--gruen);
+}
+
+/* --- Ablauf --- */
+.section--ablauf {
+  border-top: 1px solid var(--hairline);
+}
+
+.ablauf-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 26px;
+}
+
+.ablauf-schritt {
+  background: var(--weiss);
+  border: 1px solid var(--hairline);
+  padding: 26px 24px;
+}
+
+.ablauf-nummer {
+  display: block;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 40px;
+  line-height: 1;
+  color: var(--pink);
+  margin-bottom: 12px;
+}
+
+.ablauf-schritt p {
+  margin-top: 8px;
+  font-size: 15px;
+  color: var(--grau);
+}
+
+.ablauf-hinweis {
+  margin-top: 26px;
+  text-align: center;
+  font-size: 12.5px;
+  color: var(--grau);
+}
+
+/* --- Anfrage-Teaser --- */
+.section--teaser {
+  background: var(--gruen-tief);
+}
+
+.section--teaser .eyebrow {
+  color: #a8c9b1;
+}
+
+.section--teaser h2 {
+  color: var(--weiss);
+}
+
+.section--teaser .section-kopf {
+  margin-bottom: 26px;
+}
+
+.section--teaser .section-kopf p {
+  color: #cfe0d3;
+}
+
+.teaser-aktion {
+  text-align: center;
+}
+
+.section--teaser .btn--voll {
+  background: var(--weiss);
+  border-color: var(--weiss);
+  color: var(--gruen-tief);
+}
+
+.section--teaser .btn--voll:hover {
+  background: #e9f1ea;
+  border-color: #e9f1ea;
+}
+
+.teaser-meta {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 13px;
+  color: #cfe0d3;
+}
+
+/* --- Footer --- */
+.site-footer {
+  border-top: 1px solid var(--hairline);
+  background: var(--buehne);
+}
+
+.site-footer-inhalt {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 36px 20px 44px;
+}
+
+.footer-spalten {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 24px;
+  flex-wrap: wrap;
+}
+
+.footer-spalten nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 6px;
+}
+
+.footer-klein {
+  margin-top: 22px;
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--grau);
+  max-width: 78ch;
+}
+
+/* --- Strauß-Anfrage (Planer) --- */
+.planer {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 48px 20px 72px;
+}
+
+.planer-kopf {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.planer-kopf p {
+  margin-top: 12px;
+  color: var(--grau);
+  max-width: 54ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.demo-chip {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: var(--pink-tief);
+  border: 1px solid var(--pink);
+  border-radius: 999px;
+  padding: 6px 14px;
+  margin-bottom: 18px;
+  background: var(--weiss);
+}
+
+fieldset {
+  border: 1px solid var(--hairline);
+  background: var(--weiss);
+  padding: 24px 22px 26px;
+  margin-bottom: 22px;
+}
+
+legend {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gruen);
+  padding: 0 10px;
+}
+
+.radio-karten {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.radio-karte {
+  display: block;
+  border: 1.5px solid var(--hairline);
+  padding: 14px 16px;
+  cursor: pointer;
+  background: var(--buehne);
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.radio-karte strong {
+  display: block;
+  font-size: 15px;
+  color: var(--gruen-tief);
+}
+
+.radio-karte span {
+  display: block;
+  margin-top: 2px;
+  font-size: 13px;
+  color: var(--grau);
+}
+
+.radio-karte input {
+  accent-color: var(--gruen);
+  margin-bottom: 8px;
+}
+
+.radio-karte:has(input:checked) {
+  border-color: var(--gruen);
+  background: var(--gruen-zart);
+}
+
+.radio-karte--still:has(input:checked) {
+  border-color: var(--grau);
+  background: var(--still);
+}
+
+.feld {
+  margin-top: 16px;
+}
+
+.feld label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--gruen-tief);
+  margin-bottom: 6px;
+}
+
+.feld input,
+.feld select,
+.feld textarea {
+  width: 100%;
+  min-height: 46px;
+  font: inherit;
+  color: var(--tinte);
+  background: var(--buehne);
+  border: 1.5px solid var(--hairline);
+  border-radius: 8px;
+  padding: 11px 14px;
+}
+
+.feld textarea {
+  resize: vertical;
+}
+
+.feld input:focus,
+.feld select:focus,
+.feld textarea:focus {
+  border-color: var(--gruen);
+  outline: none;
+}
+
+.feld-hinweis {
+  margin-top: 6px;
+  font-size: 12.5px;
+  color: var(--grau);
+}
+
+.feld-reihe {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 18px;
+}
+
+.dropzone {
+  border: 1.5px dashed var(--gruen);
+  background: var(--gruen-zart);
+  padding: 18px 16px;
+  position: relative;
+}
+
+.dropzone-hinweis {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gruen-tief);
+  margin-bottom: 10px;
+}
+
+.foto-liste {
+  list-style: none;
+  margin-top: 12px;
+  font-size: 13.5px;
+  color: var(--gruen-tief);
+}
+
+.foto-liste li {
+  padding: 3px 0;
+}
+
+.fehler {
+  background: #f9e7ee;
+  border: 1.5px solid var(--pink);
+  color: #8d2547;
+  padding: 14px 18px;
+  margin-bottom: 18px;
+  font-size: 15px;
+}
+
+.planer-aktionen {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.bestaetigung {
+  border: 1.5px solid var(--gruen);
+  background: var(--weiss);
+  padding: 30px 26px;
+}
+
+.bestaetigung h2 {
+  font-size: 26px;
+}
+
+.bestaetigung p {
+  margin-top: 12px;
+  color: var(--grau);
+}
+
+.zusammenfassung {
+  background: var(--gruen-zart);
+  border: 1px solid var(--hairline);
+  padding: 14px 16px;
+  color: var(--gruen-tief) !important;
+  font-size: 15px;
+}
+
+.bestaetigung .planer-aktionen {
+  margin-top: 22px;
+}
+
+.planer-fuss {
+  margin-top: 26px;
+  text-align: center;
+  font-size: 12.5px;
+  color: var(--grau);
+}
+
+/* --- Mobil --- */
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 26px;
+    padding-top: 28px;
+  }
+
+  .hero-inhalt {
+    padding: 0;
+  }
+
+  .still-split,
+  .laden-split {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+
+  .laden-split .laden-bild {
+    order: 2;
+  }
+
+  .section {
+    padding: 56px 20px;
+  }
+}
+
+@media (max-width: 560px) {
+  .feld-reihe {
+    grid-template-columns: 1fr;
+  }
+
+  .site-header-inhalt {
+    justify-content: center;
+  }
+
+  .site-header-inhalt .btn {
+    width: 100%;
+  }
+
+  .hero-aktionen .btn,
+  .planer-aktionen .btn {
+    width: 100%;
+  }
+}
+
+/* --- Reduzierte Bewegung --- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .anlass-kachel:hover .anlass-bild img,
+  .farbwelt-karte:hover {
+    transform: none;
+  }
+}
