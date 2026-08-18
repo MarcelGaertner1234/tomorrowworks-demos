@@ -49,8 +49,6 @@ Christopher Gärtner). Übernahme von Marcel Gärtner (Team) am 18.08.2026 freig
 | projekte/rizzato-kuechen-homepage.jpg | tomorrowworks-agentur.de/bilder/screenshots/homepages/rizzato-kuechen-homepage.png |
 | projekte/auto-lackierzentrum-homepage.jpg | tomorrowworks-agentur.de/bilder/screenshots/homepages/auto-lackierzentrum-homepage.png |
 | projekte/autovermietung-mos-homepage.jpg | tomorrowworks-agentur.de/bilder/screenshots/homepages/autovermietung-mos-homepage.png |
-| projekte/fs-form-style-homepage.jpg | tomorrowworks-agentur.de/bilder/screenshots/homepages/fs-form-style-homepage.webp |
-| leistungen/websites.jpg | Eigenwerk: Screenshot von tomorrowworks-agentur.de/websites.html am 18.08.2026 |
 | leistungen/apps.jpg | Eigenwerk: Screenshot von tomorrowworks-agentur.de/apps.html am 18.08.2026 |
 | leistungen/ki.jpg | Eigenwerk: Screenshot von tomorrowworks-agentur.de/ki-einstieg.html am 18.08.2026 |
 

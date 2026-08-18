@@ -904,3 +904,61 @@ h3 {
   margin: 2.5rem 0 0;
   text-align: center;
 }
+
+/* Kompakt-Startseite */
+
+@media (min-width: 900px) {
+  .arbeiten-grid--drei {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+.leistungen-grid--kompakt {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 620px) {
+  .leistungen-grid--kompakt {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1020px) {
+  .leistungen-grid--kompakt {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.leistungen-grid--kompakt .leistung-text {
+  padding: 1.3rem 1.4rem 1.5rem;
+}
+
+.band-unterzeile {
+  margin: 0 0 1rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: #cfc7b8;
+}
+
+/* Zonen: sichtbare Sektions-Streifen auf Unterseiten */
+
+.section--zone {
+  background: var(--card);
+  box-shadow: 0 0 0 100vmax var(--card);
+  clip-path: inset(0 -100vmax);
+  border-top: 1px solid var(--linie);
+  border-bottom: 1px solid var(--linie);
+}
+
+.section--zone .leistung,
+.section--zone .ablauf-schritt,
+.section--zone .fakten-liste,
+.section--zone .beispiel-karte,
+.section--zone .einordnung,
+.section--zone .arbeit-karte a,
+.section--zone .arbeit-karte--statisch,
+.section--zone .team-karte,
+.section--zone .preis-karte {
+  background: var(--bg);
+}
