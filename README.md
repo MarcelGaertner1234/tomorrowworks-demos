@@ -12,3 +12,4 @@ Preise, Zeiten und Speisekarten sind Beispiele. Fotos sind lizenzierte Beispielb
 - [Hotel Goldener Hirsch, Mosbach](goldener-hirsch/) — Design-Entwurf „Gasthaus-Chronik"
 - [CLEAN CUT, Mosbach](clean-cut/) — Design-Entwurf „Salon-Editorial" (Friseursalon, inkl. Termin-Demo)
 - [Goldschmiede Glanz und Gloria, Mosbach](glanz-und-gloria/) — Design-Entwurf „Smaragd-Atelier" (inkl. Beratungstermin-Demo)
+- [Kimberger Kosmetikinstitut, Sinsheim](kimberger/) — Design-Entwurf „Puderzimmer / Ein neues Kapitel" (inkl. Terminwunsch-Demo)

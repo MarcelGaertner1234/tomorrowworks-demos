@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Design-Entwurf von TOMORROWWORKS: Terminwunsch-Demo des Kimberger Kosmetikinstituts in Sinsheim — Behandlung wählen, Wunschzeit senden.">
+  <title>Terminwunsch · Kimberger Kosmetikinstitut — Design-Entwurf</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#hauptinhalt">Zum Inhalt springen</a>
+
+  <aside class="draft-banner" aria-label="Hinweis zum Entwurfsstatus">
+    <strong>Design-Entwurf von TOMORROWWORKS</strong> — nicht die offizielle Website des Kimberger Kosmetikinstituts ·
+    Persönliche Konzeptvorschau · Terminwunsch ist eine Demo · Angaben werden bestätigt
+  </aside>
+
+  <header class="site-header site-header--schmal">
+    <a class="wordmark" href="index.html" aria-label="Zurück zur Startseite">
+      <strong>Kimberger</strong>
+      <span>Kosmetikinstitut · Die Kosmetik-Beauty Farm · Sinsheim</span>
+    </a>
+    <nav class="site-nav" aria-label="Hauptnavigation">
+      <a href="index.html">← Zur Homepage</a>
+      <a href="index.html#behandlungen">Behandlungen</a>
+      <a class="btn btn--primary nav-cta" href="termin.html" aria-current="page">Terminwunsch</a>
+    </nav>
+  </header>
+
+  <main id="hauptinhalt">
+    <section class="section" id="planer">
+      <div class="wrap wrap--planer">
+        <p class="eyebrow">Terminwunsch · Demo</p>
+        <h1>Ihr Terminwunsch</h1>
+        <p class="lede">Wählen Sie Behandlung und Wunschzeit — in dieser Konzeptvorschau wird nichts gesendet oder gespeichert.</p>
+        <p class="demo-chip">DEMO · KEINE SPEICHERUNG</p>
+
+        <form id="termin-form" novalidate>
+          <fieldset class="planer-schritt">
+            <legend><span class="schritt-nr">01</span> Behandlung wählen</legend>
+            <div class="behandlung-wahl">
+              <label class="wahl-card">
+                <input type="radio" name="behandlung" value="sensibelchen" checked>
+                <span class="wahl-titel">Sensibelchen</span>
+                <span class="wahl-text">„Die Kraft des Meeres" — für empfindliche Haut.</span>
+                <span class="wahl-meta">Dauer und Preis werden bestätigt</span>
+              </label>
+              <label class="wahl-card">
+                <input type="radio" name="behandlung" value="klassik">
+                <span class="wahl-titel">Klassik</span>
+                <span class="wahl-text">Der Einstieg — für ein straffes, feines Hautbild.</span>
+                <span class="wahl-meta">Dauer und Preis werden bestätigt</span>
+              </label>
+              <label class="wahl-card">
+                <input type="radio" name="behandlung" value="klassik-plus">
+                <span class="wahl-titel">Klassik-Plus</span>
+                <span class="wahl-text">Mehr Vitalität, ein strahlendes Hauterlebnis.</span>
+                <span class="wahl-meta">Dauer und Preis werden bestätigt</span>
+              </label>
+              <label class="wahl-card">
+                <input type="radio" name="behandlung" value="komfort">
+                <span class="wahl-titel">Komfort</span>
+                <span class="wahl-text">Gesichtsbehandlung und Handpflege in einem Termin.</span>
+                <span class="wahl-meta">Dauer und Preis werden bestätigt</span>
+              </label>
+              <label class="wahl-card">
+                <input type="radio" name="behandlung" value="anti-aging">
+                <span class="wahl-titel">Anti-Aging</span>
+                <span class="wahl-text">Zwei Behandlungen zur Wahl — die Beratung klärt, welche passt.</span>
+                <span class="wahl-meta">Dauer und Preis werden bestätigt</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset class="planer-schritt">
+            <legend><span class="schritt-nr">02</span> Wunschzeit wählen</legend>
+            <p class="small">Bisherige Zeiten — werden bestätigt: Di/Mi/Fr 8:30–18:00 · Sa 8:30–13:00. Alle Zeiten sind illustrative Platzhalter und keine echte Verfügbarkeit.</p>
+            <div class="zeiten-grid" role="group" aria-label="Beispielhafte Wunschzeiten">
+              <div class="zeiten-tag">
+                <p class="zeiten-titel">Beispieltag Dienstag</p>
+                <div class="slot-reihe">
+                  <button type="button" class="slot" data-slot="Dienstag, Vormittag">Vormittag</button>
+                  <button type="button" class="slot" data-slot="Dienstag, Nachmittag">Nachmittag</button>
+                </div>
+              </div>
+              <div class="zeiten-tag">
+                <p class="zeiten-titel">Beispieltag Freitag</p>
+                <div class="slot-reihe">
+                  <button type="button" class="slot" data-slot="Freitag, Vormittag">Vormittag</button>
+                  <button type="button" class="slot" data-slot="Freitag, Nachmittag">Nachmittag</button>
+                </div>
+              </div>
+              <div class="zeiten-tag">
+                <p class="zeiten-titel">Beispieltag Samstag</p>
+                <div class="slot-reihe">
+                  <button type="button" class="slot" data-slot="Samstag, früher Vormittag">Früher Vormittag</button>
+                  <button type="button" class="slot" data-slot="Samstag, später Vormittag">Später Vormittag</button>
+                </div>
+              </div>
+            </div>
+            <p class="small slot-auswahl" data-slot-anzeige hidden>Gewählte Wunschzeit: <strong data-slot-wert></strong></p>
+          </fieldset>
+
+          <fieldset class="planer-schritt">
+            <legend><span class="schritt-nr">03</span> Ihre Angaben</legend>
+            <div class="feld-grid">
+              <div class="feld">
+                <label for="vorname">Vorname</label>
+                <input id="vorname" name="vorname" type="text" autocomplete="given-name" required>
+              </div>
+              <div class="feld">
+                <label for="nachname">Nachname</label>
+                <input id="nachname" name="nachname" type="text" autocomplete="family-name" required>
+              </div>
+              <div class="feld feld--breit">
+                <label for="handy">Handynummer für die Rückmeldung</label>
+                <input id="handy" name="handy" type="tel" inputmode="tel" autocomplete="tel" required>
+                <p class="small">Mindestens 7 Ziffern · wird in dieser Demo nicht gespeichert.</p>
+              </div>
+              <div class="feld feld--breit">
+                <label for="nachricht">Nachricht (optional)</label>
+                <textarea id="nachricht" name="nachricht" rows="3"></textarea>
+              </div>
+            </div>
+            <p class="fehler" data-fehler hidden></p>
+            <button type="submit" class="btn btn--primary">Terminwunsch senden (Demo) <span class="arrow" aria-hidden="true">→</span></button>
+          </fieldset>
+        </form>
+
+        <div class="bestaetigung" data-bestaetigung hidden>
+          <h2>Danke — Ihr Terminwunsch ist angekommen. <em>Fast.</em></h2>
+          <p>Das ist eine Konzeptvorschau: <strong>es wurden keine Daten gespeichert oder versendet</strong>. Auf der echten Website würde das Institut Ihren Wunsch jetzt erhalten und sich zur Bestätigung zurückmelden.</p>
+          <p class="small" data-zusammenfassung></p>
+          <button type="button" class="btn btn--ghost" data-neustart>Demo neu starten</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p><strong>Design-Entwurf von TOMORROWWORKS</strong> — nicht die offizielle Website des Kimberger Kosmetikinstituts.</p>
+      <p class="small">Konzeptvorschau · keine echte Verfügbarkeit · keine Buchung · keine Datenübertragung</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
