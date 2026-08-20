@@ -1290,3 +1290,114 @@ textarea:focus-visible {
     padding: 40px 18px 64px;
   }
 }
+
+/* ---------- Echte Bandfotos (Freigabe der Band, 20.08.2026) ---------- */
+
+.foto-tag--links {
+  right: auto;
+  left: 12px;
+}
+
+.hero-duo {
+  position: absolute;
+  z-index: 1;
+  right: clamp(10px, 5vw, 90px);
+  bottom: 0;
+  height: min(58vh, 560px);
+  width: auto;
+  filter: drop-shadow(0 22px 44px rgba(0, 0, 0, 0.55));
+}
+
+@media (max-width: 1150px) {
+  .hero-duo {
+    display: none;
+  }
+}
+
+.band-raster {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+  align-items: stretch;
+}
+
+.band-karte {
+  background: #fff;
+  border: 1px solid var(--hairline-hell);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.band-karte img {
+  aspect-ratio: 4 / 5;
+  object-fit: contain;
+  background: #fff;
+  width: 100%;
+  padding: 18px 18px 0;
+}
+
+.band-karte figcaption {
+  padding: 16px 20px 20px;
+  border-top: 3px solid var(--gold);
+  font-size: 0.95rem;
+  color: rgba(36, 29, 24, 0.82);
+}
+
+.band-karte figcaption span {
+  display: block;
+  font-family: var(--display);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 1.2rem;
+  color: var(--bordeaux);
+  margin-bottom: 4px;
+}
+
+.band-karte figcaption em {
+  display: block;
+  margin-top: 8px;
+  font-style: normal;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gold-text);
+}
+
+@media (max-width: 860px) {
+  .band-raster {
+    grid-template-columns: 1fr;
+  }
+}
+
+.benefiz-karte {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 40px;
+  align-items: center;
+}
+
+.benefiz-cover img {
+  border-radius: 8px;
+  border: 1px solid var(--hairline-hell);
+}
+
+.benefiz-cover figcaption {
+  margin-top: 10px;
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--gold-text);
+}
+
+@media (max-width: 720px) {
+  .benefiz-karte {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .benefiz-cover {
+    max-width: 320px;
+  }
+}

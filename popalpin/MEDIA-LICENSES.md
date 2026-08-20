@@ -30,3 +30,20 @@ abgeleitet aus den im Logo-SVG der Band belegten Markenfarben #d4af37/#7a0000).
 Aussortiert wegen Markenrisiko (nicht verwendet): Festzelt-Kandidat mit
 sichtbaren Brauerei-Logos (Veltins-Schirme, Unsplash 9xsXiWvjnLQ) sowie
 DJ-Motive mit erkennbaren Gerätemarken.
+
+## Eigene Fotos der Band (Freigabe erteilt)
+
+**Rechte: PopAlpin.** Freigabe der Band am 20.08.2026 (übermittelt über den
+Auftrags-Absender an Marcel). Quelle: Original-Uploads der bestehenden Website
+(gesichert unter `original-bilder/`, siehe dortiges MANIFEST.tsv).
+
+| Datei | Motiv | Quelle (Original) |
+| --- | --- | --- |
+| assets/band-duo-cut.webp | Kern-Duo, freigestellt (Weiß-Hintergrund von TOMORROWWORKS entfernt) | galaband_duo_popalpin_cut_466x616.webp |
+| assets/band-duo.webp | Kern-Duo auf Weiß | galaband_duo_popalpin_cut_466x616.webp |
+| assets/band-dj.jpg | DJ-Set mit Schallplatte | dj_solo_sig0802_m-Kopie.jpg |
+| assets/band-tracht.webp | Band in Tracht mit Blasinstrumenten | gaudi_oktoberfest_4_540x749.webp |
+| assets/cover-route66.jpg | Single-Cover Tractor-Cowboys/Route 66 | PopAlpin_TractorCowboys_Route66.jpeg |
+
+Kennzeichnung in der Demo: „Foto: PopAlpin" / „Artwork: PopAlpin"; der
+Footer weist die Mischung (Bandfotos + lizenzierte Beispielfotos) aus.
