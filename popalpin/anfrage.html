@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Termin anfragen — PopAlpin (Design-Entwurf)</title>
+    <meta
+      name="description"
+      content="Design-Entwurf von TOMORROWWORKS — Persönliche Konzeptvorschau, nicht die offizielle Website der Band."
+    >
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+
+    <header>
+      <div class="banner">
+        <strong>Design-Entwurf von TOMORROWWORKS</strong> —
+        nicht die offizielle Website von PopAlpin ·
+        Persönliche Konzeptvorschau
+      </div>
+      <div class="site-header">
+        <div class="site-header-inhalt">
+          <a class="wortmarke" href="index.html" aria-label="PopAlpin — zur Startseite">
+            <svg class="ornament" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+              <path d="M4,23 L11,11 L15.5,17.5 L21,8 L28,23" fill="none" stroke="var(--gold)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="21" cy="8" r="2.3" fill="var(--bordeaux)" stroke="var(--gold)" stroke-width="1"/>
+            </svg>
+            <span class="wortmarke-text">Pop&nbsp;Alpin</span>
+          </a>
+          <nav class="site-nav" aria-label="Hauptnavigation">
+            <a href="index.html#anlaesse">Anlässe</a>
+            <a href="index.html#besetzung">Besetzung</a>
+            <a href="index.html#tourplan">Tourplan</a>
+            <a href="index.html#repertoire">Repertoire</a>
+          </nav>
+          <a class="btn btn--geist" href="index.html">Zur Übersicht</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="inhalt">
+      <div class="anfrage-kopf">
+        <div class="sektion-inhalt">
+          <p class="eyebrow eyebrow--gold">Ein Abend. Ein Termin.</p>
+          <h1 class="display">Wunschtermin anfragen.</h1>
+          <p>
+            Fünf kurze Schritte — Sie erhalten eine persönliche, unverbindliche
+            Einschätzung. Demo-Vorschau: Es wird nichts übertragen und nichts
+            gespeichert.
+          </p>
+        </div>
+      </div>
+
+      <div class="anfrage-main">
+      <div class="form-fehler" data-fehler role="alert" tabindex="-1">
+        <strong>Bitte prüfen Sie Ihre Angaben:</strong>
+        <ul data-fehler-liste></ul>
+      </div>
+
+      <form id="anfrage-form" novalidate>
+        <fieldset class="schritt">
+          <legend><span class="schritt-nr">Schritt 1</span> Ihr Anlass</legend>
+          <div class="wahl-raster">
+            <div class="wahl">
+              <input type="radio" id="anlass-hochzeit" name="anlass" value="hochzeit">
+              <label for="anlass-hochzeit"><strong>Hochzeit</strong><small>Eröffnungstanz bis Party</small></label>
+            </div>
+            <div class="wahl">
+              <input type="radio" id="anlass-gala" name="anlass" value="gala">
+              <label for="anlass-gala"><strong>Gala-Abend</strong><small>Tischmusik &amp; Party-Mix</small></label>
+            </div>
+            <div class="wahl">
+              <input type="radio" id="anlass-geburtstag" name="anlass" value="geburtstag">
+              <label for="anlass-geburtstag"><strong>Geburtstag</strong><small>Für alle Generationen</small></label>
+            </div>
+            <div class="wahl">
+              <input type="radio" id="anlass-fastnacht" name="anlass" value="fastnacht">
+              <label for="anlass-fastnacht"><strong>Fastnacht</strong><small>Die fünfte Jahreszeit</small></label>
+            </div>
+            <div class="wahl">
+              <input type="radio" id="anlass-festzelt" name="anlass" value="festzelt">
+              <label for="anlass-festzelt"><strong>Festzelt</strong><small>Stimmung auf den Bänken</small></label>
+            </div>
+            <div class="wahl">
+              <input type="radio" id="anlass-vereinsfest" name="anlass" value="vereinsfest">
+              <label for="anlass-vereinsfest"><strong>Vereinsfest</strong><small>Der Publikumsmagnet</small></label>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="schritt">
+          <legend><span class="schritt-nr">Schritt 2</span> Datum &amp; Ort</legend>
+          <div class="feld-raster">
+            <label class="feld" for="datum">
+              <span>Wunschtermin</span>
+              <input type="date" id="datum" name="datum">
+            </label>
+            <label class="feld" for="uhrzeit">
+              <span>Beginn (ca.)</span>
+              <select id="uhrzeit" name="uhrzeit">
+                <option value="">Noch offen</option>
+                <option value="17">ab 17 Uhr (Beispiel)</option>
+                <option value="18">ab 18 Uhr (Beispiel)</option>
+                <option value="19">ab 19 Uhr (Beispiel)</option>
+                <option value="20">ab 20 Uhr (Beispiel)</option>
+              </select>
+            </label>
+            <label class="feld feld--voll" for="ort">
+              <span>Ort der Veranstaltung (PLZ / Ort)</span>
+              <input type="text" id="ort" name="ort" autocomplete="off" placeholder="z. B. 12345 Beispielstadt">
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="schritt">
+          <legend><span class="schritt-nr">Schritt 3</span> Ihre Besetzung</legend>
+          <div class="wahl-raster wahl-raster--vier">
+            <div class="wahl">
+              <input type="radio" id="besetzung-dj" name="besetzung" value="dj">
+              <label for="besetzung-dj"><strong>DJ</strong><small>Kompakt &amp; flexibel</small></label>
+            </div>
+            <div class="wahl">
+              <input type="radio" id="besetzung-duo" name="besetzung" value="duo">
+              <label for="besetzung-duo"><strong>Duo</strong><small>Das Kern-Format</small></label>
+            </div>
+            <div class="wahl">
+              <input type="radio" id="besetzung-trio" name="besetzung" value="trio">
+              <label for="besetzung-trio"><strong>Trio</strong><small>Die goldene Mitte</small></label>
+            </div>
+            <div class="wahl">
+              <input type="radio" id="besetzung-band" name="besetzung" value="band">
+              <label for="besetzung-band"><strong>Komplette Band</strong><small>Volle Band-Power</small></label>
+            </div>
+            <div class="wahl">
+              <input type="radio" id="besetzung-offen" name="besetzung" value="offen">
+              <label for="besetzung-offen"><strong>Noch unsicher</strong><small>Wir beraten Sie gern</small></label>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="schritt">
+          <legend><span class="schritt-nr">Schritt 4</span> Ihre Feier</legend>
+          <div class="feld-raster">
+            <label class="feld" for="gaeste">
+              <span>Gästezahl (ca.)</span>
+              <select id="gaeste" name="gaeste">
+                <option value="">Bitte wählen</option>
+                <option value="bis-50">bis 50</option>
+                <option value="50-100">50–100</option>
+                <option value="100-300">100–300</option>
+                <option value="ueber-300">über 300</option>
+              </select>
+            </label>
+            <label class="feld" for="technik">
+              <span>Ton- &amp; Lichttechnik</span>
+              <select id="technik" name="technik">
+                <option value="">Bitte wählen</option>
+                <option value="band">Komplett von der Band</option>
+                <option value="location">Location hat Technik</option>
+                <option value="offen">Noch unklar</option>
+              </select>
+            </label>
+            <label class="feld feld--voll" for="wuensche">
+              <span>Wunschsongs oder Besonderheiten (optional)</span>
+              <textarea id="wuensche" name="wuensche" placeholder="z. B. Eröffnungstanz, Lieblingslied, Programmpunkte …"></textarea>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="schritt">
+          <legend><span class="schritt-nr">Schritt 5</span> Ihre Kontaktdaten</legend>
+          <div class="feld-raster">
+            <label class="feld" for="name">
+              <span>Name</span>
+              <input type="text" id="name" name="name" autocomplete="off">
+            </label>
+            <label class="feld" for="mail">
+              <span>E-Mail</span>
+              <input type="email" id="mail" name="mail" autocomplete="off">
+            </label>
+            <label class="feld feld--voll" for="telefon">
+              <span>Telefon (optional, für den schnellen Rückruf)</span>
+              <input type="tel" id="telefon" name="telefon" autocomplete="off">
+            </label>
+          </div>
+          <p class="check-zeile">
+            <input type="checkbox" id="demo-ok" name="demo-ok">
+            <label for="demo-ok">
+              Mir ist klar, dass dies eine Demo ist — es wird nichts übertragen
+              und nichts gespeichert.
+            </label>
+          </p>
+        </fieldset>
+
+        <div class="abschicken-zeile">
+          <button class="btn btn--geist-dunkel" type="submit">Anfrage senden (Demo)</button>
+          <p class="demo-hinweis">
+            Demo-Attrappe: Der Klick erzeugt nur die Zusammenfassung unten —
+            keine Übertragung, keine Speicherung.
+          </p>
+        </div>
+      </form>
+
+      <section class="form-erfolg" data-bestaetigung aria-live="polite">
+        <h2>Vielen Dank — das wäre Ihre Anfrage.</h2>
+        <p>
+          Im echten Betrieb ginge diese Zusammenfassung jetzt direkt an die
+          Band, und Sie bekämen kurzfristig eine persönliche Rückmeldung zur
+          Verfügbarkeit.
+        </p>
+        <dl data-zusammenfassung></dl>
+        <p class="demo-hinweis">
+          Demo-Vorschau: Es wurde nichts übertragen und nichts gespeichert.
+        </p>
+      </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer-inhalt">
+        <p class="footer-klein">
+          <strong>Design-Entwurf von TOMORROWWORKS</strong> — nicht die
+          offizielle Website von PopAlpin. Persönliche Konzeptvorschau ohne
+          echte Kontaktdaten; Kontaktdaten folgen nach Freigabe. Zeiten und
+          Auswahlwerte sind Beispiele. Das Formular ist eine gekennzeichnete
+          Attrappe.
+        </p>
+      </div>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -10,6 +10,7 @@ entsprechenden Hinweis-Banner und ist auf `noindex` gestellt).
 
 ## Design-Studien in diesem Repo
 
+- `popalpin/` — Partyband (Hochzeiten & Events), Donaueschingen
 - `sml-spitzer/` — Spedition (Umzüge & Logistik), Mosbach
 - `spitzer-moden/` — Modehaus (Damen & Herren), Mosbach
 - `blumen-viva/` — Blumenladen (Floristik), Mosbach-Neckarelz

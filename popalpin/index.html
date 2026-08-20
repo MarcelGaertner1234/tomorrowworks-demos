@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>PopAlpin — Liveband für Hochzeiten &amp; Events (Design-Entwurf)</title>
+    <meta
+      name="description"
+      content="Design-Entwurf von TOMORROWWORKS — Persönliche Konzeptvorschau, nicht die offizielle Website der Band."
+    >
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+
+    <header>
+      <div class="banner">
+        <strong>Design-Entwurf von TOMORROWWORKS</strong> —
+        nicht die offizielle Website von PopAlpin ·
+        Persönliche Konzeptvorschau
+      </div>
+      <div class="site-header">
+        <div class="site-header-inhalt">
+          <a class="wortmarke" href="#inhalt" aria-label="PopAlpin — zur Startseite">
+            <svg class="ornament" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+              <path d="M4,23 L11,11 L15.5,17.5 L21,8 L28,23" fill="none" stroke="var(--gold)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="21" cy="8" r="2.3" fill="var(--bordeaux)" stroke="var(--gold)" stroke-width="1"/>
+            </svg>
+            <span class="wortmarke-text">Pop&nbsp;Alpin</span>
+          </a>
+          <nav class="site-nav" aria-label="Hauptnavigation">
+            <a href="#anlaesse">Anlässe</a>
+            <a href="#besetzung">Besetzung</a>
+            <a href="#tourplan">Tourplan</a>
+            <a href="#repertoire">Repertoire</a>
+          </nav>
+          <a class="btn btn--gold" href="anfrage.html">Termin anfragen</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="inhalt">
+      <!-- Hero: Bühne statt Baukasten -->
+      <section class="hero" aria-label="Einstieg">
+        <div class="hero-bild">
+          <img
+            src="assets/hero.jpg"
+            alt="Warmes Bühnenlicht über einer feiernden Menge — Beispielfoto"
+            width="1600"
+            height="1067"
+            fetchpriority="high"
+          >
+        </div>
+        <span class="foto-tag">Beispielfoto (Symbolbild)</span>
+        <div class="hero-inhalt">
+          <p class="eyebrow eyebrow--gold">Liveband für Hochzeiten &amp; Events</p>
+          <h1 class="display">Wir machen die Tanzfläche voll.</h1>
+          <p class="hero-unterzeile">
+            30 Jahre Bühnenerfahrung, über 500 Events — und immer das richtige
+            Lied zur richtigen Zeit. Von der emotionalen Hochzeit bis zum
+            bebenden Festzelt.
+          </p>
+
+          <form class="schnellcheck" action="anfrage.html" method="get" aria-label="Verfügbarkeits-Schnellcheck">
+            <p class="schnellcheck-titel">Verfügbarkeits-Schnellcheck</p>
+            <div class="schnellcheck-felder">
+              <div>
+                <label for="check-datum">Wunschtermin</label>
+                <input type="date" id="check-datum" name="datum">
+              </div>
+              <div>
+                <label for="check-anlass">Anlass</label>
+                <select id="check-anlass" name="anlass">
+                  <option value="">Bitte wählen</option>
+                  <option value="hochzeit">Hochzeit</option>
+                  <option value="gala">Gala-Abend</option>
+                  <option value="geburtstag">Geburtstag</option>
+                  <option value="fastnacht">Fastnacht</option>
+                  <option value="festzelt">Festzelt</option>
+                  <option value="vereinsfest">Vereinsfest</option>
+                </select>
+              </div>
+              <button class="btn btn--gold" type="submit">Termin prüfen</button>
+            </div>
+            <p class="schnellcheck-hinweis">
+              Unverbindlich &amp; kostenlos — Demo-Vorschau: Die Anfrage wird nicht übertragen.
+            </p>
+          </form>
+        </div>
+      </section>
+
+      <!-- Anlässe -->
+      <section class="sektion" id="anlaesse" aria-label="Anlässe">
+        <div class="sektion-inhalt">
+          <div class="sektion-kopf reveal">
+            <p class="eyebrow eyebrow--dunkel">Die richtige Band für jeden Moment</p>
+            <h2 class="display">Sechs Bühnen. Ein Versprechen.</h2>
+            <p>
+              Vom Eröffnungstanz bis zur Party-Eskalation: PopAlpin liefert das
+              passende Set für Ihr Event — persönlich vorbereitet, für alle
+              Generationen.
+            </p>
+          </div>
+          <div class="anlass-raster">
+            <a class="anlass-kachel reveal" href="anfrage.html?anlass=hochzeit">
+              <figure>
+                <img src="assets/anlass-hochzeit.jpg" alt="Brautpaar tanzt unter Lichterketten — Beispielfoto" width="900" height="675" loading="lazy">
+                <span class="foto-tag">Beispielfoto</span>
+              </figure>
+              <div class="anlass-text">
+                <h3>Hochzeiten</h3>
+                <p>Vom Eröffnungstanz bis zur vollen Tanzfläche — der emotionale Höhepunkt Ihres Tages.</p>
+                <span class="anlass-cta">Termin anfragen →</span>
+              </div>
+            </a>
+            <a class="anlass-kachel reveal" href="anfrage.html?anlass=gala">
+              <figure>
+                <img src="assets/anlass-gala.jpg" alt="Festlich gedeckte Tafel mit Kandelabern und Rosen — Beispielfoto" width="900" height="675" loading="lazy">
+                <span class="foto-tag">Beispielfoto</span>
+              </figure>
+              <div class="anlass-text">
+                <h3>Gala-Abende</h3>
+                <p>Dezente Tischmusik, dann glamouröser Party-Mix — stilsicher für höchste Ansprüche.</p>
+                <span class="anlass-cta">Termin anfragen →</span>
+              </div>
+            </a>
+            <a class="anlass-kachel reveal" href="anfrage.html?anlass=geburtstag">
+              <figure>
+                <img src="assets/anlass-geburtstag.jpg" alt="Gäste stoßen mit Gläsern an — Beispielfoto" width="900" height="675" loading="lazy">
+                <span class="foto-tag">Beispielfoto</span>
+              </figure>
+              <div class="anlass-text">
+                <h3>Geburtstage</h3>
+                <p>Wir treffen den Nerv Ihrer Gäste — persönlich vorbereitet, für alle Generationen.</p>
+                <span class="anlass-cta">Termin anfragen →</span>
+              </div>
+            </a>
+            <a class="anlass-kachel reveal" href="anfrage.html?anlass=fastnacht">
+              <figure>
+                <img src="assets/anlass-fastnacht.jpg" alt="Konfettiregen über feiernder Menge — Beispielfoto" width="900" height="675" loading="lazy">
+                <span class="foto-tag">Beispielfoto</span>
+              </figure>
+              <div class="anlass-text">
+                <h3>Fastnacht</h3>
+                <p>Maximale Energie für die fünfte Jahreszeit — wir bringen den Saal zum Kochen.</p>
+                <span class="anlass-cta">Termin anfragen →</span>
+              </div>
+            </a>
+            <a class="anlass-kachel reveal" href="anfrage.html?anlass=festzelt">
+              <figure>
+                <img src="assets/anlass-festzelt.jpg" alt="Livemusik im beleuchteten Festzelt am Abend — Beispielfoto" width="900" height="675" loading="lazy">
+                <span class="foto-tag">Beispielfoto</span>
+              </figure>
+              <div class="anlass-text">
+                <h3>Festzelte</h3>
+                <p>Bebende Stimmung und pure Leidenschaft — Ihre Gäste sicher auf den Bänken.</p>
+                <span class="anlass-cta">Termin anfragen →</span>
+              </div>
+            </a>
+            <a class="anlass-kachel reveal" href="anfrage.html?anlass=vereinsfest">
+              <figure>
+                <img src="assets/anlass-vereinsfest.jpg" alt="Abendliches Fest im Freien mit Lichtern — Beispielfoto" width="900" height="675" loading="lazy">
+                <span class="foto-tag">Beispielfoto</span>
+              </figure>
+              <div class="anlass-text">
+                <h3>Vereinsfeste</h3>
+                <p>Der Publikumsmagnet für Ihr Fest — wir liefern die Energie, die es zum Erfolg macht.</p>
+                <span class="anlass-cta">Termin anfragen →</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Statement: Weltweit gebucht -->
+      <section class="statement" aria-label="Referenzen">
+        <div class="statement-bild">
+          <img src="assets/statement.jpg" alt="Publikum mit erhobenen Händen im warmen Bühnenlicht — Beispielfoto" width="1600" height="1067" loading="lazy">
+        </div>
+        <span class="foto-tag">Beispielfoto (Symbolbild)</span>
+        <div class="statement-inhalt">
+          <p class="eyebrow eyebrow--gold">Weltweit gebucht</p>
+          <h2 class="display">Von Las Vegas bis in die Schweizer Alpen.</h2>
+          <p>
+            Wer im Hofbräuhaus in Las Vegas die Massen zum Toben bringt und in
+            Schweizer Sterne-Hotels für Glanz sorgt, überlässt auf Ihrem Event
+            nichts dem Zufall. <em>(Angaben der Band)</em>
+          </p>
+        </div>
+      </section>
+
+      <!-- Besetzungen -->
+      <section class="sektion" id="besetzung" aria-label="Besetzungen">
+        <div class="sektion-inhalt">
+          <div class="sektion-kopf reveal">
+            <p class="eyebrow eyebrow--dunkel">Maßgeschneiderte Besetzung</p>
+            <h2 class="display">Vier Besetzungen. Ein Anspruch.</h2>
+            <p>
+              Ob als DJ, stimmungsvolles Duo, Trio oder mit kompletter
+              Band-Power: PopAlpin passt sich Ihrer Eventgröße und Ihrem Budget
+              an — inklusive professioneller Ton- &amp; Lichttechnik.
+            </p>
+          </div>
+          <div class="besetzung-raster">
+            <article class="besetzung-karte reveal">
+              <figure>
+                <img src="assets/besetzung-dj.jpg" alt="Hand am Plattenteller eines DJ-Pults — Beispielfoto" width="720" height="960" loading="lazy">
+                <span class="foto-tag">Beispielfoto</span>
+              </figure>
+              <div class="besetzung-text">
+                <h3>DJ</h3>
+                <p>Der volle PopAlpin-Sound aus einer Hand — kompakt, flexibel, mit Gespür für den Moment.</p>
+                <p class="besetzung-passt">Passt zu: kleineren Feiern &amp; Aftershow</p>
+                <a class="anlass-cta" href="anfrage.html?besetzung=dj">Als DJ anfragen →</a>
+              </div>
+            </article>
+            <article class="besetzung-karte reveal">
+              <figure>
+                <img src="assets/besetzung-duo.jpg" alt="Zwei Stimmen im Scheinwerferkegel — Beispielfoto" width="720" height="960" loading="lazy">
+                <span class="foto-tag">Beispielfoto</span>
+              </figure>
+              <div class="besetzung-text">
+                <h3>Duo</h3>
+                <p>Das stimmungsvolle Kern-Format: zwei Vollblutmusiker, Gesang und Entertainment mit Herz.</p>
+                <p class="besetzung-passt">Passt zu: Hochzeiten &amp; Geburtstagen</p>
+                <a class="anlass-cta" href="anfrage.html?besetzung=duo">Als Duo anfragen →</a>
+              </div>
+            </article>
+            <article class="besetzung-karte reveal">
+              <figure>
+                <img src="assets/besetzung-trio.jpg" alt="Drei Silhouetten an Mikrofonen im Bühnennebel — Beispielfoto" width="720" height="960" loading="lazy">
+                <span class="foto-tag">Beispielfoto</span>
+              </figure>
+              <div class="besetzung-text">
+                <h3>Trio</h3>
+                <p>Mehr Stimmen, mehr Instrumente, mehr Dynamik — die goldene Mitte für volle Säle.</p>
+                <p class="besetzung-passt">Passt zu: Gala-Abenden &amp; Vereinsfesten</p>
+                <a class="anlass-cta" href="anfrage.html?besetzung=trio">Als Trio anfragen →</a>
+              </div>
+            </article>
+            <article class="besetzung-karte reveal">
+              <figure>
+                <img src="assets/besetzung-band.jpg" alt="Große Bühne mit Publikum und Lichtshow — Beispielfoto" width="720" height="960" loading="lazy">
+                <span class="foto-tag">Beispielfoto</span>
+              </figure>
+              <div class="besetzung-text">
+                <h3>Komplette Band</h3>
+                <p>Die volle Band-Power für große Bühnen — wenn das Festzelt beben soll.</p>
+                <p class="besetzung-passt">Passt zu: Festzelten &amp; Fastnacht</p>
+                <a class="anlass-cta" href="anfrage.html?besetzung=band">Als Band anfragen →</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tourplan -->
+      <section class="sektion sektion--dunkel" id="tourplan" aria-label="Tourplan">
+        <div class="sektion-inhalt">
+          <div class="sektion-kopf reveal">
+            <p class="eyebrow eyebrow--gold">Live erleben</p>
+            <h2 class="display">Wo die Tanzfläche als Nächstes voll wird.</h2>
+            <p>
+              Öffentliche Auftritte sind die beste Hörprobe: vorbeikommen,
+              mitfeiern, selbst überzeugen.
+            </p>
+          </div>
+          <p class="tourplan-kennzeichen">
+            Beispiel-Tourplan zur Veranschaulichung — echte Termine folgen nach Freigabe
+          </p>
+          <div class="tour-liste">
+            <div class="tour-zeile reveal">
+              <p class="tour-datum"><small>Sa</small>12. Sep</p>
+              <div class="tour-ort">
+                <h3>Donaueschingen</h3>
+                <p>Festzelt Musikverein — Beispieltermin</p>
+              </div>
+              <span class="tour-status tour-status--offen">Öffentlich</span>
+            </div>
+            <div class="tour-zeile reveal">
+              <p class="tour-datum"><small>Sa</small>26. Sep</p>
+              <div class="tour-ort">
+                <h3>Bodensee</h3>
+                <p>Privates Event — Beispieltermin</p>
+              </div>
+              <span class="tour-status tour-status--privat">Privat gebucht</span>
+            </div>
+            <div class="tour-zeile reveal">
+              <p class="tour-datum"><small>Sa</small>10. Okt</p>
+              <div class="tour-ort">
+                <h3>Schwarzwald-Baar</h3>
+                <p>Herbstfest — Beispieltermin</p>
+              </div>
+              <span class="tour-status tour-status--offen">Öffentlich</span>
+            </div>
+            <div class="tour-zeile reveal">
+              <p class="tour-datum"><small>Sa</small>07. Nov</p>
+              <div class="tour-ort">
+                <h3>Arosa</h3>
+                <p>Hotel-Gala — Beispieltermin</p>
+              </div>
+              <span class="tour-status tour-status--privat">Privat gebucht</span>
+            </div>
+            <div class="tour-zeile reveal">
+              <p class="tour-datum"><small>Sa</small>13. Feb</p>
+              <div class="tour-ort">
+                <h3>Region Donaueschingen</h3>
+                <p>Fastnachts-Saison — Beispieltermin</p>
+              </div>
+              <span class="tour-status tour-status--offen">Öffentlich</span>
+            </div>
+          </div>
+          <p class="tour-fussnote">
+            Alle Einträge sind Platzhalter dieser Konzeptvorschau. Im echten
+            Betrieb pflegt die Band hier ihre öffentlichen Auftritte — und jeder
+            freie Samstag wird zur Buchungschance.
+          </p>
+        </div>
+      </section>
+
+      <!-- Zahlen -->
+      <section class="sektion" aria-label="Erfahrung in Zahlen">
+        <div class="sektion-inhalt">
+          <div class="zahlen-raster">
+            <div class="reveal">
+              <p class="zahl">30+</p>
+              <p class="zahl-label">Jahre Bühnenerfahrung</p>
+            </div>
+            <div class="reveal">
+              <p class="zahl">500+</p>
+              <p class="zahl-label">Erfolgreiche Auftritte</p>
+            </div>
+            <div class="reveal">
+              <p class="zahl">100&nbsp;%</p>
+              <p class="zahl-label">Zufriedene Auftraggeber</p>
+            </div>
+          </div>
+          <p class="zahlen-fussnote">Angaben der Band (Stand der bestehenden Website).</p>
+        </div>
+      </section>
+
+      <!-- Repertoire / Setlist -->
+      <section class="setlist" id="repertoire" aria-label="Repertoire">
+        <div class="setlist-bild">
+          <img src="assets/bokeh.jpg" alt="Goldene Lichtpunkte auf dunklem Grund — Beispielfoto" width="1400" height="933" loading="lazy">
+        </div>
+        <div class="setlist-inhalt">
+          <div class="sektion-kopf reveal">
+            <p class="eyebrow eyebrow--gold">Repertoire</p>
+            <h2 class="display">Ein Ausschnitt aus der Setlist.</h2>
+            <p>
+              Von zeitlosen Oldies und Schlager-Klassikern bis zu aktuellen
+              Chart-Breakern und Rock-Hymnen — für jeden Gast der richtige Beat.
+            </p>
+          </div>
+          <ol class="setlist-spalten">
+            <li><span class="setlist-nr">01</span><span class="setlist-titel">Swiss Lady</span></li>
+            <li><span class="setlist-nr">02</span><span class="setlist-titel">Ring of Fire</span></li>
+            <li><span class="setlist-nr">03</span><span class="setlist-titel">Old Time Rock'n'Roll</span></li>
+            <li><span class="setlist-nr">04</span><span class="setlist-titel">Aber bitte mit Sahne</span></li>
+            <li><span class="setlist-nr">05</span><span class="setlist-titel">Proud Mary</span></li>
+            <li><span class="setlist-nr">06</span><span class="setlist-titel">La Bamba</span></li>
+            <li><span class="setlist-nr">07</span><span class="setlist-titel">The One That I Want</span></li>
+            <li><span class="setlist-nr">08</span><span class="setlist-titel">Mama Loo</span></li>
+            <li><span class="setlist-nr">09</span><span class="setlist-titel">Rock Me</span></li>
+            <li><span class="setlist-nr">10</span><span class="setlist-titel">Pocahontas</span></li>
+          </ol>
+          <p class="setlist-fussnote">
+            Titel-Auswahl von der bestehenden Website. Hörproben gibt es dort
+            und auf Anfrage — diese Konzeptvorschau spielt bewusst keine
+            Audiodateien ab. Ihr Wunschsong oder Hochzeitstanz wird nach
+            Absprache individuell einstudiert.
+          </p>
+        </div>
+      </section>
+
+      <!-- Stärken -->
+      <section class="sektion" aria-label="Stärken">
+        <div class="sektion-inhalt">
+          <div class="sektion-kopf reveal">
+            <p class="eyebrow eyebrow--dunkel">Sechs gute Gründe</p>
+            <h2 class="display">Nichts dem Zufall überlassen.</h2>
+          </div>
+          <div class="staerken-raster">
+            <div class="staerke reveal">
+              <h3>Grenzenlose Genre-Vielfalt</h3>
+              <p>Oldies, Schlager, Charts, Rock-Hymnen — für jeden Gast der richtige Beat im Gepäck.</p>
+            </div>
+            <div class="staerke reveal">
+              <h3>Entertainment mit Herz</h3>
+              <p>Wir feiern nicht nur vor, sondern mit Ihren Gästen — Fingerspitzengefühl für jede Generation.</p>
+            </div>
+            <div class="staerke reveal">
+              <h3>Maßgeschneiderte Besetzung</h3>
+              <p>DJ, Duo, Trio oder komplette Band — perfekt angepasst an Eventgröße und Budget.</p>
+            </div>
+            <div class="staerke reveal">
+              <h3>Ton- &amp; Lichttechnik</h3>
+              <p>Brillanter Klang und atmosphärisches Licht, inklusive Full-Service für Ihre eigenen Beiträge.</p>
+            </div>
+            <div class="staerke reveal">
+              <h3>Der Soundtrack Ihres Lebens</h3>
+              <p>Ihr Wunschsong oder der perfekte Hochzeitstanz — nach Absprache individuell einstudiert.</p>
+            </div>
+            <div class="staerke reveal">
+              <h3>Non-Stop Party-Modus</h3>
+              <p>Minimale Pausen, perfekter Flow — eine Tanzfläche, die niemals leer wird.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Kundenstimmen -->
+      <section class="sektion sektion--eng" aria-label="Kundenstimmen">
+        <div class="sektion-inhalt">
+          <div class="sektion-kopf reveal">
+            <p class="eyebrow eyebrow--dunkel">Kundenstimmen</p>
+            <h2 class="display">Begeisterte Gäste berichten.</h2>
+          </div>
+          <div class="stimmen-raster">
+            <figure class="stimme reveal">
+              <span class="stimme-chip">Osterparty</span>
+              <blockquote>
+                Absolute Powerband von der ersten Minute an. Reißt das Publikum
+                sofort mit. Sehr zu empfehlen für Jung und Alt.
+              </blockquote>
+              <figcaption>Kundenstimme von der bestehenden Website (gekürzt)</figcaption>
+            </figure>
+            <figure class="stimme reveal">
+              <span class="stimme-chip">60. Geburtstag</span>
+              <blockquote>
+                Von der ersten Minute an beste Stimmung, die Tanzfläche war
+                durchgehend voll. Von Schlager über Rock und Pop bis zu echten
+                Partyklassikern — wirklich jeder kam auf seine Kosten.
+              </blockquote>
+              <figcaption>Kundenstimme von der bestehenden Website (gekürzt)</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- Benefiz -->
+      <section class="sektion sektion--eng" aria-label="Benefiz-Projekt">
+        <div class="sektion-inhalt">
+          <div class="benefiz-karte reveal">
+            <p class="eyebrow eyebrow--dunkel">Benefiz-Projekt</p>
+            <h2 class="display">Ein Song für ein besonderes Abenteuer.</h2>
+            <p>
+              Für die <strong>Tractor Cowboys</strong> — fünf Freunde, die im
+              September 2026 mit Oldtimer-Traktoren die komplette Route 66
+              fahren und dabei Spenden für Kinder in Not sammeln — hat PopAlpin
+              einen eigenen Song geschrieben und produziert: Text, Melodie und
+              Arrangement komplett selbst, die Kosten hat die Band vollständig
+              getragen.
+            </p>
+            <p>
+              Es gibt ihn in einer englischen und einer Mundart-Version — auf
+              allen gängigen Streaming-Plattformen und über QR-Codes entlang
+              der Tour.
+            </p>
+            <p class="benefiz-fussnote">
+              Inhalt von der bestehenden Website übernommen; die vollständige
+              Projektseite ist nicht Teil dieser Konzeptvorschau.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Anfrage-Teaser -->
+      <section class="sektion sektion--dunkel teaser" aria-label="Anfrage">
+        <div class="sektion-inhalt reveal">
+          <p class="eyebrow eyebrow--gold">Ein Abend. Ein Termin.</p>
+          <h2 class="display">Solange der Termin noch frei ist.</h2>
+          <p>
+            Jede Veranstaltung ist einzigartig. Schildern Sie uns Anlass, Datum
+            und Wünsche — Sie erhalten eine persönliche, unverbindliche
+            Einschätzung.
+          </p>
+          <a class="btn btn--gold" href="anfrage.html">Wunschtermin anfragen</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer-inhalt">
+        <div class="footer-spalten">
+          <a class="wortmarke" href="#inhalt" aria-label="PopAlpin — nach oben">
+            <svg class="ornament" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+              <path d="M4,23 L11,11 L15.5,17.5 L21,8 L28,23" fill="none" stroke="var(--gold)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="21" cy="8" r="2.3" fill="var(--bordeaux)" stroke="var(--gold)" stroke-width="1"/>
+            </svg>
+            <span class="wortmarke-text">Pop&nbsp;Alpin</span>
+          </a>
+          <div class="footer-kontakt">
+            <p><strong>Ihr direkter Draht zur Band</strong></p>
+            <p>
+              Kontaktdaten folgen nach Freigabe. In der echten Fassung stehen
+              hier Telefon, WhatsApp und E-Mail — plus der
+              Verfügbarkeits-Schnellcheck.
+            </p>
+          </div>
+        </div>
+        <p class="footer-klein">
+          <strong>Design-Entwurf von TOMORROWWORKS</strong> — nicht die
+          offizielle Website von PopAlpin. Persönliche Konzeptvorschau ohne
+          echte Kontaktdaten. Alle Fotos: lizenzierte Beispielfotos
+          (Symbolbilder), keine Aufnahmen der Band. Tourplan: Beispieltermine.
+          Zahlen und Zitate: Angaben der Band von der bestehenden Website.
+        </p>
+      </div>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
