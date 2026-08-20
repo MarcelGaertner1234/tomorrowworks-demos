@@ -1,0 +1,941 @@
+/* Durmus Berkant Gebäudereinigung — Demo „Klare Sauberkeit"
+   Fast-weiße Bühne, EIN Klarblau-Akzent, weiche Karten mit Hairline-Kontur,
+   Pill-CTAs. Referenz-DNA attio.com (Spec §3b): riesige zentrierte Headline,
+   sparsamer Farbeinsatz, Fenster-Rahmen-Fotokarte als Hero-Anker. */
+
+:root {
+  --buehne: #fafbfd;
+  --flaeche: #ffffff;
+  --hairline: #e2e8ef;
+  --blau: #2563eb;
+  --blau-tief: #1a4fc4;
+  --tinte: #141a22;
+  --grau: #5b6472;
+  --font: -apple-system, "Inter", "Helvetica Neue", Arial, sans-serif;
+  --breite: 1160px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  color: var(--tinte);
+  font-family: var(--font);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  background-color: var(--buehne);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--blau);
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 800;
+  line-height: 1.15;
+  margin: 0 0 1rem;
+}
+
+p {
+  margin: 0 0 1rem;
+  color: var(--grau);
+}
+
+:focus-visible {
+  outline: 3px solid var(--blau);
+  outline-offset: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--blau);
+  color: #fff;
+  padding: 0.8rem 1.2rem;
+  z-index: 60;
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
+/* ---------- Pflicht-Banner ---------- */
+
+.banner {
+  background: var(--tinte);
+  color: #f6f8fb;
+  font-size: 0.78rem;
+  letter-spacing: 0.01em;
+  text-align: center;
+  padding: 0.55rem 1rem;
+}
+
+.banner strong {
+  color: #fff;
+}
+
+/* ---------- Header ---------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: var(--flaeche);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.site-header-inhalt {
+  max-width: var(--breite);
+  margin: 0 auto;
+  padding: 0.7rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.wortmarke {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  text-decoration: none;
+  color: var(--tinte);
+  min-height: 44px;
+  margin-right: auto;
+}
+
+.swatch {
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+  background: var(--blau);
+  flex: none;
+}
+
+.wortmarke-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.wortmarke-text strong {
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+}
+
+.wortmarke-text span {
+  font-size: 0.78rem;
+  color: var(--grau);
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.site-nav a {
+  color: var(--tinte);
+  text-decoration: none;
+  font-size: 0.95rem;
+  min-height: 44px;
+  padding: 0 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.site-nav a:hover {
+  color: var(--blau);
+}
+
+/* ---------- Buttons (Pills) ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.7rem 1.4rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.btn--voll {
+  background: var(--blau);
+  color: #fff;
+}
+
+.btn--voll:hover {
+  background: var(--blau-tief);
+}
+
+.btn--kontur {
+  background: transparent;
+  border: 1.5px solid var(--tinte);
+  color: var(--tinte);
+}
+
+.btn--kontur:hover {
+  border-color: var(--blau);
+  color: var(--blau);
+}
+
+/* ---------- Hero (Referenz-DNA attio.com §3b: Pill-Badge, riesige zentrierte
+   Headline, Fenster-Rahmen-Fotokarte statt Produkt-UI-Karte) ---------- */
+
+.pill-badge {
+  display: inline-flex;
+  align-items: center;
+  background: var(--flaeche);
+  border: 1px solid var(--hairline);
+  color: var(--blau-tief);
+  border-radius: 999px;
+  padding: 0.45rem 1.1rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  margin-bottom: 1.4rem;
+}
+
+.hero {
+  position: relative;
+  text-align: center;
+  padding: clamp(3rem, 8vw, 6rem) 1.25rem 0;
+  max-width: var(--breite);
+  margin: 0 auto;
+}
+
+.hero-inhalt {
+  max-width: 46rem;
+  margin: 0 auto;
+}
+
+.hero-titel {
+  font-size: clamp(28px, 5vw, 44px);
+  letter-spacing: -0.01em;
+}
+
+.hero-sub {
+  max-width: 38rem;
+  margin: 0 auto 2rem;
+  font-size: 1.05rem;
+}
+
+.hero-aktionen {
+  display: flex;
+  justify-content: center;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+  margin-bottom: clamp(2.5rem, 6vw, 4rem);
+}
+
+.fensterkarte {
+  position: relative;
+  max-width: 920px;
+  margin: 0 auto;
+  background: var(--flaeche);
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  box-shadow: 0 30px 70px -30px rgba(20, 26, 34, 0.28);
+  overflow: hidden;
+}
+
+.fensterkarte-chrome {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.7rem 0.9rem;
+  background: var(--buehne);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.fensterkarte-chrome span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--hairline);
+}
+
+.fensterkarte-chrome span:nth-child(1) {
+  background: #f0605a;
+}
+
+.fensterkarte-chrome span:nth-child(2) {
+  background: #f5bd4f;
+}
+
+.fensterkarte-chrome span:nth-child(3) {
+  background: #61c454;
+}
+
+.fensterkarte img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.bildunterschrift {
+  display: inline-block;
+  background: rgba(20, 26, 34, 0.62);
+  color: #fff;
+  font-size: 0.66rem;
+  letter-spacing: 0.03em;
+  border-radius: 999px;
+  padding: 0.25rem 0.6rem;
+}
+
+.bildunterschrift--hero {
+  display: block;
+  width: fit-content;
+  margin: 0.9rem auto clamp(3rem, 7vw, 5rem);
+  background: transparent;
+  color: var(--grau);
+}
+
+/* ---------- Vertrauens-Band (dezent, kein großes Badge) ---------- */
+
+.vertrauen-band {
+  background: var(--flaeche);
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.vertrauen-inhalt {
+  max-width: var(--breite);
+  margin: 0 auto;
+  padding: 1.1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.vertrauen-sterne {
+  color: var(--blau);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+}
+
+.vertrauen-text {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--grau);
+}
+
+.vertrauen-text strong {
+  color: var(--tinte);
+}
+
+/* ---------- Sektionen ---------- */
+
+.section {
+  padding: clamp(3rem, 7vw, 5.5rem) 1.25rem;
+}
+
+.section-inhalt {
+  max-width: var(--breite);
+  margin: 0 auto;
+}
+
+.section-kopf {
+  text-align: center;
+  max-width: 40rem;
+  margin: 0 auto clamp(2rem, 5vw, 3rem);
+}
+
+.eyebrow {
+  display: block;
+  color: var(--blau-tief);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+
+.section h2 {
+  font-size: clamp(1.5rem, 3.4vw, 2.1rem);
+}
+
+.section-kopf p {
+  font-size: 1.02rem;
+}
+
+.beispiel-hinweis {
+  display: block;
+  color: var(--grau);
+  font-size: 0.78rem;
+  font-style: italic;
+}
+
+/* ---------- Leistungs-Kacheln (auch Systeme-Kacheln §4b: gleiche Optik) ---------- */
+
+.leistungen-grid,
+.systeme-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.4rem;
+}
+
+.kachel {
+  display: flex;
+  flex-direction: column;
+  background: var(--flaeche);
+  border: 1px solid var(--hairline);
+  border-radius: 16px;
+  box-shadow: 0 20px 40px -28px rgba(20, 26, 34, 0.22);
+  overflow: hidden;
+}
+
+.kachel-bild {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: var(--hairline);
+  overflow: hidden;
+}
+
+.kachel-bild img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.kachel-bild .bildunterschrift {
+  position: absolute;
+  left: 0.6rem;
+  bottom: 0.6rem;
+}
+
+.kachel-text {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.3rem 1.4rem 1.5rem;
+}
+
+.kachel h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+}
+
+.kachel-text .beispiel-hinweis {
+  margin-bottom: 0.9rem;
+}
+
+.kachel-cta {
+  margin-top: auto;
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--blau);
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.kachel-cta:hover {
+  color: var(--blau-tief);
+  text-decoration: underline;
+}
+
+/* ---------- Über uns ---------- */
+
+.ueberuns-split {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: clamp(2rem, 5vw, 3.5rem);
+  align-items: center;
+}
+
+.ueberuns-bilder {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 0.9rem;
+  align-items: end;
+}
+
+.ueberuns-bild {
+  position: relative;
+  border: 1px solid var(--hairline);
+  border-radius: 12px;
+  box-shadow: 0 20px 40px -28px rgba(20, 26, 34, 0.22);
+  overflow: hidden;
+}
+
+.ueberuns-bild--gross {
+  aspect-ratio: 4 / 5;
+}
+
+.ueberuns-bild--klein {
+  aspect-ratio: 1 / 1;
+}
+
+.ueberuns-bild img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ueberuns-bild .bildunterschrift {
+  position: absolute;
+  left: 0.5rem;
+  bottom: 0.5rem;
+}
+
+.ueberuns-text h2 {
+  text-align: left;
+}
+
+.ueberuns-text .eyebrow {
+  text-align: left;
+}
+
+.ueberuns-punkte {
+  list-style: none;
+  padding: 0;
+  margin: 1.3rem 0 1.7rem;
+}
+
+.ueberuns-punkte li {
+  position: relative;
+  padding: 0.3rem 0 0.3rem 1.5rem;
+  color: var(--grau);
+}
+
+.ueberuns-punkte li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.85rem;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--blau);
+}
+
+/* ---------- Ablauf ---------- */
+
+.ablauf-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.4rem;
+}
+
+.ablauf-schritt {
+  background: var(--flaeche);
+  border: 1px solid var(--hairline);
+  border-radius: 16px;
+  box-shadow: 0 20px 40px -28px rgba(20, 26, 34, 0.18);
+  padding: 1.8rem 1.6rem;
+}
+
+.ablauf-nummer {
+  display: block;
+  color: var(--blau);
+  font-size: 2.1rem;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 0.8rem;
+}
+
+.ablauf-schritt h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.4rem;
+}
+
+.ablauf-schritt p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.ablauf-hinweis {
+  text-align: center;
+  font-size: 0.85rem;
+  margin: 1.6rem 0 0;
+}
+
+/* ---------- FAQ ---------- */
+
+.faq-liste {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  max-width: 44rem;
+  margin: 0 auto;
+}
+
+.faq-eintrag {
+  background: var(--flaeche);
+  border: 1px solid var(--hairline);
+  border-radius: 14px;
+  padding: 1rem 1.3rem;
+}
+
+.faq-eintrag summary {
+  cursor: pointer;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  color: var(--tinte);
+  list-style: none;
+}
+
+.faq-eintrag summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-eintrag summary::before {
+  content: '+';
+  color: var(--blau);
+  font-weight: 800;
+  margin-right: 0.7rem;
+}
+
+.faq-eintrag[open] summary::before {
+  content: '–';
+}
+
+.faq-eintrag p {
+  margin: 0.7rem 0 0;
+}
+
+/* ---------- Anfrage-Teaser ---------- */
+
+.teaser-karte {
+  background: var(--flaeche);
+  border: 1px solid var(--hairline);
+  border-radius: 20px;
+  box-shadow: 0 30px 60px -34px rgba(20, 26, 34, 0.25);
+  padding: clamp(2rem, 6vw, 3.5rem);
+}
+
+.teaser-aktion {
+  text-align: center;
+  margin: 0 0 0.9rem;
+}
+
+.teaser-meta {
+  text-align: center;
+  font-size: 0.88rem;
+  margin: 0;
+}
+
+/* ---------- Responsive (Sektionen) ---------- */
+
+@media (max-width: 900px) {
+  .leistungen-grid,
+  .systeme-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .ueberuns-split {
+    grid-template-columns: 1fr;
+  }
+
+  .ueberuns-bilder {
+    max-width: 26rem;
+    margin: 0 auto;
+  }
+
+  .ablauf-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .leistungen-grid,
+  .systeme-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ueberuns-bilder {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ---------- Anfrage-Seite (Planer) ---------- */
+
+.planer {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: clamp(2.5rem, 6vw, 4.5rem) 1.25rem 4rem;
+}
+
+.planer-kopf {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.planer-kopf h1 {
+  font-size: clamp(1.7rem, 5vw, 2.5rem);
+}
+
+.demo-chip {
+  display: inline-block;
+  background: var(--tinte);
+  color: #f6f8fb;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  margin-bottom: 1.2rem;
+}
+
+.planer fieldset {
+  border: 1px solid var(--hairline);
+  border-radius: 14px;
+  background: var(--flaeche);
+  padding: 1.5rem 1.4rem 1.7rem;
+  margin: 0 0 1.4rem;
+}
+
+.planer legend {
+  padding: 0 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--blau);
+}
+
+.radio-karten {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.8rem;
+}
+
+.radio-karten--zwei {
+  grid-template-columns: 1fr 1fr;
+}
+
+.radio-karte {
+  position: relative;
+  display: block;
+  background: var(--buehne);
+  border: 1.5px solid var(--hairline);
+  border-radius: 12px;
+  padding: 1rem 1.1rem;
+  cursor: pointer;
+  min-height: 44px;
+}
+
+.radio-karte:hover {
+  border-color: var(--blau);
+}
+
+.radio-karte input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.radio-karte strong {
+  display: block;
+  font-size: 0.98rem;
+}
+
+.radio-karte span {
+  color: var(--grau);
+  font-size: 0.85rem;
+}
+
+.radio-karte:has(input:checked) {
+  border-color: var(--blau);
+  box-shadow: inset 0 0 0 1.5px var(--blau);
+}
+
+.radio-karte:has(input:focus-visible) {
+  outline: 3px solid var(--blau);
+  outline-offset: 2px;
+}
+
+.feld {
+  margin-bottom: 1.1rem;
+}
+
+.feld:last-child {
+  margin-bottom: 0;
+}
+
+.feld label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.feld input,
+.feld select,
+.feld textarea {
+  width: 100%;
+  min-height: 46px;
+  border: 1.5px solid var(--hairline);
+  border-radius: 10px;
+  background: var(--buehne);
+  color: var(--tinte);
+  font-family: var(--font);
+  font-size: 1rem;
+  padding: 0.6rem 0.85rem;
+}
+
+.feld input:focus-visible,
+.feld select:focus-visible,
+.feld textarea:focus-visible {
+  outline: 3px solid var(--blau);
+  outline-offset: 1px;
+  border-color: var(--blau);
+}
+
+.feld-hinweis {
+  color: var(--grau);
+  font-size: 0.82rem;
+  margin: 0.35rem 0 0;
+}
+
+.feld-reihe {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.fehler {
+  background: #fdf3f2;
+  border: 1.5px solid #b3442f;
+  color: #7d2c1c;
+  border-radius: 10px;
+  padding: 0.9rem 1.1rem;
+  margin: 0 0 1.4rem;
+  font-size: 0.95rem;
+}
+
+.planer-aktionen {
+  display: flex;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.bestaetigung {
+  border: 1.5px solid var(--blau);
+  border-radius: 14px;
+  background: var(--flaeche);
+  padding: 2rem 1.8rem;
+}
+
+.bestaetigung h2 {
+  font-size: 1.4rem;
+}
+
+.zusammenfassung {
+  background: var(--buehne);
+  border: 1px solid var(--hairline);
+  border-radius: 10px;
+  padding: 1rem 1.2rem;
+  font-size: 0.95rem;
+  margin: 1.2rem 0 1.6rem;
+}
+
+.planer-fuss {
+  text-align: center;
+  color: var(--grau);
+  font-size: 0.82rem;
+  margin-top: 2.4rem;
+}
+
+@media (max-width: 620px) {
+  .radio-karten,
+  .radio-karten--zwei,
+  .feld-reihe {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  background: var(--flaeche);
+  border-top: 1px solid var(--hairline);
+}
+
+.site-footer-inhalt {
+  max-width: var(--breite);
+  margin: 0 auto;
+  padding: 2rem 1.25rem;
+}
+
+.footer-spalten {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+}
+
+.footer-spalten nav {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.footer-spalten nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 0.5rem;
+  color: var(--tinte);
+  text-decoration: none;
+  font-size: 0.92rem;
+}
+
+.footer-spalten nav a:hover {
+  color: var(--blau);
+}
+
+.footer-klein {
+  color: var(--grau);
+  font-size: 0.82rem;
+  margin: 0;
+}

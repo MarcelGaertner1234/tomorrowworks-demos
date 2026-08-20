@@ -26,6 +26,8 @@ Screenshots eigener Live-Seiten bzw. des eigenen lokalen Demo-Stands (1280×960,
 | arbeiten/am-waldrand.jpg | Eigenwerk: Screenshot von https://marcelgaertner1234.github.io/tomorrowworks-demos/am-waldrand/ |
 | arbeiten/wohnsignal.jpg | Eigenwerk: Screenshot von https://marcelgaertner1234.github.io/wohnsignal/ |
 | arbeiten/mos-kebab.jpg | Eigenwerk: Screenshot des lokalen Demo-Stands `demos/mos-kebab/` (Repo) |
+| arbeiten/rubi.jpg | Eigenwerk: Screenshot des lokalen Demo-Stands `demos/rubi/` (Repo) |
+| arbeiten/durmus-gebaeudereinigung.jpg | Eigenwerk: Screenshot des lokalen Demo-Stands `demos/durmus-gebaeudereinigung/` (Repo) |
 
 ## Editorial-Foto (übernommen aus der Demo-Bildwelt, rekomprimiert)
 

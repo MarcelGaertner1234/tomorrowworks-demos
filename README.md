@@ -24,5 +24,6 @@ entsprechenden Hinweis-Banner und ist auf `noindex` gestellt).
 - `mos-kebab/` — Imbiss, Mosbach-Neckarelz
 - `kompass-umzuege/` — Umzugsunternehmen, Mosbach
 - `rubi/` — Hausmeisterservice, Mosbach
+- `durmus-gebaeudereinigung/` — Gebäudereinigung, Mosbach-Diedesheim
 
 Offizielle Website des Studios: https://tomorrowworks-agentur.de
