@@ -1,0 +1,1641 @@
+/* Kompass-Umzüge — Design "Kompass": eigenes Motiv, kein externes Vorbild.
+   Palette A "Tiefes Navy & Kupfer" per Farb-Kontaktbogen von Marcel gewählt.
+   kupfer-dunkel (statt kupfer) für Kleintext/Buttons — reines Kupfer hat nur 3.34:1
+   auf Papier, zu wenig für WCAG AA bei kleiner Schrift (siehe Kontrast-Lehre). */
+
+:root {
+  --papier: #f6f3ee;
+  --flaeche: #ece6da;
+  --hairline: #d9d0bf;
+  --navy: #1c2b3a;
+  --navy-tief: #101a24;
+  --kupfer: #b5773f;
+  --kupfer-dunkel: #8a5726;
+  --kupfer-hell: #d99a5b;
+  --tinte: #21201c;
+  --unter: #6b6558;
+  --weiss: #ffffff;
+  --sans: "Helvetica Neue", Helvetica, Arial, "Segoe UI", sans-serif;
+  --radius-l: 20px;
+  --radius-m: 14px;
+  --radius-s: 10px;
+  --schatten: 0 1px 2px rgba(16, 26, 36, 0.05), 0 10px 30px -10px rgba(16, 26, 36, 0.18);
+  --schatten-hover: 0 4px 10px rgba(16, 26, 36, 0.1), 0 20px 40px -14px rgba(16, 26, 36, 0.26);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--tinte);
+  background: var(--papier);
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--kupfer-dunkel);
+}
+
+:focus-visible {
+  outline: 2px solid var(--kupfer-dunkel);
+  outline-offset: 3px;
+}
+
+/* --- Skip-Link --- */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--navy);
+  color: var(--weiss);
+  padding: 12px 20px;
+  z-index: 40;
+}
+
+.skip-link:focus {
+  left: 12px;
+  top: 12px;
+}
+
+/* --- Intro: Nadel findet einmalig "Nord", rein CSS (kein JS-Abhaengigkeit,
+   funktioniert also auch falls JS mal nicht laeuft) --- */
+.intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--navy-tief);
+  /* pointer-events:none von Anfang an — der Splash ist rein dekorativ und darf
+     Klicks/Hover nie blockieren, auch nicht waehrend der kurzen Einblendphase. */
+  pointer-events: none;
+  animation: intro-ausblenden 0.6s ease 1.5s forwards;
+}
+
+.intro-kompass {
+  width: 88px;
+  height: 88px;
+}
+
+.intro-nadel {
+  transform-origin: 50px 50px;
+  animation: intro-dreh 1.3s cubic-bezier(0.22, 1.3, 0.44, 1) both;
+}
+
+@keyframes intro-ausblenden {
+  to {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+
+@keyframes intro-dreh {
+  0% {
+    transform: rotate(-640deg);
+    opacity: 0;
+  }
+  55% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* --- Filmkorn: dezente Textur ueber der ganzen Seite (SVG-Turbulence, offline) --- */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* --- Scroll-Reveal: Sektionen heben/faden sich beim Scrollen ins Bild --- */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+[data-reveal].reveal-sichtbar {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Cursor-Spotlight auf dunklen Sektionen --- */
+.spotlight-sektion {
+  position: relative;
+  overflow: hidden;
+}
+
+.spotlight-sektion::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    320px circle at var(--spot-x, 50%) var(--spot-y, 50%),
+    rgba(217, 154, 91, 0.16),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.spotlight-sektion.spot-aktiv::before {
+  opacity: 1;
+}
+
+.spotlight-sektion .section-inhalt {
+  position: relative;
+  z-index: 1;
+}
+
+/* --- Pflicht-Banner --- */
+.banner {
+  background: var(--navy);
+  color: var(--papier);
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: center;
+  padding: 9px 16px;
+}
+
+.banner strong {
+  color: var(--weiss);
+}
+
+/* --- Header --- */
+.site-header {
+  background: var(--papier);
+  border-bottom: 1px solid var(--hairline);
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  box-shadow: 0 1px 0 rgba(16, 26, 36, 0.03), 0 12px 24px -18px rgba(16, 26, 36, 0.3);
+}
+
+.site-header-inhalt {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 20px;
+  flex-wrap: wrap;
+}
+
+.wortmarke {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  padding: 4px 0;
+}
+
+.ornament {
+  width: 26px;
+  height: 26px;
+  flex: none;
+}
+
+.wortmarke-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.05;
+}
+
+.wortmarke-text small {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--navy);
+}
+
+.wortmarke-text strong {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--kupfer-dunkel);
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 6px;
+}
+
+.site-nav a,
+.footer-spalten nav a {
+  display: inline-block;
+  padding: 13px 10px;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  color: var(--navy);
+}
+
+.site-nav a:hover,
+.footer-spalten nav a:hover {
+  color: var(--kupfer-dunkel);
+}
+
+/* --- Buttons --- */
+.btn {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  padding: 15px 30px;
+  border-radius: 999px;
+  border: 1.5px solid var(--kupfer-dunkel);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease,
+    transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn--voll {
+  background: var(--kupfer-dunkel);
+  color: var(--weiss);
+  box-shadow: 0 1px 2px rgba(138, 87, 38, 0.18), 0 10px 24px -10px rgba(138, 87, 38, 0.55);
+}
+
+.btn--voll:hover {
+  background: #703f18;
+  border-color: #703f18;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(112, 63, 24, 0.2), 0 18px 32px -12px rgba(112, 63, 24, 0.6);
+}
+
+.btn--kontur {
+  background: transparent;
+  color: var(--kupfer-dunkel);
+}
+
+.btn--kontur:hover {
+  background: #f0e3d4;
+  transform: translateY(-2px);
+}
+
+.btn--kontur-hell {
+  border-color: rgba(246, 243, 238, 0.55);
+  color: var(--papier);
+}
+
+.btn--kontur-hell:hover {
+  background: rgba(246, 243, 238, 0.14);
+  border-color: var(--papier);
+  transform: translateY(-2px);
+}
+
+/* --- Typografie-Bausteine --- */
+.eyebrow {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--kupfer-dunkel);
+  margin-bottom: 12px;
+}
+
+.eyebrow--hell {
+  color: var(--kupfer-hell);
+}
+
+h1 {
+  font-size: clamp(36px, 6vw, 62px);
+  font-weight: 800;
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  color: var(--navy);
+}
+
+h1 em,
+h2 em {
+  font-style: normal;
+  color: var(--kupfer-dunkel);
+}
+
+h2 {
+  font-size: clamp(27px, 3.8vw, 42px);
+  font-weight: 800;
+  line-height: 1.14;
+  letter-spacing: -0.01em;
+  color: var(--navy);
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+/* --- Sektionen --- */
+.section {
+  padding: 76px 20px;
+}
+
+.section-inhalt {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.section-kopf {
+  max-width: 640px;
+  margin: 0 auto 44px;
+  text-align: center;
+}
+
+.section-kopf p {
+  margin-top: 14px;
+  color: var(--unter);
+}
+
+.symbolbild-hinweis {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: 12.5px;
+  color: var(--unter);
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  padding: 6px 14px;
+  background: var(--weiss);
+}
+
+.foto-tag {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--papier);
+  background: rgba(16, 26, 36, 0.68);
+  padding: 5px 12px;
+  border-radius: 999px;
+  z-index: 2;
+}
+
+/* --- Hero: dunkle Buehne mit Navy-Overlay + lebendiger Kompassnadel --- */
+.hero {
+  position: relative;
+  min-height: 78vh;
+  display: flex;
+  align-items: center;
+  color: var(--papier);
+  overflow: hidden;
+  padding: 92px 0 40px;
+}
+
+.hero-bild {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-bild img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-bild::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(16, 26, 36, 0.4) 0%,
+    rgba(16, 26, 36, 0.66) 48%,
+    rgba(16, 26, 36, 0.9) 100%
+  );
+  z-index: 1;
+}
+
+.hero-inhalt {
+  position: relative;
+  z-index: 2;
+  max-width: 1160px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.hero-inhalt--kompass {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  gap: 36px 48px;
+  align-items: center;
+}
+
+.hero-inhalt h1,
+.hero-inhalt h1 em {
+  color: var(--papier);
+}
+
+.hero-badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--papier);
+  background: rgba(181, 119, 63, 0.22);
+  border: 1px solid rgba(217, 154, 91, 0.55);
+  border-radius: 999px;
+  padding: 7px 16px;
+  margin-bottom: 20px;
+  backdrop-filter: blur(6px);
+}
+
+.hero-sub {
+  margin-top: 18px;
+  max-width: 50ch;
+  color: rgba(246, 243, 238, 0.88);
+  font-size: 18px;
+}
+
+.hero-aktionen {
+  margin-top: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* --- Hero-Kompassnadel: lebendiges Herzstueck statt Foto-Only-Hero --- */
+.hero-kompass {
+  position: relative;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.hero-kompass::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 380px;
+  height: 380px;
+  margin: -190px 0 0 -190px;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(217, 154, 91, 0.26) 0%, rgba(217, 154, 91, 0) 68%);
+  animation: glow-puls 6s ease-in-out infinite;
+}
+
+@keyframes glow-puls {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.08); }
+}
+
+.hero-kompass-hinweis {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--kupfer-hell);
+  margin-bottom: 22px;
+}
+
+.kompass-rose {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  flex: none;
+  cursor: crosshair;
+}
+
+.kompass-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(217, 154, 91, 0.4);
+}
+
+.kompass-ring::before {
+  content: "";
+  position: absolute;
+  inset: 22px;
+  border-radius: 50%;
+  border: 1px solid rgba(217, 154, 91, 0.2);
+}
+
+.kompass-marken {
+  position: absolute;
+  inset: 0;
+}
+
+.kompass-marke {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  min-width: 44px;
+  min-height: 44px;
+  justify-content: center;
+  padding: 8px 6px;
+  text-decoration: none;
+  color: var(--kupfer-hell);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.2;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.kompass-marke-punkt {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.kompass-marke:hover,
+.kompass-marke:focus-visible {
+  color: var(--weiss);
+}
+
+.kompass-marke[data-richtung="n"] {
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.kompass-marke[data-richtung="n"]:hover,
+.kompass-marke[data-richtung="n"]:focus-visible {
+  transform: translateX(-50%) scale(1.08);
+}
+
+.kompass-marke[data-richtung="s"] {
+  bottom: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.kompass-marke[data-richtung="s"]:hover,
+.kompass-marke[data-richtung="s"]:focus-visible {
+  transform: translateX(-50%) scale(1.08);
+}
+
+.kompass-marke[data-richtung="o"] {
+  top: 50%;
+  right: -30px;
+  transform: translateY(-50%);
+}
+
+.kompass-marke[data-richtung="o"]:hover,
+.kompass-marke[data-richtung="o"]:focus-visible {
+  transform: translateY(-50%) scale(1.08);
+}
+
+.kompass-marke[data-richtung="w"] {
+  top: 50%;
+  left: -30px;
+  transform: translateY(-50%);
+}
+
+.kompass-marke[data-richtung="w"]:hover,
+.kompass-marke[data-richtung="w"]:focus-visible {
+  transform: translateY(-50%) scale(1.08);
+}
+
+.kompass-nadel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 176px;
+  margin: -88px 0 0 -3px;
+  transform-origin: 50% 50%;
+  animation: kompass-pendel 18s ease-in-out infinite;
+}
+
+/* Sobald JS die Nadel fuehrt (Mausverfolgung oder Leistungs-Snap), muss die
+   Keyframe-Animation komplett weichen — sonst gewinnt sie gegen das inline
+   transform und die Nadel "zuckt" zwischen beiden Werten. */
+.kompass-rose.js-live .kompass-nadel,
+.kompass-rose.hover-aktiv .kompass-nadel {
+  animation: none;
+  transition: transform 0.15s ease-out;
+}
+
+.kompass-nadel-n,
+.kompass-nadel-s {
+  position: absolute;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  margin-left: -3px;
+}
+
+.kompass-nadel-n {
+  top: 0;
+  border-bottom: 88px solid var(--kupfer);
+}
+
+.kompass-nadel-s {
+  bottom: 0;
+  border-top: 88px solid rgba(246, 243, 238, 0.3);
+}
+
+.kompass-mitte {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: var(--papier);
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 0 5px var(--navy-tief);
+}
+
+@keyframes kompass-pendel {
+  0%, 5% { transform: rotate(0deg); }
+  25%, 30% { transform: rotate(90deg); }
+  50%, 55% { transform: rotate(180deg); }
+  75%, 80% { transform: rotate(270deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* --- Leistungs-Uebersicht --- */
+.leistungs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 18px;
+  counter-reset: leistung;
+}
+
+.leistungs-kachel {
+  display: block;
+  position: relative;
+  background: var(--weiss);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-m);
+  padding: 26px 24px 24px;
+  text-decoration: none;
+  box-shadow: var(--schatten);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  counter-increment: leistung;
+}
+
+.leistungs-kachel::before {
+  content: counter(leistung, decimal-leading-zero);
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--kupfer-dunkel);
+  margin-bottom: 10px;
+}
+
+a.leistungs-kachel:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--schatten-hover);
+  border-color: transparent;
+}
+
+.leistungs-kachel h3 {
+  font-size: 16px;
+}
+
+.leistungs-kachel p {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--unter);
+}
+
+.leistungs-kachel--gross {
+  grid-column: span 2;
+  background: var(--navy);
+  border-color: var(--navy);
+  box-shadow: 0 1px 2px rgba(16, 26, 36, 0.22), 0 20px 40px -14px rgba(16, 26, 36, 0.5);
+}
+
+.leistungs-kachel--gross::before {
+  color: var(--kupfer-hell);
+  opacity: 0.9;
+}
+
+.leistungs-kachel--gross h3 {
+  color: var(--weiss);
+  font-size: 22px;
+}
+
+.leistungs-kachel--gross p {
+  color: rgba(246, 243, 238, 0.8);
+}
+
+.leistungs-kachel--gross:hover {
+  background: var(--navy-tief);
+  border-color: var(--navy-tief);
+}
+
+.leistungs-cta {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--weiss);
+  transition: transform 0.2s ease;
+}
+
+.leistungs-kachel--gross:hover .leistungs-cta {
+  transform: translateX(4px);
+}
+
+@media (max-width: 640px) {
+  .leistungs-kachel--gross {
+    grid-column: span 1;
+  }
+}
+
+/* --- Statement-Band --- */
+.statement-band {
+  position: relative;
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--papier);
+  overflow: hidden;
+}
+
+.statement-band img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.statement-band::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(16, 26, 36, 0.82) 0%,
+    rgba(16, 26, 36, 0.86) 100%
+  );
+  z-index: 1;
+}
+
+.statement-band-inhalt {
+  position: relative;
+  z-index: 2;
+  padding: 64px 20px;
+}
+
+.statement-seit {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--kupfer-hell);
+  margin-bottom: 4px;
+}
+
+.statement-zahl {
+  font-size: clamp(64px, 13vw, 148px);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--kupfer);
+}
+
+.statement-text {
+  margin-top: 14px;
+  max-width: 46ch;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 17px;
+  color: rgba(246, 243, 238, 0.92);
+}
+
+/* --- Privatumzuege (Herzstueck) --- */
+.section--herzstueck {
+  background: var(--flaeche);
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.privatumzug-split {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: 48px;
+  align-items: center;
+}
+
+.privatumzug-bild {
+  position: relative;
+}
+
+.privatumzug-bild img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: var(--radius-l);
+}
+
+.ablauf-liste {
+  list-style: none;
+  counter-reset: schritt;
+  margin: 20px 0 28px;
+}
+
+.ablauf-liste li {
+  position: relative;
+  counter-increment: schritt;
+  padding: 10px 0 10px 40px;
+}
+
+.ablauf-liste li::before {
+  content: counter(schritt);
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--kupfer-dunkel);
+  color: var(--weiss);
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ablauf-liste strong {
+  display: block;
+  color: var(--navy);
+}
+
+.zusatzleistungen {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+  gap: 32px;
+  align-items: center;
+  background: var(--weiss);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-l);
+  padding: 28px;
+  box-shadow: var(--schatten);
+}
+
+.zusatzleistungen-bild {
+  position: relative;
+}
+
+.zusatzleistungen-bild img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: var(--radius-m);
+}
+
+.zusatzleistungen-liste {
+  list-style: none;
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 18px;
+}
+
+.zusatzleistungen-liste li {
+  position: relative;
+  padding: 6px 0 6px 20px;
+  font-size: 15px;
+}
+
+.zusatzleistungen-liste li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 15px;
+  width: 8px;
+  height: 8px;
+  background: var(--kupfer-dunkel);
+}
+
+/* --- Warum wir --- */
+.section--unternehmen {
+  background: var(--navy);
+  color: var(--papier);
+}
+
+.unternehmen-split {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: 48px;
+  align-items: center;
+}
+
+.unternehmen-bild {
+  position: relative;
+}
+
+.unternehmen-bild img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: var(--radius-l);
+}
+
+.section--unternehmen h2 {
+  color: var(--weiss);
+}
+
+.section--unternehmen p {
+  margin-top: 14px;
+  color: rgba(246, 243, 238, 0.84);
+  max-width: 52ch;
+}
+
+.unternehmen-punkte {
+  list-style: none;
+  margin: 20px 0 26px;
+}
+
+.unternehmen-punkte li {
+  position: relative;
+  padding: 6px 0 6px 26px;
+  color: var(--papier);
+}
+
+.unternehmen-punkte li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 14px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--kupfer-hell);
+}
+
+/* --- Ablauf als Route (statt lose Karten) --- */
+.route-ablauf {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  position: relative;
+}
+
+.route-linie {
+  position: absolute;
+  top: 20px;
+  left: calc(100% / 6);
+  right: calc(100% / 6);
+  height: 2px;
+  background: repeating-linear-gradient(90deg, var(--kupfer) 0 8px, transparent 8px 16px);
+  z-index: 0;
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 1.1s ease 0.25s;
+}
+
+[data-reveal].reveal-sichtbar .route-linie {
+  clip-path: inset(0 0 0 0);
+}
+
+.route-schritt {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.route-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  background: var(--papier);
+  border: 2px solid var(--kupfer-dunkel);
+  color: var(--kupfer-dunkel);
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.route-schritt p {
+  margin-top: 8px;
+  font-size: 15px;
+  color: var(--unter);
+}
+
+.ablauf-hinweis {
+  margin-top: 26px;
+  text-align: center;
+  font-size: 12.5px;
+  color: var(--unter);
+}
+
+@media (max-width: 640px) {
+  .route-ablauf {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .route-linie {
+    top: 20px;
+    bottom: 20px;
+    left: 20px;
+    width: 2px;
+    height: auto;
+    right: auto;
+    background: repeating-linear-gradient(180deg, var(--kupfer) 0 8px, transparent 8px 16px);
+    clip-path: inset(0 0 100% 0);
+  }
+
+  [data-reveal].reveal-sichtbar .route-linie {
+    clip-path: inset(0 0 0 0);
+  }
+
+  .route-schritt {
+    text-align: left;
+    padding-left: 58px;
+  }
+
+  .route-marker {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 0;
+  }
+}
+
+/* --- Anfrage-Teaser --- */
+.section--teaser {
+  background: var(--navy);
+}
+
+.section--teaser .eyebrow {
+  color: var(--kupfer-hell);
+}
+
+.section--teaser h2 {
+  color: var(--weiss);
+}
+
+.section--teaser .section-kopf p {
+  color: rgba(246, 243, 238, 0.82);
+}
+
+.teaser-aktion {
+  text-align: center;
+}
+
+.teaser-meta {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 13px;
+  color: rgba(246, 243, 238, 0.82);
+}
+
+/* --- Footer --- */
+.site-footer {
+  border-top: 1px solid var(--hairline);
+  background: var(--papier);
+}
+
+.site-footer-inhalt {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 36px 20px 44px;
+}
+
+.footer-spalten {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 24px;
+  flex-wrap: wrap;
+}
+
+.footer-spalten nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 6px;
+}
+
+.footer-klein {
+  margin-top: 22px;
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--unter);
+  max-width: 78ch;
+}
+
+/* --- Umzugs-Anfrage (Planer) --- */
+.planer {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 48px 20px 72px;
+}
+
+.planer-kopf {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.planer-kopf p {
+  margin-top: 12px;
+  color: var(--unter);
+  max-width: 54ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.demo-chip {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--kupfer-dunkel);
+  border: 1px solid var(--kupfer-dunkel);
+  border-radius: 999px;
+  padding: 6px 14px;
+  margin-bottom: 18px;
+  background: var(--weiss);
+}
+
+fieldset {
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-m);
+  background: var(--weiss);
+  padding: 24px 22px 26px;
+  margin-bottom: 22px;
+  box-shadow: var(--schatten);
+}
+
+legend {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--kupfer-dunkel);
+  padding: 0 10px;
+}
+
+.radio-karten,
+.checkbox-karten {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.radio-karte,
+.checkbox-karte {
+  display: block;
+  border: 1.5px solid var(--hairline);
+  border-radius: var(--radius-s);
+  padding: 14px 16px;
+  cursor: pointer;
+  background: var(--papier);
+  transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+}
+
+.radio-karte:hover,
+.checkbox-karte:hover {
+  transform: translateY(-2px);
+}
+
+.radio-karte strong,
+.checkbox-karte strong {
+  display: block;
+  font-size: 15px;
+  color: var(--navy);
+}
+
+.radio-karte span {
+  display: block;
+  margin-top: 2px;
+  font-size: 13px;
+  color: var(--unter);
+}
+
+.radio-karte input,
+.checkbox-karte input {
+  accent-color: var(--kupfer-dunkel);
+  margin-bottom: 8px;
+}
+
+.radio-karte:has(input:checked),
+.checkbox-karte:has(input:checked) {
+  border-color: var(--kupfer-dunkel);
+  background: #f0e3d4;
+}
+
+.feld {
+  margin-top: 16px;
+}
+
+.feld label {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+
+.feld input,
+.feld select,
+.feld textarea {
+  width: 100%;
+  min-height: 46px;
+  font: inherit;
+  color: var(--tinte);
+  background: var(--papier);
+  border: 1.5px solid var(--hairline);
+  border-radius: var(--radius-s);
+  padding: 11px 14px;
+}
+
+.feld textarea {
+  resize: vertical;
+}
+
+.feld input:focus,
+.feld select:focus,
+.feld textarea:focus {
+  border-color: var(--kupfer-dunkel);
+  outline: none;
+}
+
+.feld-hinweis {
+  margin-top: 6px;
+  font-size: 12.5px;
+  color: var(--unter);
+}
+
+.feld-reihe {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 18px;
+}
+
+/* --- Routenfinder: Von/Nach als Route statt generischer Felder --- */
+.routenfinder {
+  display: flex;
+  align-items: flex-end;
+  gap: 0;
+  margin-top: 4px;
+}
+
+.routenfinder-pin {
+  flex: 1;
+  min-width: 0;
+}
+
+.routenfinder-punkt {
+  display: block;
+  width: 16px;
+  height: 16px;
+  margin-bottom: 10px;
+  border-radius: 50%;
+  background: var(--kupfer-dunkel);
+  border: 3px solid var(--papier);
+  box-shadow: 0 0 0 1.5px var(--kupfer-dunkel);
+}
+
+.routenfinder-punkt--nach {
+  background: var(--navy);
+  box-shadow: 0 0 0 1.5px var(--navy);
+}
+
+.routenfinder-pin label {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+
+.routenfinder-pin input {
+  width: 100%;
+  min-height: 46px;
+  font: inherit;
+  color: var(--tinte);
+  background: var(--papier);
+  border: 1.5px solid var(--hairline);
+  border-radius: var(--radius-s);
+  padding: 11px 14px;
+}
+
+.routenfinder-pin input:focus {
+  border-color: var(--kupfer-dunkel);
+  outline: none;
+}
+
+.routenfinder-linie {
+  flex: none;
+  width: 56px;
+  height: 2px;
+  margin: 0 14px 30px;
+  position: relative;
+  background: repeating-linear-gradient(90deg, var(--kupfer) 0 6px, transparent 6px 12px);
+}
+
+.routenfinder-linie::after {
+  content: "→";
+  position: absolute;
+  right: -3px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--kupfer-dunkel);
+  font-size: 13px;
+  background: var(--weiss);
+  line-height: 1;
+}
+
+@media (max-width: 560px) {
+  .routenfinder {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+  }
+
+  .routenfinder-linie {
+    width: 2px;
+    height: 22px;
+    margin: 0 0 0 7px;
+    background: repeating-linear-gradient(180deg, var(--kupfer) 0 6px, transparent 6px 12px);
+  }
+
+  .routenfinder-linie::after {
+    content: "↓";
+    right: auto;
+    left: -6px;
+    top: auto;
+    bottom: -3px;
+    transform: none;
+  }
+}
+
+.dropzone {
+  border: 1.5px dashed var(--kupfer-dunkel);
+  border-radius: var(--radius-s);
+  background: #f0e3d4;
+  padding: 18px 16px;
+  position: relative;
+}
+
+.dropzone-hinweis {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--kupfer-dunkel);
+  margin-bottom: 10px;
+}
+
+.foto-liste {
+  list-style: none;
+  margin-top: 12px;
+  font-size: 13.5px;
+  color: var(--navy);
+}
+
+.foto-liste li {
+  padding: 3px 0;
+}
+
+.fehler {
+  background: #f5e3d3;
+  border: 1.5px solid var(--kupfer-dunkel);
+  border-radius: var(--radius-s);
+  color: var(--kupfer-dunkel);
+  padding: 14px 18px;
+  margin-bottom: 18px;
+  font-size: 15px;
+}
+
+.planer-aktionen {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.bestaetigung {
+  border: 1.5px solid var(--kupfer-dunkel);
+  border-radius: var(--radius-m);
+  background: var(--weiss);
+  padding: 30px 26px;
+  box-shadow: var(--schatten);
+}
+
+.bestaetigung h2 {
+  font-size: 26px;
+}
+
+.bestaetigung p {
+  margin-top: 12px;
+  color: var(--unter);
+}
+
+.zusammenfassung {
+  background: var(--flaeche);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-s);
+  padding: 14px 16px;
+  color: var(--navy) !important;
+  font-size: 15px;
+}
+
+.bestaetigung .planer-aktionen {
+  margin-top: 22px;
+}
+
+.planer-fuss {
+  margin-top: 26px;
+  text-align: center;
+  font-size: 12.5px;
+  color: var(--unter);
+}
+
+/* --- Mobil --- */
+@media (max-width: 900px) {
+  .privatumzug-split,
+  .unternehmen-split {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+
+  .zusatzleistungen {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding: 56px 20px;
+  }
+
+  .leistungs-kachel--gross {
+    grid-column: span 1;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: 40px 0 48px;
+  }
+
+  .hero-inhalt--kompass {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 44px;
+  }
+
+  .hero-text {
+    text-align: left;
+  }
+
+  .kompass-rose {
+    width: 240px;
+    height: 240px;
+    margin: 0 auto;
+  }
+
+  .kompass-nadel {
+    height: 142px;
+    margin-top: -71px;
+  }
+
+  .kompass-nadel-n {
+    border-bottom-width: 71px;
+  }
+
+  .kompass-nadel-s {
+    border-top-width: 71px;
+  }
+
+  .kompass-marke[data-richtung="o"] {
+    right: -18px;
+  }
+
+  .kompass-marke[data-richtung="w"] {
+    left: -18px;
+  }
+}
+
+@media (max-width: 560px) {
+  .feld-reihe {
+    grid-template-columns: 1fr;
+  }
+
+  .zusatzleistungen-liste {
+    grid-template-columns: 1fr;
+  }
+
+  .site-header-inhalt {
+    justify-content: center;
+  }
+
+  .site-header-inhalt .btn {
+    width: 100%;
+  }
+
+  .hero-aktionen .btn,
+  .planer-aktionen .btn {
+    width: 100%;
+  }
+
+  .kompass-rose {
+    width: 210px;
+    height: 210px;
+  }
+
+  .kompass-nadel {
+    height: 124px;
+    margin-top: -62px;
+  }
+
+  .kompass-nadel-n {
+    border-bottom-width: 62px;
+  }
+
+  .kompass-nadel-s {
+    border-top-width: 62px;
+  }
+
+  .kompass-marke {
+    font-size: 9.5px;
+  }
+
+  .kompass-marke[data-richtung="o"] {
+    right: -10px;
+  }
+
+  .kompass-marke[data-richtung="w"] {
+    left: -10px;
+  }
+}
+
+/* --- Reduzierte Bewegung --- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  /* Die globale Regel oben killt auch die Ausblend-Animation des Intro-Overlays —
+     ohne diesen expliziten Zustand bliebe er sonst dauerhaft sichtbar und blockierend. */
+  .intro-overlay {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}

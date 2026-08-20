@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Umzug anfragen — Kompass-Umzüge, Mosbach (Design-Entwurf)</title>
+    <meta
+      name="description"
+      content="Design-Entwurf von TOMORROWWORKS — Persönliche Konzeptvorschau, nicht die offizielle Website des Betriebs."
+    >
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+
+    <header>
+      <div class="banner">
+        <strong>Design-Entwurf von TOMORROWWORKS</strong> —
+        nicht die offizielle Website von Kompass-Umzüge ·
+        Persönliche Konzeptvorschau
+      </div>
+      <div class="site-header">
+        <div class="site-header-inhalt">
+          <a class="wortmarke" href="index.html" aria-label="Kompass-Umzüge — zur Startseite">
+            <svg class="ornament" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+              <circle cx="16" cy="16" r="13.4" fill="none" stroke="var(--kupfer)" stroke-width="1.8"/>
+              <path d="M16,5.5 L19.4,16 L16,26.5 L12.6,16 Z" fill="var(--kupfer)"/>
+              <circle cx="16" cy="16" r="1.8" fill="var(--navy-tief)"/>
+            </svg>
+            <span class="wortmarke-text">
+              <small>Kompass</small>
+              <strong>Umzüge</strong>
+            </span>
+          </a>
+          <nav class="site-nav" aria-label="Hauptnavigation">
+            <a href="index.html">← Zur Homepage</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main id="inhalt">
+      <div class="planer">
+        <div class="planer-kopf">
+          <span class="demo-chip">DEMO · KEINE SPEICHERUNG</span>
+          <h1>Umzug anfragen</h1>
+          <p>
+            Sieben kurze Schritte — Umzugsart, Von/Nach, Wunschtermin,
+            Zusatzleistungen. In dieser Konzeptvorschau wird nichts gespeichert oder
+            versendet.
+          </p>
+        </div>
+
+        <form id="anfrage-form" novalidate>
+          <fieldset>
+            <legend>01 · Umzugsart</legend>
+            <div class="radio-karten">
+              <label class="radio-karte">
+                <input type="radio" name="umzugsart" value="privatumzug" checked>
+                <strong>Privatumzug</strong>
+                <span>Wohnung oder Haus</span>
+              </label>
+              <label class="radio-karte">
+                <input type="radio" name="umzugsart" value="seniorenumzug">
+                <strong>Seniorenumzug</strong>
+                <span>Umzug im Alter</span>
+              </label>
+              <label class="radio-karte">
+                <input type="radio" name="umzugsart" value="wohnungsaufloesung">
+                <strong>Haushaltsauflösung</strong>
+                <span>Wohnung auflösen</span>
+              </label>
+              <label class="radio-karte">
+                <input type="radio" name="umzugsart" value="kuechenmontage">
+                <strong>Nur Küchenmontage</strong>
+                <span>Auf-/Abbau der Küche</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>02 · Von &amp; Nach</legend>
+            <div class="routenfinder">
+              <div class="routenfinder-pin">
+                <span class="routenfinder-punkt routenfinder-punkt--von" aria-hidden="true"></span>
+                <label for="von">Von</label>
+                <input id="von" name="von" type="text" autocomplete="off" placeholder="z. B. 74821 Mosbach">
+              </div>
+              <div class="routenfinder-linie" aria-hidden="true"></div>
+              <div class="routenfinder-pin">
+                <span class="routenfinder-punkt routenfinder-punkt--nach" aria-hidden="true"></span>
+                <label for="nach">Nach</label>
+                <input id="nach" name="nach" type="text" autocomplete="off" placeholder="z. B. 69117 Heidelberg">
+              </div>
+            </div>
+            <p class="feld-hinweis">Beispielangabe genügt — PLZ und Ort reichen.</p>
+          </fieldset>
+
+          <fieldset>
+            <legend>03 · Umfang</legend>
+            <div class="feld">
+              <label for="groesse">Ungefähre Größe</label>
+              <select id="groesse" name="groesse">
+                <option value="besichtigung" selected>Genaue Größe ermitteln wir bei der Besichtigung</option>
+                <option value="1-zimmer">1-Zimmer-Wohnung</option>
+                <option value="2-zimmer">2-Zimmer-Wohnung</option>
+                <option value="3-zimmer">3-Zimmer-Wohnung</option>
+                <option value="4-plus">4 Zimmer oder mehr</option>
+              </select>
+              <p class="feld-hinweis">
+                Für ein verbindliches Festpreis-Angebot ist eine Besichtigung vor Ort
+                nötig — diese Angabe hilft nur bei der ersten Einschätzung.
+              </p>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>04 · Wunschtermin</legend>
+            <div class="feld-reihe">
+              <div class="feld">
+                <label for="datum">Wunschtermin (Umzug)</label>
+                <input id="datum" name="datum" type="date">
+                <p class="feld-hinweis">Beispielangabe genügt — es wird nichts gespeichert.</p>
+              </div>
+              <div class="feld">
+                <label for="zeitfenster">Zeitfenster</label>
+                <select id="zeitfenster" name="zeitfenster">
+                  <option value="">Bitte wählen</option>
+                  <option value="vormittags">Vormittags (Beispielzeit: 8–12 Uhr)</option>
+                  <option value="nachmittags">Nachmittags (Beispielzeit: 13–17 Uhr)</option>
+                  <option value="ganztaegig">Ganztägig (Beispielzeit)</option>
+                </select>
+                <p class="feld-hinweis">Beispielzeiten der Konzeptvorschau — die echten Zeitfenster nennt Ihnen der Betrieb.</p>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>05 · Zusatzleistungen</legend>
+            <div class="checkbox-karten">
+              <label class="checkbox-karte">
+                <input type="checkbox" name="zusatzleistung" value="packservice">
+                <strong>Ein-/Auspackservice</strong>
+              </label>
+              <label class="checkbox-karte">
+                <input type="checkbox" name="zusatzleistung" value="moebelmontage">
+                <strong>Möbelmontage (Ab-/Aufbau)</strong>
+              </label>
+              <label class="checkbox-karte">
+                <input type="checkbox" name="zusatzleistung" value="kuechenmontage">
+                <strong>Küchenmontage</strong>
+              </label>
+              <label class="checkbox-karte">
+                <input type="checkbox" name="zusatzleistung" value="einlagerung">
+                <strong>Einlagerung</strong>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>06 · Persönliches (optional)</legend>
+            <div class="feld">
+              <label for="nachricht">Nachricht</label>
+              <textarea id="nachricht" name="nachricht" rows="3"></textarea>
+              <p class="feld-hinweis">Besonderheiten Ihres Umzugs · wird in dieser Demo nicht gespeichert.</p>
+            </div>
+            <div class="feld dropzone">
+              <span class="dropzone-hinweis">Demo — Fotos werden nicht übertragen</span>
+              <label for="fotos">Fotos der größten Möbelstücke anhängen</label>
+              <input id="fotos" name="fotos" type="file" multiple accept="image/*">
+              <p class="feld-hinweis">
+                Hilft bei der ersten Einschätzung, ersetzt aber nicht die Besichtigung
+                vor Ort. In dieser Demo bleiben die Fotos auf Ihrem Gerät.
+              </p>
+              <ul class="foto-liste" data-foto-liste hidden></ul>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>07 · Kontakt</legend>
+            <div class="feld-reihe">
+              <div class="feld">
+                <label for="vorname">Vorname</label>
+                <input id="vorname" name="vorname" type="text" autocomplete="off">
+              </div>
+              <div class="feld">
+                <label for="nachname">Nachname</label>
+                <input id="nachname" name="nachname" type="text" autocomplete="off">
+              </div>
+            </div>
+            <div class="feld">
+              <label for="handy">Handynummer</label>
+              <input id="handy" name="handy" type="tel" inputmode="tel" autocomplete="off">
+              <p class="feld-hinweis">Mindestens 7 Ziffern · wird in dieser Demo nicht gespeichert.</p>
+            </div>
+          </fieldset>
+
+          <p class="fehler" data-fehler hidden></p>
+
+          <div class="planer-aktionen">
+            <button class="btn btn--voll" type="submit">Anfrage prüfen</button>
+            <a class="btn btn--kontur" href="index.html">Abbrechen</a>
+          </div>
+        </form>
+
+        <section class="bestaetigung" data-bestaetigung hidden aria-label="Bestätigung">
+          <h2>Ihre Demo-Anfrage steht</h2>
+          <p>
+            So würde Ihre Umzugs-Anfrage beim Betrieb ankommen — in dieser
+            Konzeptvorschau wurde sie nur angezeigt:
+            <strong>es wurden keine Daten gespeichert oder versendet.</strong>
+          </p>
+          <p class="zusammenfassung" data-zusammenfassung></p>
+          <div class="planer-aktionen">
+            <button class="btn btn--kontur" type="button" data-neustart>Neue Demo-Anfrage</button>
+            <a class="btn btn--voll" href="index.html">← Zur Homepage</a>
+          </div>
+        </section>
+
+        <p class="planer-fuss">
+          Konzeptvorschau · kein Angebot · kein Auftrag · keine Datenübertragung
+        </p>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer-inhalt">
+        <p class="footer-klein">
+          <strong>Design-Entwurf von TOMORROWWORKS</strong> —
+          nicht die offizielle Website von Kompass-Umzüge.
+          Persönliche Konzeptvorschau ohne echte Kontaktdaten; Kontaktdaten folgen nach Freigabe.
+        </p>
+      </div>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>

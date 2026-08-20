@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Kompass-Umzüge — Umzüge &amp; Möbeltransport in Mosbach (Design-Entwurf)</title>
+    <meta
+      name="description"
+      content="Design-Entwurf von TOMORROWWORKS — Persönliche Konzeptvorschau, nicht die offizielle Website des Betriebs."
+    >
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="intro-overlay" aria-hidden="true">
+      <svg class="intro-kompass" viewBox="0 0 100 100" width="88" height="88" focusable="false">
+        <circle cx="50" cy="50" r="44" fill="none" stroke="rgba(217,154,91,.4)" stroke-width="1.4"></circle>
+        <g class="intro-nadel">
+          <path d="M50,12 L59,50 L50,50 Z" fill="var(--kupfer)"></path>
+          <path d="M50,88 L41,50 L50,50 Z" fill="rgba(246,243,238,.32)"></path>
+        </g>
+        <circle cx="50" cy="50" r="4.5" fill="var(--papier)"></circle>
+      </svg>
+    </div>
+    <div class="grain-overlay" aria-hidden="true"></div>
+
+    <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+
+    <header>
+      <div class="banner">
+        <strong>Design-Entwurf von TOMORROWWORKS</strong> —
+        nicht die offizielle Website von Kompass-Umzüge ·
+        Persönliche Konzeptvorschau
+      </div>
+      <div class="site-header">
+        <div class="site-header-inhalt">
+          <a class="wortmarke" href="#inhalt" aria-label="Kompass-Umzüge — zur Startseite">
+            <svg class="ornament" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+              <circle cx="16" cy="16" r="13.4" fill="none" stroke="var(--kupfer)" stroke-width="1.8"/>
+              <path d="M16,5.5 L19.4,16 L16,26.5 L12.6,16 Z" fill="var(--kupfer)"/>
+              <circle cx="16" cy="16" r="1.8" fill="var(--navy-tief)"/>
+            </svg>
+            <span class="wortmarke-text">
+              <small>Kompass</small>
+              <strong>Umzüge</strong>
+            </span>
+          </a>
+          <nav class="site-nav" aria-label="Hauptnavigation">
+            <a href="#leistungen">Leistungen</a>
+            <a href="#privatumzuege">Privatumzüge</a>
+            <a href="#warum-wir">Warum wir</a>
+            <a href="#ablauf">Ablauf</a>
+          </nav>
+          <a class="btn btn--voll" href="anfrage.html">Umzug anfragen</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="inhalt">
+      <!-- Hero -->
+      <section class="hero" aria-label="Einstieg">
+        <div class="hero-bild">
+          <img
+            src="assets/hero.jpg"
+            alt="Gestapelte, offene Umzugskartons in warmem Licht — Beispielfoto"
+            width="1920"
+            height="1080"
+            fetchpriority="high"
+          >
+          <span class="foto-tag">Beispielfoto (Symbolbild)</span>
+        </div>
+        <div class="hero-inhalt hero-inhalt--kompass">
+          <div class="hero-text">
+            <span class="hero-badge">Seit über 30 Jahren in Mosbach</span>
+            <span class="eyebrow eyebrow--hell">Umzüge &amp; Möbeltransport aus Mosbach</span>
+            <h1>Ihr Umzug — <em>gut orientiert.</em></h1>
+            <p class="hero-sub">
+              Privatumzüge, Küchenmontage, Einlagerung und Haushaltsauflösungen: Sie sagen
+              uns, wohin es geht — wir finden den Weg. Mit einer kurzen Vorab-Anfrage sparen
+              Sie bei der Beratung wertvolle Zeit.
+            </p>
+            <div class="hero-aktionen">
+              <a class="btn btn--voll" href="anfrage.html" data-magnetisch>Umzug anfragen</a>
+              <a class="btn btn--kontur btn--kontur-hell" href="#leistungen" data-magnetisch>Leistungen ansehen</a>
+            </div>
+          </div>
+          <div class="hero-kompass">
+            <span class="hero-kompass-hinweis">Bewegen Sie die Maus — die Nadel folgt</span>
+            <div class="kompass-rose" data-kompass>
+              <div class="kompass-ring" aria-hidden="true"></div>
+              <nav class="kompass-marken" aria-label="Leistungen auf einen Blick">
+                <a class="kompass-marke" data-richtung="n" data-winkel="0" href="#leistung-privatumzuege">
+                  <span class="kompass-marke-punkt" aria-hidden="true"></span>
+                  <span>Privatumzüge</span>
+                </a>
+                <a class="kompass-marke" data-richtung="o" data-winkel="90" href="#leistung-kuechenmontage">
+                  <span class="kompass-marke-punkt" aria-hidden="true"></span>
+                  <span>Küchenmontage</span>
+                </a>
+                <a class="kompass-marke" data-richtung="s" data-winkel="180" href="#leistung-einlagerung">
+                  <span class="kompass-marke-punkt" aria-hidden="true"></span>
+                  <span>Einlagerung</span>
+                </a>
+                <a class="kompass-marke" data-richtung="w" data-winkel="270" href="#leistung-haushaltsaufloesung">
+                  <span class="kompass-marke-punkt" aria-hidden="true"></span>
+                  <span>Auflösung</span>
+                </a>
+              </nav>
+              <div class="kompass-nadel" aria-hidden="true">
+                <span class="kompass-nadel-n"></span>
+                <span class="kompass-nadel-s"></span>
+              </div>
+              <div class="kompass-mitte" aria-hidden="true"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Leistungen -->
+      <section class="section" id="leistungen" data-reveal>
+        <div class="section-inhalt">
+          <div class="section-kopf">
+            <span class="eyebrow">Leistungen</span>
+            <h2>Was Kompass-Umzüge bewegt</h2>
+            <p>
+              Vom einzelnen Umzugskarton bis zur kompletten Küche — vier Leistungen rund
+              um Ihren Umzug.
+            </p>
+            <span class="symbolbild-hinweis">
+              Beispiel-Leistungsübersicht dieser Konzeptvorschau — das genaue
+              Leistungsspektrum stimmt der Betrieb mit Ihnen ab.
+            </span>
+          </div>
+          <div class="leistungs-grid">
+            <a class="leistungs-kachel leistungs-kachel--gross" id="leistung-privatumzuege" data-leistung="privatumzuege" href="anfrage.html?umzugsart=privatumzug">
+              <h3>Privatumzüge</h3>
+              <p>Ihr Zuhause zieht um — wir kümmern uns ums Ganze, mit Festpreisgarantie.</p>
+              <span class="leistungs-cta">Privatumzug anfragen →</span>
+            </a>
+            <div class="leistungs-kachel" id="leistung-kuechenmontage">
+              <h3>Küchenmontage</h3>
+              <p>Planung, Demontage und fachgerechter Aufbau Ihrer Küche.</p>
+            </div>
+            <div class="leistungs-kachel" id="leistung-einlagerung">
+              <h3>Einlagerungen</h3>
+              <p>Trockene, sichere Zwischenlagerung für Ihre Möbel und Kisten.</p>
+            </div>
+            <div class="leistungs-kachel" id="leistung-haushaltsaufloesung">
+              <h3>Haushaltsauflösungen</h3>
+              <p>Diskrete und sorgfältige Auflösung von Wohnungen und Haushalten.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Statement-Band -->
+      <section class="statement-band" aria-label="Firmengeschichte" data-reveal>
+        <img
+          src="assets/beladung.jpg"
+          alt="Offene Hintertür eines Lieferwagens — Beispielfoto"
+          loading="lazy"
+          width="2000"
+          height="645"
+        >
+        <div class="statement-band-inhalt">
+          <span class="statement-seit">Seit über</span>
+          <p class="statement-zahl" data-scramble="30">30</p>
+          <p class="statement-text">Jahre Erfahrung — als Familienbetrieb in Mosbach und der Region.</p>
+        </div>
+        <span class="foto-tag">Beispielfoto (Symbolbild)</span>
+      </section>
+
+      <!-- Privatumzüge vertieft -->
+      <section class="section section--herzstueck" id="privatumzuege" data-reveal>
+        <div class="section-inhalt">
+          <div class="privatumzug-split">
+            <div class="privatumzug-bild">
+              <img
+                src="assets/besichtigung.jpg"
+                alt="Helles, leeres Zimmer mit Holzboden vor dem Umzug — Beispielfoto"
+                loading="lazy"
+                width="1000"
+                height="1250"
+              >
+              <span class="foto-tag">Beispielfoto (Symbolbild)</span>
+            </div>
+            <div class="privatumzug-text">
+              <span class="eyebrow">Privatumzüge</span>
+              <h2>So läuft Ihr Umzug ab</h2>
+              <ol class="ablauf-liste">
+                <li>
+                  <strong>Beratung.</strong>
+                  Sie schildern uns Ihr Vorhaben — persönlich oder am Telefon.
+                </li>
+                <li>
+                  <strong>Besichtigung vor Ort.</strong>
+                  Für ein verbindliches Angebot sehen wir uns Ihr Zuhause an und
+                  ermitteln dabei das Umzugsvolumen.
+                </li>
+                <li>
+                  <strong>Ihr Festpreis-Angebot.</strong>
+                  Sie erhalten ein individuelles Angebot ohne versteckte Kosten.
+                </li>
+              </ol>
+              <a class="btn btn--voll" href="anfrage.html?umzugsart=privatumzug">Privatumzug anfragen</a>
+            </div>
+          </div>
+
+          <div class="zusatzleistungen">
+            <div class="zusatzleistungen-bild">
+              <img
+                src="assets/verpackung.jpg"
+                alt="Gestapelte Umzugskartons mit Klebeband — Beispielfoto"
+                loading="lazy"
+                width="1000"
+                height="1000"
+              >
+              <span class="foto-tag">Beispielfoto (Symbolbild)</span>
+            </div>
+            <div class="zusatzleistungen-text">
+              <h3>Rund um Ihren Umzug</h3>
+              <ul class="zusatzleistungen-liste">
+                <li>Ein-/Auspackservice</li>
+                <li>Möbel-Ab-/Aufbau</li>
+                <li>Küchenmontage</li>
+                <li>Einlagerung</li>
+                <li>Verpackungsmaterial</li>
+                <li>Haushaltsauflösung</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Warum wir — Familienbetrieb, rollenbasiert -->
+      <section class="section section--unternehmen spotlight-sektion" id="warum-wir" data-reveal>
+        <div class="section-inhalt">
+          <div class="unternehmen-split">
+            <div class="unternehmen-bild">
+              <img
+                src="assets/team.jpg"
+                alt="Umzugshelfer trägt eine Matratze über eine ruhige Wohnstraße — Beispielfoto"
+                loading="lazy"
+                width="1200"
+                height="800"
+              >
+              <span class="foto-tag">Beispielfoto (Symbolbild)</span>
+            </div>
+            <div class="unternehmen-text">
+              <span class="eyebrow eyebrow--hell">Warum wir</span>
+              <h2>Ihr Umzugsteam aus Mosbach — seit über 30 Jahren</h2>
+              <p>
+                Als Familienbetrieb kennen wir Mosbach und die Region wie kaum ein
+                anderer. Bei uns sprechen Sie mit den Menschen, die auch anpacken —
+                persönlich, zuverlässig und mit Festpreisgarantie.
+              </p>
+              <ul class="unternehmen-punkte">
+                <li>Über 30 Jahre Erfahrung in Umzug und Möbeltransport</li>
+                <li>Familienbetrieb mit persönlicher Beratung, keine Zentrale</li>
+                <li>Von der Einzelkiste bis zur ganzen Wohnung aus einer Hand</li>
+              </ul>
+              <a class="btn btn--kontur btn--kontur-hell" href="anfrage.html">Jetzt anfragen</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Ablauf -->
+      <section class="section section--ablauf" id="ablauf" data-reveal>
+        <div class="section-inhalt">
+          <div class="section-kopf">
+            <span class="eyebrow">So geht's weiter</span>
+            <h2>In drei Schritten zu Ihrem Umzug</h2>
+          </div>
+          <div class="route-ablauf">
+            <div class="route-linie" aria-hidden="true"></div>
+            <div class="route-schritt">
+              <span class="route-marker" aria-hidden="true">01</span>
+              <h3>Anfragen</h3>
+              <p>Umzugsart, Von/Nach und Wunschtermin — in wenigen Minuten notiert.</p>
+            </div>
+            <div class="route-schritt">
+              <span class="route-marker" aria-hidden="true">02</span>
+              <h3>Besichtigen</h3>
+              <p>Wir sehen uns Ihr Zuhause an und ermitteln den Umfang für Ihren Festpreis.</p>
+            </div>
+            <div class="route-schritt">
+              <span class="route-marker" aria-hidden="true">03</span>
+              <h3>Umziehen</h3>
+              <p>Zum Wunschtermin übernehmen wir Ihren Umzug — sicher und gut orientiert.</p>
+            </div>
+          </div>
+          <p class="ablauf-hinweis">
+            Beispiel-Ablauf der Konzeptvorschau — den tatsächlichen Ablauf stimmt der Betrieb mit Ihnen ab.
+          </p>
+        </div>
+      </section>
+
+      <!-- Anfrage-Teaser -->
+      <section class="section section--teaser spotlight-sektion" id="anfrage-sektion" data-reveal>
+        <div class="section-inhalt">
+          <div class="section-kopf">
+            <span class="eyebrow">Umzug anfragen</span>
+            <h2>Erzählen Sie uns von Ihrem Umzug</h2>
+            <p>
+              Umzugsart, Von/Nach, Wunschtermin und Zusatzleistungen — so ist Ihre
+              Beratung schon halb vorbereitet, bevor Sie anrufen.
+            </p>
+          </div>
+          <p class="teaser-aktion">
+            <a class="btn btn--voll" href="anfrage.html" data-magnetisch>Zur Umzugs-Anfrage</a>
+          </p>
+          <p class="teaser-meta">
+            Erreichbar Mo–Fr vormittags (Beispielzeiten) · Kontaktdaten folgen nach Freigabe
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer-inhalt">
+        <div class="footer-spalten">
+          <a class="wortmarke" href="#inhalt" aria-label="Kompass-Umzüge — nach oben">
+            <svg class="ornament" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+              <circle cx="16" cy="16" r="13.4" fill="none" stroke="var(--kupfer)" stroke-width="1.8"/>
+              <path d="M16,5.5 L19.4,16 L16,26.5 L12.6,16 Z" fill="var(--kupfer)"/>
+              <circle cx="16" cy="16" r="1.8" fill="var(--navy-tief)"/>
+            </svg>
+            <span class="wortmarke-text">
+              <small>Kompass</small>
+              <strong>Umzüge</strong>
+            </span>
+          </a>
+          <nav aria-label="Fußnavigation">
+            <a href="#leistungen">Leistungen</a>
+            <a href="#warum-wir">Warum wir</a>
+            <a href="#ablauf">Ablauf</a>
+            <a href="anfrage.html">Umzug anfragen</a>
+          </nav>
+        </div>
+        <p class="footer-klein">
+          <strong>Design-Entwurf von TOMORROWWORKS</strong> —
+          nicht die offizielle Website von Kompass-Umzüge.
+          Persönliche Konzeptvorschau ohne echte Kontaktdaten; Kontaktdaten folgen nach Freigabe.
+          Alle Fotos: Beispielfotos (Symbolbilder). Leistungen und Ablauf:
+          Beispiel-Leistungsspektrum — kein Angebot des Betriebs.
+        </p>
+      </div>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
