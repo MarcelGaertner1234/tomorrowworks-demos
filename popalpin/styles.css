@@ -1401,3 +1401,316 @@ textarea:focus-visible {
     max-width: 320px;
   }
 }
+
+/* ---------- WOW-Pass: Bühnen-Inszenierung ---------- */
+
+/* Hero: orchestrierter Auftritt beim Laden */
+@keyframes aufblenden {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes duo-auftritt {
+  from { opacity: 0; transform: translateY(48px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes kenburns {
+  from { transform: scale(1.08); }
+  to { transform: scale(1); }
+}
+
+.hero-bild img {
+  animation: kenburns 22s cubic-bezier(0.25, 0.6, 0.35, 1) both;
+}
+
+.hero-inhalt > .eyebrow { animation: aufblenden 0.7s cubic-bezier(0.2, 0.7, 0.3, 1) 0.1s both; }
+.hero-inhalt > h1 { animation: aufblenden 0.8s cubic-bezier(0.2, 0.7, 0.3, 1) 0.24s both; }
+.hero-inhalt > .hero-unterzeile { animation: aufblenden 0.7s cubic-bezier(0.2, 0.7, 0.3, 1) 0.42s both; }
+.hero-inhalt > .schnellcheck { animation: aufblenden 0.7s cubic-bezier(0.2, 0.7, 0.3, 1) 0.6s both; }
+.hero-duo { animation: duo-auftritt 0.9s cubic-bezier(0.2, 0.7, 0.3, 1) 0.5s both; }
+
+.gold-wort {
+  color: var(--gold-hell);
+}
+
+/* Scheinwerfer hinter dem Duo */
+.buehnen-spot {
+  position: absolute;
+  z-index: 1;
+  right: clamp(-60px, 1vw, 20px);
+  bottom: -220px;
+  width: 680px;
+  height: 680px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(212, 175, 55, 0.30), rgba(212, 175, 55, 0.10) 55%, transparent 72%);
+  pointer-events: none;
+  animation: aufblenden 1.2s ease 0.45s both;
+}
+
+@media (max-width: 1150px) {
+  .buehnen-spot {
+    display: none;
+  }
+}
+
+/* Gold-Buttons: Lichtstreif beim Hover */
+.btn--gold {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn--gold::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-130%) skewX(-18deg);
+  background: linear-gradient(105deg, transparent 32%, rgba(255, 255, 255, 0.5) 50%, transparent 68%);
+  transition: transform 0.55s ease;
+}
+
+.btn--gold:hover::after {
+  transform: translateX(130%) skewX(-18deg);
+}
+
+/* Sektions-Überschriften: wachsende Gold-Linie */
+.hat-js .sektion-kopf h2::after {
+  content: "";
+  display: block;
+  width: 68px;
+  height: 3px;
+  background: var(--gold);
+  margin-top: 16px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s ease 0.25s;
+}
+
+.hat-js .sektion-kopf.sichtbar h2::after {
+  transform: scaleX(1);
+}
+
+/* Gestaffelte Reveals in Rastern und Tour-Zeilen */
+.hat-js .anlass-raster > .reveal:nth-child(3n + 2),
+.hat-js .besetzung-raster > .reveal:nth-child(4n + 2),
+.hat-js .band-raster > .reveal:nth-child(2),
+.hat-js .staerken-raster > .reveal:nth-child(3n + 2),
+.hat-js .stimmen-raster > .reveal:nth-child(2),
+.hat-js .tour-liste > .reveal:nth-child(2),
+.hat-js .zahlen-raster > .reveal:nth-child(2) {
+  transition-delay: 0.1s;
+}
+
+.hat-js .anlass-raster > .reveal:nth-child(3n),
+.hat-js .besetzung-raster > .reveal:nth-child(4n + 3),
+.hat-js .band-raster > .reveal:nth-child(3),
+.hat-js .staerken-raster > .reveal:nth-child(3n),
+.hat-js .tour-liste > .reveal:nth-child(3),
+.hat-js .zahlen-raster > .reveal:nth-child(3) {
+  transition-delay: 0.2s;
+}
+
+.hat-js .besetzung-raster > .reveal:nth-child(4n),
+.hat-js .tour-liste > .reveal:nth-child(4) {
+  transition-delay: 0.3s;
+}
+
+.hat-js .tour-liste > .reveal:nth-child(5) {
+  transition-delay: 0.4s;
+}
+
+/* Foto-Zoom beim Hover */
+.anlass-kachel figure,
+.besetzung-karte figure {
+  overflow: hidden;
+}
+
+.anlass-kachel img,
+.besetzung-karte img {
+  transition: transform 0.55s ease;
+}
+
+.anlass-kachel:hover img {
+  transform: scale(1.055);
+}
+
+.besetzung-karte {
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.besetzung-karte:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(36, 29, 24, 0.16);
+}
+
+.besetzung-karte:hover img {
+  transform: scale(1.045);
+}
+
+.band-karte {
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.band-karte:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(36, 29, 24, 0.14);
+}
+
+/* Bühnen-Grain auf dunklen Flächen */
+.sektion--dunkel,
+.anfrage-kopf {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+}
+
+/* Tourplan: Plakat-Deko-Wort + Live-Puls */
+#tourplan {
+  position: relative;
+  overflow: hidden;
+}
+
+#tourplan .sektion-inhalt {
+  position: relative;
+}
+
+#tourplan .sektion-inhalt::before {
+  content: "ON TOUR";
+  position: absolute;
+  top: -34px;
+  right: -12px;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(80px, 12vw, 168px);
+  letter-spacing: 0.06em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(212, 175, 55, 0.16);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+@keyframes live-puls {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.55); }
+  70% { box-shadow: 0 0 0 8px rgba(212, 175, 55, 0); }
+}
+
+.tour-status--offen::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  margin-right: 8px;
+  vertical-align: 1px;
+  animation: live-puls 1.8s ease-out infinite;
+}
+
+.tour-zeile {
+  transition: background-color 0.2s ease;
+}
+
+.tour-zeile:hover {
+  background: rgba(212, 175, 55, 0.05);
+}
+
+/* Setlist-Equalizer */
+.eq {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 16px;
+  margin-left: 12px;
+  vertical-align: -2px;
+}
+
+.eq i {
+  width: 4px;
+  border-radius: 2px 2px 0 0;
+  background: var(--gold);
+  animation: eq-tanz 0.9s ease-in-out infinite alternate;
+}
+
+.eq i:nth-child(1) { height: 7px; animation-delay: 0s; }
+.eq i:nth-child(2) { height: 14px; animation-delay: 0.15s; }
+.eq i:nth-child(3) { height: 9px; animation-delay: 0.3s; }
+.eq i:nth-child(4) { height: 16px; animation-delay: 0.45s; }
+.eq i:nth-child(5) { height: 11px; animation-delay: 0.6s; }
+
+@keyframes eq-tanz {
+  from { transform: scaleY(0.35); }
+  to { transform: scaleY(1); }
+}
+
+/* Header: verdichtet sich beim Scrollen */
+.site-header {
+  transition: box-shadow 0.25s ease;
+}
+
+.site-header-inhalt {
+  transition: padding 0.25s ease;
+}
+
+.geschrumpft .site-header {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+}
+
+.geschrumpft .site-header-inhalt {
+  padding-top: 9px;
+  padding-bottom: 9px;
+}
+
+/* Setlist-Zeilen: Gold-Hover */
+.setlist-spalten li {
+  transition: border-color 0.2s ease;
+}
+
+.setlist-spalten li:hover {
+  border-color: rgba(212, 175, 55, 0.65);
+}
+
+/* Reduced Motion: gesamte Inszenierung aus */
+@media (prefers-reduced-motion: reduce) {
+  .hero-bild img,
+  .hero-inhalt > .eyebrow,
+  .hero-inhalt > h1,
+  .hero-inhalt > .hero-unterzeile,
+  .hero-inhalt > .schnellcheck,
+  .hero-duo,
+  .buehnen-spot,
+  .tour-status--offen::before,
+  .eq i {
+    animation: none;
+  }
+  .btn--gold::after {
+    display: none;
+  }
+  .hat-js .sektion-kopf h2::after {
+    transform: none;
+    transition: none;
+  }
+  .anlass-kachel img,
+  .besetzung-karte img,
+  .besetzung-karte,
+  .band-karte,
+  .site-header,
+  .site-header-inhalt,
+  .tour-zeile,
+  .setlist-spalten li {
+    transition: none;
+  }
+  .anlass-kachel:hover img,
+  .besetzung-karte:hover img,
+  .besetzung-karte:hover,
+  .band-karte:hover {
+    transform: none;
+  }
+  .hat-js .reveal,
+  .hat-js .anlass-raster > .reveal,
+  .hat-js .besetzung-raster > .reveal,
+  .hat-js .band-raster > .reveal,
+  .hat-js .staerken-raster > .reveal,
+  .hat-js .stimmen-raster > .reveal,
+  .hat-js .tour-liste > .reveal,
+  .hat-js .zahlen-raster > .reveal {
+    transition-delay: 0s;
+  }
+}

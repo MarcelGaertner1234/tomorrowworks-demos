@@ -28,6 +28,47 @@
     window.setTimeout(() => reveals.forEach((el) => el.classList.add('sichtbar')), 2500);
   }
 
+  // Header verdichtet sich beim Scrollen.
+  const headerZustand = () => {
+    document.documentElement.classList.toggle('geschrumpft', window.scrollY > 12);
+  };
+  headerZustand();
+  window.addEventListener('scroll', headerZustand, { passive: true });
+
+  // Statement-Zahlen zählen hoch, sobald sie sichtbar werden — anders als die
+  // hängenden Zähler der bestehenden Website: schnell, robust, mit Endwert im
+  // Markup als No-JS-/reduced-motion-Fallback.
+  const zaehler = document.querySelectorAll('[data-zaehler]');
+  if (zaehler.length > 0 && !reduziert && 'IntersectionObserver' in window) {
+    const zaehlen = (el) => {
+      const ziel = Number(el.getAttribute('data-zaehler'));
+      const endtext = el.getAttribute('data-endtext') || String(ziel);
+      const suffix = endtext.replace(/^\d+/, '');
+      const dauer = 1100;
+      const start = performance.now();
+      const schritt = (jetzt) => {
+        const t = Math.min((jetzt - start) / dauer, 1);
+        const eased = 1 - Math.pow(1 - t, 3);
+        el.textContent = Math.round(ziel * eased) + suffix;
+        if (t < 1) requestAnimationFrame(schritt);
+        else el.textContent = endtext.replace('&nbsp;', ' ');
+      };
+      requestAnimationFrame(schritt);
+    };
+    const zahlenIo = new IntersectionObserver(
+      (eintraege) => {
+        for (const eintrag of eintraege) {
+          if (eintrag.isIntersecting) {
+            zaehlen(eintrag.target);
+            zahlenIo.unobserve(eintrag.target);
+          }
+        }
+      },
+      { threshold: 0.4 },
+    );
+    zaehler.forEach((el) => zahlenIo.observe(el));
+  }
+
   const form = document.querySelector('#anfrage-form');
   if (!form) return;
 
