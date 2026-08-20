@@ -17,9 +17,7 @@
   // System aus ?system= vorauswählen (Links der Systeme-Kacheln).
   const system = params.get('system');
   if (system) {
-    const radio = document.querySelector(
-      `input[name="system"][value="${CSS.escape(system)}"]`
-    );
+    const radio = form.querySelector(`input[name="system"][value="${CSS.escape(system)}"]`);
     if (radio) radio.checked = true;
   }
 
@@ -29,7 +27,12 @@
   const neustart = document.querySelector('[data-neustart]');
 
   // Wunschtermin darf nicht in der Vergangenheit liegen.
-  const heute = new Date().toISOString().slice(0, 10);
+  // Lokales Datum statt toISOString() (UTC) — sonst zwischen 00:00–02:00 CEST
+  // ein Tag zu früh (off-by-one, siehe Final-Review-Fund #9).
+  const heute = (() => {
+    const d = new Date();
+    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+  })();
   const datumFeld = form.querySelector('#datum');
   if (datumFeld) datumFeld.min = heute;
 
@@ -59,6 +62,7 @@
       if (fehlerPanel) {
         fehlerPanel.hidden = false;
         fehlerPanel.textContent = fehler.join(' ');
+        fehlerPanel.focus();
       }
       return;
     }
