@@ -22,5 +22,7 @@ entsprechenden Hinweis-Banner und ist auf `noindex` gestellt).
 - `kimberger/` — Kosmetikinstitut, Sinsheim
 - `am-waldrand/` — Pension, Mosbach-Waldstadt
 - `mos-kebab/` — Imbiss, Mosbach-Neckarelz
+- `kompass-umzuege/` — Umzugsunternehmen, Mosbach
+- `rubi/` — Hausmeisterservice, Mosbach
 
 Offizielle Website des Studios: https://tomorrowworks-agentur.de

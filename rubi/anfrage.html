@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Anfrage — Dienstleistungen Rubi, Mosbach (Design-Entwurf)</title>
+    <meta
+      name="description"
+      content="Design-Entwurf von TOMORROWWORKS — Persönliche Konzeptvorschau, nicht die offizielle Website von Dienstleistungen Rubi."
+    >
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+
+    <header>
+      <div class="banner">
+        <strong>Design-Entwurf von TOMORROWWORKS</strong> —
+        nicht die offizielle Website von Dienstleistungen Rubi ·
+        Persönliche Konzeptvorschau
+      </div>
+      <div class="site-header">
+        <div class="site-header-inhalt">
+          <a class="wortmarke" href="index.html" aria-label="Dienstleistungen Rubi — zur Startseite">
+            <span class="swatch" aria-hidden="true"></span>
+            <span class="wortmarke-text">
+              <strong>Dienstleistungen Rubi</strong>
+              <span>Hausmeisterservice — Mosbach</span>
+            </span>
+          </a>
+          <nav class="site-nav" aria-label="Hauptnavigation">
+            <a href="index.html">← Zur Homepage</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main id="inhalt">
+      <div class="planer">
+        <div class="planer-kopf">
+          <span class="demo-chip">DEMO · KEINE SPEICHERUNG</span>
+          <h1>Anfrage stellen</h1>
+          <p>
+            Beschreiben Sie Ihr Anliegen in vier kurzen Schritten — Leistungsart,
+            Objekt-Art, Wunschtermin und ein paar Angaben zu Ihnen. In dieser
+            Konzeptvorschau wird nichts gespeichert oder versendet.
+          </p>
+        </div>
+
+        <form id="anfrage-form" novalidate>
+          <fieldset>
+            <legend>01 · Leistungsart</legend>
+            <div class="radio-karten">
+              <label class="radio-karte">
+                <input type="radio" name="leistung" value="hausmeister" checked>
+                <strong>Hausmeisterdienste</strong>
+                <span>Kontrollgänge, kleine Instandhaltung, Ansprechpartner vor Ort</span>
+              </label>
+              <label class="radio-karte">
+                <input type="radio" name="leistung" value="renovierung">
+                <strong>Renovierungsarbeiten</strong>
+                <span>Streichen, kleine Ausbesserungen, Instandsetzung</span>
+              </label>
+              <label class="radio-karte">
+                <input type="radio" name="leistung" value="garten">
+                <strong>Gartenarbeiten &amp; -pflege</strong>
+                <span>Rasen, Hecke, laufende Grünpflege</span>
+              </label>
+              <label class="radio-karte">
+                <input type="radio" name="leistung" value="reparatur">
+                <strong>Reparaturarbeiten</strong>
+                <span>Kleine Reparaturen rund ums Haus</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>02 · Objekt &amp; Wunschtermin</legend>
+            <div class="feld">
+              <label for="objektart">Objekt-Art</label>
+              <select id="objektart" name="objektart">
+                <option value="">Bitte wählen</option>
+                <option value="privat">Privat</option>
+                <option value="gewerblich">Gewerblich</option>
+              </select>
+              <p class="feld-hinweis">Beispielangabe genügt — es wird nichts gespeichert.</p>
+            </div>
+            <div class="feld-reihe">
+              <div class="feld">
+                <label for="termin">Wunschtermin</label>
+                <input id="termin" name="termin" type="date">
+                <p class="feld-hinweis">Beispielangabe genügt — es wird nichts gespeichert.</p>
+              </div>
+              <div class="feld">
+                <label for="zeit">Beispielzeit</label>
+                <select id="zeit" name="zeit">
+                  <option value="">Bitte wählen</option>
+                  <option value="vormittags">Vormittags (Beispielzeit: 8–12 Uhr)</option>
+                  <option value="nachmittags">Nachmittags (Beispielzeit: 13–17 Uhr)</option>
+                  <option value="nach-absprache">Nach Absprache (Beispielzeit)</option>
+                </select>
+                <p class="feld-hinweis">
+                  Beispielzeiten der Konzeptvorschau — die echten Termine nennt Ihnen der Betrieb.
+                </p>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>03 · Beschreibung &amp; Fotos</legend>
+            <div class="feld">
+              <label for="beschreibung">Kurze Beschreibung</label>
+              <textarea
+                id="beschreibung"
+                name="beschreibung"
+                rows="3"
+                placeholder="Zum Beispiel: Rasen und Sträucher im Vorgarten brauchen einen Pflegeschnitt."
+              ></textarea>
+              <p class="feld-hinweis">Beispielangabe genügt — es wird nichts gespeichert.</p>
+            </div>
+            <div class="feld dropzone">
+              <span class="dropzone-hinweis">Demo — Fotos werden nicht übertragen</span>
+              <label for="fotos">Fotos auswählen</label>
+              <input id="fotos" name="fotos" type="file" multiple accept="image/*">
+              <p class="feld-hinweis">
+                Ein paar Fotos helfen bei der ersten Einschätzung. In dieser Demo
+                bleiben die Fotos auf Ihrem Gerät.
+              </p>
+              <ul class="foto-liste" data-foto-liste hidden></ul>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>04 · Kontakt</legend>
+            <div class="feld-reihe">
+              <div class="feld">
+                <label for="vorname">Vorname</label>
+                <input id="vorname" name="vorname" type="text" autocomplete="given-name">
+              </div>
+              <div class="feld">
+                <label for="nachname">Nachname</label>
+                <input id="nachname" name="nachname" type="text" autocomplete="family-name">
+              </div>
+            </div>
+            <div class="feld">
+              <label for="telefon">Telefonnummer</label>
+              <input id="telefon" name="telefon" type="tel" inputmode="tel" autocomplete="tel">
+              <p class="feld-hinweis">Mindestens 7 Ziffern · wird in dieser Demo nicht gespeichert.</p>
+            </div>
+            <div class="feld">
+              <label for="nachricht">Nachricht (optional)</label>
+              <textarea id="nachricht" name="nachricht" rows="3"></textarea>
+            </div>
+          </fieldset>
+
+          <p class="fehler" data-fehler hidden></p>
+
+          <div class="planer-aktionen">
+            <button class="btn btn--voll" type="submit">Anfrage prüfen</button>
+            <a class="btn btn--kontur" href="index.html">Abbrechen</a>
+          </div>
+        </form>
+
+        <section class="bestaetigung" data-bestaetigung hidden aria-label="Bestätigung">
+          <h2>Ihre Demo-Anfrage steht</h2>
+          <p>
+            So würde Ihre Anfrage beim Betrieb ankommen — in dieser Konzeptvorschau
+            wurde sie nur angezeigt:
+            <strong>es wurden keine Daten gespeichert oder versendet.</strong>
+          </p>
+          <p class="zusammenfassung" data-zusammenfassung></p>
+          <div class="planer-aktionen">
+            <button class="btn btn--kontur" type="button" data-neustart>Neue Demo-Anfrage</button>
+            <a class="btn btn--voll" href="index.html">← Zur Homepage</a>
+          </div>
+        </section>
+
+        <p class="planer-fuss">
+          Konzeptvorschau · kein Angebot · keine Beauftragung · keine Datenübertragung
+        </p>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer-inhalt">
+        <p class="footer-klein">
+          <strong>Design-Entwurf von TOMORROWWORKS</strong> — nicht die offizielle Website
+          von Dienstleistungen Rubi. Persönliche Konzeptvorschau ohne echte Kontaktdaten;
+          Kontaktdaten folgen nach Freigabe.
+        </p>
+      </div>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
