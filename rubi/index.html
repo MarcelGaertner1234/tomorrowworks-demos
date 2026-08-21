@@ -113,6 +113,46 @@
               als Anfrage auswählen.
             </p>
           </div>
+
+          <div class="anfrage-zusammenstellung" data-zusammenstellung>
+            <div class="zusammenstellung-eingabe">
+              <fieldset class="objekttyp-wahl">
+                <legend>Ihr Objekt</legend>
+                <button type="button" class="objekttyp-pille is-aktiv" data-objekttyp="privat">Privat</button>
+                <button type="button" class="objekttyp-pille" data-objekttyp="gewerblich">Gewerblich</button>
+              </fieldset>
+              <fieldset class="leistungs-checkboxen">
+                <legend>Welche Leistungen brauchen Sie?</legend>
+                <label>
+                  <input type="checkbox" data-zusammenstellung-leistung value="hausmeister">
+                  Hausmeisterdienste
+                </label>
+                <label>
+                  <input type="checkbox" data-zusammenstellung-leistung value="renovierung">
+                  Renovierungsarbeiten
+                </label>
+                <label>
+                  <input type="checkbox" data-zusammenstellung-leistung value="garten">
+                  Gartenarbeiten &amp; Gartenpflege
+                </label>
+                <label>
+                  <input type="checkbox" data-zusammenstellung-leistung value="reparatur">
+                  Reparaturarbeiten
+                </label>
+              </fieldset>
+            </div>
+            <div class="zusammenstellung-ergebnis">
+              <span class="zusammenstellung-label">Ihre Anfrage</span>
+              <p data-zusammenstellung-text>
+                Wählen Sie mindestens eine Leistung aus, dann fassen wir Ihre Anfrage
+                hier zusammen.
+              </p>
+              <a class="btn btn--voll" data-zusammenstellung-cta href="anfrage.html?objektart=privat" aria-disabled="true">
+                Zusammengestellte Anfrage senden
+              </a>
+            </div>
+          </div>
+
           <div class="leistungen-grid">
             <article class="kachel" data-leistung="hausmeister">
               <div class="kachel-bild">

@@ -3,14 +3,86 @@
 (() => {
   'use strict';
 
+  // Anfrage-Zusammenstellung (index.html): Objekttyp + mehrere Leistungen
+  // per Checkbox auswählen, live zusammenfassen, CTA übergibt beides an die
+  // Anfrage (erste gewählte Leistung + Objektart als URL-Parameter).
+  const zusammenstellung = document.querySelector('[data-zusammenstellung]');
+  if (zusammenstellung) {
+    const objekttypPillen = [...zusammenstellung.querySelectorAll('[data-objekttyp]')];
+    const leistungsBoxen = [...zusammenstellung.querySelectorAll('[data-zusammenstellung-leistung]')];
+    const textFeld = zusammenstellung.querySelector('[data-zusammenstellung-text]');
+    const cta = zusammenstellung.querySelector('[data-zusammenstellung-cta]');
+
+    const leistungsNamen = {
+      hausmeister: 'Hausmeisterdienste',
+      renovierung: 'Renovierungsarbeiten',
+      garten: 'Gartenarbeiten & Gartenpflege',
+      reparatur: 'Reparaturarbeiten',
+    };
+    const objekttypNamen = { privat: 'privates Objekt', gewerblich: 'gewerbliches Objekt' };
+
+    let objekttypAktiv = 'privat';
+
+    const aktualisieren = () => {
+      const gewaehlt = leistungsBoxen.filter((box) => box.checked).map((box) => box.value);
+
+      if (!gewaehlt.length) {
+        if (textFeld) {
+          textFeld.textContent =
+            'Wählen Sie mindestens eine Leistung aus, dann fassen wir Ihre Anfrage hier zusammen.';
+        }
+        if (cta) {
+          cta.setAttribute('aria-disabled', 'true');
+          cta.setAttribute('href', `anfrage.html?objektart=${objekttypAktiv}`);
+        }
+        return;
+      }
+
+      const namen = gewaehlt.map((wert) => leistungsNamen[wert]).join(' + ');
+      if (textFeld) {
+        textFeld.textContent = `${namen} für ein ${objekttypNamen[objekttypAktiv]}.`;
+      }
+      if (cta) {
+        cta.removeAttribute('aria-disabled');
+        cta.setAttribute('href', `anfrage.html?leistung=${gewaehlt[0]}&objektart=${objekttypAktiv}`);
+      }
+    };
+
+    objekttypPillen.forEach((pille) => {
+      pille.addEventListener('click', () => {
+        objekttypPillen.forEach((p) => p.classList.remove('is-aktiv'));
+        pille.classList.add('is-aktiv');
+        objekttypAktiv = pille.dataset.objekttyp;
+        aktualisieren();
+      });
+    });
+    leistungsBoxen.forEach((box) => box.addEventListener('change', aktualisieren));
+
+    if (cta) {
+      cta.addEventListener('click', (ereignis) => {
+        if (cta.getAttribute('aria-disabled') === 'true') ereignis.preventDefault();
+      });
+    }
+  }
+
   const form = document.querySelector('#anfrage-form');
   if (!form) return;
 
   // Leistungsart aus ?leistung= vorauswählen (Links der Leistungs-Kacheln).
-  const leistung = new URLSearchParams(window.location.search).get('leistung');
+  const parameter = new URLSearchParams(window.location.search);
+  const leistung = parameter.get('leistung');
   if (leistung) {
     const radio = form.querySelector(`input[name="leistung"][value="${CSS.escape(leistung)}"]`);
     if (radio) radio.checked = true;
+  }
+
+  // Objektart aus ?objektart= vorauswählen (Link aus der Anfrage-Zusammenstellung).
+  const objektart = parameter.get('objektart');
+  if (objektart) {
+    const auswahl = form.querySelector('#objektart');
+    if (auswahl && [...auswahl.options].some((option) => option.value === objektart)) {
+      auswahl.value = objektart;
+    }
   }
 
   // Wunschtermin: Minimum ist heute (lokales Datum, Format YYYY-MM-DD).
