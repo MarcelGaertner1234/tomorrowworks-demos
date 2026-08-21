@@ -1137,21 +1137,49 @@ legend {
   color: var(--ink-mute);
 }
 
-/* --- Shop: Mini-Warenkorb-Leiste (shop.html), Artikelzahl + Beispiel-Zwischensumme --- */
+/* --- Shop: Mini-Warenkorb-Leiste (shop.html), Artikelzahl + Beispiel-Zwischensumme ---
+   Sticky (NICHT fixed) am unteren Viewport-Rand — Review-Fund #5: "Zur Kasse" muss nach "In den
+   Warenkorb" ohne Scrollen durch das ganze Produktraster erreichbar sein. sticky statt fixed,
+   weil .warenkorb-leiste der letzte Abschnitt in <main> direkt vor dem Footer ist: sobald man ans
+   Ende von <main> scrollt, gibt sticky die Position wieder frei und die Leiste läuft mit dem
+   restlichen Seiteninhalt aus dem Bild, statt den Footer dauerhaft zu überlagern (das
+   Overlap-Verhalten, das fixed hier hätte). Trennung Außen-/Innen-Element wie bei
+   .section/.section-inhalt: außen voll breit mit Hintergrund/Schatten, innen auf 1140px
+   zentriert. */
 .warenkorb-leiste {
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+  margin-top: 40px;
+  background: var(--weiss);
+  border-top: 1px solid var(--hairline);
+  box-shadow: 0 -6px 18px rgba(42, 40, 37, 0.1);
+}
+
+.warenkorb-leiste-inhalt {
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 12px 20px;
   max-width: 1140px;
-  margin: 40px auto 0;
-  padding: 20px 20px 76px;
-  border-top: 1px solid var(--hairline);
+  margin: 0 auto;
+  padding: 16px 20px;
 }
 
 .warenkorb-zwischensumme {
   font-size: 15px;
+  color: var(--ink-mute);
+}
+
+/* Speicher-Transparenz (Review-Fund #6) — dieselbe Formulierung wie warenkorb.html, hier direkt
+   dort platziert, wo der sessionStorage-Write tatsächlich passiert (Klick auf "In den
+   Warenkorb"). flex-basis:100% nutzt den bestehenden flex-wrap der Leiste, damit der Hinweis
+   als eigene Zeile über Zwischensumme + "Zur Kasse" umbricht statt sie zu verdrängen. */
+.warenkorb-hinweis {
+  flex-basis: 100%;
+  margin: 0;
+  font-size: 12.5px;
   color: var(--ink-mute);
 }
 

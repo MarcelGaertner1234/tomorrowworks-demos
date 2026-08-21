@@ -95,7 +95,7 @@
            Mengen-Select, „In den Warenkorb", „← Zurück zum Sortiment"). Grundzustand hidden,
            analog [data-bestaetigung] aus anfrage.html; shop.js befüllt die Felder pro Klick. -->
       <section class="section" id="produkt-detail" aria-label="Produktdetail" hidden>
-        <div class="section-inhalt produkt-detail-inhalt">
+        <div class="section-inhalt">
           <button type="button" class="bereich-cta produkt-detail-zurueck" data-zurueck>← Zurück zum Sortiment</button>
           <div class="produkt-detail-layout">
             <div class="produkt-detail-bild">
@@ -127,11 +127,17 @@
         </div>
       </section>
 
-      <!-- Mini-Warenkorb-Leiste — Artikelzahl + Beispiel-Zwischensumme, von shop.js befüllt. -->
-      <div class="warenkorb-leiste" id="warenkorb-leiste" aria-label="Warenkorb-Übersicht">
-        <span class="warenkorb-zwischensumme" id="warenkorb-zwischensumme"></span>
-        <a class="btn btn--kontur" href="warenkorb.html">Zur Kasse</a>
-      </div>
+      <!-- Mini-Warenkorb-Leiste — Artikelzahl + Beispiel-Zwischensumme, von shop.js befüllt.
+           <section> statt <div>, damit aria-label eine Rolle (region) hat, an die Screenreader
+           sie binden können; role="status" auf der Zwischensumme sagt Änderungen beim
+           Hinzufügen von Artikeln an (aria-live wäre hier redundant zu role="status"). -->
+      <section class="warenkorb-leiste" id="warenkorb-leiste" aria-label="Warenkorb-Übersicht">
+        <div class="warenkorb-leiste-inhalt">
+          <p class="warenkorb-hinweis">Warenkorb bleibt nur in diesem Browser-Tab, keine Übertragung.</p>
+          <span class="warenkorb-zwischensumme" id="warenkorb-zwischensumme" role="status"></span>
+          <a class="btn btn--kontur" href="warenkorb.html">Zur Kasse</a>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer">

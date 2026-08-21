@@ -102,6 +102,47 @@ const fuelleBeispielpreis = (container, preis, praefix = '') => {
   container.append(stark, ` ${preis} €`);
 };
 
+// Warenkorb-sessionStorage-Hilfsfunktionen — wie PRODUKTE/fuelleBeispielpreis oben EINMAL auf
+// MODULEBENE, außerhalb beider IIFEs. Beide IIFEs (shop.html-Raster/Detail UND
+// warenkorb.html-Übersicht) teilen sich dieselbe Implementierung, keine Duplizierung des
+// Lese-/Schreib-/Leer-Musters (war zuvor fast wortgleich in beiden IIFEs dupliziert).
+const WARENKORB_KEY = 'spitzer-warenkorb';
+
+// Struktur je Zeile: {produktId, groesse, menge}. Keine Netzwerk-Aufrufe — bleibt im Browser-Tab.
+// Leeres Array bei null/Parse-Fehler statt Absturz, z.B. bei Direktaufruf von warenkorb.html ohne
+// vorherigen Shop-Besuch.
+const ladeWarenkorb = () => {
+  try {
+    const roh = sessionStorage.getItem(WARENKORB_KEY);
+    const geparst = roh ? JSON.parse(roh) : [];
+    return Array.isArray(geparst) ? geparst : [];
+  } catch {
+    return [];
+  }
+};
+
+// Nimmt den aktuellen Warenkorb als Parameter entgegen (statt über eine IIFE-lokale Closure-
+// Variable), damit beide IIFEs — jede mit ihrem eigenen `warenkorb`-Array — dieselbe Funktion
+// aufrufen können.
+const speichereWarenkorb = (warenkorb) => {
+  try {
+    sessionStorage.setItem(WARENKORB_KEY, JSON.stringify(warenkorb));
+  } catch {
+    // sessionStorage evtl. nicht verfügbar (privater Modus/Speicher voll) — Warenkorb bleibt
+    // in diesem Fall nur für die aktuelle Seitenansicht erhalten.
+  }
+};
+
+// Leert nur den sessionStorage-Eintrag — das Zurücksetzen des IIFE-lokalen `warenkorb`-Arrays
+// bleibt Sache des jeweiligen Aufrufers (nur die zweite IIFE braucht das aktuell).
+const leereWarenkorb = () => {
+  try {
+    sessionStorage.removeItem(WARENKORB_KEY);
+  } catch {
+    // sessionStorage evtl. nicht verfügbar — Array ist ohnehin schon geleert.
+  }
+};
+
 // Shop-Raster + Produktdetail + Mini-Warenkorb-Leiste, läuft nur auf shop.html
 // (dort existiert #produkt-raster).
 (() => {
@@ -109,8 +150,6 @@ const fuelleBeispielpreis = (container, preis, praefix = '') => {
 
   const produktRaster = document.querySelector('#produkt-raster');
   if (!produktRaster) return;
-
-  const WARENKORB_KEY = 'spitzer-warenkorb';
 
   const bereichButtons = document.querySelectorAll('#bereich-toggle .bereich-toggle-btn');
   const produktDetail = document.querySelector('#produkt-detail');
@@ -125,28 +164,9 @@ const fuelleBeispielpreis = (container, preis, praefix = '') => {
   const warenkorbZaehler = document.querySelector('#warenkorb-zaehler');
   const warenkorbZwischensumme = document.querySelector('#warenkorb-zwischensumme');
 
-  // Warenkorb-Zustand: In-Memory-Array, gespiegelt in sessionStorage unter WARENKORB_KEY.
-  // Struktur je Zeile: {produktId, groesse, menge}. Keine Netzwerk-Aufrufe — bleibt im Browser-Tab.
-  const ladeWarenkorb = () => {
-    try {
-      const roh = sessionStorage.getItem(WARENKORB_KEY);
-      const geparst = roh ? JSON.parse(roh) : [];
-      return Array.isArray(geparst) ? geparst : [];
-    } catch {
-      return [];
-    }
-  };
-
+  // Warenkorb-Zustand: In-Memory-Array dieser IIFE, gespiegelt in sessionStorage über die
+  // modulweiten Hilfsfunktionen ladeWarenkorb/speichereWarenkorb oben (kein Duplikat mehr).
   let warenkorb = ladeWarenkorb();
-
-  const speichereWarenkorb = () => {
-    try {
-      sessionStorage.setItem(WARENKORB_KEY, JSON.stringify(warenkorb));
-    } catch {
-      // sessionStorage evtl. nicht verfügbar (privater Modus/Speicher voll) — Warenkorb bleibt
-      // in diesem Fall nur für die aktuelle Seitenansicht erhalten.
-    }
-  };
 
   const aktualisiereWarenkorbAnzeige = () => {
     const anzahl = warenkorb.reduce((summe, zeile) => summe + zeile.menge, 0);
@@ -286,8 +306,17 @@ const fuelleBeispielpreis = (container, preis, praefix = '') => {
       const groesse = ausgewaehlt ? ausgewaehlt.value : aktuellesProdukt.groessen[0];
       const menge = Number(detailMenge?.value ?? '1') || 1;
 
-      warenkorb.push({ produktId: aktuellesProdukt.id, groesse, menge });
-      speichereWarenkorb();
+      // Gleiches Produkt + gleiche Größe bereits im Warenkorb → Menge addieren statt einer
+      // zweiten, identischen Zeile (wirkte auf einem Live-Call unfertig, Review-Fund #7).
+      const bestehendeZeile = warenkorb.find(
+        (zeile) => zeile.produktId === aktuellesProdukt.id && zeile.groesse === groesse,
+      );
+      if (bestehendeZeile) {
+        bestehendeZeile.menge += menge;
+      } else {
+        warenkorb.push({ produktId: aktuellesProdukt.id, groesse, menge });
+      }
+      speichereWarenkorb(warenkorb);
       aktualisiereWarenkorbAnzeige();
 
       if (detailHinweis) {
@@ -314,8 +343,6 @@ const fuelleBeispielpreis = (container, preis, praefix = '') => {
   const warenkorbListe = document.querySelector('#warenkorb-liste');
   if (!warenkorbListe) return;
 
-  const WARENKORB_KEY = 'spitzer-warenkorb';
-
   const warenkorbLeer = document.querySelector('#warenkorb-leer');
   const form = document.querySelector('#warenkorb-form');
   const fehler = form?.querySelector('[data-fehler]');
@@ -323,35 +350,17 @@ const fuelleBeispielpreis = (container, preis, praefix = '') => {
   const zusammenfassung = document.querySelector('[data-zusammenfassung]');
   const neustart = document.querySelector('[data-neustart]');
 
-  // Gleiches Lese-/Schreib-Muster wie in der ersten IIFE (shop.html) — leeres Array bei
-  // null/Parse-Fehler statt Absturz, z.B. bei Direktaufruf von warenkorb.html ohne Shop-Besuch.
-  const ladeWarenkorb = () => {
-    try {
-      const roh = sessionStorage.getItem(WARENKORB_KEY);
-      const geparst = roh ? JSON.parse(roh) : [];
-      return Array.isArray(geparst) ? geparst : [];
-    } catch {
-      return [];
-    }
-  };
-
+  // In-Memory-Array dieser IIFE, gespiegelt in sessionStorage über die modulweiten
+  // Hilfsfunktionen ladeWarenkorb/speichereWarenkorb/leereWarenkorb oben (kein Duplikat mehr) —
+  // leeres Array bei null/Parse-Fehler statt Absturz, z.B. bei Direktaufruf von warenkorb.html
+  // ohne vorherigen Shop-Besuch.
   let warenkorb = ladeWarenkorb();
 
-  const speichereWarenkorb = () => {
-    try {
-      sessionStorage.setItem(WARENKORB_KEY, JSON.stringify(warenkorb));
-    } catch {
-      // sessionStorage evtl. nicht verfügbar — Änderung bleibt nur für die aktuelle Ansicht.
-    }
-  };
-
-  const leereWarenkorb = () => {
+  // leereWarenkorb() (modulweit) leert nur sessionStorage — das lokale `warenkorb`-Array muss
+  // diese IIFE selbst zurücksetzen.
+  const leereWarenkorbUndZustand = () => {
     warenkorb = [];
-    try {
-      sessionStorage.removeItem(WARENKORB_KEY);
-    } catch {
-      // sessionStorage evtl. nicht verfügbar — Array ist ohnehin schon geleert.
-    }
+    leereWarenkorb();
   };
 
   const zeilensumme = (zeile) => {
@@ -395,7 +404,7 @@ const fuelleBeispielpreis = (container, preis, praefix = '') => {
     entfernenBtn.setAttribute('aria-label', `${name} (Größe ${zeile.groesse}) entfernen`);
     entfernenBtn.addEventListener('click', () => {
       warenkorb.splice(index, 1);
-      speichereWarenkorb();
+      speichereWarenkorb(warenkorb);
       render();
     });
 
@@ -476,7 +485,7 @@ const fuelleBeispielpreis = (container, preis, praefix = '') => {
       // räumt dabei auch die alten Warenkorb-Zeilen (inkl. ihrer Entfernen-Buttons) aus dem DOM;
       // das eigene Leer-Zustand-Banner wird direkt danach wieder unterdrückt, damit es nicht
       // neben der Bestätigung auftaucht.
-      leereWarenkorb();
+      leereWarenkorbUndZustand();
       render();
       if (warenkorbLeer) warenkorbLeer.hidden = true;
       form.hidden = true;
@@ -492,7 +501,7 @@ const fuelleBeispielpreis = (container, preis, praefix = '') => {
       if (bestaetigung) bestaetigung.hidden = true;
       if (fehler) fehler.hidden = true;
       form?.reset();
-      leereWarenkorb();
+      leereWarenkorbUndZustand();
       render();
       window.scrollTo({ top: 0 });
     });
