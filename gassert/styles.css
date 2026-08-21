@@ -308,6 +308,85 @@ h3 { font-size: 1.12rem; }
   margin-top: 1.6rem;
 }
 
+/* ---------- Fahrzeugbestand-Filter ---------- */
+
+.fahrzeug-filter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.4rem 2rem;
+  margin-bottom: 1.8rem;
+  padding: 1.1rem 1.3rem;
+  background: var(--grund);
+  border: 1px solid var(--linie);
+  border-radius: var(--radius);
+}
+
+.filter-gruppe {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.filter-label {
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-soft);
+  margin-right: 0.3rem;
+}
+
+.filter-pill {
+  min-height: 44px;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid var(--linie);
+  background: var(--grund);
+  color: var(--text);
+  font-size: 0.86rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.filter-pill:hover { border-color: var(--akzent); }
+.filter-pill.is-aktiv {
+  background: var(--akzent);
+  border-color: var(--akzent);
+  color: #fff;
+}
+
+.filter-status {
+  margin-left: auto;
+  font-size: 0.86rem;
+  color: var(--text-soft);
+  font-variant-numeric: tabular-nums;
+}
+
+.fahrzeug-tags {
+  display: flex;
+  gap: 0.4rem;
+}
+.fahrzeug-tags .tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-soft);
+  border: 1px solid var(--linie);
+  border-radius: 3px;
+  padding: 0.15rem 0.45rem;
+}
+
+.fahrzeug-leer {
+  text-align: center;
+  color: var(--text-soft);
+  font-size: 0.92rem;
+  padding: 1.4rem;
+  border: 1px dashed var(--linie);
+  border-radius: var(--radius);
+}
+
 /* ---------- Fahrzeug-Karten ---------- */
 
 .fahrzeug-grid {
@@ -324,6 +403,7 @@ h3 { font-size: 1.12rem; }
   display: flex;
   flex-direction: column;
 }
+.fahrzeug-karte[hidden] { display: none; }
 
 .chip {
   align-self: flex-start;

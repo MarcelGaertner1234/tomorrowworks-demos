@@ -3,6 +3,47 @@
 (() => {
   'use strict';
 
+  // Fahrzeugbestand-Filter (index.html): Marke + Zustand → live gefilterte Beispielkarten.
+  const fahrzeugFilter = document.querySelector('[data-fahrzeug-filter]');
+  const fahrzeugGrid = document.querySelector('[data-fahrzeug-grid]');
+  if (fahrzeugFilter && fahrzeugGrid) {
+    const karten = [...fahrzeugGrid.querySelectorAll('.fahrzeug-karte')];
+    const status = fahrzeugFilter.querySelector('[data-filter-status]');
+    const leerHinweis = document.querySelector('[data-fahrzeug-leer]');
+    let markeAktiv = 'alle';
+    let zustandAktiv = 'alle';
+
+    const anwenden = () => {
+      let sichtbar = 0;
+      karten.forEach((karte) => {
+        const passtMarke = markeAktiv === 'alle' || karte.dataset.marke === markeAktiv;
+        const passtZustand = zustandAktiv === 'alle' || karte.dataset.zustand === zustandAktiv;
+        const treffer = passtMarke && passtZustand;
+        karte.hidden = !treffer;
+        if (treffer) sichtbar += 1;
+      });
+      if (status) status.textContent = `${sichtbar} von ${karten.length} Beispielfahrzeugen`;
+      if (leerHinweis) leerHinweis.hidden = sichtbar > 0;
+    };
+
+    fahrzeugFilter.querySelectorAll('[data-filter-marke]').forEach((knopf) => {
+      knopf.addEventListener('click', () => {
+        fahrzeugFilter.querySelectorAll('[data-filter-marke]').forEach((k) => k.classList.remove('is-aktiv'));
+        knopf.classList.add('is-aktiv');
+        markeAktiv = knopf.dataset.filterMarke;
+        anwenden();
+      });
+    });
+    fahrzeugFilter.querySelectorAll('[data-filter-zustand]').forEach((knopf) => {
+      knopf.addEventListener('click', () => {
+        fahrzeugFilter.querySelectorAll('[data-filter-zustand]').forEach((k) => k.classList.remove('is-aktiv'));
+        knopf.classList.add('is-aktiv');
+        zustandAktiv = knopf.dataset.filterZustand;
+        anwenden();
+      });
+    });
+  }
+
   const form = document.querySelector('#termin-form');
   if (!form) return;
 

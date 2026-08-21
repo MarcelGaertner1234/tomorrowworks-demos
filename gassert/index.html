@@ -122,49 +122,74 @@
       </div>
     </section>
 
-    <!-- Gebrauchtwagen-Teaser mit Beispiel-Fahrzeugkarten -->
+    <!-- Gebrauchtwagen-Teaser mit filterbaren Beispiel-Fahrzeugkarten -->
     <section class="section section--flaeche" id="fahrzeuge">
       <div class="wrap">
         <div class="section-kopf">
           <p class="eyebrow">Fahrzeuge</p>
           <h2>Ihr nächster Wagen steht vielleicht schon hier</h2>
-          <p class="lede">Beispielfahrzeuge — der echte Bestand ist auf der finalen Website live und immer aktuell, mit Fotos, Daten und Anfrage-Knopf je Fahrzeug.</p>
+          <p class="lede">Beispielfahrzeuge zum Ausprobieren — nach Marke und Zustand filterbar. Der echte Bestand ist auf der finalen Website live und immer aktuell, mit Fotos, Daten und Anfrage-Knopf je Fahrzeug.</p>
         </div>
-        <div class="fahrzeug-grid">
-          <article class="fahrzeug-karte">
+
+        <div class="fahrzeug-filter" data-fahrzeug-filter>
+          <div class="filter-gruppe" role="group" aria-label="Nach Marke filtern">
+            <span class="filter-label">Marke</span>
+            <button type="button" class="filter-pill is-aktiv" data-filter-marke="alle">Alle</button>
+            <button type="button" class="filter-pill" data-filter-marke="renault">Renault</button>
+            <button type="button" class="filter-pill" data-filter-marke="dacia">Dacia</button>
+          </div>
+          <div class="filter-gruppe" role="group" aria-label="Nach Zustand filtern">
+            <span class="filter-label">Zustand</span>
+            <button type="button" class="filter-pill is-aktiv" data-filter-zustand="alle">Alle</button>
+            <button type="button" class="filter-pill" data-filter-zustand="neuwagen">Neuwagen</button>
+            <button type="button" class="filter-pill" data-filter-zustand="gebrauchtwagen">Gebrauchtwagen</button>
+          </div>
+          <p class="filter-status" data-filter-status role="status">3 von 3 Beispielfahrzeugen</p>
+        </div>
+
+        <div class="fahrzeug-grid" data-fahrzeug-grid>
+          <article class="fahrzeug-karte" data-marke="renault" data-zustand="neuwagen">
             <figure>
               <img src="assets/fahrzeug-beispiel-1.jpg" alt="Roter Kleinwagen in der Seitenansicht am Straßenrand — Beispielfoto" loading="lazy" width="1400" height="933">
               <figcaption class="small">Beispielfoto (Symbolbild)</figcaption>
             </figure>
             <div class="card-body">
               <p class="chip">Beispielfahrzeug</p>
+              <p class="fahrzeug-tags"><span class="tag">Renault</span><span class="tag">Neuwagen</span></p>
               <h3>Kleinwagen für Dorf und Stadt</h3>
               <p class="small">Modell, Baujahr, Kilometerstand und Ausstattung stünden hier — direkt aus dem echten Bestand.</p>
+              <a class="card-cta" href="termin.html?anliegen=neuwagen">Beratung anfragen <span class="arrow" aria-hidden="true">→</span></a>
             </div>
           </article>
-          <article class="fahrzeug-karte">
+          <article class="fahrzeug-karte" data-marke="dacia" data-zustand="gebrauchtwagen">
             <figure>
               <img src="assets/fahrzeug-beispiel-2.jpg" alt="Dunkler Kombi in der Seitenansicht vor nebligen Feldern — Beispielfoto" loading="lazy" width="1400" height="933">
               <figcaption class="small">Beispielfoto (Symbolbild)</figcaption>
             </figure>
             <div class="card-body">
               <p class="chip">Beispielfahrzeug</p>
+              <p class="fahrzeug-tags"><span class="tag">Dacia</span><span class="tag">Gebrauchtwagen</span></p>
               <h3>Kombi mit Platz für die Familie</h3>
               <p class="small">Modell, Baujahr, Kilometerstand und Ausstattung stünden hier — direkt aus dem echten Bestand.</p>
+              <a class="card-cta" href="termin.html?anliegen=gebrauchtwagen">Besichtigung anfragen <span class="arrow" aria-hidden="true">→</span></a>
             </div>
           </article>
-          <article class="fahrzeug-karte">
+          <article class="fahrzeug-karte" data-marke="renault" data-zustand="gebrauchtwagen">
             <figure>
               <img src="assets/fahrzeug-beispiel-3.jpg" alt="Dunkler SUV auf kurviger Landstraße in grünen Hügeln — Beispielfoto" loading="lazy" width="1400" height="933">
               <figcaption class="small">Beispielfoto (Symbolbild)</figcaption>
             </figure>
             <div class="card-body">
               <p class="chip">Beispielfahrzeug</p>
+              <p class="fahrzeug-tags"><span class="tag">Renault</span><span class="tag">Gebrauchtwagen</span></p>
               <h3>Robuster SUV für den Odenwald</h3>
               <p class="small">Modell, Baujahr, Kilometerstand und Ausstattung stünden hier — direkt aus dem echten Bestand.</p>
+              <a class="card-cta" href="termin.html?anliegen=gebrauchtwagen">Besichtigung anfragen <span class="arrow" aria-hidden="true">→</span></a>
             </div>
           </article>
         </div>
+        <p class="fahrzeug-leer" data-fahrzeug-leer hidden>Aktuell kein Beispielfahrzeug mit dieser Kombination — der echte Bestand wäre hier live und würde öfter passen.</p>
+
         <p class="fahrzeug-hinweis"><a class="card-cta" href="termin.html?anliegen=gebrauchtwagen">Gebrauchtwagen-Besichtigung anfragen <span class="arrow" aria-hidden="true">→</span></a></p>
       </div>
     </section>
