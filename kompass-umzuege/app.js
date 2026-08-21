@@ -176,7 +176,7 @@
   const form = document.querySelector('#anfrage-form');
   if (!form) return;
 
-  // Umzugsart aus ?umzugsart= vorauswählen (Leistungs-Kachel-Link).
+  // Umzugsart aus ?umzugsart= vorauswählen (Leistungs-Kachel-/Kompassnadel-Link).
   const parameter = new URLSearchParams(window.location.search);
   const umzugsartWert = parameter.get('umzugsart');
   if (umzugsartWert) {
@@ -184,6 +184,15 @@
       `input[name="umzugsart"][value="${CSS.escape(umzugsartWert)}"]`,
     );
     if (radio) radio.checked = true;
+  }
+
+  // Zusatzleistung aus ?zusatzleistung= vorauswählen (Kompassnadel-Link "Einlagerung").
+  const zusatzleistungWert = parameter.get('zusatzleistung');
+  if (zusatzleistungWert) {
+    const checkbox = form.querySelector(
+      `input[name="zusatzleistung"][value="${CSS.escape(zusatzleistungWert)}"]`,
+    );
+    if (checkbox) checkbox.checked = true;
   }
 
   // Wunschtermin: Minimum ist heute (lokales Datum, Format YYYY-MM-DD).
