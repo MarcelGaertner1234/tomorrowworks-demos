@@ -3,6 +3,60 @@
 (() => {
   'use strict';
 
+  // Bedarfsrechner (index.html): Fläche + Frequenz → live berechnete System-Empfehlung.
+  // Bewusst ohne Euro-Betrag (verify.mjs verbietet erfundene Preise) — die Empfehlung
+  // nennt nur den Systemnamen, die Pauschale klärt die Besichtigung.
+  const rechner = document.querySelector('[data-bedarfsrechner]');
+  if (rechner) {
+    const flaecheFeld = rechner.querySelector('[data-rechner-flaeche]');
+    const flaecheWert = rechner.querySelector('[data-rechner-flaeche-wert]');
+    const systemName = rechner.querySelector('[data-rechner-system-name]');
+    const begruendung = rechner.querySelector('[data-rechner-begruendung]');
+    const cta = rechner.querySelector('[data-rechner-cta]');
+
+    const systemLabels = {
+      basis: 'System Basis',
+      komfort: 'System Komfort',
+      premium: 'System Premium',
+    };
+    const frequenzLabels = {
+      woechentlich: '1× wöchentlicher',
+      mehrmals: 'mehrmals wöchentlicher',
+      taeglich: 'täglicher',
+    };
+
+    const ermittleSystem = (flaeche, frequenz) => {
+      let punkte = 0;
+      if (flaeche > 400) punkte += 2;
+      else if (flaeche > 150) punkte += 1;
+      if (frequenz === 'taeglich') punkte += 2;
+      else if (frequenz === 'mehrmals') punkte += 1;
+      if (punkte >= 3) return 'premium';
+      if (punkte >= 1) return 'komfort';
+      return 'basis';
+    };
+
+    const aktualisieren = () => {
+      const flaeche = Number(flaecheFeld.value);
+      const frequenz = rechner.querySelector('[data-rechner-frequenz]:checked')?.value || 'woechentlich';
+      const system = ermittleSystem(flaeche, frequenz);
+
+      if (flaecheWert) flaecheWert.textContent = `${flaeche} m²`;
+      if (systemName) systemName.textContent = systemLabels[system];
+      if (begruendung) {
+        begruendung.textContent =
+          `Bei ${flaeche} m² und ${frequenzLabels[frequenz]} Reinigung passt dieses System zu Ihrem Bedarf.`;
+      }
+      if (cta) cta.setAttribute('href', `anfrage.html?system=${system}`);
+    };
+
+    flaecheFeld?.addEventListener('input', aktualisieren);
+    rechner.querySelectorAll('[data-rechner-frequenz]').forEach((radio) => {
+      radio.addEventListener('change', aktualisieren);
+    });
+    aktualisieren();
+  }
+
   const form = document.querySelector('[data-anfrage-form]');
   if (!form) return;
 

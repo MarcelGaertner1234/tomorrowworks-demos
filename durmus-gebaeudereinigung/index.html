@@ -168,13 +168,65 @@
         <div class="section-inhalt">
           <div class="section-kopf">
             <span class="eyebrow">Systeme</span>
-            <h2>Wählen Sie Ihr System</h2>
+            <h2>Welches System passt zu Ihrer Fläche?</h2>
             <p>
-              Sie buchen ein System, wir schauen es uns bei einer kurzen Besichtigung vor
-              Ort an — und legen gemeinsam Ihre monatliche Pauschale fest. Kein
-              Rätselraten, ein klarer Ablauf.
+              Zwei Angaben genügen — der Bedarfsrechner zeigt sofort, welches System zu
+              Ihrer Fläche passt. Die passende Pauschale legen wir dann bei der
+              Besichtigung fest.
             </p>
           </div>
+
+          <div class="bedarfsrechner" data-bedarfsrechner>
+            <div class="bedarfsrechner-eingabe">
+              <div class="bedarfsrechner-feld">
+                <label for="rechner-flaeche">Wie groß ist Ihre Fläche?</label>
+                <div class="bedarfsrechner-slider-zeile">
+                  <input
+                    type="range"
+                    id="rechner-flaeche"
+                    min="20"
+                    max="800"
+                    step="10"
+                    value="150"
+                    data-rechner-flaeche
+                  >
+                  <output for="rechner-flaeche" data-rechner-flaeche-wert>150 m²</output>
+                </div>
+              </div>
+              <fieldset class="bedarfsrechner-frequenz">
+                <legend>Wie oft soll gereinigt werden?</legend>
+                <label>
+                  <input type="radio" name="rechner-frequenz" value="woechentlich" checked data-rechner-frequenz>
+                  1× wöchentlich
+                </label>
+                <label>
+                  <input type="radio" name="rechner-frequenz" value="mehrmals" data-rechner-frequenz>
+                  Mehrmals wöchentlich
+                </label>
+                <label>
+                  <input type="radio" name="rechner-frequenz" value="taeglich" data-rechner-frequenz>
+                  Täglich
+                </label>
+              </fieldset>
+            </div>
+            <div class="bedarfsrechner-ergebnis">
+              <span class="beispiel-hinweis">
+                Beispiel-Empfehlung der Konzeptvorschau — die passende Pauschale legen wir
+                bei der Besichtigung fest.
+              </span>
+              <span class="eyebrow">Empfehlung für Sie</span>
+              <h3 data-rechner-system-name>System Basis</h3>
+              <p data-rechner-begruendung>
+                Bei 150 m² und 1× wöchentlicher Reinigung passt dieses System zu Ihrem
+                Bedarf.
+              </p>
+              <a class="btn btn--voll" data-rechner-cta href="anfrage.html?system=basis">
+                Dieses System anfragen →
+              </a>
+            </div>
+          </div>
+
+          <p class="bedarfsrechner-alternativ">Oder direkt ein System wählen:</p>
           <div class="systeme-grid">
             <article class="kachel" data-system="basis">
               <div class="kachel-text">
