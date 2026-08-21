@@ -492,7 +492,7 @@
       }
       .menu-item {
         display: flex;
-        align-items: baseline;
+        align-items: center;
         gap: 0.7rem;
         padding: 0.42rem 0;
         font-size: 0.88rem;
@@ -502,10 +502,34 @@
         border-bottom: 1px dotted #9a8b76;
         text-decoration: none;
         transform: translateY(-4px);
+        align-self: baseline;
       }
       .menu-item .preis {
         white-space: nowrap;
         font-weight: 700;
+        align-self: baseline;
+      }
+      .warenkorb-plus {
+        flex-shrink: 0;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        border: 1px solid var(--schwarz);
+        background: transparent;
+        color: var(--schwarz);
+        font-family: var(--mono);
+        font-size: 1.1rem;
+        line-height: 1;
+        cursor: pointer;
+      }
+      .warenkorb-plus:hover {
+        background: var(--schwarz);
+        color: var(--weiss);
+      }
+      .warenkorb-plus.ist-hinzugefuegt {
+        background: var(--glut);
+        border-color: var(--glut);
+        color: var(--weiss);
       }
       .fav {
         font-size: 0.62rem;
@@ -716,6 +740,108 @@
         }
       }
 
+      /* ===== warenkorb-leiste ===== */
+      .warenkorb-leiste {
+        position: fixed;
+        z-index: 40;
+        left: 0;
+        right: 0;
+        bottom: var(--callbar-hoehe, 0px);
+        display: flex;
+        flex-direction: column-reverse;
+        background: var(--kohle);
+        border-top: 1px solid var(--champagnergold);
+      }
+      .warenkorb-leiste[hidden] {
+        display: none;
+      }
+      @media (min-width: 760px) {
+        .warenkorb-leiste {
+          bottom: 0;
+          left: auto;
+          right: 1.5rem;
+          max-width: 22rem;
+          border-radius: 8px 8px 0 0;
+          border-left: 1px solid var(--champagnergold);
+          border-right: 1px solid var(--champagnergold);
+        }
+      }
+      .warenkorb-zusammenfassung {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.8rem;
+        width: 100%;
+        min-height: 52px;
+        padding: 0.7rem 1.2rem;
+        border: 0;
+        background: transparent;
+        color: var(--champagnergold);
+        font-family: var(--mono);
+        font-size: 0.82rem;
+        letter-spacing: 0.04em;
+        cursor: pointer;
+      }
+      .warenkorb-pfeil {
+        transition: transform 0.2s ease;
+      }
+      .warenkorb-zusammenfassung[aria-expanded='true'] .warenkorb-pfeil {
+        transform: rotate(180deg);
+      }
+      .warenkorb-panel {
+        padding: 0 1.2rem 1.2rem;
+      }
+      .warenkorb-liste {
+        list-style: none;
+        margin: 0 0 0.9rem;
+        padding: 0;
+        max-height: 40vh;
+        overflow-y: auto;
+      }
+      .warenkorb-zeile {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid var(--linie);
+        color: var(--elfenbein);
+        font-size: 0.82rem;
+      }
+      .warenkorb-zeile-name {
+        flex: 1;
+      }
+      .warenkorb-zeile-menge {
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+      }
+      .warenkorb-menge-btn {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        border: 1px solid var(--linie-hell);
+        background: transparent;
+        color: var(--elfenbein);
+        font-family: var(--mono);
+        cursor: pointer;
+      }
+      .warenkorb-zeile-summe {
+        white-space: nowrap;
+        font-weight: 700;
+        color: var(--champagnergold);
+        min-width: 4.2rem;
+        text-align: right;
+      }
+      .warenkorb-hinweis {
+        color: var(--grau);
+        font-size: 0.74rem;
+        font-style: italic;
+        margin: 0 0 0.9rem;
+      }
+      .warenkorb-panel .btn-primary {
+        width: 100%;
+      }
+
       /* ===== reveal ===== */
       .reveal {
         opacity: 0;
@@ -860,64 +986,79 @@
           <p class="kicker reveal">frisch &amp; hausgemacht</p>
           <h2 class="reveal">speisekarte</h2>
           <p class="section-note reveal">
-            Beispielkarte — Gerichte und Preise werden gemeinsam mit Ihnen übernommen.
+            Beispielkarte — Gerichte und Preise werden gemeinsam mit Ihnen übernommen. Zum
+            Ausprobieren: Artikel per <strong>+</strong> in den Warenkorb legen.
           </p>
-          <div class="menu-grid">
+          <div class="menu-grid" data-warenkorb-karte>
             <div class="menu-cat reveal">
               <h3>döner &amp; dürüm</h3>
-              <div class="menu-item">
+              <div class="menu-item" data-artikel="Döner Kebap" data-preis="7.50">
                 <span>Döner Kebap<span class="fav">№1</span></span
-                ><s></s><span class="preis">7,50 €</span>
+                ><s></s><span class="preis">7,50 €</span
+                ><button type="button" class="warenkorb-plus" data-warenkorb-plus aria-label="Döner Kebap in den Warenkorb">+</button>
               </div>
-              <div class="menu-item">
-                <span>Dürüm Döner</span><s></s><span class="preis">8,50 €</span>
+              <div class="menu-item" data-artikel="Dürüm Döner" data-preis="8.50">
+                <span>Dürüm Döner</span><s></s><span class="preis">8,50 €</span
+                ><button type="button" class="warenkorb-plus" data-warenkorb-plus aria-label="Dürüm Döner in den Warenkorb">+</button>
               </div>
-              <div class="menu-item">
+              <div class="menu-item" data-artikel="Döner-Teller mit Pommes &amp; Salat" data-preis="12.50">
                 <span>Döner-Teller mit Pommes &amp; Salat</span><s></s
-                ><span class="preis">12,50 €</span>
+                ><span class="preis">12,50 €</span
+                ><button type="button" class="warenkorb-plus" data-warenkorb-plus aria-label="Döner-Teller mit Pommes und Salat in den Warenkorb">+</button>
               </div>
-              <div class="menu-item">
-                <span>Döner-Box</span><s></s><span class="preis">6,50 €</span>
+              <div class="menu-item" data-artikel="Döner-Box" data-preis="6.50">
+                <span>Döner-Box</span><s></s><span class="preis">6,50 €</span
+                ><button type="button" class="warenkorb-plus" data-warenkorb-plus aria-label="Döner-Box in den Warenkorb">+</button>
               </div>
             </div>
             <div class="menu-cat reveal">
               <h3>pizza</h3>
-              <div class="menu-item">
-                <span>Pizza Margherita</span><s></s><span class="preis">8,00 €</span>
+              <div class="menu-item" data-artikel="Pizza Margherita" data-preis="8.00">
+                <span>Pizza Margherita</span><s></s><span class="preis">8,00 €</span
+                ><button type="button" class="warenkorb-plus" data-warenkorb-plus aria-label="Pizza Margherita in den Warenkorb">+</button>
               </div>
-              <div class="menu-item">
-                <span>Pizza Salami</span><s></s><span class="preis">9,00 €</span>
+              <div class="menu-item" data-artikel="Pizza Salami" data-preis="9.00">
+                <span>Pizza Salami</span><s></s><span class="preis">9,00 €</span
+                ><button type="button" class="warenkorb-plus" data-warenkorb-plus aria-label="Pizza Salami in den Warenkorb">+</button>
               </div>
-              <div class="menu-item">
+              <div class="menu-item" data-artikel="Pizza Sucuk" data-preis="9.50">
                 <span>Pizza Sucuk<span class="fav">№1</span></span
-                ><s></s><span class="preis">9,50 €</span>
+                ><s></s><span class="preis">9,50 €</span
+                ><button type="button" class="warenkorb-plus" data-warenkorb-plus aria-label="Pizza Sucuk in den Warenkorb">+</button>
               </div>
-              <div class="menu-item">
-                <span>Pizza MOS Spezial</span><s></s><span class="preis">10,50 €</span>
+              <div class="menu-item" data-artikel="Pizza MOS Spezial" data-preis="10.50">
+                <span>Pizza MOS Spezial</span><s></s><span class="preis">10,50 €</span
+                ><button type="button" class="warenkorb-plus" data-warenkorb-plus aria-label="Pizza MOS Spezial in den Warenkorb">+</button>
               </div>
             </div>
             <div class="menu-cat reveal">
               <h3>vegetarisch &amp; salate</h3>
-              <div class="menu-item">
-                <span>Falafel-Dürüm</span><s></s><span class="preis">7,50 €</span>
+              <div class="menu-item" data-artikel="Falafel-Dürüm" data-preis="7.50">
+                <span>Falafel-Dürüm</span><s></s><span class="preis">7,50 €</span
+                ><button type="button" class="warenkorb-plus" data-warenkorb-plus aria-label="Falafel-Dürüm in den Warenkorb">+</button>
               </div>
-              <div class="menu-item">
-                <span>Halloumi-Döner</span><s></s><span class="preis">8,50 €</span>
+              <div class="menu-item" data-artikel="Halloumi-Döner" data-preis="8.50">
+                <span>Halloumi-Döner</span><s></s><span class="preis">8,50 €</span
+                ><button type="button" class="warenkorb-plus" data-warenkorb-plus aria-label="Halloumi-Döner in den Warenkorb">+</button>
               </div>
-              <div class="menu-item">
-                <span>Gemischter Salat mit Brot</span><s></s><span class="preis">7,00 €</span>
+              <div class="menu-item" data-artikel="Gemischter Salat mit Brot" data-preis="7.00">
+                <span>Gemischter Salat mit Brot</span><s></s><span class="preis">7,00 €</span
+                ><button type="button" class="warenkorb-plus" data-warenkorb-plus aria-label="Gemischter Salat mit Brot in den Warenkorb">+</button>
               </div>
             </div>
             <div class="menu-cat reveal">
               <h3>getränke</h3>
-              <div class="menu-item">
-                <span>Ayran</span><s></s><span class="preis">2,00 €</span>
+              <div class="menu-item" data-artikel="Ayran" data-preis="2.00">
+                <span>Ayran</span><s></s><span class="preis">2,00 €</span
+                ><button type="button" class="warenkorb-plus" data-warenkorb-plus aria-label="Ayran in den Warenkorb">+</button>
               </div>
-              <div class="menu-item">
-                <span>Softdrinks 0,33 l</span><s></s><span class="preis">2,50 €</span>
+              <div class="menu-item" data-artikel="Softdrinks 0,33 l" data-preis="2.50">
+                <span>Softdrinks 0,33 l</span><s></s><span class="preis">2,50 €</span
+                ><button type="button" class="warenkorb-plus" data-warenkorb-plus aria-label="Softdrinks 0,33 l in den Warenkorb">+</button>
               </div>
-              <div class="menu-item">
-                <span>Wasser 0,5 l</span><s></s><span class="preis">2,00 €</span>
+              <div class="menu-item" data-artikel="Wasser 0,5 l" data-preis="2.00">
+                <span>Wasser 0,5 l</span><s></s><span class="preis">2,00 €</span
+                ><button type="button" class="warenkorb-plus" data-warenkorb-plus aria-label="Wasser 0,5 l in den Warenkorb">+</button>
               </div>
             </div>
           </div>
@@ -973,6 +1114,7 @@
                 der whatsapp-knopf wird bei der umsetzung mit ihrer nummer verbunden.
                 (Beispiel-Entwurf)
               </p>
+              <p class="warenkorb-zusammenfassung-text" data-warenkorb-zusammenfassung hidden></p>
             </div>
             <figure class="bild-frame reveal">
               <div class="media-frame wide">
@@ -1111,6 +1253,24 @@
       <div class="footer-ornament" aria-hidden="true"></div>
     </footer>
 
+    <div class="warenkorb-leiste" data-warenkorb-leiste hidden>
+      <button type="button" class="warenkorb-zusammenfassung" data-warenkorb-toggle aria-expanded="false">
+        <span data-warenkorb-anzahl>0 artikel</span>
+        <span data-warenkorb-summe>0,00 €</span>
+        <span class="warenkorb-pfeil" aria-hidden="true">▲</span>
+      </button>
+      <div class="warenkorb-panel" data-warenkorb-panel hidden>
+        <ul class="warenkorb-liste" data-warenkorb-liste></ul>
+        <p class="warenkorb-hinweis">
+          Beispiel-Warenkorb — keine echte Bestellung. Zum wirklichen Bestellen anrufen oder
+          per WhatsApp schreiben.
+        </p>
+        <button type="button" class="btn btn-primary" data-warenkorb-abschliessen>
+          bestellung zusammenfassen
+        </button>
+      </div>
+    </div>
+
     <nav class="call-bar" aria-label="Schnellaktionen">
       <a class="btn btn-primary" href="tel:+4962616744353">anrufen</a>
       <a class="btn" href="#speisekarte">speisekarte</a>
@@ -1169,6 +1329,107 @@
       motionQuery.addEventListener('change', ({ matches }) => {
         if (matches) videos.forEach((video) => video.pause());
       });
+
+      // Warenkorb (Speisekarte): Artikel per + hinzufügen, Menge live anpassen,
+      // Zwischensumme berechnen. Bewusst KEINE echte Bestellung — reine
+      // Beispiel-Zusammenfassung, kein Versand, keine Speicherung.
+      const warenkorbLeiste = document.querySelector('[data-warenkorb-leiste]');
+      if (warenkorbLeiste) {
+        const callBar = document.querySelector('.call-bar');
+        const callBarHoeheSetzen = () => {
+          document.documentElement.style.setProperty(
+            '--callbar-hoehe',
+            `${callBar?.offsetHeight ?? 0}px`,
+          );
+        };
+        callBarHoeheSetzen();
+        window.addEventListener('resize', callBarHoeheSetzen);
+
+        const warenkorb = new Map();
+        const anzahlFeld = warenkorbLeiste.querySelector('[data-warenkorb-anzahl]');
+        const summeFeld = warenkorbLeiste.querySelector('[data-warenkorb-summe]');
+        const toggle = warenkorbLeiste.querySelector('[data-warenkorb-toggle]');
+        const panel = warenkorbLeiste.querySelector('[data-warenkorb-panel]');
+        const liste = warenkorbLeiste.querySelector('[data-warenkorb-liste]');
+        const abschliessenBtn = warenkorbLeiste.querySelector('[data-warenkorb-abschliessen]');
+        const zusammenfassungFeld = document.querySelector('[data-warenkorb-zusammenfassung]');
+
+        const formatEuro = (wert) => `${wert.toFixed(2).replace('.', ',')} €`;
+
+        const render = () => {
+          let gesamtMenge = 0;
+          let gesamtSumme = 0;
+          liste.innerHTML = '';
+
+          warenkorb.forEach((eintrag, name) => {
+            gesamtMenge += eintrag.menge;
+            gesamtSumme += eintrag.menge * eintrag.preis;
+
+            const zeile = document.createElement('li');
+            zeile.className = 'warenkorb-zeile';
+            zeile.innerHTML = `
+              <span class="warenkorb-zeile-name">${name}</span>
+              <span class="warenkorb-zeile-menge">
+                <button type="button" class="warenkorb-menge-btn" data-warenkorb-minus aria-label="${name} Menge verringern">−</button>
+                <span>${eintrag.menge}</span>
+                <button type="button" class="warenkorb-menge-btn" data-warenkorb-plus-zeile aria-label="${name} Menge erhöhen">+</button>
+              </span>
+              <span class="warenkorb-zeile-summe">${formatEuro(eintrag.menge * eintrag.preis)}</span>
+            `;
+            zeile.querySelector('[data-warenkorb-minus]').addEventListener('click', () => {
+              eintrag.menge -= 1;
+              if (eintrag.menge <= 0) warenkorb.delete(name);
+              render();
+            });
+            zeile.querySelector('[data-warenkorb-plus-zeile]').addEventListener('click', () => {
+              eintrag.menge += 1;
+              render();
+            });
+            liste.appendChild(zeile);
+          });
+
+          anzahlFeld.textContent = `${gesamtMenge} artikel`;
+          summeFeld.textContent = formatEuro(gesamtSumme);
+          warenkorbLeiste.hidden = gesamtMenge === 0;
+        };
+
+        document.querySelectorAll('[data-warenkorb-plus]').forEach((knopf) => {
+          knopf.addEventListener('click', () => {
+            const zeile = knopf.closest('[data-artikel]');
+            const name = zeile.dataset.artikel;
+            const preis = Number.parseFloat(zeile.dataset.preis);
+            const eintrag = warenkorb.get(name) ?? { preis, menge: 0 };
+            eintrag.menge += 1;
+            warenkorb.set(name, eintrag);
+            render();
+
+            knopf.classList.add('ist-hinzugefuegt');
+            window.setTimeout(() => knopf.classList.remove('ist-hinzugefuegt'), 500);
+          });
+        });
+
+        toggle?.addEventListener('click', () => {
+          const offen = toggle.getAttribute('aria-expanded') === 'true';
+          toggle.setAttribute('aria-expanded', String(!offen));
+          panel.hidden = offen;
+        });
+
+        abschliessenBtn?.addEventListener('click', () => {
+          if (!warenkorb.size) return;
+          const teile = [...warenkorb.entries()].map(([name, eintrag]) => `${eintrag.menge}× ${name}`);
+          let gesamtSumme = 0;
+          warenkorb.forEach((eintrag) => {
+            gesamtSumme += eintrag.menge * eintrag.preis;
+          });
+          if (zusammenfassungFeld) {
+            zusammenfassungFeld.textContent =
+              `Ihre Bestellung: ${teile.join(', ')} — Zwischensumme ${formatEuro(gesamtSumme)}. ` +
+              'Rufen Sie an oder schreiben Sie per WhatsApp, um wirklich zu bestellen.';
+            zusammenfassungFeld.hidden = false;
+          }
+          document.querySelector('#abholung')?.scrollIntoView({ block: 'start' });
+        });
+      }
     </script>
   </body>
 </html>
