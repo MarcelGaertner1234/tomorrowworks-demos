@@ -33,6 +33,7 @@
           <nav class="site-nav" aria-label="Hauptnavigation">
             <a href="#leistungen">Leistungen</a>
             <a href="#vorher-nachher">Vorher/Nachher</a>
+            <a href="#farbstudio">Farbstudio</a>
             <a href="#betrieb">Betrieb</a>
             <a href="#ablauf">Ablauf</a>
           </nav>
@@ -292,6 +293,200 @@
         </div>
       </section>
 
+      <!-- Farbton-Studio + Projekt-Rechner (firmenspezifisches Modul) -->
+      <section class="section" id="farbstudio">
+        <div class="section-inhalt">
+          <div class="section-kopf">
+            <span class="eyebrow">Farbton-Studio</span>
+            <h2>Farbe sehen, bevor sie an der Wand ist</h2>
+            <p>
+              Dasselbe Motiv wie oben — jetzt in sechs Beispiel-Farbtönen. Tippen Sie einen
+              Ton an und sehen Sie, wie ruhig oder wie kräftig ein Raum dadurch wirkt.
+            </p>
+          </div>
+
+          <div class="studio">
+            <figure class="studio-buehne">
+              <div class="studio-bild">
+                <img
+                  src="assets/vn-slider-nachher.jpg"
+                  alt="Heller Wohnraum mit großer, ruhiger Wandfläche — Beispielfoto für die Farbsimulation"
+                  loading="lazy"
+                  width="1600"
+                  height="900"
+                >
+                <div class="farb-overlay" data-farb-overlay data-ton="kalkweiss" aria-hidden="true">
+                  <span class="farb-flaeche farb-flaeche--wand"></span>
+                  <span class="farb-flaeche farb-flaeche--sturz"></span>
+                </div>
+                <span class="tag tag--nachher">Simulation</span>
+              </div>
+              <figcaption>
+                Beispielfoto (Symbolbild) — nur die Wandflächen sind farbig simuliert;
+                Decke, Boden und Fenster bleiben unverändert.
+              </figcaption>
+            </figure>
+
+            <div class="studio-steuerung">
+              <h3>Beispiel-Farbtöne</h3>
+              <div
+                class="farb-felder"
+                role="group"
+                aria-label="Beispiel-Farbton für die Wandfläche wählen"
+              >
+                <button class="farb-feld" type="button" data-ton="kalkweiss" aria-pressed="true">
+                  <span class="farb-feld-probe" aria-hidden="true"></span>
+                  <span class="farb-feld-name">Kalkweiß</span>
+                </button>
+                <button class="farb-feld" type="button" data-ton="sandkorn" aria-pressed="false">
+                  <span class="farb-feld-probe" aria-hidden="true"></span>
+                  <span class="farb-feld-name">Sandkorn</span>
+                </button>
+                <button class="farb-feld" type="button" data-ton="ziegelrose" aria-pressed="false">
+                  <span class="farb-feld-probe" aria-hidden="true"></span>
+                  <span class="farb-feld-name">Ziegelrose</span>
+                </button>
+                <button class="farb-feld" type="button" data-ton="salbeigruen" aria-pressed="false">
+                  <span class="farb-feld-probe" aria-hidden="true"></span>
+                  <span class="farb-feld-name">Salbeigrün</span>
+                </button>
+                <button class="farb-feld" type="button" data-ton="nebelblau" aria-pressed="false">
+                  <span class="farb-feld-probe" aria-hidden="true"></span>
+                  <span class="farb-feld-name">Nebelblau</span>
+                </button>
+                <button class="farb-feld" type="button" data-ton="arbeitsblau" aria-pressed="false">
+                  <span class="farb-feld-probe" aria-hidden="true"></span>
+                  <span class="farb-feld-name">Arbeitsblau</span>
+                </button>
+              </div>
+              <p class="studio-status" data-ton-status aria-live="polite">
+                Gewählter Beispielton: <strong data-ton-name>Kalkweiß</strong>
+              </p>
+              <p class="studio-hinweis">Simulation mit Beispielfarben — die echte Farbwirkung beurteilen wir gemeinsam vor Ort.</p>
+              <p class="studio-fussnote">
+                Die Farbnamen sind Fantasienamen für diese Konzeptvorschau und gehören zu
+                keinem Herstellersortiment.
+              </p>
+            </div>
+          </div>
+
+          <div class="rechner" data-farbrechner>
+            <div class="rechner-eingabe">
+              <h3>Wie viel Farbe brauchen Sie?</h3>
+              <p class="rechner-intro">
+                Wandfläche direkt eingeben oder aus den Raummaßen rechnen lassen — Sie sehen
+                sofort, welche Farbmenge für Ihr Projekt ungefähr nötig ist.
+              </p>
+
+              <div class="rechner-modus" role="group" aria-label="Eingabeart wählen">
+                <button class="rechner-pille" type="button" data-modus="flaeche" aria-pressed="true">
+                  Wandfläche
+                </button>
+                <button class="rechner-pille" type="button" data-modus="raum" aria-pressed="false">
+                  Raummaße
+                </button>
+              </div>
+
+              <div class="rechner-feld" data-modus-flaeche>
+                <label for="wandflaeche">Wandfläche in m²</label>
+                <input
+                  id="wandflaeche"
+                  type="number"
+                  inputmode="decimal"
+                  min="1"
+                  max="400"
+                  step="1"
+                  value="40"
+                  autocomplete="off"
+                  data-wandflaeche
+                >
+              </div>
+
+              <div class="rechner-reihe" data-modus-raum hidden>
+                <div class="rechner-feld">
+                  <label for="raumlaenge">Länge in m</label>
+                  <input
+                    id="raumlaenge"
+                    type="number"
+                    inputmode="decimal"
+                    min="1"
+                    max="30"
+                    step="0.1"
+                    value="4"
+                    autocomplete="off"
+                    data-raumlaenge
+                  >
+                </div>
+                <div class="rechner-feld">
+                  <label for="raumbreite">Breite in m</label>
+                  <input
+                    id="raumbreite"
+                    type="number"
+                    inputmode="decimal"
+                    min="1"
+                    max="30"
+                    step="0.1"
+                    value="3"
+                    autocomplete="off"
+                    data-raumbreite
+                  >
+                </div>
+                <div class="rechner-feld">
+                  <label for="raumhoehe">Deckenhöhe</label>
+                  <select id="raumhoehe" data-raumhoehe>
+                    <option value="2.4">2,40 m</option>
+                    <option value="2.6" selected>2,60 m</option>
+                    <option value="3">3,00 m</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="rechner-feld">
+                <span class="rechner-feldname" id="anstriche-name">Anstriche</span>
+                <div class="rechner-modus" role="group" aria-labelledby="anstriche-name">
+                  <button class="rechner-pille" type="button" data-anstriche="1" aria-pressed="false">
+                    1 Anstrich
+                  </button>
+                  <button class="rechner-pille" type="button" data-anstriche="2" aria-pressed="true">
+                    2 Anstriche
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="rechner-ergebnis">
+              <dl class="rechner-werte">
+                <div>
+                  <dt>Wandfläche</dt>
+                  <dd data-ergebnis-flaeche>40 m²</dd>
+                </div>
+                <div>
+                  <dt>Anstriche</dt>
+                  <dd data-ergebnis-anstriche>2</dd>
+                </div>
+                <div>
+                  <dt>Farbmenge</dt>
+                  <dd class="rechner-hauptwert" data-ergebnis-liter>12 Liter</dd>
+                </div>
+              </dl>
+              <p class="rechner-status" data-ergebnis-status aria-live="polite">
+                40 m² mit 2 Anstrichen ergeben rund 12 Liter Farbe.
+              </p>
+              <p class="rechner-formel">
+                Gerechnet mit dem Richtwert: 1 Liter reicht für rund 7 m² je Anstrich —
+                aufgerundet auf ganze Liter. Türen und Fenster sind nicht abgezogen.
+              </p>
+              <p class="rechner-marke">Beispiel-Richtwert — verbindlich nach Besichtigung.</p>
+              <a
+                class="btn btn--voll"
+                data-rechner-cta
+                href="anfrage.html?leistung=innenraum"
+              >Projekt anfragen</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- Betrieb -->
       <section class="section" id="betrieb">
         <div class="section-inhalt">
@@ -390,6 +585,7 @@
           <nav aria-label="Fußnavigation">
             <a href="#leistungen">Leistungen</a>
             <a href="#vorher-nachher">Vorher/Nachher</a>
+            <a href="#farbstudio">Farbstudio</a>
             <a href="#betrieb">Betrieb</a>
             <a href="anfrage.html">Projekt anfragen</a>
           </nav>

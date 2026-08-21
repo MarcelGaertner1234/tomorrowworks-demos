@@ -5,6 +5,15 @@
 
   const reduzierteBewegung = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // Lokales Datum als YYYY-MM-DD. Bewusst NICHT toISOString() — das rechnet nach
+  // UTC um und kippt abends auf den Folgetag.
+  const isoDatum = (datum) =>
+    [
+      datum.getFullYear(),
+      String(datum.getMonth() + 1).padStart(2, '0'),
+      String(datum.getDate()).padStart(2, '0'),
+    ].join('-');
+
   // Echte Header-Hoehe messen (variiert stark: ~82px Desktop, bis 243px Mobil
   // mit gestapelter Nav) — sonst landen Anker-Sprungziele unter dem sticky
   // Header (siehe scroll-margin-top in styles.css, das --header-hoehe nutzt).
@@ -173,6 +182,222 @@
     scrambleBeobachter.observe(scrambleZiel);
   }
 
+  // --- Umzugs-Zeitplan-Generator (index.html) ---------------------------------
+  // Aus dem Umzugstag wird eine Route: Etappen 8/6/4/2 Wochen vorher, die
+  // Umzugswoche und der Umzugstag selbst. Die Etappen-Daten haengen ALLEIN am
+  // Zieldatum — "heute" entscheidet nur, welche Etappen ueberhaupt noch vor
+  // einem liegen (Kurzfrist-Pfad). Bewusst nur allgemeine Anhaltspunkte, keine
+  // Aussagen darueber, was der Betrieb leistet.
+  const zeitplanForm = document.querySelector('[data-zeitplan]');
+  if (zeitplanForm) {
+    const zielFeld = zeitplanForm.querySelector('#zeitplan-datum');
+    const zeitplanFehler = zeitplanForm.querySelector('[data-zeitplan-fehler]');
+    const zeitplanErgebnis = document.querySelector('[data-zeitplan-ergebnis]');
+    const zeitplanRoute = document.querySelector('[data-zeitplan-route]');
+    const zeitplanVorlage = document.querySelector('[data-zeitplan-vorlage]');
+    const zielAnzeige = document.querySelector('[data-zeitplan-ziel]');
+    const metaAnzeige = document.querySelector('[data-zeitplan-meta]');
+    const kurzfristHinweis = document.querySelector('[data-zeitplan-kurzfrist]');
+    const zeitplanCta = document.querySelector('[data-zeitplan-cta]');
+
+    const heuteIso = isoDatum(new Date());
+    zielFeld.min = heuteIso;
+
+    const ausIso = (wert) => {
+      const [jahr, monat, tag] = wert.split('-').map(Number);
+      return new Date(jahr, monat - 1, tag);
+    };
+    const umTage = (datum, tage) => {
+      const kopie = new Date(datum.getTime());
+      kopie.setDate(kopie.getDate() + tage);
+      return kopie;
+    };
+    const montagDerWoche = (datum) => umTage(datum, -((datum.getDay() + 6) % 7));
+    const tageZwischen = (von, bis) => Math.round((ausIso(bis) - ausIso(von)) / 86400000);
+
+    const langesDatum = new Intl.DateTimeFormat('de-DE', {
+      weekday: 'long',
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+    });
+    const kurzesDatum = new Intl.DateTimeFormat('de-DE', {
+      weekday: 'short',
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+    });
+
+    const etappenVorlagen = [
+      {
+        versatz: -56,
+        marke: '8 Wochen vorher',
+        titel: 'Kurs setzen',
+        aufgaben: [
+          'Mietvertrag prüfen und Kündigungsfrist notieren',
+          'Übergabetermine für alte und neue Wohnung abstimmen',
+          'Urlaubstage rund um den Umzug einplanen',
+        ],
+      },
+      {
+        versatz: -42,
+        marke: '6 Wochen vorher',
+        titel: 'Ballast abwerfen',
+        aufgaben: [
+          'Keller, Dachboden und Schränke ausmisten',
+          'Sperrmüll oder Entsorgung anmelden',
+          'Umzugskartons und Packmaterial besorgen',
+        ],
+      },
+      {
+        versatz: -28,
+        marke: '4 Wochen vorher',
+        titel: 'Wege frei machen',
+        aufgaben: [
+          'Nachsendeauftrag bei der Post einrichten',
+          'Halteverbotszone für beide Adressen beantragen',
+          'Strom, Gas und Internet ummelden',
+        ],
+      },
+      {
+        versatz: -14,
+        marke: '2 Wochen vorher',
+        titel: 'Kisten packen',
+        aufgaben: [
+          'Kartons raumweise packen und beschriften',
+          'Dokumente und Wertsachen getrennt sichern',
+          'Betreuung für Kinder und Haustiere am Umzugstag klären',
+        ],
+      },
+      {
+        woche: true,
+        praefix: 'ab ',
+        marke: 'Umzugswoche',
+        titel: 'Letzte Peilung',
+        aufgaben: [
+          'Kühlschrank abtauen und Waschmaschine sichern',
+          'Kiste mit dem Nötigsten für die erste Nacht packen',
+          'Zufahrt und Parkplätze an beiden Adressen freihalten',
+        ],
+      },
+      {
+        versatz: 0,
+        ziel: true,
+        marke: 'Umzugstag',
+        titel: 'Ziel erreicht',
+        aufgaben: [
+          'Zählerstände in alter und neuer Wohnung notieren',
+          'Übergabeprotokolle unterschreiben',
+          'Kartons nach Beschriftung in die richtigen Räume stellen',
+        ],
+      },
+    ];
+
+    // Faellt der Umzug selbst auf einen Montag, waere der Montag der Umzugswoche
+    // derselbe Tag wie der Umzugstag — zwei Etappen mit identischem Datum. Dann
+    // startet die Vorbereitungs-Etappe eine Woche frueher und heisst auch so.
+    const umzugswoche = (ziel) => {
+      const montag = montagDerWoche(ziel);
+      if (montag.getTime() !== ziel.getTime()) return { start: montag, marke: 'Umzugswoche' };
+      return { start: umTage(montag, -7), marke: 'Woche vor dem Umzug' };
+    };
+
+    // Kurzfrist-Pfad: Etappen, die schon hinter einem liegen, faellt der Plan
+    // weg — statt sie als "verpasst" zu zeigen.
+    const etappenBauen = (zielIso) => {
+      const ziel = ausIso(zielIso);
+      return etappenVorlagen
+        .map((etappe) => {
+          if (!etappe.woche) {
+            return { ...etappe, datum: isoDatum(umTage(ziel, etappe.versatz)) };
+          }
+          const { start, marke } = umzugswoche(ziel);
+          return { ...etappe, datum: isoDatum(start), marke };
+        })
+        .filter((etappe) => etappe.datum >= heuteIso);
+    };
+
+    const planZeichnen = (zielIso) => {
+      const etappen = etappenBauen(zielIso);
+      const restTage = tageZwischen(heuteIso, zielIso);
+      const restText =
+        restTage === 0 ? 'Heute' : `Noch ${restTage} ${restTage === 1 ? 'Tag' : 'Tage'}`;
+
+      // Erst sichtbar machen, dann befuellen: role="status" meldet nur Aenderungen,
+      // die im sichtbaren Baum passieren — in einem hidden-Container bliebe die
+      // Ansage komplett aus.
+      zeitplanErgebnis.hidden = false;
+
+      zielAnzeige.textContent = langesDatum.format(ausIso(zielIso));
+      metaAnzeige.textContent =
+        `${restText} · ${etappen.length} ${etappen.length === 1 ? 'Etappe' : 'Etappen'}`;
+      kurzfristHinweis.hidden = etappen.length === etappenVorlagen.length;
+      zeitplanCta.setAttribute('href', `anfrage.html?umzugsart=privatumzug&datum=${zielIso}`);
+
+      zeitplanRoute.textContent = '';
+      etappen.forEach((etappe, index) => {
+        const eintrag = zeitplanVorlage.content.firstElementChild.cloneNode(true);
+        // Die Nadel peilt sich Etappe fuer Etappe auf Nord ein — am Ziel steht sie.
+        const peilung =
+          etappen.length > 1 ? (144 * (etappen.length - 1 - index)) / (etappen.length - 1) : 0;
+        eintrag.dataset.datum = etappe.datum;
+        eintrag.style.setProperty('--peilung', `${Number(peilung.toFixed(1))}deg`);
+        eintrag.style.setProperty('--verzoegerung', `${(index * 0.09).toFixed(2)}s`);
+        if (etappe.ziel) eintrag.classList.add('zeitplan-etappe--ziel');
+
+        const zeit = eintrag.querySelector('[data-zeitplan-zeit]');
+        zeit.setAttribute('datetime', etappe.datum);
+        zeit.textContent = `${etappe.praefix ?? ''}${kurzesDatum.format(ausIso(etappe.datum))}`;
+        eintrag.querySelector('[data-zeitplan-marke]').textContent = etappe.marke;
+        eintrag.querySelector('[data-zeitplan-titel]').textContent = etappe.titel;
+
+        const aufgabenListe = eintrag.querySelector('[data-zeitplan-aufgaben]');
+        for (const aufgabe of etappe.aufgaben) {
+          const punkt = document.createElement('li');
+          punkt.textContent = aufgabe;
+          aufgabenListe.append(punkt);
+        }
+        zeitplanRoute.append(eintrag);
+      });
+
+      // Etappen einblenden, dabei zeichnen sich die Wegstuecke mit. Ohne Bewegung
+      // sofort, sonst gestaffelt (Verzoegerung in --verzoegerung, Bewegung im CSS).
+      const sichtbarMachen = () => {
+        for (const eintrag of zeitplanRoute.children) eintrag.classList.add('ist-sichtbar');
+      };
+      if (reduzierteBewegung) sichtbarMachen();
+      else requestAnimationFrame(() => requestAnimationFrame(sichtbarMachen));
+      // Fokus in den fertigen Plan setzen — wer per Tastatur absendet, landet im
+      // Ergebnis statt weiter unter dem Knopf. Scrollen uebernimmt scrollIntoView,
+      // damit die scroll-margin-top gegen den Sticky-Header greift.
+      zeitplanErgebnis.focus({ preventScroll: true });
+      zeitplanErgebnis.scrollIntoView({ block: 'start' });
+    };
+
+    zeitplanForm.addEventListener('submit', (ereignis) => {
+      ereignis.preventDefault();
+      const zielIso = zielFeld.value;
+
+      let meldung = '';
+      if (!zielIso) {
+        meldung = 'Bitte wählen Sie Ihren Umzugstag (Beispielangabe genügt).';
+      } else if (zielIso < heuteIso) {
+        meldung =
+          'Der Umzugstag liegt in der Vergangenheit — bitte wählen Sie ein Datum ab heute.';
+      }
+
+      if (meldung) {
+        zeitplanFehler.textContent = meldung;
+        zeitplanFehler.hidden = false;
+        zeitplanErgebnis.hidden = true;
+        return;
+      }
+
+      zeitplanFehler.hidden = true;
+      planZeichnen(zielIso);
+    });
+  }
+
   const form = document.querySelector('#anfrage-form');
   if (!form) return;
 
@@ -197,13 +422,15 @@
 
   // Wunschtermin: Minimum ist heute (lokales Datum, Format YYYY-MM-DD).
   const datumFeld = form.querySelector('#datum');
-  const heute = new Date();
-  const heuteWert = [
-    heute.getFullYear(),
-    String(heute.getMonth() + 1).padStart(2, '0'),
-    String(heute.getDate()).padStart(2, '0'),
-  ].join('-');
+  const heuteWert = isoDatum(new Date());
   datumFeld.min = heuteWert;
+
+  // Wunschtermin aus ?datum= übernehmen (Link aus dem Zeitplan-Generator) —
+  // nur plausible Werte ab heute, sonst bleibt das Feld leer.
+  const datumWert = parameter.get('datum');
+  if (/^\d{4}-\d{2}-\d{2}$/.test(datumWert ?? '') && datumWert >= heuteWert) {
+    datumFeld.value = datumWert;
+  }
 
   const fehler = form.querySelector('[data-fehler]');
   const bestaetigung = document.querySelector('[data-bestaetigung]');

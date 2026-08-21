@@ -49,6 +49,7 @@
           <nav class="site-nav" aria-label="Hauptnavigation">
             <a href="#leistungen">Leistungen</a>
             <a href="#privatumzuege">Privatumzüge</a>
+            <a href="#zeitplan">Zeitplan</a>
             <a href="#warum-wir">Warum wir</a>
             <a href="#ablauf">Ablauf</a>
           </nav>
@@ -233,6 +234,84 @@
         </div>
       </section>
 
+      <!-- Zeitplan-Generator: Umzugstag eingeben, Etappen-Route erhalten -->
+      <section class="section section--zeitplan" id="zeitplan" data-reveal>
+        <div class="section-inhalt">
+          <div class="section-kopf">
+            <span class="eyebrow">Zeitplan</span>
+            <h2>Ihr Weg zum <em>Umzugstag</em></h2>
+            <p>
+              Nennen Sie uns Ihren Umzugstag — Sie bekommen sofort die Etappen davor:
+              was wann ansteht, damit zum Schluss nichts liegen bleibt.
+            </p>
+            <span class="symbolbild-hinweis">
+              Beispiel-Zeitplan dieser Konzeptvorschau mit allgemeinen Anhaltspunkten —
+              Ihre tatsächlichen Schritte stimmt der Betrieb mit Ihnen ab.
+            </span>
+          </div>
+
+          <form class="zeitplan-eingabe" data-zeitplan novalidate>
+            <div class="feld zeitplan-feld">
+              <label for="zeitplan-datum">Ihr Umzugstag</label>
+              <!-- bewusst ohne name: so trüge selbst ein Submit ohne JS keine Daten fort. -->
+              <input id="zeitplan-datum" type="date">
+              <p class="feld-hinweis">
+                Beispielangabe genügt — es wird nichts gespeichert oder versendet.
+              </p>
+            </div>
+            <button class="btn btn--voll" type="submit">Zeitplan erstellen</button>
+            <p class="fehler zeitplan-fehler" role="alert" data-zeitplan-fehler hidden></p>
+          </form>
+
+          <div class="zeitplan-ergebnis" id="zeitplan-ergebnis" tabindex="-1" data-zeitplan-ergebnis hidden>
+            <div class="zeitplan-peilung">
+              <span class="demo-chip">Beispiel-Zeitplan</span>
+              <p class="zeitplan-peilung-text" role="status">
+                <span class="zeitplan-peilung-label">Ihre Route zum</span>
+                <strong class="zeitplan-peilung-datum" data-zeitplan-ziel></strong>
+                <span class="zeitplan-peilung-meta" data-zeitplan-meta></span>
+              </p>
+            </div>
+
+            <p class="zeitplan-kurzfrist" data-zeitplan-kurzfrist hidden>
+              Ihr Termin liegt näher — umso wichtiger, jetzt zu ordnen. Wir priorisieren mit Ihnen.
+            </p>
+
+            <ol class="zeitplan-route" data-zeitplan-route></ol>
+
+            <p class="zeitplan-aktion">
+              <a class="btn btn--voll" data-zeitplan-cta href="anfrage.html">
+                Umzug zu diesem Termin anfragen
+              </a>
+            </p>
+            <p class="zeitplan-fuss">
+              Beispiel-Zeitplan — allgemeine Anhaltspunkte, kein Angebot und keine Terminzusage.
+            </p>
+          </div>
+
+          <template data-zeitplan-vorlage>
+            <li class="zeitplan-etappe" data-zeitplan-etappe>
+              <span class="zeitplan-marker" aria-hidden="true">
+                <span class="zeitplan-nadel">
+                  <span class="zeitplan-nadel-n"></span>
+                  <span class="zeitplan-nadel-s"></span>
+                </span>
+              </span>
+              <div class="zeitplan-karte">
+                <div class="zeitplan-karte-kopf">
+                  <p class="zeitplan-etappe-datum">
+                    <time data-zeitplan-zeit></time>
+                  </p>
+                  <span class="zeitplan-etappe-marke" data-zeitplan-marke></span>
+                </div>
+                <h3 data-zeitplan-titel></h3>
+                <ul class="zeitplan-aufgaben" data-zeitplan-aufgaben></ul>
+              </div>
+            </li>
+          </template>
+        </div>
+      </section>
+
       <!-- Warum wir — Familienbetrieb, rollenbasiert -->
       <section class="section section--unternehmen spotlight-sektion" id="warum-wir" data-reveal>
         <div class="section-inhalt">
@@ -334,6 +413,7 @@
           </a>
           <nav aria-label="Fußnavigation">
             <a href="#leistungen">Leistungen</a>
+            <a href="#zeitplan">Zeitplan</a>
             <a href="#warum-wir">Warum wir</a>
             <a href="#ablauf">Ablauf</a>
             <a href="anfrage.html">Umzug anfragen</a>
@@ -343,7 +423,8 @@
           <strong>Design-Entwurf von TOMORROWWORKS</strong> —
           nicht die offizielle Website von Kompass-Umzüge.
           Persönliche Konzeptvorschau ohne echte Kontaktdaten; Kontaktdaten folgen nach Freigabe.
-          Alle Fotos: Beispielfotos (Symbolbilder). Leistungen und Ablauf:
+          Alle Fotos: Beispielfotos (Symbolbilder). Leistungen, Ablauf und
+          Beispiel-Zeitplan:
           Beispiel-Leistungsspektrum — kein Angebot des Betriebs.
         </p>
       </div>

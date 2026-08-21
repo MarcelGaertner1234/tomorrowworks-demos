@@ -17,6 +17,16 @@
     sans-serif;
   --breite: 1160px;
   --spalte: 46rem;
+  /* Höhe des Sticky-Headers — app.js misst nach und überschreibt den Startwert. */
+  --header-hoehe: 68px;
+  /* Beispiel-Farbtöne des Farbton-Studios (Fantasienamen, kein Herstellersortiment):
+     Kalkweiß + 2 warme + 2 kühle Töne + das Arbeitsblau der Marke. */
+  --ton-kalkweiss: #f6f5f1;
+  --ton-sandkorn: #e2d3b4;
+  --ton-ziegelrose: #d9b3a1;
+  --ton-salbeigruen: #b6c8b3;
+  --ton-nebelblau: #a9c3da;
+  --ton-arbeitsblau: #1c4e80;
 }
 
 *,
@@ -315,6 +325,11 @@ p {
 
 .section {
   padding: clamp(3.5rem, 8vw, 6.5rem) 1.25rem;
+}
+
+/* Anker-Ziele dürfen nicht unter dem Sticky-Header landen. */
+.section[id] {
+  scroll-margin-top: calc(var(--header-hoehe) + 0.75rem);
 }
 
 .section-inhalt {
@@ -620,6 +635,393 @@ p {
   color: var(--tinte);
   font-size: 0.98rem;
   letter-spacing: 0.02em;
+}
+
+/* ---------- Farbton-Studio ----------
+   Die Wandzonen des Beispielfotos werden per clip-path-Polygon freigestellt und
+   mit mix-blend-mode: multiply eingefärbt: Auf der nahezu weißen Wand (RGB ~240)
+   entspricht das Ergebnis fast dem reinen Farbton, Schatten und Struktur des
+   Fotos bleiben erhalten. Decke, Boden, Fenster und Sockel bleiben unberührt. */
+
+.studio {
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  gap: clamp(1.4rem, 3.5vw, 2.4rem);
+  align-items: start;
+}
+
+.studio-buehne {
+  margin: 0;
+}
+
+.studio-bild {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--putz);
+  border: 1px solid var(--putz);
+}
+
+.studio-bild img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Kein z-index: sonst entstünde ein Stacking-Context und der Blend würde isoliert. */
+.farb-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.farb-flaeche {
+  position: absolute;
+  inset: 0;
+  background-color: var(--ton, var(--ton-kalkweiss));
+  mix-blend-mode: multiply;
+  transition: background-color 0.3s ease;
+}
+
+/* Hauptwand: linke Wand unter dem Schrägfenster, Rückwand unter dem Fensterband,
+   Wand rechts davon bis zur Decke, rechte Wand — begrenzt von der Bodenkante. */
+.farb-flaeche--wand {
+  clip-path: polygon(
+    0% 0%,
+    5.5% 0%,
+    5.5% 21.3%,
+    7.8% 23.9%,
+    10.3% 25.8%,
+    13.4% 27.2%,
+    17.8% 27.8%,
+    25.6% 26.2%,
+    68.1% 26.2%,
+    68.1% 2.9%,
+    82.2% 3.1%,
+    91.9% 0%,
+    100% 0%,
+    100% 80.6%,
+    82.2% 67.4%,
+    25.9% 67.8%,
+    0% 93.9%
+  );
+}
+
+/* Wandsturz: schmales Band zwischen Decke und Fensterband. */
+.farb-flaeche--sturz {
+  clip-path: polygon(25.8% 3.3%, 68.1% 2.9%, 68.1% 14.9%, 25.8% 15.6%);
+}
+
+.studio-bild .tag {
+  z-index: 2;
+}
+
+.studio-buehne figcaption {
+  padding-top: 0.9rem;
+  font-size: 0.85rem;
+  color: var(--grau);
+}
+
+.studio-steuerung {
+  background: var(--kalk-tief);
+  border: 1px solid var(--putz);
+  padding: 1.4rem 1.5rem 1.6rem;
+}
+
+.studio-steuerung h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.farb-felder {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.7rem;
+  margin-bottom: 1.2rem;
+}
+
+.farb-feld {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-height: 44px;
+  padding: 0.55rem;
+  background: var(--kalk);
+  border: 1.5px solid var(--putz);
+  font-family: var(--font);
+  color: var(--tinte);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.farb-feld:hover {
+  border-color: var(--blau);
+}
+
+.farb-feld-probe {
+  display: block;
+  height: 3rem;
+  background-color: var(--ton, var(--ton-kalkweiss));
+  border: 1px solid rgba(40, 38, 31, 0.16);
+}
+
+.farb-feld-name {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1.3;
+}
+
+.farb-feld[aria-pressed='true'] {
+  border-color: var(--blau);
+  box-shadow: inset 0 0 0 2px var(--blau);
+}
+
+.farb-feld[aria-pressed='true'] .farb-feld-name {
+  color: var(--blau);
+}
+
+/* Beispiel-Farbtöne: ein Token je Ton, geteilt von Farbprobe und Wandzone. */
+#farbstudio [data-ton='kalkweiss'] {
+  --ton: var(--ton-kalkweiss);
+}
+
+#farbstudio [data-ton='sandkorn'] {
+  --ton: var(--ton-sandkorn);
+}
+
+#farbstudio [data-ton='ziegelrose'] {
+  --ton: var(--ton-ziegelrose);
+}
+
+#farbstudio [data-ton='salbeigruen'] {
+  --ton: var(--ton-salbeigruen);
+}
+
+#farbstudio [data-ton='nebelblau'] {
+  --ton: var(--ton-nebelblau);
+}
+
+#farbstudio [data-ton='arbeitsblau'] {
+  --ton: var(--ton-arbeitsblau);
+}
+
+.studio-status {
+  color: var(--grau);
+  font-size: 0.9rem;
+  margin-bottom: 1.1rem;
+}
+
+.studio-status strong {
+  color: var(--tinte);
+}
+
+.studio-hinweis {
+  background: var(--tinte);
+  color: #f4f2ec;
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+  padding: 0.65rem 0.9rem;
+  margin-bottom: 0.9rem;
+}
+
+.studio-fussnote {
+  color: var(--grau);
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+/* ---------- Projekt-Rechner (Farbmenge) ---------- */
+
+.rechner {
+  display: grid;
+  grid-template-columns: 6fr 5fr;
+  gap: clamp(1.4rem, 3.5vw, 2.4rem);
+  align-items: start;
+  margin-top: clamp(2rem, 5vw, 3.2rem);
+}
+
+.rechner [hidden] {
+  display: none;
+}
+
+.rechner-eingabe {
+  background: var(--kalk-tief);
+  border: 1px solid var(--putz);
+  padding: 1.6rem 1.5rem 1.8rem;
+}
+
+.rechner-eingabe h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.rechner-intro {
+  color: var(--grau);
+  font-size: 0.95rem;
+  margin-bottom: 1.4rem;
+}
+
+.rechner-modus {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 1.3rem;
+}
+
+.rechner-pille {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0.55rem 1.2rem;
+  border-radius: 999px;
+  border: 1.5px solid var(--putz);
+  background: var(--kalk);
+  color: var(--tinte);
+  font-family: var(--font);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.rechner-pille:hover {
+  border-color: var(--blau);
+  color: var(--blau);
+}
+
+.rechner-pille[aria-pressed='true'] {
+  background: var(--blau);
+  border-color: var(--blau);
+  color: #fff;
+}
+
+.rechner-feld {
+  margin-bottom: 1.2rem;
+}
+
+.rechner-feld:last-child {
+  margin-bottom: 0;
+}
+
+.rechner-feld label,
+.rechner-feldname {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+.rechner-feld input,
+.rechner-feld select {
+  width: 100%;
+  min-height: 46px;
+  border: 1.5px solid var(--putz);
+  background: var(--kalk);
+  color: var(--tinte);
+  font-family: var(--font);
+  font-size: 1rem;
+  padding: 0.6rem 0.85rem;
+}
+
+.rechner-feld input:focus-visible,
+.rechner-feld select:focus-visible {
+  outline: 3px solid var(--blau);
+  outline-offset: 1px;
+  border-color: var(--blau);
+}
+
+.rechner-reihe {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.9rem;
+  margin-bottom: 0.1rem;
+}
+
+.rechner-reihe .rechner-feld {
+  margin-bottom: 1.2rem;
+}
+
+.rechner-ergebnis {
+  background: var(--blau-tief);
+  color: #f2f4f7;
+  padding: 1.8rem 1.6rem 2rem;
+}
+
+.rechner-werte {
+  display: grid;
+  gap: 0.9rem;
+  margin: 0 0 1.2rem;
+}
+
+.rechner-werte dt {
+  color: #9fc0e2;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.rechner-werte dd {
+  margin: 0.15rem 0 0;
+  color: #fff;
+  font-size: 1.2rem;
+  letter-spacing: 0.04em;
+}
+
+.rechner-werte dd.rechner-hauptwert {
+  font-size: clamp(1.9rem, 4.5vw, 2.6rem);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: 0.06em;
+}
+
+.rechner-status {
+  color: #cdd9e6;
+  font-size: 0.92rem;
+  margin-bottom: 0.7rem;
+}
+
+.rechner-formel {
+  color: #cdd9e6;
+  font-size: 0.84rem;
+  margin-bottom: 1.2rem;
+}
+
+.rechner-marke {
+  display: inline-block;
+  background: #fff;
+  color: var(--blau-tief);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  padding: 0.42rem 0.8rem;
+  margin: 0 0 1.5rem;
+}
+
+.rechner-ergebnis .btn--voll {
+  background: #fff;
+  border-color: #fff;
+  color: var(--blau-tief);
+}
+
+.rechner-ergebnis .btn--voll:hover {
+  background: var(--kalk);
+  border-color: var(--kalk);
 }
 
 /* ---------- Betrieb ---------- */
@@ -1080,6 +1482,11 @@ p {
   .vn-paare {
     grid-template-columns: 1fr;
   }
+
+  .studio,
+  .rechner {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 620px) {
@@ -1104,5 +1511,14 @@ p {
 
   .vergleich {
     aspect-ratio: 4 / 3;
+  }
+
+  /* Das Farbstudio behält 16:9 — nur so decken die Wandzonen-Polygone das Foto exakt. */
+  .farb-felder {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .rechner-reihe {
+    grid-template-columns: 1fr;
   }
 }

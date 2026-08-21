@@ -151,9 +151,90 @@
     });
   });
 
+  /* ---------- Beispieltag Dienstag: Belegung 1:1 aus portal.html ----------
+     Dieselben Buchungscodes, Pausen- und Abwesenheitsblöcke wie im
+     Teamkalender des Team-Portals. Reine Beispieldaten — kein echter
+     Kalender, keine Speicherung, keine Übertragung. */
+  var RASTER = { start: '09:00', ende: '18:00', schrittMinuten: 30 };
+
+  var BEISPIELTAG_DIENSTAG = [
+    {
+      id: 'max',
+      name: 'Max · Inhaber',
+      platz: 'Platz A',
+      eintraege: [
+        { von: '09:00', bis: '09:45', label: 'belegt · B-1041', art: 'termin' },
+        { von: '10:00', bis: '11:00', label: 'belegt · B-1044', art: 'termin' },
+        { von: '11:30', bis: '12:00', label: 'belegt · B-1049', art: 'termin' },
+        { von: '14:00', bis: '14:45', label: 'belegt · B-1053', art: 'termin' },
+        { von: '16:30', bis: '17:15', label: 'belegt · B-1058', art: 'termin' },
+      ],
+    },
+    {
+      id: 'leon',
+      name: 'Leon',
+      platz: 'Platz B',
+      eintraege: [
+        { von: '09:30', bis: '10:15', label: 'belegt · B-1042', art: 'termin' },
+        { von: '10:30', bis: '11:15', label: 'belegt · B-1046', art: 'termin' },
+        { von: '12:00', bis: '13:00', label: 'Pause', art: 'pause' },
+        { von: '13:00', bis: '14:00', label: 'belegt · B-1051', art: 'termin' },
+        { von: '15:00', bis: '15:30', label: 'belegt · B-1055', art: 'termin' },
+        { von: '17:30', bis: '18:15', label: 'belegt · B-1060', art: 'termin' },
+      ],
+    },
+    {
+      id: 'lena',
+      name: 'Lena',
+      platz: 'Platz C',
+      eintraege: [
+        { von: '09:00', bis: '09:30', label: 'belegt · B-1040', art: 'termin' },
+        { von: '11:00', bis: '12:00', label: 'belegt · B-1047', art: 'termin' },
+        { von: '14:30', bis: '15:15', label: 'belegt · B-1054', art: 'termin' },
+        { von: '16:00', bis: '16:30', label: 'belegt · B-1057', art: 'termin' },
+        { von: '17:00', bis: '18:30', label: 'Urlaub beantragt', art: 'abwesend' },
+      ],
+    },
+  ];
+
+  function minutenAus(zeit) {
+    var teile = zeit.split(':');
+    return Number(teile[0]) * 60 + Number(teile[1]);
+  }
+
+  function zeitAus(minuten) {
+    var stunde = Math.floor(minuten / 60);
+    var rest = minuten % 60;
+    return (stunde < 10 ? '0' : '') + stunde + ':' + (rest < 10 ? '0' : '') + rest;
+  }
+
+  function rasterZeiten() {
+    var zeiten = [];
+    for (
+      var minute = minutenAus(RASTER.start);
+      minute <= minutenAus(RASTER.ende);
+      minute += RASTER.schrittMinuten
+    ) {
+      zeiten.push(zeitAus(minute));
+    }
+    return zeiten;
+  }
+
+  function belegungFuer(stylist, zeit) {
+    var beginn = minutenAus(zeit);
+    var ende = beginn + RASTER.schrittMinuten;
+    var treffer = null;
+    stylist.eintraege.forEach(function (eintrag) {
+      if (!treffer && minutenAus(eintrag.von) < ende && minutenAus(eintrag.bis) > beginn) {
+        treffer = eintrag;
+      }
+    });
+    return treffer;
+  }
+
   /* ---------- Terminplaner ---------- */
   document.querySelectorAll('[data-planner]').forEach(function (form) {
-    var state = { day: null, time: null };
+    var state = { day: null, time: null, stylist: 'max', slot: null };
     var confirmBtn = form.querySelector('[data-confirm]');
     var statusEl = form.querySelector('[data-status]');
     var panel = form.querySelector('[data-confirm-panel]');
@@ -168,7 +249,7 @@
     function missing() {
       var parts = [];
       if (!state.day) parts.push('Beispieltag');
-      if (!state.time) parts.push('Uhrzeit');
+      if (!state.time) parts.push('Wunschzeit');
       if (!vorname.value.trim()) parts.push('Vorname');
       if (!nachname.value.trim()) parts.push('Nachname');
       if (digits(handy.value) < 7) parts.push('Handynummer (mind. 7 Ziffern)');
@@ -202,6 +283,113 @@
     bindChips(form.querySelector('[data-days]'), 'day', 'data-day');
     bindChips(form.querySelector('[data-times]'), 'time', 'data-time');
 
+    /* --- Modul „Stylist & Uhrzeit am Beispieltag" --- */
+    function aktuellerStylist() {
+      var gefunden = BEISPIELTAG_DIENSTAG[0];
+      BEISPIELTAG_DIENSTAG.forEach(function (eintrag) {
+        if (eintrag.id === state.stylist) gefunden = eintrag;
+      });
+      return gefunden;
+    }
+
+    var slotpicker = form.querySelector('[data-slotpicker]');
+    if (slotpicker) {
+      var slotGrid = slotpicker.querySelector('[data-slotgrid]');
+      var slotHint = slotpicker.querySelector('[data-slot-hint]');
+      var stylistBtns = [].slice.call(slotpicker.querySelectorAll('[data-stylist]'));
+
+      // Auswahl nur ummarkieren statt neu zu zeichnen — sonst verliert die
+      // Tastatur den Fokus auf den gerade gewaehlten Slot.
+      var markiereSlots = function () {
+        slotGrid.querySelectorAll('[data-slot][aria-pressed]').forEach(function (knopf) {
+          knopf.setAttribute(
+            'aria-pressed',
+            knopf.getAttribute('data-slot') === state.slot ? 'true' : 'false',
+          );
+        });
+      };
+
+      // aria-live nur bei echter Aenderung neu befuellen — sonst liest der
+      // Screenreader den Hinweis schon beim Laden vor.
+      var setzeSlotHinweis = function (text) {
+        if (slotHint.textContent.trim() !== text.trim()) slotHint.textContent = text;
+      };
+      var ersterSlotAufbau = true;
+
+      var zeichneSlots = function () {
+        var stylist = aktuellerStylist();
+        var zeiten = rasterZeiten();
+        var frei = 0;
+        slotGrid.textContent = '';
+        zeiten.forEach(function (zeit) {
+          var belegung = belegungFuer(stylist, zeit);
+          var bis = zeitAus(minutenAus(zeit) + RASTER.schrittMinuten);
+          var knopf = document.createElement('button');
+          var uhrzeit = document.createElement('strong');
+          var zusatz = document.createElement('small');
+          knopf.type = 'button';
+          knopf.className = 'chip chip--slot';
+          knopf.setAttribute('data-slot', zeit);
+          uhrzeit.textContent = zeit;
+          knopf.appendChild(uhrzeit);
+          knopf.appendChild(zusatz);
+          if (belegung) {
+            // aria-disabled statt disabled: belegte Zeiten bleiben per Tastatur
+            // erreichbar und werden vorgelesen, lassen sich aber nicht waehlen.
+            knopf.setAttribute('aria-disabled', 'true');
+            knopf.setAttribute('data-art', belegung.art);
+            zusatz.textContent = belegung.label;
+            knopf.setAttribute(
+              'aria-label',
+              zeit + ' Uhr — ' + belegung.label + ' (' + belegung.von + ' bis ' + belegung.bis + ')',
+            );
+          } else {
+            frei += 1;
+            zusatz.textContent = 'frei';
+            knopf.setAttribute('aria-pressed', state.slot === zeit ? 'true' : 'false');
+            knopf.setAttribute('aria-label', zeit + ' bis ' + bis + ' Uhr frei — Beispielzeit wählen');
+            knopf.addEventListener('click', function () {
+              state.slot = state.slot === zeit ? null : zeit;
+              if (panel && !panel.hidden) panel.hidden = true;
+              markiereSlots();
+              update();
+            });
+          }
+          slotGrid.appendChild(knopf);
+        });
+        // Beim ersten Aufbau bleibt der Markup-Text stehen (keine Ansage ohne Nutzeraktion).
+        if (ersterSlotAufbau) {
+          ersterSlotAufbau = false;
+          return;
+        }
+        setzeSlotHinweis(
+          stylist.name +
+            ' · ' +
+            stylist.platz +
+            ' — ' +
+            frei +
+            ' von ' +
+            zeiten.length +
+            ' Beispielzeiten frei. Belegte Zeiten stammen 1:1 aus dem Team-Portal (Beispieltag Dienstag) und sind keine echte Verfügbarkeit.',
+        );
+      };
+
+      stylistBtns.forEach(function (knopf) {
+        knopf.addEventListener('click', function () {
+          state.stylist = knopf.getAttribute('data-stylist');
+          state.slot = null;
+          stylistBtns.forEach(function (anderer) {
+            anderer.setAttribute('aria-pressed', anderer === knopf ? 'true' : 'false');
+          });
+          if (panel && !panel.hidden) panel.hidden = true;
+          zeichneSlots();
+          update();
+        });
+      });
+
+      zeichneSlots();
+    }
+
     [vorname, nachname, handy].forEach(function (input) {
       input.addEventListener('input', update);
     });
@@ -221,6 +409,18 @@
       form.querySelector('[data-sum-friseur]').textContent = friseur ? friseur.value : '—';
       form.querySelector('[data-sum-termin]').textContent =
         state.day + ' · ' + state.time + ' Uhr (Beispiel)';
+      var stylistZeile = form.querySelector('[data-sum-stylistzeit]');
+      if (stylistZeile && slotpicker) {
+        var gewaehlt = aktuellerStylist();
+        stylistZeile.textContent =
+          gewaehlt.name +
+          ' · ' +
+          gewaehlt.platz +
+          ' · ' +
+          (state.slot
+            ? state.slot + '–' + zeitAus(minutenAus(state.slot) + RASTER.schrittMinuten) + ' Uhr'
+            : 'noch keine Beispielzeit gewählt');
+      }
       form.querySelector('[data-sum-name]').textContent =
         vorname.value.trim() + ' ' + nachname.value.trim();
       panel.hidden = false;

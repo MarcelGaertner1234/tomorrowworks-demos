@@ -974,6 +974,351 @@ a.leistungs-kachel:hover {
   background: var(--kupfer-dunkel);
 }
 
+/* --- Zeitplan-Generator: die Etappen-Route zum Umzugstag ---
+   Gleiche Sprache wie der Ablauf weiter unten (gestrichelte Kupfer-Linie, runde
+   Marker), nur vertikal und generiert. Die Marker tragen je eine kleine Nadel,
+   die sich Etappe fuer Etappe auf Nord einpeilt — am Ziel steht sie auf 0deg. */
+.zeitplan-eingabe {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 16px 20px;
+  max-width: 760px;
+  margin: 0 auto;
+  background: var(--weiss);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-l);
+  padding: 24px 26px 26px;
+  box-shadow: var(--schatten);
+}
+
+.zeitplan-feld {
+  flex: 1 1 220px;
+  margin-top: 0;
+  min-width: 0;
+}
+
+.zeitplan-feld input {
+  background: var(--papier);
+}
+
+/* Der Versatz haelt den Knopf auf der Grundlinie des Eingabefeldes — er gleicht
+   den Feld-Hinweis darunter aus. Ab 640px passen Feld und Knopf sicher
+   nebeneinander; darunter steht der Knopf voll und der Versatz faellt weg. */
+.zeitplan-eingabe .btn {
+  flex: 0 1 auto;
+  margin-bottom: 27px;
+}
+
+.zeitplan-fehler {
+  flex: 1 0 100%;
+  margin: 0;
+}
+
+/* [hidden] muss gewinnen — sonst blendet ein display-Wert das versteckte
+   Ergebnis wieder ein (klassische Falle bei generierten Bloecken). */
+.zeitplan-ergebnis[hidden] {
+  display: none;
+}
+
+.zeitplan-kurzfrist[hidden] {
+  display: none;
+}
+
+/* Neues Anker-/Sprungziel: darf nicht unter dem sticky Header landen. */
+#zeitplan-ergebnis {
+  scroll-margin-top: calc(var(--header-hoehe) + 32px);
+}
+
+.zeitplan-ergebnis {
+  max-width: 760px;
+  margin: 34px auto 0;
+}
+
+.zeitplan-peilung {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.zeitplan-peilung .demo-chip {
+  margin-bottom: 14px;
+}
+
+.zeitplan-peilung-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--unter);
+}
+
+.zeitplan-peilung-datum {
+  display: block;
+  margin-top: 6px;
+  font-size: clamp(26px, 3.4vw, 38px);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  color: var(--kupfer-dunkel);
+}
+
+.zeitplan-peilung-meta {
+  display: block;
+  margin-top: 8px;
+  font-size: 13.5px;
+  color: var(--unter);
+}
+
+.zeitplan-kurzfrist {
+  margin: 18px 0 0;
+  padding: 14px 18px;
+  border-left: 3px solid var(--kupfer-dunkel);
+  background: var(--flaeche);
+  border-radius: 0 var(--radius-s) var(--radius-s) 0;
+  font-size: 15px;
+  color: var(--navy);
+}
+
+.zeitplan-route {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  margin-top: 30px;
+}
+
+.zeitplan-etappe {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.5s ease var(--verzoegerung, 0s), transform 0.5s ease var(--verzoegerung, 0s);
+}
+
+/* Wegstueck zur naechsten Etappe: Marker-Mitte bis Marker-Mitte (22px Gap +
+   22px halbe Markerhoehe). Bewusst je Etappe statt einer durchgehenden Linie
+   ueber die ganze Liste — sonst haengt unter der letzten (hohen) Zielkarte ein
+   Linienrest, dessen Laenge keine CSS-Regel kennen kann. Sie zeichnet sich wie
+   die Route im Ablauf per clip-path, im Takt der einblendenden Etappe. */
+.zeitplan-etappe:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 22px;
+  bottom: -44px;
+  left: 21px;
+  width: 2px;
+  z-index: -1;
+  background: repeating-linear-gradient(180deg, var(--kupfer) 0 8px, transparent 8px 16px);
+  clip-path: inset(0 0 100% 0);
+  transition: clip-path 0.8s ease var(--verzoegerung, 0s);
+}
+
+.zeitplan-etappe.ist-sichtbar {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.zeitplan-etappe.ist-sichtbar::after {
+  clip-path: inset(0 0 0 0);
+}
+
+.zeitplan-marker {
+  position: relative;
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--papier);
+  border: 2px solid var(--kupfer-dunkel);
+}
+
+.zeitplan-nadel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 26px;
+  margin: -13px 0 0 -2px;
+  transform-origin: 50% 50%;
+  transform: rotate(var(--peilung, 0deg));
+}
+
+.zeitplan-nadel-n,
+.zeitplan-nadel-s {
+  position: absolute;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  margin-left: -4px;
+}
+
+.zeitplan-nadel-n {
+  top: 0;
+  border-bottom: 13px solid var(--kupfer-dunkel);
+}
+
+.zeitplan-nadel-s {
+  bottom: 0;
+  border-top: 13px solid rgba(107, 101, 88, 0.32);
+}
+
+.zeitplan-karte {
+  flex: 1 1 auto;
+  min-width: 0;
+  background: var(--weiss);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-m);
+  padding: 18px 20px 20px;
+  box-shadow: var(--schatten);
+}
+
+.zeitplan-karte-kopf {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 6px 14px;
+}
+
+.zeitplan-etappe-datum {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--kupfer-dunkel);
+}
+
+.zeitplan-etappe-marke {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--kupfer-dunkel);
+  background: var(--flaeche);
+  border-radius: 999px;
+  padding: 4px 12px;
+}
+
+.zeitplan-karte h3 {
+  margin-top: 8px;
+  font-size: 19px;
+}
+
+.zeitplan-aufgaben {
+  list-style: none;
+  margin-top: 12px;
+}
+
+.zeitplan-aufgaben li {
+  position: relative;
+  padding: 5px 0 5px 20px;
+  font-size: 15px;
+  color: var(--unter);
+}
+
+.zeitplan-aufgaben li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 14px;
+  width: 8px;
+  height: 8px;
+  background: var(--kupfer-dunkel);
+}
+
+/* Zielmarke: die Nadel steht auf Nord, die Karte wird zur dunklen Ankunft. */
+.zeitplan-etappe--ziel .zeitplan-marker {
+  background: var(--navy-tief);
+  border-color: var(--navy-tief);
+}
+
+.zeitplan-etappe--ziel .zeitplan-marker::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid rgba(181, 119, 63, 0.45);
+  animation: zeitplan-ziel-puls 2.8s ease-out infinite;
+}
+
+@keyframes zeitplan-ziel-puls {
+  0% { transform: scale(1); opacity: 0.75; }
+  70% { transform: scale(1.28); opacity: 0; }
+  100% { transform: scale(1.28); opacity: 0; }
+}
+
+.zeitplan-etappe--ziel .zeitplan-nadel-n {
+  border-bottom-color: var(--kupfer-hell);
+}
+
+.zeitplan-etappe--ziel .zeitplan-nadel-s {
+  border-top-color: rgba(246, 243, 238, 0.35);
+}
+
+.zeitplan-etappe--ziel .zeitplan-karte {
+  background: var(--navy);
+  border-color: var(--navy);
+  box-shadow: 0 1px 2px rgba(16, 26, 36, 0.22), 0 20px 40px -14px rgba(16, 26, 36, 0.5);
+}
+
+.zeitplan-etappe--ziel .zeitplan-etappe-datum {
+  color: var(--kupfer-hell);
+}
+
+.zeitplan-etappe--ziel .zeitplan-etappe-marke {
+  color: var(--papier);
+  background: rgba(246, 243, 238, 0.16);
+}
+
+.zeitplan-etappe--ziel .zeitplan-karte h3 {
+  color: var(--weiss);
+}
+
+.zeitplan-etappe--ziel .zeitplan-aufgaben li {
+  color: rgba(246, 243, 238, 0.88);
+}
+
+.zeitplan-etappe--ziel .zeitplan-aufgaben li::before {
+  background: var(--kupfer-hell);
+}
+
+.zeitplan-aktion {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.zeitplan-fuss {
+  margin-top: 16px;
+  text-align: center;
+  font-size: 12.5px;
+  color: var(--unter);
+}
+
+@media (max-width: 640px) {
+  .zeitplan-eingabe .btn {
+    width: 100%;
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .zeitplan-eingabe {
+    padding: 20px;
+  }
+
+  .zeitplan-etappe {
+    gap: 14px;
+  }
+
+  .zeitplan-karte {
+    padding: 16px 16px 18px;
+  }
+}
+
 /* --- Warum wir --- */
 .section--unternehmen {
   background: var(--navy);

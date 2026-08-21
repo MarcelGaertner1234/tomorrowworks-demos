@@ -187,7 +187,9 @@ a {
 
 .btn--kontur {
   background: transparent;
-  color: var(--gruen);
+  /* Kleintext-Grün: --gruen (#2e7d4f) reicht auf getönten Flächen (--flaeche) nur für
+     4,46:1 — --gruen-text (#276b43) hält auch dort die 4,5:1 (5,7:1). */
+  color: var(--gruen-text);
 }
 
 .btn--kontur:hover {
@@ -500,6 +502,194 @@ h3 {
   text-align: center;
   font-size: 12.5px;
   color: var(--grau);
+}
+
+/* --- Strauß-Konfigurator: drei Wahlschritte, eine Vorschau --- */
+.konfigurator {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  gap: 44px;
+  align-items: start;
+}
+
+.konf-schritt {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  margin: 0 0 28px;
+}
+
+.konf-schritt:last-of-type {
+  margin-bottom: 0;
+}
+
+.konf-schritt legend {
+  padding: 0;
+  margin-bottom: 14px;
+  color: var(--gruen-text);
+}
+
+.konf-pillen {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.konf-pille {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 11px 18px;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  line-height: 1.2;
+  color: var(--gruen-tief);
+  background: var(--weiss);
+  border: 1.5px solid var(--hairline);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.konf-pille:hover {
+  border-color: var(--gruen);
+}
+
+.konf-pille.is-aktiv {
+  background: var(--gruen);
+  border-color: var(--gruen);
+  color: var(--weiss);
+}
+
+.konf-pille.is-aktiv:hover {
+  background: var(--gruen-tief);
+  border-color: var(--gruen-tief);
+}
+
+/* Trauer bleibt auch hier still — kein Grün, kein Pink. */
+.konf-pille--still.is-aktiv,
+.konf-pille--still.is-aktiv:hover {
+  background: var(--grau);
+  border-color: var(--grau);
+}
+
+.konf-pille--farbe::before {
+  content: "";
+  flex: none;
+  width: 12px;
+  height: 12px;
+  margin-right: 9px;
+  border-radius: 50%;
+  border: 1px solid rgba(38, 37, 31, 0.18);
+  background: var(--punkt, var(--flaeche));
+}
+
+.konf-schritt-hinweis {
+  margin-top: 16px;
+  font-size: 12.5px;
+  color: var(--grau);
+  max-width: 46ch;
+}
+
+.konf-vorschau {
+  background: var(--weiss);
+  border: 1px solid var(--hairline);
+}
+
+.konf-vorschau-bild {
+  position: relative;
+  overflow: hidden;
+  background: var(--flaeche);
+}
+
+.konf-vorschau-bild img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+/* Trauer: die Vorschau nimmt sich hörbar zurück (deutlicher als die --still-Sektion,
+   weil hier auch ein sehr buntes Farbwelten-Foto stehen kann). */
+.konf-vorschau-bild.ist-still img {
+  filter: saturate(0.6);
+}
+
+.konf-vorschau-text {
+  padding: 20px 22px 24px;
+}
+
+.konf-satz {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(21px, 2.2vw, 27px);
+  line-height: 1.3;
+  color: var(--gruen-tief);
+}
+
+.konf-vorschau .btn {
+  margin-top: 20px;
+}
+
+/* --- Blumen-Abo (bewusst mit Abstand zur Trauer-Sektion) --- */
+.section--abo {
+  background: var(--flaeche);
+  border-top: 1px solid var(--hairline);
+  /* kein border-bottom — die folgende Ablauf-Sektion bringt ihre eigene Haarlinie mit */
+}
+
+.abo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 26px;
+}
+
+.abo-karte {
+  background: var(--weiss);
+  border: 1px solid var(--hairline);
+  padding: 26px 24px 24px;
+}
+
+.abo-takt {
+  display: block;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 34px;
+  line-height: 1;
+  color: var(--pink);
+  margin-bottom: 12px;
+}
+
+.abo-karte p {
+  margin-top: 8px;
+  font-size: 15px;
+  color: var(--grau);
+}
+
+.abo-tag {
+  display: inline-block;
+  margin-top: 16px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gruen-text);
+}
+
+.abo-aktion {
+  margin-top: 32px;
+  text-align: center;
+}
+
+.abo-hinweis {
+  margin-top: 18px;
+  text-align: center;
+  font-size: 12.5px;
+  color: var(--grau);
+  max-width: 62ch;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* --- Trauerfloristik: ruhig, gedämpft, ohne Pink --- */
@@ -933,7 +1123,8 @@ legend {
   }
 
   .still-split,
-  .laden-split {
+  .laden-split,
+  .konfigurator {
     grid-template-columns: 1fr;
     gap: 26px;
   }

@@ -42,6 +42,7 @@
           <nav class="site-nav" aria-label="Hauptnavigation">
             <a href="#anlaesse">Anlässe</a>
             <a href="#farbwelten">Farbwelten</a>
+            <a href="#konfigurator">Strauß bauen</a>
             <a href="#laden">Der Laden</a>
             <a href="#ablauf">Ablauf</a>
           </nav>
@@ -277,6 +278,80 @@
         </div>
       </section>
 
+      <!-- Strauß-Konfigurator — Anlass + Farbwelt + Umfang ergeben live eine Vorschau.
+           Nutzt bewusst die vorhandenen Farbwelten-Fotos; keine Preise, keine Übertragung. -->
+      <section class="section section--konfigurator" id="konfigurator">
+        <div class="section-inhalt">
+          <div class="section-kopf">
+            <span class="eyebrow">Zum Ausprobieren</span>
+            <h2>Stellen Sie sich Ihren Strauß <em>zusammen</em></h2>
+            <p>
+              Anlass, Farbwelt, Umfang — drei Klicks, und Sie sehen, worüber wir sprechen.
+              Ihre Auswahl nehmen wir direkt mit in die Anfrage.
+            </p>
+          </div>
+
+          <div class="konfigurator" data-konfigurator>
+            <div class="konf-wahl">
+              <fieldset class="konf-schritt">
+                <legend>01 · Anlass</legend>
+                <div class="konf-pillen">
+                  <button type="button" class="konf-pille is-aktiv" aria-pressed="true" data-konf-anlass="geburtstag">Geburtstag</button>
+                  <button type="button" class="konf-pille" aria-pressed="false" data-konf-anlass="liebe-danke">Liebe &amp; Danke</button>
+                  <button type="button" class="konf-pille" aria-pressed="false" data-konf-anlass="hochzeit">Hochzeit &amp; Feste</button>
+                  <button type="button" class="konf-pille konf-pille--still" aria-pressed="false" data-konf-anlass="trauer">Trauer</button>
+                  <button type="button" class="konf-pille" aria-pressed="false" data-konf-anlass="pflanzen">Pflanzen</button>
+                </div>
+              </fieldset>
+
+              <fieldset class="konf-schritt">
+                <legend>02 · Farbwelt</legend>
+                <div class="konf-pillen">
+                  <button type="button" class="konf-pille konf-pille--farbe is-aktiv" style="--punkt:#dfa8bf" aria-pressed="true" data-konf-stil="zart">Zart &amp; Pastell</button>
+                  <button type="button" class="konf-pille konf-pille--farbe" style="--punkt:#eeb63c" aria-pressed="false" data-konf-stil="sonnig">Warm &amp; Sonnig</button>
+                  <button type="button" class="konf-pille konf-pille--farbe" style="--punkt:#c94f7c" aria-pressed="false" data-konf-stil="wildwiese">Wildwiese bunt</button>
+                  <button type="button" class="konf-pille konf-pille--farbe" style="--punkt:#cdd8c4" aria-pressed="false" data-konf-stil="weissgruen">Weiß &amp; Grün</button>
+                </div>
+              </fieldset>
+
+              <fieldset class="konf-schritt">
+                <legend>03 · Umfang</legend>
+                <div class="konf-pillen">
+                  <button type="button" class="konf-pille" aria-pressed="false" data-konf-umfang="kleiner-gruss">Kleiner Gruß</button>
+                  <button type="button" class="konf-pille is-aktiv" aria-pressed="true" data-konf-umfang="klassisch">Klassisch</button>
+                  <button type="button" class="konf-pille" aria-pressed="false" data-konf-umfang="ueppig">Üppig</button>
+                </div>
+                <p class="konf-schritt-hinweis">
+                  Beispiel-Zusammenstellung ohne Preisangaben — den Rahmen besprechen Sie in Ruhe im Laden.
+                </p>
+              </fieldset>
+            </div>
+
+            <div class="konf-vorschau">
+              <figure class="konf-vorschau-bild" data-konf-huelle>
+                <img
+                  src="assets/farbwelt-zart.jpg"
+                  alt="Strauß in zarten Pastelltönen — Beispielfoto"
+                  loading="lazy"
+                  width="1000"
+                  height="750"
+                  data-konf-bild
+                >
+                <span class="foto-tag">Beispielfoto (Symbolbild)</span>
+              </figure>
+              <div class="konf-vorschau-text">
+                <p class="konf-satz" data-konf-satz aria-live="polite">
+                  Ihr Strauß: klassisch, Zart &amp; Pastell, zum Geburtstag.
+                </p>
+                <a class="btn btn--voll" data-konf-cta href="anfrage.html?anlass=geburtstag&amp;stil=zart&amp;umfang=klassisch">
+                  Diesen Strauß anfragen
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- Trauerfloristik — ruhig und pietätvoll abgesetzt (belegte Leistung) -->
       <section class="section section--still" id="trauer">
         <div class="section-inhalt">
@@ -338,6 +413,54 @@
               <a class="btn btn--kontur" href="anfrage.html">Strauß anfragen</a>
             </div>
           </div>
+        </div>
+      </section>
+
+      <!-- Blumen-Abo — bewusst mit Abstand zur Trauer-Sektion platziert (Pietät):
+           erst der Laden, dann das Abo, dann der Ablauf. -->
+      <section class="section section--abo" id="abo">
+        <div class="section-inhalt">
+          <div class="section-kopf">
+            <span class="eyebrow">Beispiel-Angebot</span>
+            <h2>Frische Blumen im <em>Abo</em></h2>
+            <p>
+              Ein Strauß, der regelmäßig bereitsteht — für den Empfangstresen, den
+              Esstisch oder als kleine Aufmerksamkeit. Drei Rhythmen als Startpunkt.
+            </p>
+          </div>
+          <div class="abo-grid">
+            <article class="abo-karte">
+              <span class="abo-takt" aria-hidden="true">1 Woche</span>
+              <h3>Wöchentlich</h3>
+              <p>
+                Jede Woche neu gebunden — für Räume, in denen ständig jemand vorbeikommt.
+              </p>
+              <span class="abo-tag">Beispiel-Rhythmus</span>
+            </article>
+            <article class="abo-karte">
+              <span class="abo-takt" aria-hidden="true">2 Wochen</span>
+              <h3>Alle 14 Tage</h3>
+              <p>
+                Der ruhige Takt: frische Blumen, sobald die alten ihren Auftritt hatten.
+              </p>
+              <span class="abo-tag">Beispiel-Rhythmus</span>
+            </article>
+            <article class="abo-karte">
+              <span class="abo-takt" aria-hidden="true">1 Monat</span>
+              <h3>Monatlich</h3>
+              <p>
+                Einmal im Monat ein Strauß, der zur Jahreszeit passt — schön für zu Hause.
+              </p>
+              <span class="abo-tag">Beispiel-Rhythmus</span>
+            </article>
+          </div>
+          <p class="abo-aktion">
+            <a class="btn btn--kontur" href="anfrage.html?anlass=abo">Blumen-Abo anfragen</a>
+          </p>
+          <p class="abo-hinweis">
+            Beispiel-Rhythmen dieser Konzeptvorschau ohne Preisangaben — Takt, Umfang und
+            Rahmen stimmen Sie in Ruhe direkt mit dem Laden ab.
+          </p>
         </div>
       </section>
 
@@ -414,7 +537,9 @@
           <nav aria-label="Fußnavigation">
             <a href="#anlaesse">Anlässe</a>
             <a href="#farbwelten">Farbwelten</a>
+            <a href="#konfigurator">Strauß bauen</a>
             <a href="#laden">Der Laden</a>
+            <a href="#abo">Blumen-Abo</a>
             <a href="anfrage.html">Strauß anfragen</a>
           </nav>
         </div>
@@ -422,7 +547,8 @@
           <strong>Design-Entwurf von TOMORROWWORKS</strong> —
           nicht die offizielle Website von Blumen Viva.
           Persönliche Konzeptvorschau ohne echte Kontaktdaten; Kontaktdaten folgen nach Freigabe.
-          Alle Fotos: Beispielfotos (Symbolbilder). Anlässe und Farbwelten:
+          Alle Fotos: Beispielfotos (Symbolbilder). Anlässe, Farbwelten,
+          Strauß-Konfigurator und Abo-Rhythmen:
           Beispiel-Leistungsspektrum — kein Angebot des Betriebs.
         </p>
       </div>

@@ -42,8 +42,9 @@
         <dl class="steps-strip" aria-label="Schritte">
           <div><dt>01</dt><dd>Leistung</dd></div>
           <div><dt>02</dt><dd>Friseur</dd></div>
-          <div><dt>03</dt><dd>Zeit</dd></div>
-          <div><dt>04</dt><dd>Erinnerung</dd></div>
+          <div><dt>03</dt><dd>Zeitfenster</dd></div>
+          <div><dt>04</dt><dd>Beispieltag</dd></div>
+          <div><dt>05</dt><dd>Erinnerung</dd></div>
         </dl>
       </div>
     </section>
@@ -108,24 +109,42 @@
           </fieldset>
 
           <fieldset>
-            <legend><span class="step-no">03</span> Welcher Beispieltermin?</legend>
+            <legend><span class="step-no">03</span> Welches Wunsch-Zeitfenster?</legend>
+            <p class="chip-hint" style="margin-top:0">Grobe Richtung genügt — den konkreten Platz wählst du gleich in Schritt 04.</p>
             <div class="chip-row" role="group" aria-label="Beispieltage" data-days>
               <button type="button" class="chip" aria-pressed="false" data-day="Dienstag"><small>BEISPIEL</small> Dienstag</button>
               <button type="button" class="chip" aria-pressed="false" data-day="Donnerstag"><small>BEISPIEL</small> Donnerstag</button>
               <button type="button" class="chip" aria-pressed="false" data-day="Samstag"><small>BEISPIEL</small> Samstag</button>
             </div>
-            <div class="chip-row" role="group" aria-label="Beispielzeiten" data-times style="margin-top:0.8rem">
-              <button type="button" class="chip" aria-pressed="false" data-time="09:30">09:30</button>
-              <button type="button" class="chip" aria-pressed="false" data-time="11:00">11:00</button>
-              <button type="button" class="chip" aria-pressed="false" data-time="14:15">14:15</button>
-              <button type="button" class="chip" aria-pressed="false" data-time="16:00">16:00</button>
-              <button type="button" class="chip" aria-pressed="false" data-time="17:00">17:00</button>
+            <div class="chip-row" role="group" aria-label="Wunsch-Zeitfenster" data-times style="margin-top:0.8rem">
+              <button type="button" class="chip" aria-pressed="false" data-time="09:30">ab 09:30</button>
+              <button type="button" class="chip" aria-pressed="false" data-time="11:00">ab 11:00</button>
+              <button type="button" class="chip" aria-pressed="false" data-time="14:15">ab 14:15</button>
+              <button type="button" class="chip" aria-pressed="false" data-time="16:00">ab 16:00</button>
+              <button type="button" class="chip" aria-pressed="false" data-time="17:00">ab 17:00</button>
             </div>
             <p class="chip-hint">Alle Zeiten sind illustrative Platzhalter und keine echte Verfügbarkeit.</p>
           </fieldset>
 
           <fieldset>
-            <legend><span class="step-no">04</span> Kontaktdaten für die Bestätigung</legend>
+            <legend><span class="step-no">04</span> Stylist &amp; Uhrzeit am Beispieltag</legend>
+            <div class="slotpicker" data-slotpicker>
+              <div class="slotpicker-head">
+                <p class="slotpicker-intro">Jetzt konkret: Das ist der Beispieltag <strong>Dienstag</strong> — genau die Belegung, die intern im <a href="portal.html">Team-Portal</a> steht. Platz wählen, freie Zeit antippen; belegte Zeiten sind gesperrt.</p>
+                <span class="pill-note">BEISPIELTAG · KEINE ECHTEN TERMINE</span>
+              </div>
+              <div class="chip-row" role="group" aria-label="Stylist wählen" data-stylists>
+                <button type="button" class="chip chip--stylist" aria-pressed="true" data-stylist="max"><small>Platz A</small> Max · Inhaber</button>
+                <button type="button" class="chip chip--stylist" aria-pressed="false" data-stylist="leon"><small>Platz B</small> Leon</button>
+                <button type="button" class="chip chip--stylist" aria-pressed="false" data-stylist="lena"><small>Platz C</small> Lena</button>
+              </div>
+              <div class="slot-grid" role="group" aria-label="Beispielzeiten am Beispieltag Dienstag (belegte Zeiten sind gesperrt)" data-slotgrid></div>
+              <p class="chip-hint" data-slot-hint aria-live="polite">Das Beispielraster wird direkt im Browser aufgebaut — ohne Server, ohne Speicherung.</p>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend><span class="step-no">05</span> Kontaktdaten für die Bestätigung</legend>
             <div class="field-grid">
               <div class="field">
                 <label for="vorname">Vorname *</label>
@@ -152,15 +171,16 @@
 
           <div class="planner-foot">
             <button type="submit" class="btn btn--primary" data-confirm disabled>Demo-Termin bestätigen &amp; QR anzeigen <span class="arrow">→</span></button>
-            <p class="planner-status" data-status aria-live="polite">Bitte Beispieltag, Uhrzeit und Kontaktdaten wählen — erst dann wird der Demo-Termin aktiv.</p>
+            <p class="planner-status" data-status aria-live="polite">Bitte Beispieltag, Wunschzeit und Kontaktdaten wählen — erst dann wird der Demo-Termin aktiv.</p>
           </div>
 
           <div class="planner-confirm" data-confirm-panel hidden>
             <h3>Demo-Termin bestätigt</h3>
             <dl class="confirm-summary">
               <dt>Leistung</dt><dd data-sum-leistung></dd>
-              <dt>Friseur</dt><dd data-sum-friseur></dd>
-              <dt>Beispieltermin</dt><dd data-sum-termin></dd>
+              <dt>Friseur-Wunsch</dt><dd data-sum-friseur></dd>
+              <dt>Stylist &amp; Zeit (Beispieltag)</dt><dd data-sum-stylistzeit></dd>
+              <dt>Wunsch-Zeitfenster</dt><dd data-sum-termin></dd>
               <dt>Name</dt><dd data-sum-name></dd>
             </dl>
             <div class="confirm-qr">

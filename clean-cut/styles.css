@@ -923,6 +923,145 @@ h2 em {
   clear: both;
 }
 
+/* ---------- Modul: Stylist & Uhrzeit am Beispieltag ---------- */
+
+.slotpicker {
+  clear: both;
+}
+
+.slotpicker-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.slotpicker-intro {
+  font-size: 0.78rem;
+  flex: 1 1 20rem;
+  max-width: 30rem;
+  margin: 0;
+}
+
+.slotpicker-intro strong {
+  font-weight: 500;
+  color: var(--tone-strong);
+}
+
+/* Fliesstext-Link muss ohne Farbsehen erkennbar bleiben */
+.slotpicker-intro a {
+  color: var(--gold-deep);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.slotpicker-intro a:hover {
+  color: var(--tone-strong);
+}
+
+.chip--stylist {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.1rem;
+  padding-block: 0.45rem;
+}
+
+.chip--stylist small {
+  color: var(--gold-deep);
+  text-transform: uppercase;
+}
+
+.slot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr));
+  gap: 0.5rem;
+  margin-top: 1rem;
+  clear: both;
+}
+
+.chip--slot {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.05rem;
+  width: 100%;
+  padding: 0.45rem 0.7rem;
+  text-align: left;
+  border-left: 3px solid var(--line);
+  animation: slot-einblenden 0.18s ease both;
+}
+
+.chip--slot strong {
+  font-weight: 500;
+  font-size: 0.92rem;
+  color: var(--tone-strong);
+  font-variant-numeric: tabular-nums;
+}
+
+.chip--slot small {
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+}
+
+.chip--slot:not([disabled]):not([aria-disabled='true']):hover {
+  border-left-color: var(--tone-soft);
+}
+
+.chip--slot[aria-pressed='true'] {
+  border-color: var(--tone-strong);
+  border-left-color: var(--tone-strong);
+  background: var(--sand);
+  box-shadow: inset 0 0 0 1px var(--tone-strong);
+}
+
+.chip--slot[disabled],
+.chip--slot[aria-disabled='true'] {
+  background: var(--sand-deep);
+  border-color: var(--sand-deep);
+  border-left-color: var(--gold-bright);
+  color: var(--tone);
+  cursor: not-allowed;
+}
+
+.chip--slot[disabled] strong,
+.chip--slot[disabled] small,
+.chip--slot[aria-disabled='true'] strong,
+.chip--slot[aria-disabled='true'] small {
+  color: var(--tone);
+}
+
+.chip--slot[data-art='pause'] {
+  background: var(--paper);
+  border-style: dashed;
+  border-left-color: var(--line);
+}
+
+.chip--slot[data-art='abwesend'] {
+  border-left-color: var(--tone);
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--paper),
+    var(--paper) 6px,
+    var(--sand) 6px,
+    var(--sand) 12px
+  );
+}
+
+@keyframes slot-einblenden {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .field-grid {
   display: grid;
   gap: 1rem;
@@ -2020,5 +2159,8 @@ footer.site-footer {
   .slide-dot::after,
   .faq summary::after {
     transition: none;
+  }
+  .chip--slot {
+    animation: none;
   }
 }
