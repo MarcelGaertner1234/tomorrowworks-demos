@@ -340,6 +340,142 @@ h3 { font-size: 1.15rem; letter-spacing: 0.06em; text-transform: uppercase; }
 }
 .stilwelt-card .card-cta:hover { background: var(--emerald-deep); }
 
+/* Trauring-Konfigurator */
+.ring-konfigurator {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  gap: 0;
+  background: var(--paper);
+  border: 1px solid var(--gold-line);
+}
+
+.ring-konfigurator-eingabe {
+  padding: 1.8rem 2rem;
+  color: var(--ink);
+}
+.ring-konfigurator-eingabe .eyebrow { color: var(--gold-text); }
+.ring-konfigurator-eingabe h3 {
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  color: var(--emerald);
+  margin: 0.3rem 0 1.2rem;
+}
+.ring-konfigurator-eingabe fieldset {
+  border: none;
+  padding: 0;
+  margin: 0 0 1.1rem;
+}
+.ring-konfigurator-eingabe legend {
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink-soft);
+  margin-bottom: 0.5rem;
+  padding: 0;
+}
+
+.ring-pille {
+  min-height: 44px;
+  padding: 0.5rem 1rem;
+  margin: 0 0.4rem 0.4rem 0;
+  border-radius: 999px;
+  border: 1px solid var(--gold-line);
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.ring-pille:hover { border-color: var(--emerald); color: var(--emerald); }
+.ring-pille.is-aktiv {
+  background: var(--emerald);
+  border-color: var(--emerald);
+  color: var(--band-ink);
+}
+
+.ring-konfigurator-vorschau {
+  padding: 2rem;
+  background: var(--paper);
+  border-left: 1px solid var(--gold-line);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.ring-vorschau-huelle {
+  width: 150px;
+  height: 150px;
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.ring-vorschau {
+  --ring-farbe: linear-gradient(135deg, #f6d987, #b8860b);
+  --ring-inset: 26px;
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--ring-farbe);
+  box-shadow: 0 10px 24px -12px rgba(4, 53, 46, 0.45);
+}
+.ring-vorschau::after {
+  content: "";
+  position: absolute;
+  inset: var(--ring-inset);
+  border-radius: 50%;
+  background: var(--paper);
+}
+.ring-vorschau.ist-poliert::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 210deg,
+    rgba(255, 255, 255, 0.6),
+    transparent 30%,
+    transparent 65%,
+    rgba(255, 255, 255, 0.4)
+  );
+  mix-blend-mode: soft-light;
+}
+
+.ring-vorschau-hinweis {
+  color: var(--ink-soft);
+  font-size: 0.72rem;
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.ring-konfigurator-vorschau p:not(.ring-vorschau-hinweis) {
+  color: var(--ink);
+  margin-bottom: 1.2rem;
+}
+
+.ring-konfigurator-vorschau .card-cta {
+  display: inline-block;
+  background: var(--emerald);
+  color: var(--band-ink);
+  text-decoration: none;
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 0.95rem 1.4rem;
+}
+.ring-konfigurator-vorschau .card-cta:hover { background: var(--emerald-deep); }
+
+@media (max-width: 780px) {
+  .ring-konfigurator {
+    grid-template-columns: 1fr;
+  }
+  .ring-konfigurator-vorschau {
+    border-left: none;
+    border-top: 1px solid var(--gold-line);
+  }
+}
+
 /* Galerie-Band */
 .band-hinweis { color: #b6a98e; max-width: 44rem; }
 .galerie-grid {
