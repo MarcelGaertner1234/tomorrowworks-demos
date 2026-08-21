@@ -611,6 +611,130 @@ figcaption {
   }
 }
 
+/* --- Aufenthalts-Planer --- */
+
+.aufenthalts-planer {
+  margin-top: clamp(2rem, 5vw, 3.2rem);
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  gap: 0;
+  background: var(--karte);
+  border: 1px solid var(--linie);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.planer-eingabe {
+  padding: clamp(1.6rem, 3vw, 2.2rem);
+}
+
+.planer-eingabe h3 {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  color: var(--tanne);
+  margin: 0.3rem 0 1.2rem;
+}
+
+.planer-zimmer-wahl {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.3rem;
+}
+
+.planer-pille {
+  min-height: 44px;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--linie);
+  background: transparent;
+  color: var(--rinde);
+  font-family: var(--font);
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.planer-pille:hover { border-color: var(--tanne); }
+.planer-pille.is-aktiv {
+  background: var(--tanne);
+  border-color: var(--tanne);
+  color: var(--birke);
+}
+
+.planer-daten {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.planer-daten .feld { flex: 1 1 10rem; margin: 0; }
+
+.planer-vorschau {
+  padding: clamp(1.6rem, 3vw, 2.2rem);
+  background: var(--moos-hell);
+  border-left: 1px solid var(--linie);
+  display: flex;
+  flex-direction: column;
+}
+
+.planer-vorschau > p:first-child {
+  font-weight: 600;
+  color: var(--rinde);
+  margin: 0 0 1rem;
+}
+
+.planer-naechte {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.planer-tag {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--karte);
+  border: 1px solid var(--linie);
+  border-radius: 6px;
+  padding: 0.4rem 0.6rem;
+  min-width: 3.2rem;
+}
+.planer-tag-wochentag {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--holz-text);
+}
+.planer-tag-nummer {
+  font-weight: 600;
+  color: var(--rinde);
+}
+
+.planer-hinweis {
+  color: var(--holz-text);
+  font-size: 0.78rem;
+  font-style: italic;
+  margin-bottom: 1.1rem;
+}
+
+.planer-vorschau .card-cta {
+  align-self: flex-start;
+  margin-top: auto;
+}
+.planer-vorschau .card-cta[aria-disabled="true"] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 759px) {
+  .aufenthalts-planer {
+    grid-template-columns: 1fr;
+  }
+  .planer-vorschau {
+    border-left: none;
+    border-top: 1px solid var(--linie);
+  }
+}
+
 /* --- Für Aktive: asymmetrischer Split (Text links, Bild rechts breit) --- */
 .aktive-grid {
   align-items: start;

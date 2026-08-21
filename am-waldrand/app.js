@@ -13,14 +13,125 @@
     aktualisieren();
   }
 
+  // Aufenthalts-Planer (index.html): Zimmertyp + Anreise/Abreise ergeben live
+  // eine Beispiel-Ansicht der Nächte (Tages-Streifen) — bewusst OHNE
+  // Verfügbarkeitsprüfung, nur Visualisierung der gewählten Spanne.
+  const planer = document.querySelector('[data-planer]');
+  if (planer) {
+    const pillen = [...planer.querySelectorAll('[data-planer-zimmer]')];
+    const anreiseFeld = planer.querySelector('[data-planer-anreise]');
+    const abreiseFeld = planer.querySelector('[data-planer-abreise]');
+    const text = planer.querySelector('[data-planer-text]');
+    const naechteBox = planer.querySelector('[data-planer-naechte]');
+    const cta = planer.querySelector('[data-planer-cta]');
+
+    const zimmerNamenPlaner = {
+      einzelzimmer: 'Einzelzimmer',
+      doppelzimmer: 'Doppelzimmer',
+      familienzimmer: 'Familienzimmer',
+      chalet: 'Chalet',
+    };
+    const wochentage = ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'];
+
+    let zimmerAktiv = 'einzelzimmer';
+
+    const heute = new Date();
+    const heuteWert = [
+      heute.getFullYear(),
+      String(heute.getMonth() + 1).padStart(2, '0'),
+      String(heute.getDate()).padStart(2, '0'),
+    ].join('-');
+    if (anreiseFeld) anreiseFeld.min = heuteWert;
+    if (abreiseFeld) abreiseFeld.min = heuteWert;
+
+    const aktualisieren = () => {
+      const anreiseWert = anreiseFeld?.value;
+      const abreiseWert = abreiseFeld?.value;
+
+      if (!anreiseWert || !abreiseWert || abreiseWert <= anreiseWert) {
+        if (text) {
+          text.textContent = 'Wähle Anreise und Abreise, um deinen Aufenthalt zu sehen.';
+        }
+        if (naechteBox) {
+          naechteBox.hidden = true;
+          naechteBox.innerHTML = '';
+        }
+        if (cta) cta.setAttribute('aria-disabled', 'true');
+        return;
+      }
+
+      const anreiseDatum = new Date(`${anreiseWert}T00:00:00`);
+      const abreiseDatum = new Date(`${abreiseWert}T00:00:00`);
+      const naechteAnzahl = Math.round((abreiseDatum - anreiseDatum) / (24 * 60 * 60 * 1000));
+
+      if (text) {
+        text.textContent =
+          `${naechteAnzahl} ${naechteAnzahl === 1 ? 'Nacht' : 'Nächte'} im ${zimmerNamenPlaner[zimmerAktiv]}.`;
+      }
+
+      if (naechteBox) {
+        naechteBox.innerHTML = '';
+        for (let i = 0; i < naechteAnzahl; i += 1) {
+          const tag = new Date(anreiseDatum);
+          tag.setDate(tag.getDate() + i);
+          const karte = document.createElement('span');
+          karte.className = 'planer-tag';
+          karte.innerHTML =
+            `<span class="planer-tag-wochentag">${wochentage[tag.getDay()]}</span>` +
+            `<span class="planer-tag-nummer">${tag.getDate()}.${tag.getMonth() + 1}.</span>`;
+          naechteBox.appendChild(karte);
+        }
+        naechteBox.hidden = false;
+      }
+
+      if (cta) {
+        cta.removeAttribute('aria-disabled');
+        cta.setAttribute(
+          'href',
+          `anfrage.html?zimmer=${zimmerAktiv}&anreise=${anreiseWert}&abreise=${abreiseWert}`,
+        );
+      }
+    };
+
+    pillen.forEach((pille) => {
+      pille.addEventListener('click', () => {
+        pillen.forEach((p) => p.classList.remove('is-aktiv'));
+        pille.classList.add('is-aktiv');
+        zimmerAktiv = pille.dataset.planerZimmer;
+        aktualisieren();
+      });
+    });
+    anreiseFeld?.addEventListener('change', aktualisieren);
+    abreiseFeld?.addEventListener('change', aktualisieren);
+
+    if (cta) {
+      cta.addEventListener('click', (ereignis) => {
+        if (cta.getAttribute('aria-disabled') === 'true') ereignis.preventDefault();
+      });
+    }
+  }
+
   const form = document.querySelector('#anfrage-form');
   if (!form) return;
 
   // Zimmertyp aus ?zimmer= vorauswählen (Links der Zimmer-Karten).
-  const zimmer = new URLSearchParams(window.location.search).get('zimmer');
+  const parameter = new URLSearchParams(window.location.search);
+  const zimmer = parameter.get('zimmer');
   if (zimmer) {
     const radio = form.querySelector(`input[name="zimmer"][value="${CSS.escape(zimmer)}"]`);
     if (radio) radio.checked = true;
+  }
+
+  // Anreise/Abreise aus ?anreise=/?abreise= vorausfüllen (Link aus dem Aufenthalts-Planer).
+  const anreiseParam = parameter.get('anreise');
+  const abreiseParam = parameter.get('abreise');
+  if (anreiseParam) {
+    const anreiseFeld = form.querySelector('#anreise');
+    if (anreiseFeld) anreiseFeld.value = anreiseParam;
+  }
+  if (abreiseParam) {
+    const abreiseFeld = form.querySelector('#abreise');
+    if (abreiseFeld) abreiseFeld.value = abreiseParam;
   }
 
   const fehler = form.querySelector('[data-fehler]');

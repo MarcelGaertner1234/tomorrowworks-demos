@@ -180,6 +180,35 @@
             </div>
           </article>
         </div>
+
+        <div class="aufenthalts-planer" data-planer>
+          <div class="planer-eingabe">
+            <p class="eyebrow">Zum Ausprobieren</p>
+            <h3>Sieh dir deinen Aufenthalt an</h3>
+            <div class="planer-zimmer-wahl" role="group" aria-label="Zimmertyp wählen">
+              <button type="button" class="planer-pille is-aktiv" data-planer-zimmer="einzelzimmer">Einzelzimmer</button>
+              <button type="button" class="planer-pille" data-planer-zimmer="doppelzimmer">Doppelzimmer</button>
+              <button type="button" class="planer-pille" data-planer-zimmer="familienzimmer">Familienzimmer</button>
+              <button type="button" class="planer-pille" data-planer-zimmer="chalet">Chalet</button>
+            </div>
+            <div class="planer-daten">
+              <div class="feld">
+                <label for="planer-anreise">Anreise</label>
+                <input id="planer-anreise" type="date" data-planer-anreise>
+              </div>
+              <div class="feld">
+                <label for="planer-abreise">Abreise</label>
+                <input id="planer-abreise" type="date" data-planer-abreise>
+              </div>
+            </div>
+          </div>
+          <div class="planer-vorschau">
+            <p data-planer-text>Wähle Anreise und Abreise, um deinen Aufenthalt zu sehen.</p>
+            <div class="planer-naechte" data-planer-naechte hidden></div>
+            <p class="planer-hinweis">Beispiel-Ansicht deines Aufenthalts — keine Verfügbarkeitsprüfung. Wir bestätigen deine Wunschtermine im Anschluss persönlich.</p>
+            <a class="card-cta" data-planer-cta href="anfrage.html?zimmer=einzelzimmer" aria-disabled="true">Diesen Aufenthalt anfragen</a>
+          </div>
+        </div>
       </div>
     </section>
 
