@@ -3,6 +3,51 @@
 (() => {
   'use strict';
 
+  // Anliegen-Finder (index.html): ein Klick auf das eigene Anliegen zeigt live
+  // die passende Behandlung mit Original-Beschreibung + CTA zum Terminwunsch.
+  const finder = document.querySelector('[data-anliegen-finder]');
+  if (finder) {
+    const pillen = [...finder.querySelectorAll('[data-anliegen]')];
+    const titelFeld = finder.querySelector('[data-anliegen-titel]');
+    const textFeld = finder.querySelector('[data-anliegen-text]');
+    const cta = finder.querySelector('[data-anliegen-cta]');
+
+    const behandlungen = {
+      sensibelchen: {
+        titel: 'Sensibelchen',
+        text: '„Die Kraft des Meeres" — die Gesichtsbehandlung für empfindliche Haut, die vor allem eines braucht: Ruhe und eine sanfte Hand.',
+      },
+      klassik: {
+        titel: 'Klassik',
+        text: 'Der Einstieg in die regelmäßige Pflege — die klassische Gesichtsbehandlung für ein straffes, feines Hautbild.',
+      },
+      'klassik-plus': {
+        titel: 'Klassik-Plus',
+        text: 'Die erweiterte Klassik-Behandlung — mehr Vitalität für Ihre Haut und ein strahlendes Hauterlebnis.',
+      },
+      komfort: {
+        titel: 'Komfort',
+        text: 'Gesichtsbehandlung und Handpflege in einem Termin — eine Auszeit für Gesicht und Hände.',
+      },
+      'anti-aging': {
+        titel: 'Anti-Aging',
+        text: 'Zwei Anti-Aging-Behandlungen für anspruchsvolle Haut — welche zu Ihnen passt, klärt das Beratungsgespräch.',
+      },
+    };
+
+    pillen.forEach((pille) => {
+      pille.addEventListener('click', () => {
+        pillen.forEach((p) => p.classList.remove('is-aktiv'));
+        pille.classList.add('is-aktiv');
+        const wert = pille.dataset.anliegen;
+        const eintrag = behandlungen[wert];
+        if (titelFeld) titelFeld.textContent = eintrag.titel;
+        if (textFeld) textFeld.textContent = eintrag.text;
+        if (cta) cta.setAttribute('href', `termin.html?behandlung=${wert}`);
+      });
+    });
+  }
+
   const form = document.querySelector('#termin-form');
   if (!form) return;
 

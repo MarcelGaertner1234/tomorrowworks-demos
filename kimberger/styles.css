@@ -368,6 +368,74 @@ address {
   letter-spacing: 0.12em;
 }
 
+/* Anliegen-Finder */
+.anliegen-finder {
+  background: var(--weiss);
+  border: 1px solid var(--linie);
+  border-radius: 8px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.anliegen-frage {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  color: var(--ton-tief);
+  margin-bottom: 1.1rem;
+}
+
+.anliegen-pillen {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 1.6rem;
+}
+
+.anliegen-pille {
+  min-height: 44px;
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid var(--linie);
+  background: var(--papier);
+  color: var(--ton-tief);
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.anliegen-pille:hover { border-color: var(--ton); }
+.anliegen-pille.is-aktiv {
+  background: var(--ton);
+  border-color: var(--ton);
+  color: var(--weiss);
+}
+
+.anliegen-ergebnis {
+  max-width: 34rem;
+  margin: 0 auto;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--linie);
+}
+
+.anliegen-label {
+  display: block;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--ton-tief);
+  margin-bottom: 0.4rem;
+}
+
+.anliegen-ergebnis h3 {
+  margin-bottom: 0.5rem;
+}
+
+.anliegen-ergebnis p {
+  color: var(--ton);
+  margin-bottom: 1.1rem;
+}
+
 /* Behandlungs-Karten */
 .behandlung-grid {
   display: grid;
