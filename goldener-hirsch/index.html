@@ -430,6 +430,123 @@
         font-size: 0.85rem !important;
         margin-top: 0.35rem !important;
       }
+      .aufenthalts-planer {
+        margin-top: 3rem;
+        display: grid;
+        gap: 0;
+        background: var(--papier-hell);
+        border: 1px solid var(--linie-zart);
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 24px 48px -36px rgba(33, 29, 23, 0.4);
+      }
+      @media (min-width: 760px) {
+        .aufenthalts-planer {
+          grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+        }
+      }
+      .planer-eingabe {
+        padding: 2rem;
+      }
+      .planer-eingabe h3 {
+        font-family: var(--serif);
+        font-size: 1.3rem;
+        color: var(--tanne);
+        margin: 0.3rem 0 1.2rem;
+      }
+      .planer-zimmer-wahl {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1.3rem;
+      }
+      .planer-pille {
+        min-height: 44px;
+        padding: 0.5rem 1rem;
+        border-radius: 999px;
+        border: 1px solid var(--linie);
+        background: transparent;
+        color: var(--tinte);
+        font: inherit;
+        font-size: 0.85rem;
+        cursor: pointer;
+      }
+      .planer-pille:hover {
+        border-color: var(--tanne);
+      }
+      .planer-pille.is-aktiv {
+        background: var(--tanne);
+        border-color: var(--tanne);
+        color: #fff;
+      }
+      .planer-daten {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+      .planer-daten .feld {
+        flex: 1 1 10rem;
+      }
+      .planer-vorschau {
+        padding: 2rem;
+        background: var(--band);
+        border-top: 1px solid var(--linie-zart);
+      }
+      @media (min-width: 760px) {
+        .planer-vorschau {
+          border-top: none;
+          border-left: 1px solid var(--linie-zart);
+        }
+      }
+      .planer-vorschau > p:first-child {
+        font-weight: 600;
+        color: var(--tinte);
+        margin: 0 0 1rem;
+      }
+      .planer-naechte {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+      }
+      .planer-naechte[hidden] {
+        display: none;
+      }
+      .planer-tag {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: var(--papier-hell);
+        border: 1px solid var(--linie-zart);
+        border-radius: 6px;
+        padding: 0.4rem 0.6rem;
+        min-width: 3.2rem;
+      }
+      .planer-tag-wochentag {
+        font-size: 0.68rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--tinte-weich);
+      }
+      .planer-tag-nummer {
+        font-weight: 600;
+        color: var(--tinte);
+      }
+      .planer-rechnung {
+        font-weight: 600;
+        color: var(--tanne);
+        margin-bottom: 0.6rem;
+      }
+      .planer-hinweis {
+        color: var(--tinte-weich);
+        font-size: 0.78rem;
+        font-style: italic;
+        margin-bottom: 1.2rem;
+      }
+      .planer-vorschau .btn[aria-disabled="true"] {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
       .ausstattung {
         margin-top: 3rem;
         text-align: center;
@@ -944,6 +1061,35 @@
           <p class="karten-hinweis reveal">
             Beispielpreise — werden gemeinsam mit Ihnen festgelegt. Fotos: beispielhafte Bildwelt.
           </p>
+
+          <div class="aufenthalts-planer reveal" data-planer>
+            <div class="planer-eingabe">
+              <p class="vorzeile">Zum Ausprobieren</p>
+              <h3>Sehen Sie sich Ihren Aufenthalt an</h3>
+              <div class="planer-zimmer-wahl" role="group" aria-label="Zimmerkategorie wählen">
+                <button type="button" class="planer-pille is-aktiv" data-planer-zimmer="renoviert">Renoviert 2020</button>
+                <button type="button" class="planer-pille" data-planer-zimmer="landhaus">Landhausstil</button>
+                <button type="button" class="planer-pille" data-planer-zimmer="klimatisiert">Klimatisiert</button>
+              </div>
+              <div class="planer-daten">
+                <div class="feld">
+                  <label for="planer-anreise">Anreise</label>
+                  <input id="planer-anreise" type="date" data-planer-anreise>
+                </div>
+                <div class="feld">
+                  <label for="planer-abreise">Abreise</label>
+                  <input id="planer-abreise" type="date" data-planer-abreise>
+                </div>
+              </div>
+            </div>
+            <div class="planer-vorschau">
+              <p data-planer-text>Wählen Sie Anreise und Abreise, um Ihren Aufenthalt zu sehen.</p>
+              <div class="planer-naechte" data-planer-naechte hidden></div>
+              <p class="planer-rechnung" data-planer-rechnung hidden></p>
+              <p class="planer-hinweis muted">Beispiel-Ansicht — keine Verfügbarkeitsprüfung. Beispielpreise, werden gemeinsam mit Ihnen festgelegt.</p>
+              <button type="button" class="btn btn-voll" data-planer-cta aria-disabled="true">Diesen Zeitraum anfragen</button>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -1209,6 +1355,121 @@
         { threshold: 0.1 },
       );
       document.querySelectorAll('.reveal').forEach((el) => beobachter.observe(el));
+
+      // Aufenthalts-Planer: Zimmerkategorie + Anreise/Abreise -> live Tages-Streifen
+      // + Beispielrechnung (Nächte × Beispielpreis). Bewusst OHNE Verfügbarkeitsprüfung.
+      const planer = document.querySelector('[data-planer]');
+      if (planer) {
+        const pillen = [...planer.querySelectorAll('[data-planer-zimmer]')];
+        const anreiseFeld = planer.querySelector('[data-planer-anreise]');
+        const abreiseFeld = planer.querySelector('[data-planer-abreise]');
+        const text = planer.querySelector('[data-planer-text]');
+        const naechteBox = planer.querySelector('[data-planer-naechte]');
+        const rechnungFeld = planer.querySelector('[data-planer-rechnung]');
+        const cta = planer.querySelector('[data-planer-cta]');
+        const zeitraumFeld = document.querySelector('#anfrage-zeitraum');
+        const nachrichtFeld = document.querySelector('#anfrage-nachricht');
+
+        const zimmerDaten = {
+          renoviert: { name: 'Renoviert 2020', preis: 79 },
+          landhaus: { name: 'Landhausstil', preis: 72 },
+          klimatisiert: { name: 'Klimatisiert — 3. Stock', preis: 85 },
+        };
+        const wochentage = ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'];
+
+        let zimmerAktiv = 'renoviert';
+        let letzteRechnung = null;
+
+        const heute = new Date();
+        const heuteWert = [
+          heute.getFullYear(),
+          String(heute.getMonth() + 1).padStart(2, '0'),
+          String(heute.getDate()).padStart(2, '0'),
+        ].join('-');
+        if (anreiseFeld) anreiseFeld.min = heuteWert;
+        if (abreiseFeld) abreiseFeld.min = heuteWert;
+
+        const formatKurz = (datum) => `${datum.getDate()}.${datum.getMonth() + 1}.`;
+
+        const aktualisieren = () => {
+          const anreiseWert = anreiseFeld?.value;
+          const abreiseWert = abreiseFeld?.value;
+
+          if (!anreiseWert || !abreiseWert || abreiseWert <= anreiseWert) {
+            if (text) text.textContent = 'Wählen Sie Anreise und Abreise, um Ihren Aufenthalt zu sehen.';
+            if (naechteBox) {
+              naechteBox.hidden = true;
+              naechteBox.innerHTML = '';
+            }
+            if (rechnungFeld) rechnungFeld.hidden = true;
+            if (cta) cta.setAttribute('aria-disabled', 'true');
+            letzteRechnung = null;
+            return;
+          }
+
+          const zimmer = zimmerDaten[zimmerAktiv];
+          const anreiseDatum = new Date(`${anreiseWert}T00:00:00`);
+          const abreiseDatum = new Date(`${abreiseWert}T00:00:00`);
+          const naechteAnzahl = Math.round((abreiseDatum - anreiseDatum) / (24 * 60 * 60 * 1000));
+          const gesamt = naechteAnzahl * zimmer.preis;
+
+          if (text) {
+            text.textContent = `${naechteAnzahl} ${naechteAnzahl === 1 ? 'Nacht' : 'Nächte'} im Zimmer „${zimmer.name}".`;
+          }
+
+          if (naechteBox) {
+            naechteBox.innerHTML = '';
+            for (let i = 0; i < naechteAnzahl; i += 1) {
+              const tag = new Date(anreiseDatum);
+              tag.setDate(tag.getDate() + i);
+              const karte = document.createElement('span');
+              karte.className = 'planer-tag';
+              karte.innerHTML =
+                `<span class="planer-tag-wochentag">${wochentage[tag.getDay()]}</span>` +
+                `<span class="planer-tag-nummer">${formatKurz(tag)}</span>`;
+              naechteBox.appendChild(karte);
+            }
+            naechteBox.hidden = false;
+          }
+
+          if (rechnungFeld) {
+            rechnungFeld.textContent =
+              `${naechteAnzahl} × ${zimmer.preis} € / Nacht = ${gesamt} € (Beispielpreis)`;
+            rechnungFeld.hidden = false;
+          }
+
+          if (cta) cta.removeAttribute('aria-disabled');
+
+          letzteRechnung = {
+            zimmerName: zimmer.name,
+            naechteAnzahl,
+            gesamt,
+            zeitraumText: `${formatKurz(anreiseDatum)}–${formatKurz(abreiseDatum)}`,
+          };
+        };
+
+        pillen.forEach((pille) => {
+          pille.addEventListener('click', () => {
+            pillen.forEach((p) => p.classList.remove('is-aktiv'));
+            pille.classList.add('is-aktiv');
+            zimmerAktiv = pille.dataset.planerZimmer;
+            aktualisieren();
+          });
+        });
+        anreiseFeld?.addEventListener('change', aktualisieren);
+        abreiseFeld?.addEventListener('change', aktualisieren);
+
+        cta?.addEventListener('click', () => {
+          if (cta.getAttribute('aria-disabled') === 'true' || !letzteRechnung) return;
+          if (zeitraumFeld) zeitraumFeld.value = letzteRechnung.zeitraumText;
+          if (nachrichtFeld) {
+            nachrichtFeld.value =
+              `Wunsch: ${letzteRechnung.zimmerName}, ${letzteRechnung.naechteAnzahl} Nächte ` +
+              `(${letzteRechnung.zeitraumText}), Beispielpreis ${letzteRechnung.gesamt} €.`;
+          }
+          document.querySelector('#anfrage')?.scrollIntoView({ block: 'start' });
+        });
+      }
     </script>
   </body>
 </html>
