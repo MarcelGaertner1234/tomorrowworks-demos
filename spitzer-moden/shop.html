@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Shop (Beispiel) — Spitzer Moden, Mosbach (Design-Entwurf)</title>
+    <meta
+      name="description"
+      content="Design-Entwurf von TOMORROWWORKS — Persönliche Konzeptvorschau, nicht die offizielle Website des Betriebs."
+    >
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+
+    <header>
+      <div class="banner">
+        <strong>Design-Entwurf von TOMORROWWORKS</strong> —
+        nicht die offizielle Website von Spitzer Moden ·
+        Persönliche Konzeptvorschau
+      </div>
+      <div class="site-header">
+        <div class="site-header-inhalt">
+          <nav class="site-nav" aria-label="Hauptnavigation">
+            <a href="index.html">← Zur Homepage</a>
+            <a href="shop.html" aria-current="page">Shop</a>
+          </nav>
+          <a class="wortmarke" href="index.html" aria-label="Spitzer Moden — zur Startseite">
+            <svg class="ornament" viewBox="0 0 28 22" aria-hidden="true" focusable="false">
+              <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10 2c-1.7 0-3 1.1-3 2.5"/>
+                <path d="M10 4.5v2"/>
+                <path d="M2 15 10 6.5 18 15"/>
+                <path d="M2 15h16"/>
+                <g opacity=".55">
+                  <path d="M20 4c-1.4 0-2.5 1-2.5 2.1"/>
+                  <path d="M20 6.1v1.6"/>
+                  <path d="M14 15 20 8.5 26 15"/>
+                  <path d="M14 15h12"/>
+                </g>
+              </g>
+            </svg>
+            <span class="wortmarke-text">SPITZER<span class="wm-moden">MODEN</span></span>
+          </a>
+          <a class="warenkorb-link site-header-warenkorb" href="warenkorb.html" aria-label="Warenkorb ansehen">
+            <svg class="warenkorb-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M6 8h12l-1 12H7L6 8Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M9 8V6a3 3 0 0 1 6 0v2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="warenkorb-zaehler" id="warenkorb-zaehler">0</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main id="inhalt">
+      <section class="section" aria-label="Shop-Einstieg">
+        <div class="section-inhalt">
+          <div class="section-kopf">
+            <span class="demo-chip">DEMO · BEISPIEL-SORTIMENT</span>
+            <h1>Shop (Beispiel)</h1>
+            <p>
+              So könnte ein Online-Shop für Spitzer Moden aussehen — vom Blusenmodell bis zum
+              Anzug, mit Größenwahl und Warenkorb. Wählen Sie Ihren Bereich und Ihre Größe — der
+              Warenkorb zeigt Ihnen sofort die Beispiel-Zwischensumme.
+            </p>
+            <span class="symbolbild-hinweis">
+              Beispiel-Sortiment mit Beispielpreisen — zeigt, wie ein Online-Shop für Spitzer
+              Moden aussehen könnte. Keine echten Artikel, keine echte Bestellung.
+            </span>
+          </div>
+
+          <!-- Damen/Herren-Umschalter, analog Hero-Toggle auf index.html; shop.js liest
+               ?bereich= aus der URL und filtert #produkt-raster clientseitig ohne Neuladen. -->
+          <div class="bereich-toggle" id="bereich-toggle" role="tablist" aria-label="Bereich wählen">
+            <button type="button" class="bereich-toggle-btn is-aktiv" data-bereich="damen" role="tab" aria-selected="true">Damen</button>
+            <button type="button" class="bereich-toggle-btn" data-bereich="herren" role="tab" aria-selected="false">Herren</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 10 Produktkarten (.produkt-kachel), von shop.js gefiltert nach Bereich gerendert;
+           Klick öffnet #produkt-detail. Visually-hidden h2 verhindert einen h1→h3-Sprung
+           (die Produktkarten-Titel sind h3, analog .bereich-kachel/.look-kachel auf
+           index.html — dort steht jeweils ein sichtbares h2 davor, hier ist die Sektion
+           layoutbedingt ohne sichtbare Überschrift, siehe axe heading-order). shop.js
+           räumt beim Neu-Rendern nur die .produkt-kachel-Elemente weg, nicht dieses h2. -->
+      <section class="section produkt-raster" id="produkt-raster" aria-label="Produktraster">
+        <h2 class="visually-hidden">Sortiment</h2>
+      </section>
+
+      <!-- Detailansicht (Foto, Name, Beispielpreis, Größenwahl über .groessen-chip,
+           Mengen-Select, „In den Warenkorb", „← Zurück zum Sortiment"). Grundzustand hidden,
+           analog [data-bestaetigung] aus anfrage.html; shop.js befüllt die Felder pro Klick. -->
+      <section class="section" id="produkt-detail" aria-label="Produktdetail" hidden>
+        <div class="section-inhalt produkt-detail-inhalt">
+          <button type="button" class="bereich-cta produkt-detail-zurueck" data-zurueck>← Zurück zum Sortiment</button>
+          <div class="produkt-detail-layout">
+            <div class="produkt-detail-bild">
+              <img id="produkt-detail-bild" src="" alt="" width="1000" height="1250">
+            </div>
+            <div class="produkt-detail-info">
+              <span class="demo-chip">DEMO · BEISPIEL-ARTIKEL</span>
+              <h2 id="produkt-detail-name"></h2>
+              <span class="produkt-preis" id="produkt-detail-preis"></span>
+
+              <fieldset class="produkt-detail-groessen">
+                <legend>Größe</legend>
+                <div class="groessen-chips" id="produkt-detail-groessen-liste"></div>
+              </fieldset>
+
+              <div class="feld produkt-detail-menge">
+                <label for="produkt-detail-menge-select">Menge</label>
+                <select id="produkt-detail-menge-select">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+              </div>
+
+              <button type="button" class="btn btn--voll produkt-detail-hinzufuegen" id="produkt-detail-hinzufuegen">In den Warenkorb</button>
+              <p class="produkt-detail-hinweis" id="produkt-detail-hinweis" role="status" aria-live="polite" hidden></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Mini-Warenkorb-Leiste — Artikelzahl + Beispiel-Zwischensumme, von shop.js befüllt. -->
+      <div class="warenkorb-leiste" id="warenkorb-leiste" aria-label="Warenkorb-Übersicht">
+        <span class="warenkorb-zwischensumme" id="warenkorb-zwischensumme"></span>
+        <a class="btn btn--kontur" href="warenkorb.html">Zur Kasse</a>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer-inhalt">
+        <div class="footer-spalten">
+          <a class="wortmarke" href="index.html" aria-label="Spitzer Moden — zur Startseite">
+            <svg class="ornament" viewBox="0 0 28 22" aria-hidden="true" focusable="false">
+              <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10 2c-1.7 0-3 1.1-3 2.5"/>
+                <path d="M10 4.5v2"/>
+                <path d="M2 15 10 6.5 18 15"/>
+                <path d="M2 15h16"/>
+                <g opacity=".55">
+                  <path d="M20 4c-1.4 0-2.5 1-2.5 2.1"/>
+                  <path d="M20 6.1v1.6"/>
+                  <path d="M14 15 20 8.5 26 15"/>
+                  <path d="M14 15h12"/>
+                </g>
+              </g>
+            </svg>
+            <span class="wortmarke-text">SPITZER<span class="wm-moden">MODEN</span></span>
+          </a>
+          <nav aria-label="Fußnavigation">
+            <a href="index.html">Zur Homepage</a>
+            <a href="shop.html">Shop</a>
+          </nav>
+        </div>
+        <p class="footer-klein">
+          <strong>Design-Entwurf von TOMORROWWORKS</strong> —
+          nicht die offizielle Website von Spitzer Moden.
+          Persönliche Konzeptvorschau ohne echte Kontaktdaten; Kontaktdaten folgen nach Freigabe.
+        </p>
+      </div>
+    </footer>
+
+    <script src="shop.js"></script>
+  </body>
+</html>

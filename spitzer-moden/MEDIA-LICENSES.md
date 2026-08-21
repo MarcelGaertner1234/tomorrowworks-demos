@@ -20,4 +20,25 @@ der Demo: „Beispielfoto (Symbolbild)".
 | haus.jpg | Boutique-Interieur | photo-1769107805465-bfd41863f1a0 | Caroline Badran (@___atmos) |
 | beratung.jpg | Anprobe-/Beratungsszene | photo-1753162659146-c2997eb8bc45 | Vitaly Gariev (@silverkblack) |
 
+## Shop-Produktbilder (Nachtrag 21.08.2026)
+
+Gleiche [Unsplash-Lizenz](https://unsplash.com/license), gleicher Marken-Minenfeld-Filter.
+Auswahl durch Marcel per Bild-Kontaktbogen (Task 4, Kontaktbogen mit Voll-Auflösungs-Prüfung
+statt nur Thumbnails — Konsequenz aus einem früheren Demo-Fund mit lesbarem Fremdlogo). Abruf:
+21.08.2026 über `images.unsplash.com` (kein Unsplash+/Getty), alle 10 Empfehlungen übernommen.
+Format: 1000×1250px (4:5), `w=1000&h=1250&fit=crop&q=80&fm=jpg`.
+
+| Datei | Motiv | Unsplash-Foto | Fotograf:in |
+| --- | --- | --- | --- |
+| produkt-bluse-zeitlos.jpg | Bluse „Zeitlos", Detail Ärmel/Manschette | photo-1718278868740-9351177c5768 | sombre (@light_some_candles) |
+| produkt-kleid-abendlicht.jpg | Kleid „Abendlicht", schlichtes schwarzes Kleid | photo-1780765467127-5073b05d28c1 | Margo Evardson |
+| produkt-blazer-business-d.jpg | Blazer „Business" Damen, editorial | photo-1720345174544-65637a5307bf | armin soleymani |
+| produkt-rock-eleganz.jpg | Rock „Eleganz", plissierter Rock, Studio-Porträt | photo-1638109109718-911684af06c6 | Patrik Velich (@patrikvelich) |
+| produkt-hose-basic-d.jpg | Hose „Basic" Damen, weiter Schnitt | photo-1580651214613-f4692d6d138f | Vladimir Fedotov |
+| produkt-hemd-klassik.jpg | Hemd „Klassik" Herren, Porträt | photo-1638290047807-4c9d389b9aa6 | Sardar Faizan |
+| produkt-sakko-business-h.jpg | Sakko „Business" Herren, editorial | photo-1767175620484-1ed37931a0d1 | Christoph Aigner |
+| produkt-anzug-komplett.jpg | Anzug „Komplett" (Sakko + Hose) Herren | photo-1777969381875-6332d207cc68 | Kaixa Pham |
+| produkt-hose-chino.jpg | Hose „Chino" Herren, casual | photo-1781145822880-ab30339ac274 | Alexander Mass |
+| produkt-pullover-casual.jpg | Pullover „Casual" Herren, Strickkragen | photo-1506794778202-cad84cf45f1d | Albert Dera |
+
 favicon.svg: Eigenanfertigung TOMORROWWORKS (keine Fremdlizenz).
