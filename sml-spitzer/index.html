@@ -183,6 +183,49 @@
             </div>
           </div>
 
+          <div class="volumenrechner" data-volumenrechner>
+            <div class="volumenrechner-eingabe">
+              <span class="eyebrow">Vorab-Einschätzung</span>
+              <h3>Wie groß wird Ihr Umzug?</h3>
+              <p class="volumenrechner-hinweis">
+                Richtwert für die erste Einschätzung — das genaue Volumen ermitteln wir
+                bei der Besichtigung.
+              </p>
+              <div class="groesse-pillen" role="group" aria-label="Wohnungsgröße wählen">
+                <button type="button" class="groesse-pille is-aktiv" data-groesse="1-zimmer">1-Zimmer</button>
+                <button type="button" class="groesse-pille" data-groesse="2-zimmer">2-Zimmer</button>
+                <button type="button" class="groesse-pille" data-groesse="3-zimmer">3-Zimmer</button>
+                <button type="button" class="groesse-pille" data-groesse="4-plus">4+ Zimmer</button>
+              </div>
+              <label class="keller-checkbox">
+                <input type="checkbox" data-rechner-keller>
+                Keller oder Dachboden wird mit umgezogen
+              </label>
+            </div>
+            <div class="volumenrechner-ergebnis">
+              <dl class="volumenrechner-werte">
+                <div>
+                  <dt>Geschätztes Volumen</dt>
+                  <dd data-rechner-volumen>10–15 m³</dd>
+                </div>
+                <div>
+                  <dt>Empfohlenes Team</dt>
+                  <dd data-rechner-team>2 Personen</dd>
+                </div>
+                <div>
+                  <dt>Passendes Fahrzeug</dt>
+                  <dd data-rechner-fahrzeug>3,5-Tonner</dd>
+                </div>
+              </dl>
+              <p class="volumenrechner-tipp" data-rechner-tipp>
+                Bei dieser Größe fragen Kund:innen oft zusätzlich den Ein-/Auspackservice an.
+              </p>
+              <a class="btn btn--kontur" data-rechner-cta href="anfrage.html?umzugsart=privatumzug&amp;groesse=1-zimmer">
+                Umzug in dieser Größe anfragen
+              </a>
+            </div>
+          </div>
+
           <div class="zusatzleistungen">
             <div class="zusatzleistungen-bild">
               <img

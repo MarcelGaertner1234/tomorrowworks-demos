@@ -648,6 +648,115 @@ a.leistungs-kachel:hover {
   background: var(--rot);
 }
 
+/* --- Umzugsvolumen-Rechner --- */
+
+.volumenrechner {
+  margin-top: 56px;
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: 0;
+  background: var(--weiss);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-l);
+  box-shadow: var(--schatten);
+  overflow: hidden;
+}
+
+.volumenrechner-eingabe {
+  padding: 32px;
+}
+
+.volumenrechner-hinweis {
+  color: var(--stahl-text);
+  font-size: 14px;
+  margin: 8px 0 20px;
+}
+
+.groesse-pillen {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.groesse-pille {
+  min-height: 44px;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  border: 1.5px solid var(--hairline);
+  background: var(--weiss);
+  color: var(--anthrazit);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.groesse-pille:hover { border-color: var(--rot); }
+.groesse-pille.is-aktiv {
+  background: var(--rot);
+  border-color: var(--rot);
+  color: var(--weiss);
+}
+
+.keller-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 14px;
+  color: var(--tinte);
+  cursor: pointer;
+}
+.keller-checkbox input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--rot);
+}
+
+.volumenrechner-ergebnis {
+  padding: 32px;
+  background: var(--flaeche);
+  border-left: 1px solid var(--hairline);
+  display: flex;
+  flex-direction: column;
+}
+
+.volumenrechner-werte {
+  display: grid;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+.volumenrechner-werte dt {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--stahl-text);
+  margin-bottom: 2px;
+}
+.volumenrechner-werte dd {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--anthrazit);
+}
+
+.volumenrechner-tipp {
+  color: var(--stahl-text);
+  font-size: 14px;
+  flex: 1;
+  margin-bottom: 18px;
+}
+
+.volumenrechner-ergebnis .btn { align-self: flex-start; }
+
+@media (max-width: 780px) {
+  .volumenrechner {
+    grid-template-columns: 1fr;
+  }
+  .volumenrechner-ergebnis {
+    border-left: none;
+    border-top: 1px solid var(--hairline);
+  }
+}
+
 /* --- Unternehmen --- */
 .section--unternehmen {
   background: var(--anthrazit);

@@ -3,6 +3,73 @@
 (() => {
   'use strict';
 
+  // Umzugsvolumen-Rechner (index.html): Größe + Keller/Dachboden -> Richtwert
+  // Volumen/Team/Fahrzeug. Bewusst OHNE Euro-Betrag (verify.mjs verbietet
+  // erfundene Preise) — nur m³/Personen/Fahrzeugklasse, klar als Richtwert markiert.
+  const rechner = document.querySelector('[data-volumenrechner]');
+  if (rechner) {
+    const pillen = [...rechner.querySelectorAll('[data-groesse]')];
+    const kellerBox = rechner.querySelector('[data-rechner-keller]');
+    const volumenFeld = rechner.querySelector('[data-rechner-volumen]');
+    const teamFeld = rechner.querySelector('[data-rechner-team]');
+    const fahrzeugFeld = rechner.querySelector('[data-rechner-fahrzeug]');
+    const tippFeld = rechner.querySelector('[data-rechner-tipp]');
+    const cta = rechner.querySelector('[data-rechner-cta]');
+
+    const daten = {
+      '1-zimmer': {
+        volumen: [10, 15],
+        team: '2 Personen',
+        fahrzeug: '3,5-Tonner',
+        tipp: 'Bei dieser Größe fragen Kund:innen oft zusätzlich den Ein-/Auspackservice an.',
+      },
+      '2-zimmer': {
+        volumen: [15, 25],
+        team: '2–3 Personen',
+        fahrzeug: '3,5-Tonner',
+        tipp: 'Möbel-Ab-/Aufbau ist bei 2-Zimmer-Wohnungen die meistgebuchte Zusatzleistung.',
+      },
+      '3-zimmer': {
+        volumen: [25, 35],
+        team: '3 Personen',
+        fahrzeug: '7,5-Tonner',
+        tipp: 'Ab dieser Größe lohnt sich für viele die Küchendemontage als Zusatzleistung.',
+      },
+      '4-plus': {
+        volumen: [35, 50],
+        team: '3–4 Personen',
+        fahrzeug: '7,5-Tonner',
+        tipp: 'Bei größeren Umzügen organisieren wir häufig zusätzlich Halteverbotszonen.',
+      },
+    };
+
+    let groesseAktiv = '1-zimmer';
+
+    const aktualisieren = () => {
+      const eintrag = daten[groesseAktiv];
+      const kellerZuschlag = kellerBox?.checked ? 5 : 0;
+      const von = eintrag.volumen[0] + kellerZuschlag;
+      const bis = eintrag.volumen[1] + kellerZuschlag;
+
+      if (volumenFeld) volumenFeld.textContent = `${von}–${bis} m³`;
+      if (teamFeld) teamFeld.textContent = eintrag.team;
+      if (fahrzeugFeld) fahrzeugFeld.textContent = eintrag.fahrzeug;
+      if (tippFeld) tippFeld.textContent = eintrag.tipp;
+      if (cta) cta.setAttribute('href', `anfrage.html?umzugsart=privatumzug&groesse=${groesseAktiv}`);
+    };
+
+    pillen.forEach((pille) => {
+      pille.addEventListener('click', () => {
+        pillen.forEach((p) => p.classList.remove('is-aktiv'));
+        pille.classList.add('is-aktiv');
+        groesseAktiv = pille.dataset.groesse;
+        aktualisieren();
+      });
+    });
+    kellerBox?.addEventListener('change', aktualisieren);
+    aktualisieren();
+  }
+
   const form = document.querySelector('#anfrage-form');
   if (!form) return;
 
@@ -14,6 +81,15 @@
       `input[name="umzugsart"][value="${CSS.escape(umzugsartWert)}"]`,
     );
     if (radio) radio.checked = true;
+  }
+
+  // Größe aus ?groesse= vorauswählen (Link aus dem Umzugsvolumen-Rechner).
+  const groesseWert = parameter.get('groesse');
+  if (groesseWert) {
+    const auswahl = form.querySelector('#groesse');
+    if (auswahl && [...auswahl.options].some((option) => option.value === groesseWert)) {
+      auswahl.value = groesseWert;
+    }
   }
 
   // Wunschtermin: Minimum ist heute (lokales Datum, Format YYYY-MM-DD).
