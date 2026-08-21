@@ -744,6 +744,29 @@ a.leistungs-kachel:hover {
   border-color: transparent;
 }
 
+/* Die 4 Kacheln liegen im Grid so nah beieinander, dass ein reiner Scroll-
+   Unterschied kaum sichtbar ist (teils identischer scrollY-Wert, siehe Marcel-
+   Fund) — der Kompassnadel-/Nav-Klick braucht deshalb eine eigene, deutliche
+   Markierung des tatsächlichen Ziels, unabhaengig vom Scroll-Betrag. */
+.leistungs-kachel:target {
+  animation: kachel-ziel-puls 1.8s ease-out;
+}
+
+@keyframes kachel-ziel-puls {
+  0% {
+    box-shadow: var(--schatten), 0 0 0 0 rgba(181, 119, 63, 0.55);
+    border-color: var(--kupfer-dunkel);
+  }
+  70% {
+    box-shadow: var(--schatten), 0 0 0 14px rgba(181, 119, 63, 0);
+    border-color: var(--kupfer-dunkel);
+  }
+  100% {
+    box-shadow: var(--schatten);
+    border-color: var(--hairline);
+  }
+}
+
 .leistungs-kachel h3 {
   font-size: 16px;
 }
@@ -1649,5 +1672,13 @@ legend {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
+  }
+
+  /* Ohne Puls-Animation braeuchte das Sprungziel sonst eine andere, dauerhaft
+     sichtbare Markierung — sonst geht bei reduzierter Bewegung die einzige
+     Rueckmeldung verloren, WELCHE Kachel der Klick tatsaechlich ansteuerte. */
+  .leistungs-kachel:target {
+    border-color: var(--kupfer-dunkel);
+    box-shadow: var(--schatten), 0 0 0 3px rgba(181, 119, 63, 0.45);
   }
 }
