@@ -21,6 +21,10 @@
   --radius-s: 10px;
   --schatten: 0 1px 2px rgba(16, 26, 36, 0.05), 0 10px 30px -10px rgba(16, 26, 36, 0.18);
   --schatten-hover: 0 4px 10px rgba(16, 26, 36, 0.1), 0 20px 40px -14px rgba(16, 26, 36, 0.26);
+  /* Fallback bis app.js die echte, sticky Header-Hoehe misst (siehe unten) —
+     ohne das landen Anker-Sprungziele unter dem sticky Header (auf Mobil bis
+     zu 243px hoch wegen gestapelter Nav), siehe scroll-margin-top-Regel. */
+  --header-hoehe: 82px;
 }
 
 * {
@@ -364,6 +368,14 @@ h3 {
 /* --- Sektionen --- */
 .section {
   padding: 76px 20px;
+}
+
+/* Anker-Sprungziele (Nav-Links, Kompassnadel-Marken) duerfen nicht unter dem
+   sticky Header landen — scroll-margin-top gleicht dessen Hoehe aus. */
+#inhalt,
+.section,
+.leistungs-kachel {
+  scroll-margin-top: calc(var(--header-hoehe) + 48px);
 }
 
 .section-inhalt {

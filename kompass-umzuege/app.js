@@ -5,6 +5,18 @@
 
   const reduzierteBewegung = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // Echte Header-Hoehe messen (variiert stark: ~82px Desktop, bis 243px Mobil
+  // mit gestapelter Nav) — sonst landen Anker-Sprungziele unter dem sticky
+  // Header (siehe scroll-margin-top in styles.css, das --header-hoehe nutzt).
+  const header = document.querySelector('.site-header');
+  if (header) {
+    const headerHoeheMessen = () => {
+      document.documentElement.style.setProperty('--header-hoehe', `${header.offsetHeight}px`);
+    };
+    headerHoeheMessen();
+    window.addEventListener('resize', headerHoeheMessen);
+  }
+
   // Hero-Kompassnadel: pendelt im Ruhezustand automatisch, folgt aber live der
   // Maus wie eine echte Magnetnadel (sobald die Maus in den Ring eintritt) und
   // "rastet" bei Hover/Fokus auf eine Leistung exakt darauf ein.
