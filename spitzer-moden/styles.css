@@ -683,6 +683,46 @@ h3 {
   font-size: 13.5px;
 }
 
+/* --- Shop: Mini-Galerie im Produktdetail-Panel (3 Thumbnails unter dem Hauptbild) --- */
+.produkt-galerie-thumbnails {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.produkt-galerie-thumb {
+  display: block;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 6px;
+  background: var(--buehne);
+  border: 1.5px solid var(--hairline);
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.produkt-galerie-thumb:hover {
+  border-color: var(--cognac);
+}
+
+.produkt-galerie-thumb:focus-visible {
+  outline: 2px solid var(--cognac-dunkler);
+  outline-offset: 2px;
+}
+
+.produkt-galerie-thumb[aria-current="true"] {
+  border-color: var(--cognac-dunkler);
+  border-width: 2px;
+  padding: 5px;
+}
+
+.produkt-galerie-thumb img {
+  display: block;
+  width: 64px;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
 /* --- Anlass-Looks-Galerie (Herzstück) --- */
 .section--looks {
   background: var(--flaeche);
@@ -758,7 +798,7 @@ h3 {
 
 .haus-bild img,
 .beratung-bild img,
-.produkt-detail-bild img {
+.produkt-detail-bild > img {
   width: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;

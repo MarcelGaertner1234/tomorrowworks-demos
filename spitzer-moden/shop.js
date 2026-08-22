@@ -15,6 +15,11 @@ const PRODUKTE = [
     warengruppe: 'Blusen',
     groessen: ['34', '36', '38', '40', '42', '44'],
     preis: 79,
+    bilder: [
+      'assets/produkt-bluse-zeitlos-1.jpg',
+      'assets/produkt-bluse-zeitlos-2.jpg',
+      'assets/produkt-bluse-zeitlos-3.jpg',
+    ],
   },
   {
     id: 'kleid-abendlicht',
@@ -23,6 +28,11 @@ const PRODUKTE = [
     warengruppe: 'Kleider',
     groessen: ['34', '36', '38', '40', '42', '44'],
     preis: 149,
+    bilder: [
+      'assets/produkt-kleid-abendlicht-1.jpg',
+      'assets/produkt-kleid-abendlicht-2.jpg',
+      'assets/produkt-kleid-abendlicht-3.jpg',
+    ],
   },
   {
     id: 'blazer-business-d',
@@ -31,6 +41,11 @@ const PRODUKTE = [
     warengruppe: 'Blazer',
     groessen: ['34', '36', '38', '40', '42', '44'],
     preis: 129,
+    bilder: [
+      'assets/produkt-blazer-business-d-1.jpg',
+      'assets/produkt-blazer-business-d-2.jpg',
+      'assets/produkt-blazer-business-d-3.jpg',
+    ],
   },
   {
     id: 'rock-eleganz',
@@ -39,6 +54,11 @@ const PRODUKTE = [
     warengruppe: 'Röcke',
     groessen: ['34', '36', '38', '40', '42', '44'],
     preis: 69,
+    bilder: [
+      'assets/produkt-rock-eleganz-1.jpg',
+      'assets/produkt-rock-eleganz-2.jpg',
+      'assets/produkt-rock-eleganz-3.jpg',
+    ],
   },
   {
     id: 'hose-basic-d',
@@ -47,6 +67,11 @@ const PRODUKTE = [
     warengruppe: 'Hosen',
     groessen: ['34', '36', '38', '40', '42', '44'],
     preis: 89,
+    bilder: [
+      'assets/produkt-hose-basic-d-1.jpg',
+      'assets/produkt-hose-basic-d-2.jpg',
+      'assets/produkt-hose-basic-d-3.jpg',
+    ],
   },
   {
     id: 'hemd-klassik',
@@ -55,6 +80,11 @@ const PRODUKTE = [
     warengruppe: 'Hemden',
     groessen: ['S', 'M', 'L', 'XL', 'XXL'],
     preis: 69,
+    bilder: [
+      'assets/produkt-hemd-klassik-1.jpg',
+      'assets/produkt-hemd-klassik-2.jpg',
+      'assets/produkt-hemd-klassik-3.jpg',
+    ],
   },
   {
     id: 'sakko-business-h',
@@ -63,6 +93,11 @@ const PRODUKTE = [
     warengruppe: 'Sakkos',
     groessen: ['46', '48', '50', '52', '54'],
     preis: 199,
+    bilder: [
+      'assets/produkt-sakko-business-h-1.jpg',
+      'assets/produkt-sakko-business-h-2.jpg',
+      'assets/produkt-sakko-business-h-3.jpg',
+    ],
   },
   {
     id: 'anzug-komplett',
@@ -71,6 +106,11 @@ const PRODUKTE = [
     warengruppe: 'Anzüge',
     groessen: ['46', '48', '50', '52', '54'],
     preis: 349,
+    bilder: [
+      'assets/produkt-anzug-komplett-1.jpg',
+      'assets/produkt-anzug-komplett-2.jpg',
+      'assets/produkt-anzug-komplett-3.jpg',
+    ],
   },
   {
     id: 'hose-chino',
@@ -79,6 +119,11 @@ const PRODUKTE = [
     warengruppe: 'Hosen',
     groessen: ['46', '48', '50', '52', '54'],
     preis: 79,
+    bilder: [
+      'assets/produkt-hose-chino-1.jpg',
+      'assets/produkt-hose-chino-2.jpg',
+      'assets/produkt-hose-chino-3.jpg',
+    ],
   },
   {
     id: 'pullover-casual',
@@ -87,6 +132,11 @@ const PRODUKTE = [
     warengruppe: 'Pullover',
     groessen: ['S', 'M', 'L', 'XL', 'XXL'],
     preis: 89,
+    bilder: [
+      'assets/produkt-pullover-casual-1.jpg',
+      'assets/produkt-pullover-casual-2.jpg',
+      'assets/produkt-pullover-casual-3.jpg',
+    ],
   },
 ];
 
@@ -155,6 +205,7 @@ const leereWarenkorb = () => {
   const produktDetail = document.querySelector('#produkt-detail');
   const detailZurueck = produktDetail?.querySelector('[data-zurueck]');
   const detailBild = document.querySelector('#produkt-detail-bild');
+  const detailGalerieThumbnails = document.querySelector('.produkt-galerie-thumbnails');
   const detailName = document.querySelector('#produkt-detail-name');
   const detailPreis = document.querySelector('#produkt-detail-preis');
   const detailGroessenListe = document.querySelector('#produkt-detail-groessen-liste');
@@ -210,18 +261,66 @@ const leereWarenkorb = () => {
 
   let aktuellesProdukt = null;
 
+  // Galerie-Index des aktuell im Hauptbild gezeigten Fotos (0 = erstes von 3 Bildern in
+  // produkt.bilder). Zurückgesetzt auf 0 bei jedem neuen Produkt-Klick (oeffneDetail unten).
+  let aktiverGalerieIndex = 0;
+
   const schliesseDetail = () => {
     if (produktDetail) produktDetail.hidden = true;
     aktuellesProdukt = null;
   };
 
+  // Setzt Hauptbild-src/alt auf produkt.bilder[index] und markiert den passenden Thumbnail-Button
+  // per aria-current — sowohl beim initialen Öffnen (index 0) als auch bei jedem Thumbnail-Klick.
+  const zeigeGalerieBild = (produkt, index) => {
+    aktiverGalerieIndex = index;
+    if (detailBild) {
+      detailBild.src = produkt.bilder[index];
+      detailBild.alt = `${produkt.name} — Beispielfoto${index > 0 ? `, Ansicht ${index + 1}` : ''}`;
+    }
+    if (!detailGalerieThumbnails) return;
+    for (const thumbBtn of detailGalerieThumbnails.querySelectorAll('.produkt-galerie-thumb')) {
+      const istAktiv = Number(thumbBtn.dataset.index) === index;
+      thumbBtn.setAttribute('aria-current', String(istAktiv));
+    }
+  };
+
+  // Baut alle 3 Thumbnail-Buttons (Index 0 + 1 + 2 — inkl. Index 0, damit es nach einem Wechsel
+  // auf Ansicht 2/3 immer einen Rückweg zum Hauptbild/Ansicht 1 gibt) neu auf, je Produkt-Klick,
+  // damit sie immer zum aktuell geöffneten Produkt gehören.
+  const renderGalerieThumbnails = (produkt) => {
+    if (!detailGalerieThumbnails) return;
+    detailGalerieThumbnails.textContent = '';
+    [0, 1, 2].forEach((index) => {
+      const thumbBtn = document.createElement('button');
+      thumbBtn.type = 'button';
+      thumbBtn.className = 'produkt-galerie-thumb';
+      thumbBtn.dataset.index = String(index);
+      // Immer 'false' beim (Neu-)Aufbau — oeffneDetail() ruft direkt danach synchron
+      // zeigeGalerieBild(produkt, 0) auf, das den echten aria-current-Zustand setzt (für Index 0
+      // wird das direkt im Anschluss auf 'true' korrigiert, für Index 1/2 bleibt es 'false' — ein
+      // Abgleich gegen aktiverGalerieIndex hier wäre ohnehin immer sofort überschriebene,
+      // irreführende Logik).
+      thumbBtn.setAttribute('aria-current', 'false');
+
+      const thumbBild = document.createElement('img');
+      thumbBild.src = produkt.bilder[index];
+      thumbBild.alt = `${produkt.name} — Beispielfoto, Ansicht ${index + 1}`;
+      thumbBild.loading = 'lazy';
+      thumbBild.width = 1000;
+      thumbBild.height = 1250;
+      thumbBtn.append(thumbBild);
+
+      thumbBtn.addEventListener('click', () => zeigeGalerieBild(produkt, index));
+      detailGalerieThumbnails.append(thumbBtn);
+    });
+  };
+
   const oeffneDetail = (produkt) => {
     if (!produktDetail) return;
     aktuellesProdukt = produkt;
-    if (detailBild) {
-      detailBild.src = `assets/produkt-${produkt.id}.jpg`;
-      detailBild.alt = `${produkt.name} — Beispielfoto`;
-    }
+    renderGalerieThumbnails(produkt);
+    zeigeGalerieBild(produkt, 0);
     if (detailName) detailName.textContent = produkt.name;
     if (detailPreis) fuelleBeispielpreis(detailPreis, produkt.preis);
     renderGroessenChips(produkt.groessen);
@@ -248,7 +347,7 @@ const leereWarenkorb = () => {
     const bildWrapper = document.createElement('div');
     bildWrapper.className = 'produkt-bild';
     const bild = document.createElement('img');
-    bild.src = `assets/produkt-${produkt.id}.jpg`;
+    bild.src = produkt.bilder[0];
     bild.alt = `${produkt.name} — Beispielfoto`;
     bild.loading = 'lazy';
     bild.width = 1000;
