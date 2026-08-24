@@ -148,7 +148,7 @@
         </div>
 
         <div class="fahrzeug-grid" data-fahrzeug-grid>
-          <article class="fahrzeug-karte" data-marke="renault" data-zustand="neuwagen">
+          <article class="fahrzeug-karte" data-marke="renault" data-zustand="neuwagen" data-fahrzeug-id="fahrzeug-1">
             <figure>
               <img src="assets/fahrzeug-beispiel-1.jpg" alt="Roter Kleinwagen in der Seitenansicht am Straßenrand — Beispielfoto" loading="lazy" width="1400" height="933">
               <figcaption class="small">Beispielfoto (Symbolbild)</figcaption>
@@ -159,9 +159,19 @@
               <h3>Kleinwagen für Dorf und Stadt</h3>
               <p class="small">Modell, Baujahr, Kilometerstand und Ausstattung stünden hier — direkt aus dem echten Bestand.</p>
               <a class="card-cta" href="termin.html?anliegen=neuwagen">Beratung anfragen <span class="arrow" aria-hidden="true">→</span></a>
+              <button type="button" class="detail-toggle" data-detail-toggle aria-expanded="false" aria-controls="detail-fahrzeug-1">Details ansehen</button>
+              <div class="fahrzeug-detail" id="detail-fahrzeug-1" data-fahrzeug-detail hidden>
+                <p class="chip">Beispiel-Fahrzeug — Angaben sind Platzhalter</p>
+                <dl class="detail-liste">
+                  <div><dt>Getriebe</dt><dd>Schaltgetriebe (Beispiel)</dd></div>
+                  <div><dt>Türen</dt><dd>5 (Beispiel)</dd></div>
+                  <div><dt>Farbe</dt><dd>Rot (Beispiel)</dd></div>
+                </dl>
+                <a class="card-cta" href="termin.html?anliegen=probefahrt&fahrzeug=fahrzeug-1">Probefahrt anfragen <span class="arrow" aria-hidden="true">→</span></a>
+              </div>
             </div>
           </article>
-          <article class="fahrzeug-karte" data-marke="dacia" data-zustand="gebrauchtwagen">
+          <article class="fahrzeug-karte" data-marke="dacia" data-zustand="gebrauchtwagen" data-fahrzeug-id="fahrzeug-2">
             <figure>
               <img src="assets/fahrzeug-beispiel-2.jpg" alt="Dunkler Kombi in der Seitenansicht vor nebligen Feldern — Beispielfoto" loading="lazy" width="1400" height="933">
               <figcaption class="small">Beispielfoto (Symbolbild)</figcaption>
@@ -172,9 +182,21 @@
               <h3>Kombi mit Platz für die Familie</h3>
               <p class="small">Modell, Baujahr, Kilometerstand und Ausstattung stünden hier — direkt aus dem echten Bestand.</p>
               <a class="card-cta" href="termin.html?anliegen=gebrauchtwagen">Besichtigung anfragen <span class="arrow" aria-hidden="true">→</span></a>
+              <button type="button" class="detail-toggle" data-detail-toggle aria-expanded="false" aria-controls="detail-fahrzeug-2">Details ansehen</button>
+              <div class="fahrzeug-detail" id="detail-fahrzeug-2" data-fahrzeug-detail hidden>
+                <p class="chip">Beispiel-Fahrzeug — Angaben sind Platzhalter</p>
+                <dl class="detail-liste">
+                  <div><dt>Getriebe</dt><dd>Automatikgetriebe (Beispiel)</dd></div>
+                  <div><dt>Türen</dt><dd>5 (Beispiel)</dd></div>
+                  <div><dt>Farbe</dt><dd>Dunkelgrau (Beispiel)</dd></div>
+                  <div><dt>Erstzulassung</dt><dd>2021 (Beispielwert)</dd></div>
+                  <div><dt>Kilometerstand</dt><dd>48.000 km (Beispielwert)</dd></div>
+                </dl>
+                <a class="card-cta" href="termin.html?anliegen=probefahrt&fahrzeug=fahrzeug-2">Probefahrt anfragen <span class="arrow" aria-hidden="true">→</span></a>
+              </div>
             </div>
           </article>
-          <article class="fahrzeug-karte" data-marke="renault" data-zustand="gebrauchtwagen">
+          <article class="fahrzeug-karte" data-marke="renault" data-zustand="gebrauchtwagen" data-fahrzeug-id="fahrzeug-3">
             <figure>
               <img src="assets/fahrzeug-beispiel-3.jpg" alt="Dunkler SUV auf kurviger Landstraße in grünen Hügeln — Beispielfoto" loading="lazy" width="1400" height="933">
               <figcaption class="small">Beispielfoto (Symbolbild)</figcaption>
@@ -185,6 +207,18 @@
               <h3>Robuster SUV für den Odenwald</h3>
               <p class="small">Modell, Baujahr, Kilometerstand und Ausstattung stünden hier — direkt aus dem echten Bestand.</p>
               <a class="card-cta" href="termin.html?anliegen=gebrauchtwagen">Besichtigung anfragen <span class="arrow" aria-hidden="true">→</span></a>
+              <button type="button" class="detail-toggle" data-detail-toggle aria-expanded="false" aria-controls="detail-fahrzeug-3">Details ansehen</button>
+              <div class="fahrzeug-detail" id="detail-fahrzeug-3" data-fahrzeug-detail hidden>
+                <p class="chip">Beispiel-Fahrzeug — Angaben sind Platzhalter</p>
+                <dl class="detail-liste">
+                  <div><dt>Getriebe</dt><dd>Automatikgetriebe (Beispiel)</dd></div>
+                  <div><dt>Türen</dt><dd>5 (Beispiel)</dd></div>
+                  <div><dt>Farbe</dt><dd>Schwarz (Beispiel)</dd></div>
+                  <div><dt>Erstzulassung</dt><dd>2020 (Beispielwert)</dd></div>
+                  <div><dt>Kilometerstand</dt><dd>62.000 km (Beispielwert)</dd></div>
+                </dl>
+                <a class="card-cta" href="termin.html?anliegen=probefahrt&fahrzeug=fahrzeug-3">Probefahrt anfragen <span class="arrow" aria-hidden="true">→</span></a>
+              </div>
             </div>
           </article>
         </div>

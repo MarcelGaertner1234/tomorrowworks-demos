@@ -393,6 +393,7 @@ h3 { font-size: 1.12rem; }
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.2rem;
+  align-items: start;
 }
 
 .fahrzeug-karte {
@@ -419,6 +420,54 @@ h3 { font-size: 1.12rem; }
 }
 
 .fahrzeug-hinweis { text-align: center; margin-top: 2.2rem; }
+
+/* ---------- Fahrzeug-Detailpanel ---------- */
+
+.detail-toggle {
+  align-self: flex-start;
+  min-height: 44px;
+  padding: 0.55rem 0.95rem;
+  border: 1px solid var(--linie);
+  border-radius: var(--radius);
+  background: var(--grund);
+  color: var(--akzent-tief);
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.detail-toggle:hover { border-color: var(--akzent); }
+.detail-toggle[aria-expanded="true"] {
+  background: var(--akzent-hell);
+  border-color: var(--akzent);
+}
+
+.fahrzeug-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding: 1rem 1.1rem;
+  background: var(--flaeche);
+  border: 1px solid var(--linie);
+  border-left: 3px solid var(--akzent);
+  border-radius: var(--radius);
+}
+.fahrzeug-detail[hidden] { display: none; }
+
+.detail-liste {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 0.6rem 1rem;
+}
+.detail-liste > div { display: flex; flex-direction: column; gap: 0.15rem; }
+.detail-liste dt {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-soft);
+}
+.detail-liste dd { font-size: 0.92rem; font-weight: 600; color: var(--text); }
 
 /* ---------- Region / Über uns ---------- */
 
@@ -623,7 +672,8 @@ h3 { font-size: 1.12rem; }
 .feld--breit { grid-column: 1 / -1; }
 .feld label { display: block; font-weight: 600; font-size: 0.92rem; margin-bottom: 0.35rem; }
 .feld input,
-.feld textarea {
+.feld textarea,
+.feld select {
   width: 100%;
   padding: 0.75rem 0.85rem;
   border: 1px solid var(--linie);
@@ -634,8 +684,32 @@ h3 { font-size: 1.12rem; }
   background: var(--grund);
 }
 .feld input:focus,
-.feld textarea:focus { border-color: var(--akzent); }
+.feld textarea:focus,
+.feld select:focus { border-color: var(--akzent); }
 .feld .small { margin-top: 0.3rem; }
+
+/* Probefahrt-Fahrzeugwahl + Inzahlungnahme-Angaben: an Anliegen-Auswahl geknüpfte Zusatzfelder. */
+[data-fahrzeug-wahl],
+[data-inzahlungnahme-felder] {
+  margin-top: 1.4rem;
+}
+[data-fahrzeug-wahl][hidden],
+[data-inzahlungnahme-felder][hidden] {
+  display: none;
+}
+[data-inzahlungnahme-felder] {
+  border: 0;
+  padding: 0;
+}
+[data-inzahlungnahme-felder] legend {
+  font-weight: 600;
+  font-size: 0.92rem;
+  margin-bottom: 0.7rem;
+  padding: 0;
+}
+[data-inzahlungnahme-felder] label:not(:first-of-type) {
+  margin-top: 1rem;
+}
 
 .fehler {
   color: var(--fehler);

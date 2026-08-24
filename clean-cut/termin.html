@@ -130,8 +130,16 @@
             <legend><span class="step-no">04</span> Stylist &amp; Uhrzeit am Beispieltag</legend>
             <div class="slotpicker" data-slotpicker>
               <div class="slotpicker-head">
-                <p class="slotpicker-intro">Jetzt konkret: Das ist der Beispieltag <strong>Dienstag</strong> — genau die Belegung, die intern im <a href="portal.html">Team-Portal</a> steht. Platz wählen, freie Zeit antippen; belegte Zeiten sind gesperrt.</p>
+                <p class="slotpicker-intro">Jetzt konkret: Tag der Beispielwoche wählen — der <strong>Dienstag</strong> ist 1:1 die Belegung, die intern im <a href="portal.html">Team-Portal</a> steht, die anderen Tage sind weitere Beispieldaten. Platz wählen, freie Zeit antippen; belegte Zeiten sind gesperrt.</p>
                 <span class="pill-note">BEISPIELTAG · KEINE ECHTEN TERMINE</span>
+              </div>
+              <div class="wochentabs" data-wochentabs role="group" aria-label="Tag der Beispielwoche wählen">
+                <button type="button" class="chip chip--tag" data-tag="mo" aria-pressed="false">Mo</button>
+                <button type="button" class="chip chip--tag" data-tag="di" aria-pressed="true">Di</button>
+                <button type="button" class="chip chip--tag" data-tag="mi" aria-pressed="false">Mi</button>
+                <button type="button" class="chip chip--tag" data-tag="do" aria-pressed="false">Do</button>
+                <button type="button" class="chip chip--tag" data-tag="fr" aria-pressed="false">Fr</button>
+                <button type="button" class="chip chip--tag" data-tag="sa" aria-pressed="false">Sa</button>
               </div>
               <div class="chip-row" role="group" aria-label="Stylist wählen" data-stylists>
                 <button type="button" class="chip chip--stylist" aria-pressed="true" data-stylist="max"><small>Platz A</small> Max · Inhaber</button>
@@ -176,6 +184,8 @@
 
           <div class="planner-confirm" data-confirm-panel hidden>
             <h3>Demo-Termin bestätigt</h3>
+            <p class="confirm-note">BEISPIEL-BUCHUNG · KEINE ECHTEN TERMINE</p>
+            <p class="confirm-code" data-sum-code hidden tabindex="-1"></p>
             <dl class="confirm-summary">
               <dt>Leistung</dt><dd data-sum-leistung></dd>
               <dt>Friseur-Wunsch</dt><dd data-sum-friseur></dd>
@@ -190,6 +200,26 @@
             <p class="confirm-note">Demo-Bestätigung — es wurden keine Daten gespeichert oder versendet.</p>
           </div>
         </form>
+      </div>
+    </section>
+
+    <section class="section section--sand">
+      <div class="wrap">
+        <section class="verwaltung" data-verwaltung>
+          <p class="eyebrow">Termin verwalten · Prototyp</p>
+          <h2>Termin verwalten (Demo)</h2>
+          <p class="verwaltung-note">BEISPIEL-BUCHUNG · KEINE ECHTEN TERMINE</p>
+          <p class="chip-hint" style="margin-top:0">Buchungscode aus der Demo-Bestätigung eingeben, um den Beispieltermin zu finden oder zu stornieren.</p>
+          <div class="verwaltung-form">
+            <div class="field">
+              <label for="verwaltung-code">Buchungscode</label>
+              <input id="verwaltung-code" data-verwaltung-code type="text" autocomplete="off" placeholder="z. B. B-1042">
+            </div>
+            <button type="button" class="btn btn--ghost" data-verwaltung-suchen>Termin anzeigen</button>
+          </div>
+          <div class="verwaltung-karte" data-verwaltung-karte hidden tabindex="-1"></div>
+          <p class="verwaltung-fehler" data-verwaltung-fehler hidden tabindex="-1">Kein Termin zu diesem Code gefunden (Demo kennt nur Beispiel-Codes dieser Sitzung und B-1042).</p>
+        </section>
       </div>
     </section>
 

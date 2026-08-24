@@ -65,7 +65,38 @@
                 <span class="wahl-text">Beratung zu Renault, Dacia — oder auf Wunsch anderen Marken.</span>
                 <span class="wahl-meta">Termin wird bestätigt</span>
               </label>
+              <label class="wahl-card">
+                <input type="radio" name="anliegen" value="probefahrt">
+                <span class="wahl-titel">Probefahrt</span>
+                <span class="wahl-text">Ein Beispielfahrzeug aus dem Bestand zur Probefahrt anfragen.</span>
+                <span class="wahl-meta">Termin wird bestätigt</span>
+              </label>
+              <label class="wahl-card">
+                <input type="radio" name="anliegen" value="inzahlungnahme">
+                <span class="wahl-titel">Inzahlungnahme / Ankauf</span>
+                <span class="wahl-text">Ihr aktuelles Fahrzeug unverbindlich einschätzen lassen.</span>
+                <span class="wahl-meta">Einschätzung nach Sichtung</span>
+              </label>
             </div>
+
+            <div class="feld" data-fahrzeug-wahl hidden>
+              <label for="probefahrt-fahrzeug">Fahrzeug für die Probefahrt</label>
+              <select id="probefahrt-fahrzeug" name="probefahrt-fahrzeug">
+                <option value="">noch offen</option>
+                <option value="fahrzeug-1">Kleinwagen für Dorf und Stadt (Beispiel)</option>
+                <option value="fahrzeug-2">Kombi mit Platz für die Familie (Beispiel)</option>
+                <option value="fahrzeug-3">Robuster SUV für den Odenwald (Beispiel)</option>
+              </select>
+            </div>
+            <fieldset class="feld" data-inzahlungnahme-felder hidden>
+              <legend>Ihr aktuelles Fahrzeug (Beispiel-Angaben genügen)</legend>
+              <label for="iz-fahrzeug">Marke / Modell</label>
+              <input id="iz-fahrzeug" name="iz-fahrzeug" type="text" autocomplete="off">
+              <label for="iz-ez">Erstzulassung (Monat/Jahr)</label>
+              <input id="iz-ez" name="iz-ez" type="text" inputmode="numeric" placeholder="z. B. 06/2019" autocomplete="off">
+              <label for="iz-km">Kilometerstand</label>
+              <input id="iz-km" name="iz-km" type="text" inputmode="numeric" autocomplete="off">
+            </fieldset>
           </fieldset>
 
           <fieldset class="planer-schritt">

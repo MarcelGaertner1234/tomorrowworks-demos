@@ -975,6 +975,19 @@ h2 em {
   text-transform: uppercase;
 }
 
+.wochentabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  clear: both;
+  margin-bottom: 1rem;
+}
+
+.chip--tag {
+  min-width: 3.6rem;
+  justify-content: center;
+}
+
 .slot-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr));
@@ -1201,6 +1214,21 @@ h2 em {
   font-size: 0.78rem;
   color: var(--ok);
   font-weight: 500;
+}
+
+.confirm-code {
+  font-size: 0.92rem;
+  color: var(--tone-strong);
+}
+
+.confirm-code strong {
+  font-family: var(--font-display);
+  letter-spacing: 0.05em;
+  color: var(--gold-deep);
+}
+
+.confirm-code[hidden] {
+  display: none;
 }
 
 /* ---------- Leistungen ---------- */
@@ -1857,6 +1885,78 @@ h2 em {
   font-size: 0.76rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
+}
+
+/* ---------- Termin verwalten (Demo) ---------- */
+
+.verwaltung {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  max-width: 46rem;
+  margin-inline: auto;
+  padding: 1.6rem 1.7rem;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.verwaltung h2 {
+  margin-top: 0.2rem;
+}
+
+.verwaltung-note {
+  font-size: 0.78rem;
+  color: var(--ok);
+  font-weight: 500;
+}
+
+.verwaltung-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0.8rem;
+}
+
+.verwaltung-form .field {
+  flex: 1 1 14rem;
+}
+
+.verwaltung-karte {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-btn);
+  padding: 1rem 1.1rem;
+  display: grid;
+  gap: 0.7rem;
+  background: var(--sand);
+}
+
+.verwaltung-karte[hidden] {
+  display: none;
+}
+
+.verwaltung-treffer-code {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 1.05rem;
+  color: var(--tone-strong);
+}
+
+.verwaltung-treffer-code strong {
+  color: var(--gold-deep);
+}
+
+.verwaltung-fehler {
+  border: 1px dashed var(--line);
+  border-radius: var(--radius-btn);
+  padding: 0.85rem 1rem;
+  font-size: 0.85rem;
+  color: var(--tone-strong);
+}
+
+.verwaltung-fehler[hidden] {
+  display: none;
 }
 
 /* ---------- Team-Portal (Terminkalender-Demo) ---------- */

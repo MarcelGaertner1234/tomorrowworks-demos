@@ -601,6 +601,140 @@
         }
       }
 
+      /* ===== bestell-flow (beispiel) ===== */
+      .bestellflow {
+        display: grid;
+        gap: 1.8rem;
+        margin-top: 2rem;
+        padding-top: 1.6rem;
+        border-top: 1px solid var(--linie);
+        scroll-margin-top: 3rem;
+        scroll-margin-bottom: 6rem;
+      }
+      .flow-schritt[hidden],
+      [data-bestellflow][hidden],
+      [data-flow-leer][hidden],
+      .flow-fehler[hidden] {
+        display: none;
+      }
+      .bestellflow:focus,
+      .flow-schritt:focus {
+        outline: 2px solid var(--champagnergold);
+        outline-offset: 4px;
+      }
+      .flow-schritt {
+        display: grid;
+        gap: 0.9rem;
+        scroll-margin-bottom: 7.5rem;
+      }
+      .flow-schritt h3 {
+        font-family: var(--serif);
+        font-weight: 500;
+        font-size: 1rem;
+        letter-spacing: 0.03em;
+        text-transform: lowercase;
+        color: var(--elfenbein);
+      }
+      .flow-schritt label {
+        display: grid;
+        gap: 0.35rem;
+        font-size: 0.78rem;
+        color: var(--grau);
+        text-transform: lowercase;
+      }
+      .flow-schritt input {
+        min-height: 44px;
+        padding: 0.6rem 0.8rem;
+        border: 1px solid var(--linie-hell);
+        background: var(--kohle);
+        color: var(--elfenbein);
+        font-family: var(--mono);
+        font-size: 0.86rem;
+      }
+      .flow-schritt input:focus-visible {
+        outline: 2px solid var(--champagnergold);
+        outline-offset: 2px;
+      }
+      .flow-fehler {
+        color: var(--elfenbein);
+        font-size: 0.78rem;
+        font-weight: 700;
+      }
+      .slot-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.6rem;
+      }
+      @media (min-width: 460px) {
+        .slot-grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+      .slot-pille {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        padding: 0.5rem 0.4rem;
+        border: 1px solid var(--champagnergold);
+        background: transparent;
+        color: var(--champagnergold);
+        font-family: var(--mono);
+        font-size: 0.82rem;
+        letter-spacing: 0.03em;
+        cursor: pointer;
+        transition:
+          background 0.2s,
+          color 0.2s;
+      }
+      .slot-pille:hover {
+        background: var(--champagnergold);
+        color: var(--obsidian);
+      }
+      .slot-pille:focus-visible {
+        outline: 2px solid var(--glut);
+        outline-offset: 3px;
+      }
+      .slot-pille[aria-pressed='true'] {
+        background: var(--champagnergold);
+        border-color: var(--champagnergold);
+        color: var(--obsidian);
+      }
+      .bestellnummer {
+        font-family: var(--mono);
+        font-size: 1.1rem;
+        letter-spacing: 0.05em;
+        color: var(--champagnergold);
+      }
+      .flow-artikel {
+        list-style: none;
+        display: grid;
+        gap: 0.3rem;
+        font-size: 0.85rem;
+        color: var(--elfenbein);
+      }
+      .status-leiste {
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.6rem;
+        margin-top: 0.4rem;
+        font-size: 0.72rem;
+        letter-spacing: 0.03em;
+        text-transform: lowercase;
+      }
+      .status-leiste li {
+        padding: 0.6rem 0.4rem;
+        text-align: center;
+        border: 1px solid var(--linie);
+        color: var(--grau);
+      }
+      .status-leiste li[aria-current='step'] {
+        border-color: var(--champagnergold);
+        color: var(--champagnergold);
+        font-weight: 700;
+      }
+
       /* ===== anfahrt ===== */
       .info-grid {
         display: grid;
@@ -1115,6 +1249,45 @@
                 (Beispiel-Entwurf)
               </p>
               <p class="warenkorb-zusammenfassung-text" data-warenkorb-zusammenfassung hidden></p>
+              <div class="bestellflow" data-bestellflow hidden tabindex="-1">
+                <p class="kicker">vorbestellung (beispiel)</p>
+                <div class="flow-schritt" data-flow-slots>
+                  <h3>abholzeit wählen</h3>
+                  <p class="demo-hint">beispieltag — zeiten dienen nur der vorführung.</p>
+                  <div class="slot-grid" role="group" aria-label="abholzeit am beispieltag"></div>
+                  <p class="demo-hint">
+                    <a href="#speisekarte">bestellung ändern</a> — warenkorb bleibt erhalten.
+                  </p>
+                </div>
+                <div class="flow-schritt" data-flow-kontakt hidden tabindex="-1">
+                  <h3>kontakt für die abholung</h3>
+                  <label>name<input name="flow-name" type="text" autocomplete="off" required></label>
+                  <label>telefon<input name="flow-telefon" type="tel" autocomplete="off" required></label>
+                  <p class="demo-hint">entwurf — es wird nichts gespeichert oder versendet.</p>
+                  <p class="flow-fehler" data-flow-fehler role="alert" hidden></p>
+                  <button type="button" class="btn btn-primary" data-flow-weiter>
+                    bestellung abschließen (beispiel)
+                  </button>
+                </div>
+                <div class="flow-schritt" data-flow-bestaetigung hidden tabindex="-1">
+                  <h3>bestellung eingegangen (beispiel)</h3>
+                  <p class="bestellnummer" data-flow-nummer></p>
+                  <ul class="flow-artikel" data-flow-artikel></ul>
+                  <p data-flow-zeit></p>
+                  <ol class="status-leiste" data-status-leiste>
+                    <li data-status="eingegangen">eingegangen</li>
+                    <li data-status="zubereitung">in zubereitung</li>
+                    <li data-status="abholbereit">abholbereit</li>
+                  </ol>
+                  <p class="demo-hint">
+                    status läuft im demo-zeitraffer (echt: live-anzeige für ihre kunden).
+                  </p>
+                  <button type="button" class="btn" data-flow-reset>weitere bestellung ansehen</button>
+                </div>
+                <p class="flow-leer" data-flow-leer hidden>
+                  ihr warenkorb ist noch leer — <a href="#speisekarte">zur speisekarte</a>.
+                </p>
+              </div>
             </div>
             <figure class="bild-frame reveal">
               <div class="media-frame wide">
@@ -1352,7 +1525,6 @@
         const panel = warenkorbLeiste.querySelector('[data-warenkorb-panel]');
         const liste = warenkorbLeiste.querySelector('[data-warenkorb-liste]');
         const abschliessenBtn = warenkorbLeiste.querySelector('[data-warenkorb-abschliessen]');
-        const zusammenfassungFeld = document.querySelector('[data-warenkorb-zusammenfassung]');
 
         const formatEuro = (wert) => `${wert.toFixed(2).replace('.', ',')} €`;
 
@@ -1414,21 +1586,149 @@
           panel.hidden = offen;
         });
 
-        abschliessenBtn?.addEventListener('click', () => {
-          if (!warenkorb.size) return;
-          const teile = [...warenkorb.entries()].map(([name, eintrag]) => `${eintrag.menge}× ${name}`);
-          let gesamtSumme = 0;
-          warenkorb.forEach((eintrag) => {
-            gesamtSumme += eintrag.menge * eintrag.preis;
-          });
-          if (zusammenfassungFeld) {
-            zusammenfassungFeld.textContent =
-              `Ihre Bestellung: ${teile.join(', ')} — Zwischensumme ${formatEuro(gesamtSumme)}. ` +
-              'Rufen Sie an oder schreiben Sie per WhatsApp, um wirklich zu bestellen.';
-            zusammenfassungFeld.hidden = false;
+        // Bestell-Flow (Beispiel): Abholzeit wählen, Kontakt angeben, Bestätigung mit
+        // Status-Zeitraffer. Bewusst KEIN Versand/Speicherung — reines Vorführ-Beispiel.
+        const bestellflow = document.querySelector('[data-bestellflow]');
+        const slotsSchritt = bestellflow?.querySelector('[data-flow-slots]');
+        const slotGrid = slotsSchritt?.querySelector('.slot-grid');
+        const kontaktSchritt = bestellflow?.querySelector('[data-flow-kontakt]');
+        const nameFeld = kontaktSchritt?.querySelector('[name="flow-name"]');
+        const telefonFeld = kontaktSchritt?.querySelector('[name="flow-telefon"]');
+        const weiterBtn = kontaktSchritt?.querySelector('[data-flow-weiter]');
+        const fehlerFeld = kontaktSchritt?.querySelector('[data-flow-fehler]');
+        const bestaetigungSchritt = bestellflow?.querySelector('[data-flow-bestaetigung]');
+        const nummerFeld = bestaetigungSchritt?.querySelector('[data-flow-nummer]');
+        const artikelListe = bestaetigungSchritt?.querySelector('[data-flow-artikel]');
+        const zeitFeld = bestaetigungSchritt?.querySelector('[data-flow-zeit]');
+        const statusEintraege = bestaetigungSchritt
+          ? [...bestaetigungSchritt.querySelectorAll('[data-status-leiste] li')]
+          : [];
+        const resetBtn = bestaetigungSchritt?.querySelector('[data-flow-reset]');
+        const leerHinweis = bestellflow?.querySelector('[data-flow-leer]');
+
+        if (bestellflow) {
+          let bestellZaehler = 40; // erste Nummer: MK-2026-041
+          function naechsteBestellnummer() {
+            bestellZaehler += 1;
+            return 'MK-2026-' + String(bestellZaehler).padStart(3, '0');
           }
-          document.querySelector('#abholung')?.scrollIntoView({ block: 'start' });
-        });
+
+          let gewaehlteZeit = null;
+          let statusTimer = [];
+
+          const slotWaehlen = (pille, zeit) => {
+            slotGrid
+              .querySelectorAll('.slot-pille')
+              .forEach((p) => p.setAttribute('aria-pressed', 'false'));
+            pille.setAttribute('aria-pressed', 'true');
+            gewaehlteZeit = zeit;
+            // Wizard-Schritt: voriger Schritt weg, sonst blieben alle Slot-Pillen
+            // neben dem Kontaktformular klickbar.
+            slotsSchritt.hidden = true;
+            kontaktSchritt.hidden = false;
+            kontaktSchritt.focus();
+          };
+
+          const slotsRendern = () => {
+            slotGrid.innerHTML = '';
+            gewaehlteZeit = null;
+            let stunde = 17;
+            let minute = 0;
+            for (let i = 0; i < 12; i += 1) {
+              const zeit = `${String(stunde).padStart(2, '0')}:${String(minute).padStart(2, '0')}`;
+              const pille = document.createElement('button');
+              pille.type = 'button';
+              pille.className = 'slot-pille';
+              pille.setAttribute('aria-pressed', 'false');
+              pille.textContent = zeit;
+              pille.addEventListener('click', () => slotWaehlen(pille, zeit));
+              slotGrid.appendChild(pille);
+              minute += 15;
+              if (minute >= 60) {
+                minute = 0;
+                stunde += 1;
+              }
+            }
+          };
+
+          const statusZeitrafferStarten = () => {
+            statusTimer.forEach((id) => window.clearTimeout(id));
+            statusTimer = [];
+            const aktivSetzen = (index) => {
+              statusEintraege.forEach((li, i) => {
+                if (i === index) li.setAttribute('aria-current', 'step');
+                else li.removeAttribute('aria-current');
+              });
+            };
+            aktivSetzen(0);
+            if (motionQuery.matches) return;
+            statusTimer.push(window.setTimeout(() => aktivSetzen(1), 6000));
+            statusTimer.push(window.setTimeout(() => aktivSetzen(2), 12000));
+          };
+
+          abschliessenBtn?.addEventListener('click', () => {
+            // Warenkorb-Panel einklappen: sonst konkurriert es am unteren Rand
+            // (mobil) mit dem Bestell-Flow und der call-bar um den Platz.
+            panel.hidden = true;
+            toggle?.setAttribute('aria-expanded', 'false');
+
+            bestellflow.hidden = false;
+            bestaetigungSchritt.hidden = true;
+            kontaktSchritt.hidden = true;
+            fehlerFeld.hidden = true;
+            nameFeld.value = '';
+            telefonFeld.value = '';
+
+            if (!warenkorb.size) {
+              slotsSchritt.hidden = true;
+              leerHinweis.hidden = false;
+            } else {
+              leerHinweis.hidden = true;
+              slotsSchritt.hidden = false;
+              slotsRendern();
+            }
+            bestellflow.focus();
+          });
+
+          weiterBtn?.addEventListener('click', () => {
+            const name = nameFeld.value.trim();
+            const telefon = telefonFeld.value.trim();
+            if (!name || !telefon) {
+              // aria-live-Regel: erst sichtbar machen, DANN befüllen.
+              fehlerFeld.hidden = false;
+              fehlerFeld.textContent = 'bitte name und telefon angeben.';
+              return;
+            }
+            fehlerFeld.hidden = true;
+
+            // Wizard-Schritt: vorige Schritte weg, sonst bliebe „bestellung
+            // abschließen" klickbar (doppelte Bestellnummer, Zeitraffer neu gestartet).
+            slotsSchritt.hidden = true;
+            kontaktSchritt.hidden = true;
+            bestaetigungSchritt.hidden = false;
+            nummerFeld.textContent = naechsteBestellnummer();
+            artikelListe.innerHTML = '';
+            warenkorb.forEach((eintrag, artikelName) => {
+              const zeile = document.createElement('li');
+              zeile.textContent = `${eintrag.menge}× ${artikelName}`;
+              artikelListe.appendChild(zeile);
+            });
+            zeitFeld.textContent = `abholung um ${gewaehlteZeit} uhr (beispiel).`;
+            statusZeitrafferStarten();
+            bestaetigungSchritt.focus();
+          });
+
+          resetBtn?.addEventListener('click', () => {
+            statusTimer.forEach((id) => window.clearTimeout(id));
+            statusTimer = [];
+            bestellflow.hidden = true;
+            bestaetigungSchritt.hidden = true;
+            kontaktSchritt.hidden = true;
+            fehlerFeld.hidden = true;
+            nameFeld.value = '';
+            telefonFeld.value = '';
+          });
+        }
       }
     </script>
   </body>
