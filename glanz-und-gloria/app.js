@@ -6,9 +6,14 @@
   // Trauring-Konfigurator (index.html): Material + Breite + Oberfläche ergeben
   // live eine stilisierte CSS-Ring-Vorschau + Textbeschreibung. Kein Foto (kein
   // echtes Ring-Modell verfügbar), bewusst als "stilisiert" gekennzeichnet.
+  // Einzel-Ansicht (Default) = 1 Ring. Paar-Ansicht = 2 Ringe, konfiguriert über
+  // Ring-Tabs; die bestehenden Wahl-Gruppen (Material/Breite/Oberfläche) werden
+  // dabei für den jeweils aktiven Ring wiederverwendet (kein doppeltes Markup).
   const konfigurator = document.querySelector('[data-ring-konfigurator]');
   if (konfigurator) {
-    const vorschau = konfigurator.querySelector('[data-ring-vorschau]');
+    const ansichtWahl = konfigurator.querySelector('[data-ansicht-wahl]');
+    const ringTabsContainer = konfigurator.querySelector('[data-ring-tabs]');
+    const huelle2 = konfigurator.querySelector('.ring-vorschau-2');
     const beschreibung = konfigurator.querySelector('[data-ring-beschreibung]');
     const cta = konfigurator.querySelector('[data-ring-cta]');
 
@@ -28,54 +33,210 @@
       mattiert: 'mattiert',
     };
 
-    let materialAktiv = 'gelbgold';
-    let breiteAktiv = 'mittel';
-    let oberflaecheAktiv = 'poliert';
+    const neuerRing = () => ({ material: 'gelbgold', breite: 'mittel', oberflaeche: 'poliert', gravur: '' });
+    const ringe = [neuerRing(), neuerRing()];
+    let aktiverRing = 0; // 0 = Ring 1, 1 = Ring 2
+    let modus = 'einzel'; // 'einzel' | 'paar'
+    let ring2Kopiert = false;
 
-    const aktualisieren = () => {
-      const material = materialien[materialAktiv];
-      const breite = breiten[breiteAktiv];
-      const oberflaeche = oberflaechen[oberflaecheAktiv];
+    const indizes = [0, 1];
+    const vorschauElemente = indizes.map((i) => konfigurator.querySelector(`[data-ring-vorschau="${i + 1}"]`));
+    const gravurSpanElemente = indizes.map((i) => konfigurator.querySelector(`[data-ring-gravur="${i + 1}"]`));
+    const gravurFeldElemente = indizes.map((i) => konfigurator.querySelector(`[data-gravur-feld="${i + 1}"]`));
+    const gravurInputElemente = indizes.map((i) => konfigurator.querySelector(`[data-gravur-input="${i + 1}"]`));
+    const gravurZaehlerElemente = indizes.map((i) => konfigurator.querySelector(`[data-gravur-zaehler="${i + 1}"]`));
+    const ringTabElemente = indizes.map((i) => ringTabsContainer?.querySelector(`[data-ring-tab="${i + 1}"]`));
 
+    const wunschText = (ring) => {
+      const material = materialien[ring.material];
+      const breite = breiten[ring.breite];
+      const oberflaeche = oberflaechen[ring.oberflaeche];
+      const basis = `${material.name}, ${breite.name}, ${oberflaeche}`;
+      const gravur = ring.gravur.trim();
+      return gravur ? `${basis}, Gravur ‚${gravur}'` : basis;
+    };
+
+    const renderVorschau = (index) => {
+      const ring = ringe[index];
+      const material = materialien[ring.material];
+      const breite = breiten[ring.breite];
+      const vorschau = vorschauElemente[index];
       if (vorschau) {
         vorschau.style.setProperty('--ring-farbe', material.farbe);
         vorschau.style.setProperty('--ring-inset', breite.inset);
-        vorschau.classList.toggle('ist-poliert', oberflaecheAktiv === 'poliert');
+        vorschau.classList.toggle('ist-poliert', ring.oberflaeche === 'poliert');
       }
+      const span = gravurSpanElemente[index];
+      if (span) {
+        const gravur = ring.gravur.trim();
+        span.textContent = gravur;
+        span.classList.toggle('hat-text', gravur.length > 0);
+      }
+    };
 
-      const text = `${material.name}, ${breite.name}, ${oberflaeche} — diese Kombination sprechen wir gerne im Erstgespräch mit Ihnen durch.`;
+    const pillenAktualisieren = () => {
+      const ring = ringe[aktiverRing];
+      konfigurator.querySelectorAll('[data-ring-material]').forEach((p) => {
+        p.classList.toggle('is-aktiv', p.dataset.ringMaterial === ring.material);
+      });
+      konfigurator.querySelectorAll('[data-ring-breite]').forEach((p) => {
+        p.classList.toggle('is-aktiv', p.dataset.ringBreite === ring.breite);
+      });
+      konfigurator.querySelectorAll('[data-ring-oberflaeche]').forEach((p) => {
+        p.classList.toggle('is-aktiv', p.dataset.ringOberflaeche === ring.oberflaeche);
+      });
+    };
+
+    const beschreibungAktualisieren = () => {
+      const ring = ringe[aktiverRing];
+      const material = materialien[ring.material];
+      const breite = breiten[ring.breite];
+      const oberflaeche = oberflaechen[ring.oberflaeche];
+      const praefix = modus === 'paar' ? `Ring ${aktiverRing + 1}: ` : '';
+      let text = `${praefix}${material.name}, ${breite.name}, ${oberflaeche} — diese Kombination sprechen wir gerne im Erstgespräch mit Ihnen durch.`;
+      const gravur = ring.gravur.trim();
+      // Screenreader-Weg: die dekorative Gravur-Anzeige im Donut-Loch ist
+      // aria-hidden — hier steht sie als lesbarer Text.
+      if (gravur) text += ` Innengravur (Beispiel): „${gravur}".`;
       if (beschreibung) beschreibung.textContent = text;
+    };
 
-      const wunsch = `${material.name}, ${breite.name}, ${oberflaeche}`;
+    const ctaAktualisieren = () => {
+      const wunsch =
+        modus === 'paar'
+          ? `Ring 1: ${wunschText(ringe[0])} · Ring 2: ${wunschText(ringe[1])}`
+          : wunschText(ringe[0]);
       if (cta) cta.setAttribute('href', `termin.html?anlass=trauringe&wunsch=${encodeURIComponent(wunsch)}`);
+    };
+
+    const zaehlerAktualisieren = (index) => {
+      const el = gravurZaehlerElemente[index];
+      if (!el) return;
+      const rest = 20 - ringe[index].gravur.length;
+      el.textContent = `${rest} Zeichen frei`;
+    };
+
+    // Hält das DOM-Input mit dem State synchron — nötig, weil ringe[1] beim
+    // ersten Aktivieren der Paar-Ansicht per Objekt-Kopie befüllt wird (inkl.
+    // gravur), ohne dass dabei ein input-Event auf #gravur-2 feuert.
+    const gravurInputSynchronisieren = (index) => {
+      const input = gravurInputElemente[index];
+      if (input && input.value !== ringe[index].gravur) input.value = ringe[index].gravur;
+    };
+
+    const ringTabsAktualisieren = () => {
+      ringTabElemente.forEach((btn, index) => {
+        if (!btn) return;
+        const istAktiv = index === aktiverRing;
+        btn.classList.toggle('is-aktiv', istAktiv);
+        btn.setAttribute('aria-pressed', String(istAktiv));
+      });
+      gravurFeldElemente.forEach((feld, index) => {
+        if (!feld) return;
+        feld.hidden = index !== aktiverRing;
+      });
+    };
+
+    const modusAktualisieren = () => {
+      const istPaar = modus === 'paar';
+      if (ansichtWahl) {
+        ansichtWahl.querySelectorAll('[data-ansicht]').forEach((btn) => {
+          const istAktiv = btn.dataset.ansicht === modus;
+          btn.classList.toggle('is-aktiv', istAktiv);
+          btn.setAttribute('aria-pressed', String(istAktiv));
+        });
+      }
+      if (ringTabsContainer) ringTabsContainer.hidden = !istPaar;
+      if (huelle2) huelle2.hidden = !istPaar;
+      if (istPaar) {
+        ringTabsAktualisieren();
+      } else {
+        if (gravurFeldElemente[0]) gravurFeldElemente[0].hidden = false;
+        if (gravurFeldElemente[1]) gravurFeldElemente[1].hidden = true;
+      }
+    };
+
+    const vollstaendigNeuRendern = () => {
+      renderVorschau(0);
+      renderVorschau(1);
+      pillenAktualisieren();
+      beschreibungAktualisieren();
+      ctaAktualisieren();
+      gravurInputSynchronisieren(0);
+      gravurInputSynchronisieren(1);
+      zaehlerAktualisieren(0);
+      zaehlerAktualisieren(1);
     };
 
     konfigurator.querySelectorAll('[data-ring-material]').forEach((pille) => {
       pille.addEventListener('click', () => {
-        konfigurator.querySelectorAll('[data-ring-material]').forEach((p) => p.classList.remove('is-aktiv'));
-        pille.classList.add('is-aktiv');
-        materialAktiv = pille.dataset.ringMaterial;
-        aktualisieren();
+        ringe[aktiverRing].material = pille.dataset.ringMaterial;
+        pillenAktualisieren();
+        renderVorschau(aktiverRing);
+        beschreibungAktualisieren();
+        ctaAktualisieren();
       });
     });
     konfigurator.querySelectorAll('[data-ring-breite]').forEach((pille) => {
       pille.addEventListener('click', () => {
-        konfigurator.querySelectorAll('[data-ring-breite]').forEach((p) => p.classList.remove('is-aktiv'));
-        pille.classList.add('is-aktiv');
-        breiteAktiv = pille.dataset.ringBreite;
-        aktualisieren();
+        ringe[aktiverRing].breite = pille.dataset.ringBreite;
+        pillenAktualisieren();
+        renderVorschau(aktiverRing);
+        beschreibungAktualisieren();
+        ctaAktualisieren();
       });
     });
     konfigurator.querySelectorAll('[data-ring-oberflaeche]').forEach((pille) => {
       pille.addEventListener('click', () => {
-        konfigurator.querySelectorAll('[data-ring-oberflaeche]').forEach((p) => p.classList.remove('is-aktiv'));
-        pille.classList.add('is-aktiv');
-        oberflaecheAktiv = pille.dataset.ringOberflaeche;
-        aktualisieren();
+        ringe[aktiverRing].oberflaeche = pille.dataset.ringOberflaeche;
+        pillenAktualisieren();
+        renderVorschau(aktiverRing);
+        beschreibungAktualisieren();
+        ctaAktualisieren();
       });
     });
 
-    aktualisieren();
+    if (ansichtWahl) {
+      ansichtWahl.querySelectorAll('[data-ansicht]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const neuerModus = btn.dataset.ansicht;
+          if (neuerModus === modus) return;
+          modus = neuerModus;
+          if (modus === 'paar' && !ring2Kopiert) {
+            ringe[1] = { ...ringe[0] };
+            ring2Kopiert = true;
+          }
+          aktiverRing = 0;
+          modusAktualisieren();
+          vollstaendigNeuRendern();
+        });
+      });
+    }
+
+    ringTabElemente.forEach((btn, index) => {
+      if (!btn) return;
+      btn.addEventListener('click', () => {
+        if (aktiverRing === index) return;
+        aktiverRing = index;
+        ringTabsAktualisieren();
+        pillenAktualisieren();
+        beschreibungAktualisieren();
+      });
+    });
+
+    gravurInputElemente.forEach((input, index) => {
+      if (!input) return;
+      input.addEventListener('input', () => {
+        ringe[index].gravur = input.value;
+        renderVorschau(index);
+        zaehlerAktualisieren(index);
+        if (index === aktiverRing) beschreibungAktualisieren();
+        ctaAktualisieren();
+      });
+    });
+
+    modusAktualisieren();
+    vollstaendigNeuRendern();
   }
 
   const form = document.querySelector('#termin-form');

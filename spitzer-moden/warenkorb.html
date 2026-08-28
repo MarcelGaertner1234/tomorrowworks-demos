@@ -83,6 +83,21 @@
              sendet nichts, es wird nichts gespeichert. -->
         <form id="warenkorb-form" novalidate>
           <fieldset>
+            <legend>Abwicklung (Beispiel)</legend>
+            <div class="feld-reihe">
+              <label class="wahl-feld">
+                <input type="radio" name="abwicklung" value="abholung" checked>
+                Abholung im Geschäft (Beispiel)
+              </label>
+              <label class="wahl-feld">
+                <input type="radio" name="abwicklung" value="lieferung">
+                Lieferung (Beispiel)
+              </label>
+            </div>
+            <p class="feld-hinweis">Demo — es wird nichts bestellt oder geliefert.</p>
+          </fieldset>
+
+          <fieldset>
             <legend>Ihre Kontaktdaten</legend>
             <div class="feld-reihe">
               <div class="feld">
@@ -114,13 +129,18 @@
           </div>
         </form>
 
-        <section class="bestaetigung" data-bestaetigung hidden aria-label="Bestätigung">
+        <section class="bestaetigung" data-bestaetigung hidden aria-label="Bestätigung" tabindex="-1">
           <h2>Ihre Demo-Bestellanfrage steht</h2>
           <p>
             So würde Ihre Bestellanfrage beim Laden ankommen — in dieser Konzeptvorschau wurde
             sie nur angezeigt: <strong>es wurden keine Daten gespeichert oder versendet.</strong>
           </p>
-          <p class="zusammenfassung" data-zusammenfassung></p>
+          <div class="zusammenfassung" data-zusammenfassung>
+            <p data-bestell-nummer></p>
+            <p data-bestell-abwicklung></p>
+            <ul class="bestell-artikel-liste" data-bestell-artikel></ul>
+            <p class="warenkorb-gesamt" data-bestell-summe></p>
+          </div>
           <div class="planer-aktionen">
             <button class="btn btn--kontur" type="button" data-neustart>Neuer Demo-Warenkorb</button>
             <a class="btn btn--voll" href="shop.html">← Weiter im Shop</a>

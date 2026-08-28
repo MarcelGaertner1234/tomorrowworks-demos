@@ -13,17 +13,22 @@
     aktualisieren();
   }
 
-  // Aufenthalts-Planer (index.html): Zimmertyp + Anreise/Abreise ergeben live
-  // eine Beispiel-Ansicht der Nächte (Tages-Streifen) — bewusst OHNE
-  // Verfügbarkeitsprüfung, nur Visualisierung der gewählten Spanne.
+  // Aufenthalts-Planer / Anfrage-Mappe (index.html): Zimmer-Foto-Karte +
+  // Anreise/Abreise + Zusatzwünsche ergeben live eine Beispiel-Ansicht der
+  // Nächte (Tages-Streifen) und eine Mappe-Zusammenfassung — bewusst OHNE
+  // Verfügbarkeitsprüfung, nur Visualisierung der gewählten Auswahl.
   const planer = document.querySelector('[data-planer]');
   if (planer) {
-    const pillen = [...planer.querySelectorAll('[data-planer-zimmer]')];
+    const zimmerKarten = [...planer.querySelectorAll('[data-mappe-zimmer]')];
+    const wunschFelder = [...planer.querySelectorAll('[data-mappe-wunsch]')];
     const anreiseFeld = planer.querySelector('[data-planer-anreise]');
     const abreiseFeld = planer.querySelector('[data-planer-abreise]');
     const text = planer.querySelector('[data-planer-text]');
     const naechteBox = planer.querySelector('[data-planer-naechte]');
     const cta = planer.querySelector('[data-planer-cta]');
+    const mappeZimmerName = planer.querySelector('[data-mappe-zimmer-name]');
+    const mappeZeitraum = planer.querySelector('[data-mappe-zeitraum]');
+    const mappeWuenscheListe = planer.querySelector('[data-mappe-wuensche-liste]');
 
     const zimmerNamenPlaner = {
       einzelzimmer: 'Einzelzimmer',
@@ -33,7 +38,10 @@
     };
     const wochentage = ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'];
 
-    let zimmerAktiv = 'einzelzimmer';
+    const state = {
+      zimmer: 'einzelzimmer',
+      wuensche: [],
+    };
 
     const heute = new Date();
     const heuteWert = [
@@ -44,9 +52,22 @@
     if (anreiseFeld) anreiseFeld.min = heuteWert;
     if (abreiseFeld) abreiseFeld.min = heuteWert;
 
+    // yyyy-mm-dd → dd.mm.yyyy (reine Textformatierung, wie in der Anfrage-Demo).
+    const formatKurzDatum = (wert) => {
+      const [jahr, monat, tag] = wert.split('-');
+      return `${tag}.${monat}.${jahr}`;
+    };
+
     const aktualisieren = () => {
       const anreiseWert = anreiseFeld?.value;
       const abreiseWert = abreiseFeld?.value;
+
+      if (mappeZimmerName) mappeZimmerName.textContent = zimmerNamenPlaner[state.zimmer];
+      if (mappeWuenscheListe) {
+        mappeWuenscheListe.textContent = state.wuensche.length
+          ? state.wuensche.join('; ')
+          : 'Keine ausgewählt.';
+      }
 
       if (!anreiseWert || !abreiseWert || abreiseWert <= anreiseWert) {
         if (text) {
@@ -56,6 +77,9 @@
           naechteBox.hidden = true;
           naechteBox.innerHTML = '';
         }
+        if (mappeZeitraum) {
+          mappeZeitraum.textContent = 'Wähle Anreise und Abreise, um deinen Zeitraum zu sehen.';
+        }
         if (cta) cta.setAttribute('aria-disabled', 'true');
         return;
       }
@@ -63,10 +87,10 @@
       const anreiseDatum = new Date(`${anreiseWert}T00:00:00`);
       const abreiseDatum = new Date(`${abreiseWert}T00:00:00`);
       const naechteAnzahl = Math.round((abreiseDatum - anreiseDatum) / (24 * 60 * 60 * 1000));
+      const naechteWort = naechteAnzahl === 1 ? 'Nacht' : 'Nächte';
 
       if (text) {
-        text.textContent =
-          `${naechteAnzahl} ${naechteAnzahl === 1 ? 'Nacht' : 'Nächte'} im ${zimmerNamenPlaner[zimmerAktiv]}.`;
+        text.textContent = `${naechteAnzahl} ${naechteWort} im ${zimmerNamenPlaner[state.zimmer]}.`;
       }
 
       if (naechteBox) {
@@ -84,23 +108,39 @@
         naechteBox.hidden = false;
       }
 
+      if (mappeZeitraum) {
+        mappeZeitraum.textContent =
+          `${formatKurzDatum(anreiseWert)} – ${formatKurzDatum(abreiseWert)} · ${naechteAnzahl} ${naechteWort}`;
+      }
+
       if (cta) {
         cta.removeAttribute('aria-disabled');
-        cta.setAttribute(
-          'href',
-          `anfrage.html?zimmer=${zimmerAktiv}&anreise=${anreiseWert}&abreise=${abreiseWert}`,
-        );
+        const ctaParameter = new URLSearchParams({
+          zimmer: state.zimmer,
+          anreise: anreiseWert,
+          abreise: abreiseWert,
+        });
+        if (state.wuensche.length) ctaParameter.set('wuensche', state.wuensche.join('; '));
+        cta.setAttribute('href', `anfrage.html?${ctaParameter.toString()}`);
       }
     };
 
-    pillen.forEach((pille) => {
-      pille.addEventListener('click', () => {
-        pillen.forEach((p) => p.classList.remove('is-aktiv'));
-        pille.classList.add('is-aktiv');
-        zimmerAktiv = pille.dataset.planerZimmer;
+    zimmerKarten.forEach((karte) => {
+      karte.addEventListener('click', () => {
+        zimmerKarten.forEach((k) => k.setAttribute('aria-pressed', 'false'));
+        karte.setAttribute('aria-pressed', 'true');
+        state.zimmer = karte.dataset.mappeZimmer;
         aktualisieren();
       });
     });
+
+    wunschFelder.forEach((feld) => {
+      feld.addEventListener('change', () => {
+        state.wuensche = wunschFelder.filter((f) => f.checked).map((f) => f.value);
+        aktualisieren();
+      });
+    });
+
     anreiseFeld?.addEventListener('change', aktualisieren);
     abreiseFeld?.addEventListener('change', aktualisieren);
 
@@ -132,6 +172,17 @@
   if (abreiseParam) {
     const abreiseFeld = form.querySelector('#abreise');
     if (abreiseFeld) abreiseFeld.value = abreiseParam;
+  }
+
+  // Zusatzwünsche aus ?wuensche= an die Nachricht anhängen (Link aus der
+  // Anfrage-Mappe) — bleiben ausdrücklich als unverbindlicher Hinweis erkennbar.
+  const wuenscheParam = parameter.get('wuensche');
+  if (wuenscheParam) {
+    const nachrichtFeld = form.querySelector('#nachricht');
+    if (nachrichtFeld) {
+      const zusatz = `Wünsche (keine Zusage): ${wuenscheParam}`;
+      nachrichtFeld.value = nachrichtFeld.value ? `${nachrichtFeld.value}\n\n${zusatz}` : zusatz;
+    }
   }
 
   const fehler = form.querySelector('[data-fehler]');

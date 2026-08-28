@@ -129,19 +129,31 @@
     if (option) umfangFeld.value = umfangWunsch;
   }
 
-  // Wunschtermin: Minimum ist heute (lokales Datum, Format YYYY-MM-DD).
+  // Lokales Datum als YYYY-MM-DD (für <input type="date"> und die Schnellwahl-Chips).
+  const toISO = (datum) =>
+    [
+      datum.getFullYear(),
+      String(datum.getMonth() + 1).padStart(2, '0'),
+      String(datum.getDate()).padStart(2, '0'),
+    ].join('-');
+
+  // Wunschtermin: Minimum ist heute.
   const datumFeld = form.querySelector('#datum');
   const heute = new Date();
-  const heuteWert = [
-    heute.getFullYear(),
-    String(heute.getMonth() + 1).padStart(2, '0'),
-    String(heute.getDate()).padStart(2, '0'),
-  ].join('-');
+  const heuteWert = toISO(heute);
   datumFeld.min = heuteWert;
 
   const fehler = form.querySelector('[data-fehler]');
-  const bestaetigung = document.querySelector('[data-bestaetigung]');
-  const zusammenfassung = document.querySelector('[data-zusammenfassung]');
+  const bestellBestaetigung = document.querySelector('[data-bestell-bestaetigung]');
+  const bestellNummerFeld = document.querySelector('[data-bestell-nummer]');
+  const zfAnlass = document.querySelector('[data-zf-anlass]');
+  const zfStil = document.querySelector('[data-zf-stil]');
+  const zfUmfang = document.querySelector('[data-zf-umfang]');
+  const zfAbholung = document.querySelector('[data-zf-abholung]');
+  const zfGruss = document.querySelector('[data-zf-gruss]');
+  const zfKontakt = document.querySelector('[data-zf-kontakt]');
+  const zfFoto = document.querySelector('[data-zf-foto]');
+  const ersteFieldset = form.querySelector('fieldset');
   const fotoInput = form.querySelector('#fotos');
   const fotoListe = form.querySelector('[data-foto-liste]');
 
@@ -175,6 +187,58 @@
     telefon: 'Uhrzeit am Telefon',
   };
 
+  // --- Grußkarten-Live-Vorschau: der getippte Text erscheint sofort auf der Beispiel-Karte. ---
+  const KARTE_PLATZHALTER = 'Ihr Grußtext erscheint hier';
+  const grussFeld = form.querySelector('#gruss');
+  const karteText = document.querySelector('[data-karte-text]');
+  const karteAktualisieren = () => {
+    if (!karteText) return;
+    const text = grussFeld.value.trim();
+    karteText.textContent = text === '' ? KARTE_PLATZHALTER : text;
+    karteText.classList.toggle('ist-platzhalter', text === '');
+  };
+  if (grussFeld) grussFeld.addEventListener('input', karteAktualisieren);
+
+  // --- Datum-Schnellwahl (03 Abholung): drei Chips setzen den Wunschtermin ohne Tippen. ---
+  const schnellwahlKnoepfe = [
+    ...document.querySelectorAll('[data-datum-schnellwahl] [data-schnellwahl]'),
+  ];
+  // „Nächster Samstag" liegt immer in der Zukunft — ist heute bereits Samstag, zählt der
+  // darauffolgende (sonst würde die Chip-Auswahl scheinbar nichts verändern).
+  const naechsterSamstag = (basis) => {
+    const ziel = new Date(basis);
+    const tageBisSamstag = (6 - ziel.getDay() + 7) % 7 || 7;
+    ziel.setDate(ziel.getDate() + tageBisSamstag);
+    return ziel;
+  };
+  const schnellwahlZiel = {
+    morgen: () => {
+      const ziel = new Date(heute);
+      ziel.setDate(ziel.getDate() + 1);
+      return ziel;
+    },
+    uebermorgen: () => {
+      const ziel = new Date(heute);
+      ziel.setDate(ziel.getDate() + 2);
+      return ziel;
+    },
+    samstag: () => naechsterSamstag(heute),
+  };
+  const chipsZuruecksetzen = () => {
+    for (const knopf of schnellwahlKnoepfe) knopf.setAttribute('aria-pressed', 'false');
+  };
+  for (const knopf of schnellwahlKnoepfe) {
+    knopf.addEventListener('click', () => {
+      const berechnen = schnellwahlZiel[knopf.dataset.schnellwahl];
+      if (!berechnen) return;
+      datumFeld.value = toISO(berechnen());
+      chipsZuruecksetzen();
+      knopf.setAttribute('aria-pressed', 'true');
+    });
+  }
+  // Manuelles Ändern des Datumsfelds (Tippen oder Kalender-Picker) hebt die Chip-Markierung auf.
+  datumFeld.addEventListener('input', chipsZuruecksetzen);
+
   // Foto-Attrappe: Dateinamen NUR clientseitig anzeigen, nichts übertragen.
   const fotoAnzeige = () => {
     const dateien = [...(fotoInput.files ?? [])];
@@ -187,6 +251,10 @@
     }
   };
   fotoInput.addEventListener('change', fotoAnzeige);
+
+  // Beispiel-Bestellnummern ab BV-2026-101 — der Zähler bleibt über einen Neustart hinweg
+  // erhalten (die zweite Demo-Anfrage in derselben Sitzung bekommt BV-2026-102).
+  let bestellZaehler = 100;
 
   form.addEventListener('submit', (ereignis) => {
     ereignis.preventDefault();
@@ -230,27 +298,38 @@
         ? 'kein Inspirationsfoto'
         : `${fotoAnzahl} ${fotoAnzahl === 1 ? 'Foto' : 'Fotos'} ausgewählt — nicht übertragen`;
     const [jahr, monat, tag] = datum.split('-');
-    if (zusammenfassung) {
-      zusammenfassung.textContent =
-        `Demo-Zusammenfassung: ${anlassNamen[anlass?.value] ?? 'Anlass'} · ` +
-        `${stilNamen[stil?.value] ?? 'Farbwelt'} · ${umfangNamen[umfang] ?? 'Umfang'} · ` +
-        `Abholung ${tag}.${monat}.${jahr}, ${uhrzeitNamen[uhrzeit] ?? 'Uhrzeit'} · ` +
-        `${vorname} ${nachname} · Grußkarte: ${gruss ? 'ja' : 'nein'} · ${fotoText}`;
-    }
+    const abholungText = `${tag}.${monat}.${jahr}, ${uhrzeitNamen[uhrzeit] ?? 'Uhrzeit'}`;
+
+    bestellZaehler += 1;
+    const bestellNummer = `BV-2026-${bestellZaehler}`;
+
+    // Wizard-Regel: erst das Formular verstecken (kein Doppel-Abschluss — der Submit-Button
+    // verschwindet mit ihm), dann die Bestätigung zeigen, DANACH befüllen, zuletzt fokussieren.
     form.hidden = true;
-    if (bestaetigung) {
-      bestaetigung.hidden = false;
-      bestaetigung.scrollIntoView({ block: 'start' });
+    if (bestellBestaetigung) {
+      bestellBestaetigung.hidden = false;
+      if (bestellNummerFeld) bestellNummerFeld.textContent = bestellNummer;
+      if (zfAnlass) zfAnlass.textContent = anlassNamen[anlass?.value] ?? 'Anlass';
+      if (zfStil) zfStil.textContent = stilNamen[stil?.value] ?? 'Farbwelt';
+      if (zfUmfang) zfUmfang.textContent = umfangNamen[umfang] ?? 'Umfang';
+      if (zfAbholung) zfAbholung.textContent = abholungText;
+      if (zfGruss) zfGruss.textContent = gruss ? 'ja' : 'nein';
+      if (zfKontakt) zfKontakt.textContent = `${vorname} ${nachname}`;
+      if (zfFoto) zfFoto.textContent = fotoText;
+      bestellBestaetigung.focus();
     }
   });
 
   const neustart = document.querySelector('[data-neustart]');
   if (neustart) {
     neustart.addEventListener('click', () => {
-      if (bestaetigung) bestaetigung.hidden = true;
+      if (bestellBestaetigung) bestellBestaetigung.hidden = true;
       form.hidden = false;
       form.reset();
       fotoAnzeige();
+      chipsZuruecksetzen();
+      karteAktualisieren();
+      if (ersteFieldset) ersteFieldset.focus();
       window.scrollTo({ top: 0 });
     });
   }

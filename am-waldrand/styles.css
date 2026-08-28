@@ -635,29 +635,97 @@ figcaption {
   margin: 0.3rem 0 1.2rem;
 }
 
-.planer-zimmer-wahl {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1.3rem;
+/* Zimmer-Foto-Karten der Anfrage-Mappe (eckige Inset-Bilder, Chesa-Stil) */
+.mappe-zimmer {
+  display: grid;
+  gap: 0.6rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-bottom: 1.4rem;
 }
 
-.planer-pille {
-  min-height: 44px;
-  padding: 0.5rem 1rem;
-  border-radius: 999px;
-  border: 1px solid var(--linie);
-  background: transparent;
-  color: var(--rinde);
-  font-family: var(--font);
-  font-size: 0.85rem;
+.mappe-zimmer-karte {
+  background: var(--birke);
+  border: 2px solid transparent;
   cursor: pointer;
+  display: grid;
+  font-family: var(--font);
+  gap: 0;
+  padding: 0;
+  text-align: center;
+  transition: border-color 160ms ease;
 }
-.planer-pille:hover { border-color: var(--tanne); }
-.planer-pille.is-aktiv {
-  background: var(--tanne);
+
+.mappe-zimmer-karte img {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  width: 100%;
+}
+
+.mappe-zimmer-karte span {
+  color: var(--rinde);
+  font-family: var(--serif);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  line-height: 1.3;
+  padding: 0.5rem 0.3rem;
+  text-transform: uppercase;
+}
+
+.mappe-zimmer-karte:hover {
+  border-color: var(--moos);
+}
+
+.mappe-zimmer-karte[aria-pressed="true"] {
   border-color: var(--tanne);
-  color: var(--birke);
+}
+
+.mappe-zimmer-karte[aria-pressed="true"] span {
+  color: var(--tanne);
+}
+
+@media (max-width: 540px) {
+  .mappe-zimmer {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Zusatzwünsche-Checkboxen — ausdrücklich unverbindlich, keine Zusage */
+.mappe-wuensche {
+  border: 0;
+  margin: 1.3rem 0 0;
+  padding: 0;
+}
+
+.mappe-wuensche legend {
+  color: var(--holz-text);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+  padding: 0;
+  text-transform: uppercase;
+}
+
+.mappe-wunsch {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  gap: 0.6rem;
+  min-height: 44px;
+  padding-block: 0.25rem;
+}
+
+.mappe-wunsch input {
+  accent-color: var(--tanne);
+  flex: none;
+  height: 1.15rem;
+  width: 1.15rem;
+}
+
+.mappe-wunsch span {
+  font-size: 0.87rem;
+  line-height: 1.4;
 }
 
 .planer-daten {
@@ -714,6 +782,57 @@ figcaption {
   font-size: 0.78rem;
   font-style: italic;
   margin-bottom: 1.1rem;
+}
+
+/* Mappe-Zusammenfassung: hell, gerahmt, Zeilen Zimmer/Zeitraum/Wünsche */
+.mappe-karte {
+  background: var(--karte);
+  border: 1px solid var(--linie);
+  border-radius: 6px;
+  margin-bottom: 1.2rem;
+  padding: 1rem 1.1rem;
+}
+
+.mappe-karte-titel {
+  color: var(--tanne);
+  font-family: var(--serif);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  margin-bottom: 0.65rem;
+  text-transform: uppercase;
+}
+
+.mappe-zeilen {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.mappe-zeile {
+  display: grid;
+  gap: 0.1rem 0.8rem;
+  grid-template-columns: 6rem 1fr;
+}
+
+.mappe-zeile dt {
+  color: var(--holz-text);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.mappe-zeile dd {
+  color: var(--rinde);
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin: 0;
+}
+
+@media (max-width: 420px) {
+  .mappe-zeile {
+    grid-template-columns: 1fr;
+  }
 }
 
 .planer-vorschau .card-cta {
@@ -1164,6 +1283,8 @@ figcaption {
 .zimmer-wahl input:focus-visible,
 .card-cta:focus-visible,
 .thema-kachel:focus-visible,
+.mappe-zimmer-karte:focus-visible,
+.mappe-wunsch input:focus-visible,
 a:focus-visible {
   outline: 3px solid var(--moos);
   outline-offset: 2px;

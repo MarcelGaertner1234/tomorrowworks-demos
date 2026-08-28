@@ -107,6 +107,10 @@
               <div class="ring-konfigurator-eingabe">
                 <p class="eyebrow">Zum Ausprobieren</p>
                 <h3>Stellen Sie sich Ihre Trauringe vor</h3>
+                <div class="ansicht-toggle" data-ansicht-wahl role="group" aria-label="Ansicht wählen">
+                  <button type="button" class="ring-pille is-aktiv" data-ansicht="einzel" aria-pressed="true">Ein Ring</button>
+                  <button type="button" class="ring-pille" data-ansicht="paar" aria-pressed="false">Trauring-Paar</button>
+                </div>
                 <fieldset>
                   <legend>Material</legend>
                   <button type="button" class="ring-pille is-aktiv" data-ring-material="gelbgold">Gelbgold</button>
@@ -127,10 +131,36 @@
                 </fieldset>
               </div>
               <div class="ring-konfigurator-vorschau">
-                <div class="ring-vorschau-huelle">
-                  <div class="ring-vorschau ist-poliert" data-ring-vorschau aria-hidden="true"></div>
+                <div class="ring-tabs" data-ring-tabs role="group" aria-label="Ring wählen" hidden>
+                  <button type="button" class="ring-pille is-aktiv" data-ring-tab="1" aria-pressed="true">Ring 1</button>
+                  <button type="button" class="ring-pille" data-ring-tab="2" aria-pressed="false">Ring 2</button>
+                </div>
+                <div class="ring-vorschauen">
+                  <div class="ring-vorschau-huelle">
+                    <div class="ring-vorschau ist-poliert" data-ring-vorschau="1" aria-hidden="true">
+                      <span class="ring-gravur" data-ring-gravur="1" aria-hidden="true"></span>
+                    </div>
+                  </div>
+                  <div class="ring-vorschau-huelle ring-vorschau-2" hidden>
+                    <div class="ring-vorschau" data-ring-vorschau="2" aria-hidden="true">
+                      <span class="ring-gravur" data-ring-gravur="2" aria-hidden="true"></span>
+                    </div>
+                  </div>
                 </div>
                 <p class="ring-vorschau-hinweis">Stilisierte Vorschau — kein Foto des echten Rings.</p>
+
+                <div class="gravur-feld" data-gravur-feld="1">
+                  <label for="gravur-1">Innengravur (Beispiel)</label>
+                  <input id="gravur-1" data-gravur-input="1" type="text" maxlength="20" autocomplete="off" aria-describedby="gravur-1-zaehler">
+                  <span class="gravur-zaehler" id="gravur-1-zaehler" data-gravur-zaehler="1" aria-live="polite">20 Zeichen frei</span>
+                </div>
+                <div class="gravur-feld" data-gravur-feld="2" hidden>
+                  <label for="gravur-2">Innengravur Ring 2 (Beispiel)</label>
+                  <input id="gravur-2" data-gravur-input="2" type="text" maxlength="20" autocomplete="off" aria-describedby="gravur-2-zaehler">
+                  <span class="gravur-zaehler" id="gravur-2-zaehler" data-gravur-zaehler="2" aria-live="polite">20 Zeichen frei</span>
+                </div>
+                <p class="gravur-hinweis">Stilisierte Vorschau — die echte Gravur gestalten wir gemeinsam im Atelier.</p>
+
                 <p data-ring-beschreibung>Gelbgold, mittlere Breite, poliert — diese Kombination sprechen wir gerne im Erstgespräch mit Ihnen durch.</p>
                 <a class="card-cta" data-ring-cta href="termin.html?anlass=trauringe&amp;wunsch=Gelbgold%2C%20mittlere%20Breite%2C%20poliert">Diese Kombination besprechen</a>
               </div>

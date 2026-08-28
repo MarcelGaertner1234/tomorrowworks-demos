@@ -185,12 +185,26 @@
           <div class="planer-eingabe">
             <p class="eyebrow">Zum Ausprobieren</p>
             <h3>Sieh dir deinen Aufenthalt an</h3>
-            <div class="planer-zimmer-wahl" role="group" aria-label="Zimmertyp wählen">
-              <button type="button" class="planer-pille is-aktiv" data-planer-zimmer="einzelzimmer">Einzelzimmer</button>
-              <button type="button" class="planer-pille" data-planer-zimmer="doppelzimmer">Doppelzimmer</button>
-              <button type="button" class="planer-pille" data-planer-zimmer="familienzimmer">Familienzimmer</button>
-              <button type="button" class="planer-pille" data-planer-zimmer="chalet">Chalet</button>
+            <!-- MAPPE-ZIMMER:START -->
+            <div class="mappe-zimmer" role="group" aria-label="Zimmer wählen (Beispiel)">
+              <button type="button" class="mappe-zimmer-karte" data-mappe-zimmer="einzelzimmer" aria-pressed="true">
+                <img src="assets/zimmer-einzel.jpg" alt="" width="1600" height="1200" loading="lazy">
+                <span>Einzelzimmer</span>
+              </button>
+              <button type="button" class="mappe-zimmer-karte" data-mappe-zimmer="doppelzimmer" aria-pressed="false">
+                <img src="assets/zimmer-doppel.jpg" alt="" width="1600" height="1067" loading="lazy">
+                <span>Doppelzimmer</span>
+              </button>
+              <button type="button" class="mappe-zimmer-karte" data-mappe-zimmer="familienzimmer" aria-pressed="false">
+                <img src="assets/zimmer-familie.jpg" alt="" width="1600" height="1067" loading="lazy">
+                <span>Familienzimmer</span>
+              </button>
+              <button type="button" class="mappe-zimmer-karte" data-mappe-zimmer="chalet" aria-pressed="false">
+                <img src="assets/zimmer-chalet.jpg" alt="" width="1600" height="1054" loading="lazy">
+                <span>Chalet</span>
+              </button>
             </div>
+            <!-- MAPPE-ZIMMER:END -->
             <div class="planer-daten">
               <div class="feld">
                 <label for="planer-anreise">Anreise</label>
@@ -201,11 +215,47 @@
                 <input id="planer-abreise" type="date" data-planer-abreise>
               </div>
             </div>
+            <!-- MAPPE-WUENSCHE:START -->
+            <fieldset class="mappe-wuensche" data-mappe-wuensche>
+              <legend>Wünsche — keine Zusage</legend>
+              <label class="mappe-wunsch">
+                <input type="checkbox" data-mappe-wunsch value="Zimmer mit Küche, Waschmaschine &amp; Trockner">
+                <span>Zimmer mit Küche, Waschmaschine &amp; Trockner</span>
+              </label>
+              <label class="mappe-wunsch">
+                <input type="checkbox" data-mappe-wunsch value="Stellplatz fürs Bike (Flowtrail-Service)">
+                <span>Stellplatz fürs Bike (Flowtrail-Service)</span>
+              </label>
+              <label class="mappe-wunsch">
+                <input type="checkbox" data-mappe-wunsch value="Zugang zur Lade-Station (Auto oder Rad)">
+                <span>Zugang zur Lade-Station (Auto oder Rad)</span>
+              </label>
+            </fieldset>
+            <!-- MAPPE-WUENSCHE:END -->
           </div>
           <div class="planer-vorschau">
             <p data-planer-text>Wähle Anreise und Abreise, um deinen Aufenthalt zu sehen.</p>
             <div class="planer-naechte" data-planer-naechte hidden></div>
             <p class="planer-hinweis">Beispiel-Ansicht deines Aufenthalts — keine Verfügbarkeitsprüfung. Wir bestätigen deine Wunschtermine im Anschluss persönlich.</p>
+            <!-- MAPPE-KARTE:START -->
+            <div class="mappe-karte" data-anfrage-mappe>
+              <p class="mappe-karte-titel">Deine Anfrage-Mappe (Beispiel)</p>
+              <dl class="mappe-zeilen">
+                <div class="mappe-zeile">
+                  <dt>Zimmer</dt>
+                  <dd data-mappe-zimmer-name>Einzelzimmer</dd>
+                </div>
+                <div class="mappe-zeile">
+                  <dt>Zeitraum</dt>
+                  <dd data-mappe-zeitraum>Wähle Anreise und Abreise, um deinen Zeitraum zu sehen.</dd>
+                </div>
+                <div class="mappe-zeile">
+                  <dt>Wünsche</dt>
+                  <dd data-mappe-wuensche-liste>Keine ausgewählt.</dd>
+                </div>
+              </dl>
+            </div>
+            <!-- MAPPE-KARTE:END -->
             <a class="card-cta" data-planer-cta href="anfrage.html?zimmer=einzelzimmer" aria-disabled="true">Diesen Aufenthalt anfragen</a>
           </div>
         </div>

@@ -375,6 +375,20 @@ h3 { font-size: 1.15rem; letter-spacing: 0.06em; text-transform: uppercase; }
   padding: 0;
 }
 
+.ansicht-toggle {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.ring-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 1.1rem;
+}
+.ring-tabs[hidden] { display: none; }
+
 .ring-pille {
   min-height: 44px;
   padding: 0.5rem 1rem;
@@ -404,12 +418,21 @@ h3 { font-size: 1.15rem; letter-spacing: 0.06em; text-transform: uppercase; }
   text-align: center;
 }
 
+.ring-vorschauen {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
 .ring-vorschau-huelle {
   width: 150px;
   height: 150px;
   position: relative;
-  margin-bottom: 1rem;
 }
+.ring-vorschau-2[hidden] { display: none; }
 
 .ring-vorschau {
   --ring-farbe: linear-gradient(135deg, #f6d987, #b8860b);
@@ -442,6 +465,26 @@ h3 { font-size: 1.15rem; letter-spacing: 0.06em; text-transform: uppercase; }
   mix-blend-mode: soft-light;
 }
 
+.ring-gravur {
+  position: absolute;
+  inset: var(--ring-inset);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 50%;
+  padding: 0 0.3rem;
+  font-family: var(--serif);
+  font-size: 0.6rem;
+  line-height: 1.05;
+  letter-spacing: 0.03em;
+  text-align: center;
+  color: var(--gold-bright);
+  pointer-events: none;
+}
+.ring-gravur.hat-text { background: var(--emerald-deep); }
+
 .ring-vorschau-hinweis {
   color: var(--ink-soft);
   font-size: 0.72rem;
@@ -449,7 +492,46 @@ h3 { font-size: 1.15rem; letter-spacing: 0.06em; text-transform: uppercase; }
   margin-bottom: 1rem;
 }
 
-.ring-konfigurator-vorschau p:not(.ring-vorschau-hinweis) {
+.gravur-feld {
+  display: grid;
+  gap: 0.3rem;
+  width: 100%;
+  max-width: 16rem;
+  margin: 0 0 0.7rem;
+  text-align: left;
+}
+.gravur-feld[hidden] { display: none; }
+.gravur-feld label {
+  font-size: 0.74rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.gravur-feld input {
+  font: inherit;
+  min-height: 44px;
+  border: 1px solid var(--ink-soft);
+  background: #fffdf8;
+  color: var(--ink);
+  padding: 0.6rem 0.8rem;
+}
+.gravur-feld input:focus {
+  outline: 2px solid var(--emerald);
+  outline-offset: 1px;
+}
+.gravur-zaehler {
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+}
+
+.gravur-hinweis {
+  color: var(--ink-soft);
+  font-size: 0.72rem;
+  font-style: italic;
+  margin: 0 0 1.2rem;
+}
+
+.ring-konfigurator-vorschau p:not(.ring-vorschau-hinweis):not(.gravur-hinweis) {
   color: var(--ink);
   margin-bottom: 1.2rem;
 }

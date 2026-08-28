@@ -58,7 +58,7 @@
         </div>
 
         <form id="anfrage-form" novalidate>
-          <fieldset>
+          <fieldset tabindex="-1">
             <legend>01 · Der Anlass</legend>
             <div class="radio-karten">
               <label class="radio-karte">
@@ -141,7 +141,12 @@
               <div class="feld">
                 <label for="datum">Wunschtermin (Abholung)</label>
                 <input id="datum" name="datum" type="date">
-                <p class="feld-hinweis">Beispielangabe genügt — es wird nichts gespeichert.</p>
+                <div class="schnellwahl-pillen" data-datum-schnellwahl>
+                  <button type="button" class="chip" data-schnellwahl="morgen" aria-pressed="false">Morgen</button>
+                  <button type="button" class="chip" data-schnellwahl="uebermorgen" aria-pressed="false">Übermorgen</button>
+                  <button type="button" class="chip" data-schnellwahl="samstag" aria-pressed="false">Samstag</button>
+                </div>
+                <p class="feld-hinweis">Beispielangabe genügt — es wird nichts gespeichert. Schnellwahl oder eigenes Datum.</p>
               </div>
               <div class="feld">
                 <label for="uhrzeit">Uhrzeit</label>
@@ -163,6 +168,22 @@
               <textarea id="gruss" name="gruss" rows="3"></textarea>
               <p class="feld-hinweis">Kommt von Hand auf die Karte · wird in dieser Demo nicht gespeichert.</p>
             </div>
+            <figure class="karten-vorschau" data-karten-vorschau>
+              <div class="karte-flaeche">
+                <svg class="karte-ornament" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round">
+                    <path d="M12 12V3.5"/>
+                    <path d="M12 12l7.4-4.3"/>
+                    <path d="M12 12l7.4 4.3"/>
+                    <path d="M12 12l-7.4 4.3"/>
+                    <path d="M12 12L4.6 7.7"/>
+                  </g>
+                  <circle cx="12" cy="12" r="2.5" fill="var(--gruen)" stroke="none"/>
+                </svg>
+                <p class="karte-text ist-platzhalter" data-karte-text>Ihr Grußtext erscheint hier</p>
+              </div>
+              <figcaption class="small">Beispiel-Karte — Gestaltung im Laden gemeinsam.</figcaption>
+            </figure>
             <div class="feld dropzone">
               <span class="dropzone-hinweis">Demo — Fotos werden nicht übertragen</span>
               <label for="fotos">Inspirationsfoto anhängen</label>
@@ -202,16 +223,49 @@
           </div>
         </form>
 
-        <section class="bestaetigung" data-bestaetigung hidden aria-label="Bestätigung">
-          <h2>Ihre Demo-Anfrage steht</h2>
+        <section class="bestell-bestaetigung" data-bestell-bestaetigung hidden tabindex="-1" aria-label="Bestätigung">
+          <span class="demo-chip">Beispiel-Bestellung</span>
+          <h2>Ihre Demo-Bestellung ist vorgemerkt</h2>
+          <p class="bestell-nummer">
+            Bestellnummer <strong data-bestell-nummer></strong>
+          </p>
           <p>
             So würde Ihre Strauß-Anfrage beim Laden ankommen — in dieser Konzeptvorschau
             wurde sie nur angezeigt:
             <strong>es wurden keine Daten gespeichert oder versendet.</strong>
           </p>
-          <p class="zusammenfassung" data-zusammenfassung></p>
+          <dl class="bestell-zusammenfassung" data-bestell-zusammenfassung>
+            <div class="bestell-zeile">
+              <dt>Anlass</dt>
+              <dd data-zf-anlass></dd>
+            </div>
+            <div class="bestell-zeile">
+              <dt>Farbwelt</dt>
+              <dd data-zf-stil></dd>
+            </div>
+            <div class="bestell-zeile">
+              <dt>Umfang</dt>
+              <dd data-zf-umfang></dd>
+            </div>
+            <div class="bestell-zeile">
+              <dt>Abholung</dt>
+              <dd data-zf-abholung></dd>
+            </div>
+            <div class="bestell-zeile">
+              <dt>Grußkarte</dt>
+              <dd data-zf-gruss></dd>
+            </div>
+            <div class="bestell-zeile">
+              <dt>Kontakt</dt>
+              <dd data-zf-kontakt></dd>
+            </div>
+            <div class="bestell-zeile">
+              <dt>Inspirationsfoto</dt>
+              <dd data-zf-foto></dd>
+            </div>
+          </dl>
           <div class="planer-aktionen">
-            <button class="btn btn--kontur" type="button" data-neustart>Neue Demo-Anfrage</button>
+            <button class="btn btn--kontur" type="button" data-neustart>Neue Anfrage ansehen</button>
             <a class="btn btn--voll" href="index.html">← Zur Homepage</a>
           </div>
         </section>

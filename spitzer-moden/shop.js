@@ -193,6 +193,25 @@ const leereWarenkorb = () => {
   }
 };
 
+// Nummernkreis Beispiel-Bestellnummer (SM-2026-201, 202, … — Kassen-Abschluss, Stufe 3), auf
+// Modulebene wie WARENKORB_KEY oben deklariert, NICHT innerhalb der zweiten IIFE: der Zähler muss
+// über einen Klick auf „Neuer Demo-Warenkorb" (Neustart) hinweg hochzählen, statt bei jedem
+// Durchlauf wieder bei 201 zu starten. Startwert 200 (erste vergebene Nummer also 201). Zusätzlich
+// in sessionStorage gespiegelt (analog WARENKORB_KEY) — sonst würde ein Seitenwechsel
+// shop.html<->warenkorb.html (unvermeidbar, um dem leeren Warenkorb nach Neustart neue Artikel zu
+// geben — diese Seite hat kein eigenes „Artikel hinzufügen") den Zähler zurück auf 200 setzen und
+// zwei Demo-Bestellungen im selben Browser-Tab könnten dieselbe Nummer zeigen.
+const BESTELL_ZAEHLER_KEY = 'spitzer-bestellzaehler';
+let bestellZaehler = 200;
+try {
+  const gespeicherterZaehler = Number(sessionStorage.getItem(BESTELL_ZAEHLER_KEY));
+  if (Number.isFinite(gespeicherterZaehler) && gespeicherterZaehler >= 200) {
+    bestellZaehler = gespeicherterZaehler;
+  }
+} catch {
+  // sessionStorage evtl. nicht verfügbar — Zähler bleibt bei 200 (Start dieser Seitenansicht).
+}
+
 // Shop-Raster + Produktdetail + Mini-Warenkorb-Leiste, läuft nur auf shop.html
 // (dort existiert #produkt-raster).
 (() => {
@@ -446,7 +465,13 @@ const leereWarenkorb = () => {
   const form = document.querySelector('#warenkorb-form');
   const fehler = form?.querySelector('[data-fehler]');
   const bestaetigung = document.querySelector('[data-bestaetigung]');
-  const zusammenfassung = document.querySelector('[data-zusammenfassung]');
+  // Strukturierte Bestätigungs-Blöcke (Kassen-Abschluss, Stufe 3) — ersetzen die frühere einzelne
+  // [data-zusammenfassung]-Fließtext-Zeile; der umschließende [data-zusammenfassung]-Container
+  // selbst braucht keine JS-Referenz mehr, da nur noch seine Kind-Elemente befüllt werden.
+  const bestellNummer = document.querySelector('[data-bestell-nummer]');
+  const bestellAbwicklung = document.querySelector('[data-bestell-abwicklung]');
+  const bestellArtikel = document.querySelector('[data-bestell-artikel]');
+  const bestellSumme = document.querySelector('[data-bestell-summe]');
   const neustart = document.querySelector('[data-neustart]');
 
   // In-Memory-Array dieser IIFE, gespiegelt in sessionStorage über die modulweiten
@@ -564,33 +589,82 @@ const leereWarenkorb = () => {
 
       if (fehler) fehler.hidden = true;
 
-      const anzahl = warenkorb.reduce((summe, zeile) => summe + zeile.menge, 0);
-      const artikelText = warenkorb
-        .map((zeile) => {
-          const produkt = PRODUKTE.find((eintrag) => eintrag.id === zeile.produktId);
-          const name = produkt ? produkt.name : 'Unbekannter Artikel';
-          return `${name} (Größe ${zeile.groesse}, ${zeile.menge}×)`;
-        })
-        .join(', ');
-
-      if (zusammenfassung) {
-        zusammenfassung.textContent =
-          `Demo-Zusammenfassung: ${anzahl} Artikel — ${artikelText} · ` +
-          `Beispiel-Gesamtsumme ${gesamtsumme()} € · ${vorname} ${nachname}`;
+      // Kassen-Abschluss (Stufe 3): alles für die Bestätigung Nötige VOR dem Leeren des
+      // Warenkorbs einsammeln — Beispiel-Bestellnummer vergeben + gespiegelt in sessionStorage
+      // (überlebt so auch einen Seitenwechsel, s. bestellZaehler-Kommentar oben), gewählte
+      // Abwicklung aus dem eigenen Radio-Label lesen (trägt die "(Beispiel)"-Kennzeichnung schon),
+      // Artikel-Schnappschuss aus dem Warenkorb-State + PRODUKTE-Lookup, Summe aus der
+      // bestehenden gesamtsumme()-Logik.
+      bestellZaehler += 1;
+      const bestellNummerWert = `SM-2026-${bestellZaehler}`;
+      try {
+        sessionStorage.setItem(BESTELL_ZAEHLER_KEY, String(bestellZaehler));
+      } catch {
+        // sessionStorage evtl. nicht verfügbar — Zähler bleibt nur für diese Seitenansicht erhalten.
       }
 
-      // Erfolgsfall: Warenkorb + sessionStorage leeren — die Bestätigung zeigt die Zusammenfassung
-      // bereits eingefroren im Text oben, der Warenkorb selbst gilt als „abgeschickt". render()
-      // räumt dabei auch die alten Warenkorb-Zeilen (inkl. ihrer Entfernen-Buttons) aus dem DOM;
-      // das eigene Leer-Zustand-Banner wird direkt danach wieder unterdrückt, damit es nicht
-      // neben der Bestätigung auftaucht.
+      const abwicklungInput = form.querySelector('input[name="abwicklung"]:checked');
+      const abwicklungWert =
+        abwicklungInput?.closest('label')?.textContent.trim().replace(/\s+/g, ' ') ?? '';
+
+      const artikelSchnappschuss = warenkorb.map((zeile) => {
+        const produkt = PRODUKTE.find((eintrag) => eintrag.id === zeile.produktId);
+        return {
+          name: produkt ? produkt.name : 'Unbekannter Artikel',
+          groesse: zeile.groesse,
+          menge: zeile.menge,
+        };
+      });
+      const summeWert = gesamtsumme();
+
+      // Erfolgsfall: Warenkorb + sessionStorage leeren — die Bestätigung zeigt den oben schon
+      // eingefrorenen Schnappschuss, der Warenkorb selbst gilt als „abgeschickt". render() räumt
+      // dabei auch die alten Warenkorb-Zeilen (inkl. ihrer Entfernen-Buttons) aus dem DOM; das
+      // eigene Leer-Zustand-Banner wird direkt danach wieder unterdrückt, damit es nicht neben der
+      // Bestätigung auftaucht.
       leereWarenkorbUndZustand();
       render();
       if (warenkorbLeer) warenkorbLeer.hidden = true;
       form.hidden = true;
+
       if (bestaetigung) {
+        // Wizard-/aria-live-Reihenfolge: erst sichtbar machen, DANN befüllen, DANN den Fokus
+        // dorthin lenken — sonst würden Screenreader/AT den hidden=false-Zustand mit noch leerem
+        // Inhalt ankündigen.
         bestaetigung.hidden = false;
+
+        if (bestellNummer) {
+          bestellNummer.textContent = '';
+          const starkNummer = document.createElement('strong');
+          starkNummer.textContent = 'Beispiel-Bestellnummer';
+          bestellNummer.append(starkNummer, ` ${bestellNummerWert}`);
+        }
+
+        if (bestellAbwicklung) {
+          bestellAbwicklung.textContent = '';
+          const starkAbwicklung = document.createElement('strong');
+          starkAbwicklung.textContent = 'Abwicklung';
+          bestellAbwicklung.append(starkAbwicklung, ` ${abwicklungWert}`);
+        }
+
+        if (bestellArtikel) {
+          bestellArtikel.textContent = '';
+          artikelSchnappschuss.forEach(({ name, groesse, menge }) => {
+            const eintrag = document.createElement('li');
+            eintrag.textContent = `${name} · Größe ${groesse} · Menge ${menge}`;
+            bestellArtikel.append(eintrag);
+          });
+        }
+
+        if (bestellSumme) {
+          bestellSumme.textContent = '';
+          const starkSumme = document.createElement('strong');
+          starkSumme.textContent = 'Beispiel-Gesamtsumme';
+          bestellSumme.append(starkSumme, ` ${summeWert} €`);
+        }
+
         bestaetigung.scrollIntoView({ block: 'start' });
+        bestaetigung.focus();
       }
     });
   }
@@ -599,6 +673,8 @@ const leereWarenkorb = () => {
     neustart.addEventListener('click', () => {
       if (bestaetigung) bestaetigung.hidden = true;
       if (fehler) fehler.hidden = true;
+      // form.reset() setzt auch die Abwicklung-Radiogruppe auf ihren HTML-Default (Abholung,
+      // checked-Attribut auf dem Radio in warenkorb.html) zurück — kein zusätzlicher Code nötig.
       form?.reset();
       leereWarenkorbUndZustand();
       render();
