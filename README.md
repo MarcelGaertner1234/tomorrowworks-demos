@@ -25,5 +25,6 @@ entsprechenden Hinweis-Banner und ist auf `noindex` gestellt).
 - `kompass-umzuege/` — Umzugsunternehmen, Mosbach
 - `rubi/` — Hausmeisterservice, Mosbach
 - `durmus-gebaeudereinigung/` — Gebäudereinigung, Mosbach-Diedesheim
+- `watson-angelika-coach/` — Coaching (Einzelcoaching & Begleitung), Schweiz
 
 Offizielle Website des Studios: https://tomorrowworks-agentur.de
