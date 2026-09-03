@@ -28,6 +28,7 @@ Screenshots eigener Live-Seiten bzw. des eigenen lokalen Demo-Stands (1280×960,
 | arbeiten/mos-kebab.jpg | Eigenwerk: Screenshot des lokalen Demo-Stands `demos/mos-kebab/` (Repo) |
 | arbeiten/rubi.jpg | Eigenwerk: Screenshot des lokalen Demo-Stands `demos/rubi/` (Repo) |
 | arbeiten/durmus-gebaeudereinigung.jpg | Eigenwerk: Screenshot des lokalen Demo-Stands `demos/durmus-gebaeudereinigung/` (Repo) |
+| arbeiten/watson-angelika-coach.jpg | Eigenwerk: Screenshot des lokalen Demo-Stands `watson-angelika-coach/` (Repo), 03.09.2026 |
 
 ## Editorial-Foto (übernommen aus der Demo-Bildwelt, rekomprimiert)
 
