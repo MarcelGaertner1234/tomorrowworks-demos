@@ -534,6 +534,7 @@
         `Termin ${tag}.${monat}.${jahr}, ${zeitfensterNamen[zeitfenster] ?? 'Zeitfenster'} · ` +
         `Zusatzleistungen: ${zusatzText} · ${vorname} ${nachname} · ${fotoText}`;
     }
+    if (!BranchDemo.accept(form, bestaetigung)) return;
     form.hidden = true;
     if (bestaetigung) {
       bestaetigung.hidden = false;

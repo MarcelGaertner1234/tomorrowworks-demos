@@ -11,16 +11,25 @@
     >
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
+    <link rel="stylesheet" href="../assets/demo-ui.css">
+  <link rel="stylesheet" href="../assets/demo-refinements.css">
+  <script src="../assets/demo-ui.js" defer></script>
+  <link rel="stylesheet" href="wow.css">
+  <script src="wow.js" defer></script>
+  <link rel="stylesheet" href="../assets/demo-workflow.css">
+  <script src="../assets/demo-workflow.js"></script>
+</head>
+  <body data-demo="jost-maler">
     <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
 
     <header>
-      <div class="banner">
-        <strong>Design-Entwurf von TOMORROWWORKS</strong> —
-        nicht die offizielle Website von Klaus Jost Maler-, Tapezier- &amp; Gipserbetrieb ·
-        Persönliche Konzeptvorschau
+      <aside class="demo-toolbar" aria-label="Designstudie von TomorrowWorks">
+      <div class="demo-toolbar-label"><strong>TomorrowWorks · Designstudie</strong><span>Keine offizielle Website</span></div>
+      <div class="demo-toolbar-actions">
+        <a href="../projekte.html#designstudien"><span aria-hidden="true">←</span> Alle Demos</a>
+        <details><summary>Hinweis</summary><p>Design-Entwurf von TOMORROWWORKS — nicht die offizielle Website von Klaus Jost Maler-, Tapezier- &amp; Gipserbetrieb · Persönliche Konzeptvorschau</p></details>
       </div>
+    </aside>
       <div class="site-header">
         <div class="site-header-inhalt">
           <a class="wortmarke" href="#inhalt" aria-label="Jost — zur Startseite">
@@ -44,26 +53,23 @@
 
     <main id="inhalt">
       <!-- Hero: Vollbild-Ergebnismotiv + gesperrter Versalien-Claim (Referenz-DNA §3b) -->
-      <section class="hero" aria-label="Einstieg">
-        <img
-          src="assets/hero-arbeit.jpg"
-          alt="Malerarbeit an einer hellen Wand mit Rolle — Beispielfoto"
-          width="1600"
-          height="1000"
-          fetchpriority="high"
-        >
-        <div class="hero-inhalt">
-          <h1 class="hero-titel">Meisterstück.</h1>
-          <p class="hero-sub">
-            Maler-, Tapezier- und Gipserarbeiten in Mosbach — von der Fassade bis zur
-            Stuckdecke, sauber geplant und sorgfältig ausgeführt.
-          </p>
-          <div class="hero-aktionen">
-            <a class="btn btn--voll" href="anfrage.html">Projekt anfragen</a>
-            <a class="btn btn--hell" href="#vorher-nachher">Vorher/Nachher ansehen</a>
-          </div>
+      <section class="transformation-hero" aria-labelledby="transformation-title">
+        <div class="transformation-intro">
+          <h1 id="transformation-title">Neue Farbe.<br>Neues Zuhause.</h1>
+          <div><p>Malerhandwerk in Mosbach. Erleben Sie, was ein neuer Anstrich aus einem Raum macht.</p><a class="btn btn--voll" href="anfrage.html?leistung=innenraum&amp;inspiration=salbei">So ein Projekt anfragen</a></div>
         </div>
-        <span class="hero-credit">Beispielfoto (Symbolbild)</span>
+        <figure class="paint-comparison" data-paint-comparison style="--paint-reveal:52%">
+          <div class="paint-scene">
+            <img src="assets/wow-room-before.webp" alt="Derselbe leere Raum vor dem Anstrich: fleckige beige Wände, Stuck und Parkett — generiertes Beispiel" width="1536" height="1024" fetchpriority="high">
+            <img class="paint-after" src="assets/wow-room-after.webp" alt="Derselbe Raum mit frisch gestrichenen salbeigrünen Wänden und weißem Stuck — generiertes Beispiel" width="1536" height="1024" fetchpriority="high">
+            <span class="paint-state paint-state--after" aria-hidden="true">Nachher</span><span class="paint-state paint-state--before" aria-hidden="true">Vorher</span>
+            <span class="paint-roller" aria-hidden="true"><span class="paint-roller-head"></span><span class="paint-roller-arm"></span><span class="paint-roller-grip"></span></span>
+            <input class="paint-slider" id="paint-slider" type="range" min="0" max="100" value="52" aria-label="Farbrolle ziehen: renovierten Raum freilegen" aria-describedby="paint-hint" aria-valuetext="52 Prozent renovierter Raum sichtbar">
+          </div>
+          <div class="paint-controls"><p id="paint-hint">Die Rolle ziehen. Den Unterschied sehen.</p><div role="group" aria-label="Vergleichsansicht"><button type="button" data-paint-position="0">Vorher</button><button type="button" data-paint-position="52" aria-pressed="true">Vergleichen</button><button type="button" data-paint-position="100">Nachher</button></div></div>
+          <figcaption>KI-generiertes Raumbeispiel · keine Referenzarbeit von Jost</figcaption>
+        </figure>
+        <div class="transformation-follow"><span><span class="paint-swatch" aria-hidden="true"></span>Farbidee: Salbeigrün</span><a href="#farbstudio">Weitere Farben im Farbstudio entdecken <span aria-hidden="true">↗</span></a></div>
       </section>
 
       <!-- Intro: zentrierte schmale Textspalte -->

@@ -11,28 +11,26 @@
     >
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
-    <div class="intro-overlay" aria-hidden="true">
-      <svg class="intro-kompass" viewBox="0 0 100 100" width="88" height="88" focusable="false">
-        <circle cx="50" cy="50" r="44" fill="none" stroke="rgba(217,154,91,.4)" stroke-width="1.4"></circle>
-        <g class="intro-nadel">
-          <path d="M50,12 L59,50 L50,50 Z" fill="var(--kupfer)"></path>
-          <path d="M50,88 L41,50 L50,50 Z" fill="rgba(246,243,238,.32)"></path>
-        </g>
-        <circle cx="50" cy="50" r="4.5" fill="var(--papier)"></circle>
-      </svg>
-    </div>
-    <div class="grain-overlay" aria-hidden="true"></div>
+    <link rel="stylesheet" href="../assets/demo-ui.css">
+  <link rel="stylesheet" href="../assets/demo-refinements.css">
+  <script src="../assets/demo-ui.js" defer></script>
+<link rel="stylesheet" href="../assets/demo-workflow.css"><script src="../assets/demo-workflow.js"></script><script src="../assets/branch-definitions.js"></script><script src="../assets/branch-bridge.js"></script>
+<link rel="stylesheet" href="../assets/wow-final.css">
+<link rel="stylesheet" href="wow.css">
+</head>
+  <body data-demo="kompass-umzuege">
+<div class="grain-overlay" aria-hidden="true"></div>
 
     <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
 
     <header>
-      <div class="banner">
-        <strong>Design-Entwurf von TOMORROWWORKS</strong> —
-        nicht die offizielle Website von Kompass-Umzüge ·
-        Persönliche Konzeptvorschau
+      <aside class="demo-toolbar" aria-label="Designstudie von TomorrowWorks">
+      <div class="demo-toolbar-label"><strong>TomorrowWorks · Designstudie</strong><span>Keine offizielle Website</span></div>
+      <div class="demo-toolbar-actions">
+        <a href="../projekte.html#designstudien"><span aria-hidden="true">←</span> Alle Demos</a>
+        <details><summary>Hinweis</summary><p>Design-Entwurf von TOMORROWWORKS — nicht die offizielle Website von Kompass-Umzüge · Persönliche Konzeptvorschau</p></details>
       </div>
+    </aside>
       <div class="site-header">
         <div class="site-header-inhalt">
           <a class="wortmarke" href="#inhalt" aria-label="Kompass-Umzüge — zur Startseite">
@@ -60,63 +58,10 @@
 
     <main id="inhalt">
       <!-- Hero -->
-      <section class="hero" aria-label="Einstieg">
-        <div class="hero-bild">
-          <img
-            src="assets/hero.jpg"
-            alt="Ausgelassen lachendes Paar zwischen Umzugskartons — Beispielfoto"
-            width="1920"
-            height="1080"
-            fetchpriority="high"
-          >
-          <span class="foto-tag">Beispielfoto (Symbolbild)</span>
-        </div>
-        <div class="hero-inhalt hero-inhalt--kompass">
-          <div class="hero-text">
-            <span class="hero-badge">Seit über 30 Jahren in Mosbach</span>
-            <span class="eyebrow eyebrow--hell">Umzüge &amp; Möbeltransport aus Mosbach</span>
-            <h1>Ihr Umzug — <em>gut orientiert.</em></h1>
-            <p class="hero-sub">
-              Privatumzüge, Küchenmontage, Einlagerung und Haushaltsauflösungen: Sie sagen
-              uns, wohin es geht — wir finden den Weg. Mit einer kurzen Vorab-Anfrage sparen
-              Sie bei der Beratung wertvolle Zeit.
-            </p>
-            <div class="hero-aktionen">
-              <a class="btn btn--voll" href="anfrage.html" data-magnetisch>Umzug anfragen</a>
-              <a class="btn btn--kontur btn--kontur-hell" href="#leistungen" data-magnetisch>Leistungen ansehen</a>
-            </div>
-          </div>
-          <div class="hero-kompass">
-            <span class="hero-kompass-hinweis">Bewegen Sie die Maus — die Nadel folgt</span>
-            <div class="kompass-rose" data-kompass>
-              <div class="kompass-ring" aria-hidden="true"></div>
-              <nav class="kompass-marken" aria-label="Leistungen auf einen Blick">
-                <a class="kompass-marke" data-richtung="n" data-winkel="0" href="anfrage.html?umzugsart=privatumzug">
-                  <span class="kompass-marke-punkt" aria-hidden="true"></span>
-                  <span>Privatumzüge</span>
-                </a>
-                <a class="kompass-marke" data-richtung="o" data-winkel="90" href="anfrage.html?umzugsart=kuechenmontage">
-                  <span class="kompass-marke-punkt" aria-hidden="true"></span>
-                  <span>Küchenmontage</span>
-                </a>
-                <a class="kompass-marke" data-richtung="s" data-winkel="180" href="anfrage.html?zusatzleistung=einlagerung">
-                  <span class="kompass-marke-punkt" aria-hidden="true"></span>
-                  <span>Einlagerung</span>
-                </a>
-                <a class="kompass-marke" data-richtung="w" data-winkel="270" href="anfrage.html?umzugsart=wohnungsaufloesung">
-                  <span class="kompass-marke-punkt" aria-hidden="true"></span>
-                  <span>Auflösung</span>
-                </a>
-              </nav>
-              <div class="kompass-nadel" aria-hidden="true">
-                <span class="kompass-nadel-n"></span>
-                <span class="kompass-nadel-s"></span>
-              </div>
-              <div class="kompass-mitte" aria-hidden="true"></div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <section class="tw-experience route-stage" aria-label="Ihr Weg ins neue Zuhause"><div class="wx-inner wx-split"><div><p class="wx-eyebrow">Kompass-Umzüge · Mosbach</p><h1>Neues Zuhause.<br><em>Klare Richtung.</em></h1><p>Von der ersten Kiste bis zum Ankommen: Zeichnen Sie Ihren Umzug vor.</p><form class="route-form" data-route-form><div class="wx-fields"><label>Von<input data-route-from type="text" maxlength="120" placeholder="z. B. Mosbach" required autocomplete="off"></label><label>Nach<input data-route-to type="text" maxlength="120" placeholder="z. B. Heidelberg" required autocomplete="off"></label></div><label>Gewünschter Umzugstag<input data-route-date type="date" required></label><div class="route-extras"><label class="wx-check"><input type="checkbox" data-route-extra value="packservice">Ein- und Auspacken</label><label class="wx-check"><input type="checkbox" data-route-extra value="moebelmontage">Möbelmontage</label><label class="wx-check"><input type="checkbox" data-route-extra value="einlagerung">Zwischenlagern</label></div><button class="wx-button" type="submit">Mit dieser Route weiter ↗</button><p class="wx-status" data-route-error role="status"></p><p class="wx-note">Ihr Entwurf bleibt in diesem Browser-Tab. Keine Streckenberechnung oder Terminbestätigung.</p></form></div>
+ <div class="route-board"><div class="route-board-head"><span>IHR UMZUGSFAHRPLAN</span><strong data-route-day>Termin noch offen</strong></div><div class="route-map"><svg viewBox="0 0 560 440" aria-hidden="true"><defs><pattern id="route-paper" width="35" height="35" patternUnits="userSpaceOnUse"><path d="M0 35V0H35" fill="none" stroke="#cbd9df" stroke-width=".6"/></pattern></defs><rect width="560" height="440" fill="url(#route-paper)"/><path d="M-30 300L175 120 390 200 600 0M-30 100L100 220 290 320 600 240M220 -20L195 460M440 -20L420 460" fill="none" stroke="#d3e0e4" stroke-width="18"/><path d="M80 310C180 310 110 190 230 190S310 310 410 230 390 95 485 95" fill="none" stroke="#fff" stroke-width="14"/><path d="M80 310C180 310 110 190 230 190S310 310 410 230 390 95 485 95" fill="none" stroke="#265c78" stroke-width="5" stroke-dasharray="9 8"/><circle cx="80" cy="310" r="16" fill="#265c78" stroke="#fff" stroke-width="6"/><circle cx="230" cy="190" r="10" fill="#ddaa60" stroke="#fff" stroke-width="5"/><circle cx="400" cy="235" r="10" fill="#ddaa60" stroke="#fff" stroke-width="5"/><path d="M485 69C463 69 458 93 468 106L485 126 502 106C514 89 504 69 485 69" fill="#265c78"/><circle cx="485" cy="92" r="7" fill="#fff"/><text x="30" y="36" font-family="Arial" font-size="10" letter-spacing="2" fill="#577d8a">N ↑</text></svg><div class="route-place route-start"><small>VON</small><strong data-route-origin>Mosbach?</strong></div><div class="route-place route-end"><small>NACH</small><strong data-route-destination>Ihr neues Zuhause</strong></div><span class="route-map-note">SCHEMATISCHE ROUTE</span></div><ol class="route-stops" data-route-stops><li><span>01</span><div><strong>Besichtigen &amp; abstimmen</strong><small>Umfang gemeinsam klären</small></div></li><li><span>02</span><div><strong>Transport &amp; Ankommen</strong><small>Wunschtermin noch offen</small></div></li></ol></div>
+</div></section>
+
 
       <!-- Leistungen -->
       <section class="section" id="leistungen" data-reveal>
@@ -256,7 +201,7 @@
               <!-- bewusst ohne name: so trüge selbst ein Submit ohne JS keine Daten fort. -->
               <input id="zeitplan-datum" type="date">
               <p class="feld-hinweis">
-                Beispielangabe genügt — es wird nichts gespeichert oder versendet.
+                Beispielangabe genügt — es bleibt der Vorgang nur in diesem Browser-Tab oder versendet.
               </p>
             </div>
             <button class="btn btn--voll" type="submit">Zeitplan erstellen</button>
@@ -431,5 +376,7 @@
     </footer>
 
     <script src="app.js"></script>
-  </body>
+  <script src="../assets/wow-kit.js"></script>
+<script src="wow.js"></script>
+</body>
 </html>

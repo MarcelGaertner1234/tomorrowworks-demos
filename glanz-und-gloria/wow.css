@@ -1,0 +1,68 @@
+/* Material-led opening. The existing atelier remains the detailed configurator. */
+.atelier-hero {
+  display:grid; grid-template-columns:minmax(0, .9fr) minmax(0, 1.1fr);
+  grid-template-areas:"copy photo" "controls photo"; gap:0 20px;
+  position:relative; overflow:hidden; padding:62px 0 46px 5%;
+  background:#031a16; color:#fbf8f1; isolation:isolate;
+}
+.ring-hero-copy { grid-area:copy; position:relative; z-index:2; padding-right:10px; }
+.atelier-location { font-size:13px; line-height:1.5; color:#dccb9f; margin:0 0 28px; }
+.ring-hero-copy h1 { font-size:clamp(42px,4.5vw,64px); line-height:1.02; letter-spacing:-.035em; margin-bottom:24px; }
+.ring-hero-copy > p:last-child { font-size:16px; line-height:1.7; max-width:36ch; color:#d9e4de; margin-bottom:34px; }
+.atelier-photo { grid-area:photo; position:relative; min-width:0; align-self:stretch; overflow:hidden; margin:0; }
+.atelier-photo > img { width:100%; height:100%; min-height:620px; object-fit:cover; object-position:69% 50%; }
+.atelier-lettering { position:absolute; pointer-events:none; z-index:1; overflow:visible; }
+.atelier-lettering text { font:18px Georgia,serif; fill:#342617; opacity:.8; letter-spacing:1px; }
+.atelier-photo::after { content:""; position:absolute; inset:0; pointer-events:none; background:linear-gradient(90deg,#031a16,transparent 22%),linear-gradient(0deg,#031a16,transparent 28%); }
+.atelier-light { position:absolute; inset:0; z-index:1; pointer-events:none; opacity:0; background:radial-gradient(ellipse at var(--light-x,65%) var(--light-y,45%),#fff0ce30,transparent 48%); mix-blend-mode:screen; transition:opacity .35s ease; }
+.atelier-photo:hover .atelier-light { opacity:1; }
+.atelier-photo-note { position:absolute; z-index:2; bottom:65px; left:14%; right:10%; display:flex; justify-content:space-between; align-items:center; gap:20px; color:#e0c67c; border-top:1px solid #e0c67c40; padding-top:14px; font-size:12px; }
+.atelier-photo-note > span:first-child { font-family:var(--serif); font-size:27px; color:#fbf8f1; }
+.atelier-photo figcaption { position:absolute; bottom:24px; left:14%; right:6%; z-index:2; color:#b6c6bd; font-size:11px; line-height:1.5; }
+.atelier-controls { grid-area:controls; position:relative; z-index:2; max-width:460px; padding-right:12px; }
+.atelier-metals { margin:0 0 25px; padding:0; border:0; min-width:0; }
+.atelier-metals legend { font-size:14px; margin-bottom:16px; }
+.atelier-metal-options { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:6px; }
+.atelier-metal-options button { display:grid; justify-items:center; gap:8px; padding:8px 3px 10px; font:12px/1.3 var(--sans); color:#d6e0da; border:1px solid transparent; border-radius:3px; background:none; cursor:pointer; }
+.atelier-metal-options button[aria-pressed=true] { border-color:#e0c67c; color:#fff; background:#e0c67c0d; }
+.metal-sample { display:block; width:34px; height:34px; border-radius:50%; box-shadow:inset 0 0 0 1px #ffffff60,0 3px 10px #0007; }
+.metal-sample--gold { background:linear-gradient(120deg,#6c4818,#d8a94f 30%,#fff2cb 49%,#b17828 60%,#f0d79f); }
+.metal-sample--white { background:linear-gradient(120deg,#525657,#c0c7c6 30%,#fff 49%,#939e9f 60%,#f0f1eb); }
+.metal-sample--rose { background:linear-gradient(120deg,#76432c,#dca085 30%,#ffe4d6 49%,#a86e53 60%,#e8b496); }
+.metal-sample--platinum { background:linear-gradient(120deg,#444b55,#9aa8b4 30%,#e7eef5 49%,#64707d 60%,#c5cdd5); }
+.atelier-engraving { display:block; font-size:14px; }
+.atelier-engraving > span { font-size:12px; color:#b6c6bd; }
+.atelier-engraving input { display:block; width:100%; margin:9px 0 0; border:0; border-bottom:1px solid #b6c6bd70; border-radius:0; background:#ffffff05; padding:13px 10px; font:17px/1.5 var(--serif); color:#fbf8f1; }
+.atelier-engraving input::placeholder { color:#b6c6bd; opacity:1; }
+.atelier-engraving-preview { min-height:40px; margin:10px 0 14px; color:#e0c67c; font-size:13px; overflow-wrap:anywhere; }
+.atelier-actions { display:grid; gap:15px; justify-items:start; }
+.atelier-actions .btn { font-size:13px; text-transform:none; letter-spacing:0; padding:13px 20px; }
+.atelier-details { color:#d9e4de; font-size:13px; text-underline-offset:5px; line-height:1.6; padding:5px 0; }
+.atelier-hero :focus-visible { outline:2px solid #e0c67c; outline-offset:5px; }
+#ringatelier { scroll-margin-top:30px; }
+#stilwelten { margin-top:0; padding-top:64px; }
+#stilwelten .stilwelten-grid { margin-top:20px; }
+@media (max-width:1100px) and (min-width:761px) {
+  .atelier-hero { padding-left:30px; }
+  .ring-hero-copy h1 { font-size:56px; }
+  .atelier-photo > img { min-height:670px; }
+}
+@media (max-width:760px) {
+  .atelier-hero { display:grid; grid-template-columns:1fr; grid-template-areas:"copy" "photo" "controls"; padding:30px 0 36px; gap:0; }
+  .ring-hero-copy { padding:0 22px; }
+  .atelier-location { font-size:11px; margin-bottom:15px; }
+  .ring-hero-copy h1 { font-size:clamp(43px,11vw,66px); margin-bottom:16px; }
+  .ring-hero-copy > p:last-child { font-size:15px; max-width:42ch; margin-bottom:0; }
+  .atelier-photo { height:360px; margin-top:5px; }
+  .atelier-photo > img { min-height:0; height:100%; width:100%; object-position:65% 50%; }
+  .atelier-photo::after { background:linear-gradient(0deg,#031a16,transparent 22%),linear-gradient(180deg,#031a16,transparent 18%); }
+  .atelier-photo-note { bottom:39px; left:22px; right:22px; padding-top:8px; }
+  .atelier-photo-note > span:first-child { font-size:23px; }
+  .atelier-photo figcaption { left:22px; bottom:14px; font-size:10px; }
+  .atelier-controls { max-width:none; padding:10px 22px 0; }
+  .atelier-metals { margin-bottom:23px; }
+  .atelier-metals legend { font-size:13px; }
+  .atelier-metal-options button { min-height:74px; }
+  .atelier-actions .btn { width:100%; text-align:center; }
+}
+@media (prefers-reduced-motion:reduce) { .atelier-light { display:none; } }

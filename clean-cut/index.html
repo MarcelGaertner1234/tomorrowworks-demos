@@ -8,14 +8,24 @@
   <title>CLEAN CUT Mosbach | Dein Friseur. Dein Look. — Design-Entwurf</title>
   <link rel="icon" href="assets/logo.png" type="image/png">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../assets/demo-ui.css">
+  <link rel="stylesheet" href="../assets/demo-refinements.css">
+  <script src="../assets/demo-ui.js" defer></script>
+  <link rel="stylesheet" href="../assets/demo-workflow.css">
+  <script src="../assets/demo-workflow.js"></script>
+<link rel="stylesheet" href="../assets/wow-final.css">
+<link rel="stylesheet" href="wow.css">
 </head>
-<body class="has-stickybar">
+<body data-demo="clean-cut" class="has-stickybar">
   <a class="skip-link" href="#hauptinhalt">Zum Inhalt springen</a>
 
-  <aside class="draft-banner" aria-label="Hinweis zum Entwurfsstatus">
-    <strong>Design-Entwurf von TOMORROWWORKS</strong> — nicht die offizielle Website von CLEAN CUT Mosbach ·
-    Persönliche Konzeptvorschau · Buchung ist eine Demo · Angaben werden bestätigt
-  </aside>
+  <aside class="demo-toolbar" aria-label="Designstudie von TomorrowWorks">
+      <div class="demo-toolbar-label"><strong>TomorrowWorks · Designstudie</strong><span>Keine offizielle Website</span></div>
+      <div class="demo-toolbar-actions">
+        <a href="../projekte.html#designstudien"><span aria-hidden="true">←</span> Alle Demos</a>
+        <details><summary>Hinweis</summary><p>Design-Entwurf von TOMORROWWORKS — nicht die offizielle Website von CLEAN CUT Mosbach · Persönliche Konzeptvorschau · Buchung ist eine Demo · Angaben werden bestätigt</p></details>
+      </div>
+    </aside>
 
   <header class="site-header">
     <div class="wrap">
@@ -39,65 +49,21 @@
   <main id="hauptinhalt">
 
     <!-- Vollbild-Hero-Slideshow -->
-    <section class="hero-slideshow" aria-roledescription="Karussell" aria-label="Einblicke in Team und Handwerk" data-slideshow>
-      <ul class="slides">
-        <li class="slide is-active" data-caption="Salon-Stimmung — Beispielfoto (Symbolbild)" style="--pos-m: 50% 28%; --pos-d: 50% 32%">
-          <img src="assets/hero-salon.jpg" alt="Präziser Fade-Schnitt mit Schere und Kamm — Beispielfoto" width="1600" height="1200">
-        </li>
-        <li class="slide" data-caption="Handwerk im Salon — Beispielfoto (Symbolbild)" style="--pos-m: 50% 30%; --pos-d: 50% 34%" aria-hidden="true">
-          <img src="assets/steps/friseur-waehlen.jpg" alt="Friseur schneidet konzentriert die Locken eines Kunden — Beispielfoto" loading="lazy" width="1280" height="1600">
-        </li>
-        <li class="slide" data-caption="Look-Inspiration: Klare Kontur — Beispielfoto (Symbolbild)" style="--pos-m: 50% 24%; --pos-d: 50% 22%" aria-hidden="true">
-          <img src="assets/models/pexels-17899459.jpg" alt="Seitenprofil eines jungen Mannes mit frischem Haarschnitt vor dunklem Studiohintergrund — Beispielfoto" loading="lazy" width="1280" height="1920">
-        </li>
-        <li class="slide" data-caption="Handwerk: Rasiermesser-Finish — Beispielfoto (Symbolbild)" style="--pos-m: 50% 28%; --pos-d: 50% 52%" aria-hidden="true">
-          <img src="assets/models/pexels-4422102.jpg" alt="Friseur setzt mit dem Rasiermesser das Finish an einem frischen Fade — Beispielfoto" loading="lazy" width="1280" height="1920">
-        </li>
-        <li class="slide" data-caption="Styling im Team — Beispielfoto (Symbolbild)" style="--pos-m: 50% 35%; --pos-d: 50% 40%" aria-hidden="true">
-          <img src="assets/models/unsplash-styling-team.jpg" alt="Zwei Stylistinnen arbeiten gemeinsam am Haar einer Kundin — Beispielfoto" loading="lazy" width="1600" height="1067">
-        </li>
-        <li class="slide" data-caption="Salon-Momente — Beispielfoto (Symbolbild)" style="--pos-m: 50% 40%; --pos-d: 50% 45%" aria-hidden="true">
-          <img src="assets/models/unsplash-salon-szene.jpg" alt="Kundin wird im modernen Salon mit runden Spiegeln frisiert — Beispielfoto" loading="lazy" width="1600" height="1067">
-        </li>
-      </ul>
-      <div class="slide-controls">
-        <button type="button" class="slide-arrow" data-prev aria-label="Vorheriges Bild">←</button>
-        <div class="slide-dots" role="group" aria-label="Bild auswählen">
-          <button type="button" class="slide-dot" data-goto="0" aria-label="Bild 1 anzeigen" aria-current="true"></button>
-          <button type="button" class="slide-dot" data-goto="1" aria-label="Bild 2 anzeigen"></button>
-          <button type="button" class="slide-dot" data-goto="2" aria-label="Bild 3 anzeigen"></button>
-          <button type="button" class="slide-dot" data-goto="3" aria-label="Bild 4 anzeigen"></button>
-          <button type="button" class="slide-dot" data-goto="4" aria-label="Bild 5 anzeigen"></button>
-          <button type="button" class="slide-dot" data-goto="5" aria-label="Bild 6 anzeigen"></button>
-        </div>
-        <button type="button" class="slide-arrow" data-next aria-label="Nächstes Bild">→</button>
-      </div>
-    </section>
-    <div class="hero-caption">
-      <div class="wrap">
-        <span data-slide-caption>Salon-Stimmung — Beispielfoto (Symbolbild)</span>
-        <span class="small">Alle Fotos sind lizenzfreie Beispielbilder (Symbolbilder) — echte Team- und Salonfotos folgen nach Freigabe · Bildrechte vor Veröffentlichung bestätigen.</span>
-      </div>
-    </div>
-
-    <!-- Zentrierte Intro -->
-    <section class="section intro">
-      <div class="wrap wrap--narrow">
-        <p class="eyebrow">Cuts &amp; Styles · Mosbach</p>
-        <h1>Dein Friseur. <em>Dein Look.</em></h1>
-        <p class="lede">Finde den Friseur, der zu deinem Look passt. Deinen Termin buchst du danach direkt online.</p>
-        <div class="intro-ctas">
-          <a class="btn btn--primary" href="#termin">Freie Zeiten ansehen <span class="arrow">→</span></a>
-          <a class="btn btn--ghost" href="#team">Team kennenlernen</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Vorteile-Band -->
+  <section class="tw-experience cut-stage" aria-label="Dein Style und dein Termin">
+ <div class="wx-inner cut-layout">
+  <div class="cut-copy"><p class="wx-eyebrow">Clean Cut · Mosbach</p><h1>Dein Kopf.<br>Dein <em>Style.</em></h1><p>Klare Konturen oder ein frischer Schnitt? Stell deinen Salonbesuch zusammen — wir nehmen uns Zeit für die Details.</p><span class="wx-step">01 / Leistung wählen</span>
+   <div class="wx-choices" role="group" aria-label="Leistung"><button class="wx-choice" data-cut-service="Haarschnitt" aria-pressed="true">Haarschnitt</button><button class="wx-choice" data-cut-service="Bartpflege" aria-pressed="false">Bartpflege</button><button class="wx-choice" data-cut-service="Schnitt &amp; Bart" aria-pressed="false">Schnitt &amp; Bart</button></div>
+   <span class="wx-step">02 / Dein Team</span><div class="wx-choices" role="group" aria-label="Team wählen"><button class="wx-choice" data-cut-team="max" aria-pressed="true">Max</button><button class="wx-choice" data-cut-team="leon" aria-pressed="false">Leon</button><button class="wx-choice" data-cut-team="lena" aria-pressed="false">Lena</button></div>
+  </div>
+  <figure class="cut-mirror"><img data-cut-photo src="assets/wow-style-crop.webp" alt="KI-Stylebeispiel: kurzer, strukturierter Haarschnitt" fetchpriority="high" width="1024" height="1280"><figcaption>STYLE INSPIRATION / <span data-cut-image-name>TEXTURED CROP</span></figcaption></figure>
+  <aside class="cut-ticket" aria-label="Dein Salonbesuch"><span class="wx-step">Dein nächster Cut</span><h2 data-cut-title>Haarschnitt</h2><p><span data-cut-person>Max</span> · <strong data-cut-duration>45 Min.</strong></p><div class="cut-ticket-line"></div><p class="cut-ticket-label">Du bringst die Idee.<br>Wir kümmern uns um den Schnitt.</p><a class="wx-button" data-cut-cta href="termin.html?leistung=Haarschnitt&amp;stylist=max">Beispieltermin wählen ↗</a><p class="wx-note">KI-generierte Stylebeispiele. Zeitfenster und Buchung sind eine lokale Demo.</p></aside>
+ </div>
+</section>
+<!-- Vorteile-Band -->
     <section class="perks" aria-label="Vorteile">
       <div class="wrap">
         <span class="perk">Wunsch-Friseur</span>
-        <span class="perk">Echte freie Zeiten</span>
+        <span class="perk">Übersichtliche Terminwahl</span>
         <span class="perk">QR-Check-in</span>
         <span class="perk">Erinnerung statt No-show</span>
       </div>
@@ -200,129 +166,10 @@
         <div class="section-head intro reveal">
           <p class="eyebrow">Terminplaner · Prototyp</p>
           <h2>Probier den <em>neuen Ablauf.</em></h2>
-          <p class="lede">Diese Demo zeigt, wie Kunden künftig buchen. Sie speichert nichts und löst keine Reservierung aus.</p>
+          <p class="lede">Diese Demo verbindet die Terminbuchung mit dem Teamkalender. Beispielvorgänge bleiben nur in diesem Browser-Tab.</p>
         </div>
 
-        <form class="planner reveal" data-planner novalidate>
-          <div class="planner-head">
-            <strong>Terminwahl ausprobieren</strong>
-            <span class="pill-note">DEMO · KEINE SPEICHERUNG</span>
-          </div>
-
-          <fieldset>
-            <legend><span class="step-no">01</span> Was darf's sein?</legend>
-            <div class="choice-grid choice-grid--3">
-              <label class="choice">
-                <input type="radio" name="leistung" value="Haarschnitt" checked>
-                <span class="choice-text"><strong>Haarschnitt</strong><span>Dauer offen · Preis offen</span></span>
-              </label>
-              <label class="choice">
-                <input type="radio" name="leistung" value="Bartpflege">
-                <span class="choice-text"><strong>Bartpflege</strong><span>Dauer offen · Preis offen</span></span>
-              </label>
-              <label class="choice">
-                <input type="radio" name="leistung" value="Schnitt &amp; Bart">
-                <span class="choice-text"><strong>Schnitt &amp; Bart</strong><span>Dauer offen · Preis offen</span></span>
-              </label>
-            </div>
-          </fieldset>
-
-          <fieldset>
-            <legend><span class="step-no">02</span> Wer schneidet?</legend>
-            <div class="choice-grid choice-grid--2x2">
-              <label class="choice">
-                <input type="radio" name="friseur" value="Schnellster Termin" checked>
-                <span class="choice-text"><span class="choice-flag">EMPFOHLEN</span><strong>Schnellster Termin</strong><span>Automatisch aus allen 3 Kalendern</span></span>
-              </label>
-              <label class="choice">
-                <input type="radio" name="friseur" value="Max · Inhaber">
-                <img src="assets/team/platzhalter-c.jpg" alt="" loading="lazy" width="120" height="120">
-                <span class="choice-text"><strong>Max · Inhaber</strong><span>Beispielbild · Profilentwurf</span></span>
-              </label>
-              <label class="choice">
-                <input type="radio" name="friseur" value="Leon · Mitarbeiter">
-                <img src="assets/team/platzhalter-a.jpg" alt="" loading="lazy" width="120" height="120">
-                <span class="choice-text"><strong>Leon · Mitarbeiter</strong><span>Beispielbild · Profilentwurf</span></span>
-              </label>
-              <label class="choice">
-                <input type="radio" name="friseur" value="Lena · Mitarbeiterin">
-                <img src="assets/team/platzhalter-b.jpg" alt="" loading="lazy" width="120" height="120">
-                <span class="choice-text"><strong>Lena · Mitarbeiterin</strong><span>Beispielbild · Profilentwurf</span></span>
-              </label>
-            </div>
-            <div class="assign-box">
-              <img src="assets/team/platzhalter-c.jpg" alt="Platzhalter-Porträt (Beispielfoto)" loading="lazy" width="120" height="120">
-              <div>
-                <p class="role-line">Beispiel-Zuordnung</p>
-                <strong>Max</strong> <span>· Inhaber</span>
-                <p>Nach der Zeitwahl wird automatisch der früheste freie Mitarbeiter angezeigt.</p>
-              </div>
-            </div>
-          </fieldset>
-
-          <fieldset>
-            <legend><span class="step-no">03</span> Welcher Beispieltermin?</legend>
-            <div class="chip-row" role="group" aria-label="Beispieltage" data-days>
-              <button type="button" class="chip" aria-pressed="false" data-day="Dienstag"><small>BEISPIEL</small> Dienstag</button>
-              <button type="button" class="chip" aria-pressed="false" data-day="Donnerstag"><small>BEISPIEL</small> Donnerstag</button>
-              <button type="button" class="chip" aria-pressed="false" data-day="Samstag"><small>BEISPIEL</small> Samstag</button>
-            </div>
-            <div class="chip-row" role="group" aria-label="Beispielzeiten" data-times style="margin-top:0.8rem">
-              <button type="button" class="chip" aria-pressed="false" data-time="09:30">09:30</button>
-              <button type="button" class="chip" aria-pressed="false" data-time="11:00">11:00</button>
-              <button type="button" class="chip" aria-pressed="false" data-time="14:15">14:15</button>
-              <button type="button" class="chip" aria-pressed="false" data-time="16:00">16:00</button>
-              <button type="button" class="chip" aria-pressed="false" data-time="17:00">17:00</button>
-            </div>
-            <p class="chip-hint">Alle Zeiten sind illustrative Platzhalter und keine echte Verfügbarkeit.</p>
-          </fieldset>
-
-          <fieldset>
-            <legend><span class="step-no">04</span> Kontaktdaten für die Bestätigung</legend>
-            <div class="field-grid">
-              <div class="field">
-                <label for="vorname">Vorname *</label>
-                <input id="vorname" name="vorname" type="text" placeholder="Dein Vorname" autocomplete="off">
-              </div>
-              <div class="field">
-                <label for="nachname">Nachname *</label>
-                <input id="nachname" name="nachname" type="text" placeholder="Dein Nachname" autocomplete="off">
-              </div>
-              <div class="field field--wide">
-                <label for="handy">Handynummer *</label>
-                <input id="handy" name="handy" type="tel" placeholder="Für die Terminbestätigung" autocomplete="off">
-                <span class="field-hint">Mindestens 7 Ziffern · wird in dieser Demo nicht gespeichert.</span>
-              </div>
-              <label class="check-line">
-                <input type="checkbox" name="whatsapp">
-                <span>
-                  <strong>WhatsApp-Erinnerung 2 Stunden vorher</strong>
-                  <span>Freiwillig: CLEAN CUT darf mir zu diesem Termin eine Bestätigung und eine Erinnerung per WhatsApp senden. Jederzeit widerrufbar.</span>
-                </span>
-              </label>
-            </div>
-          </fieldset>
-
-          <div class="planner-foot">
-            <button type="submit" class="btn btn--primary" data-confirm disabled>Demo-Termin bestätigen &amp; QR anzeigen <span class="arrow">→</span></button>
-            <p class="planner-status" data-status aria-live="polite">Bitte Beispieltag, Wunschzeit und Kontaktdaten wählen — erst dann wird der Demo-Termin aktiv.</p>
-          </div>
-
-          <div class="planner-confirm" data-confirm-panel hidden>
-            <h3>Demo-Termin bestätigt</h3>
-            <dl class="confirm-summary">
-              <dt>Leistung</dt><dd data-sum-leistung></dd>
-              <dt>Friseur</dt><dd data-sum-friseur></dd>
-              <dt>Beispieltermin</dt><dd data-sum-termin></dd>
-              <dt>Name</dt><dd data-sum-name></dd>
-            </dl>
-            <div class="confirm-qr">
-              <img src="assets/qr-termin.svg" alt="QR-Code zur CLEAN CUT Termin-Demo" width="160" height="160">
-              <p>So sieht die Bestätigung mit QR-Code aus — im echten Betrieb dient er dem Check-in im Salon.</p>
-            </div>
-            <p class="confirm-note">Demo-Bestätigung — es wurden keine Daten gespeichert oder versendet.</p>
-          </div>
-        </form>
+        <div class="planner reveal" style="padding:32px"><h3>Leistung wählen. Freie Zeit finden.</h3><p style="margin:16px 0 24px;max-width:55ch">Wähle eine Person und einen Termin in der Beispielwoche. Deine Buchung erscheint anschließend direkt im Teamkalender des Salons.</p><div class="wf-actions"><a class="wf-button" href="termin.html">Terminbuchung ausprobieren</a><a class="wf-link" href="portal.html">Teamkalender ansehen</a></div><p class="small" style="margin-top:18px">Beispieldaten nur in diesem Browser-Tab · kein Versand</p></div>
       </div>
     </section>
 
@@ -414,7 +261,7 @@
     <section class="section section--sand">
       <div class="wrap">
         <div class="section-head intro reveal">
-          <p class="notice"><strong>NUR FÜR MITARBEITER UND INHABER</strong> Private Dashboard-Demo · Beispieldaten · keine Speicherung</p>
+          <p class="notice"><strong>BETRIEBSANSICHT AUSPROBIEREN</strong> Öffentliche Konzeptvorschau · Beispieldaten · nur in diesem Browser-Tab</p>
           <p class="eyebrow">Interne Salonübersicht</p>
           <h2>Jeder sieht, <em>was wichtig ist.</em></h2>
           <p class="lede">Diese Übersicht ist nur in der privaten Konzeptvorschau sichtbar. Auf der späteren Kunden-Homepage wird sie entfernt und ist nur nach Anmeldung erreichbar.</p>
@@ -593,11 +440,13 @@
 
   <aside class="sticky-bar" aria-label="Termin-Demo öffnen">
     <div class="wrap">
-      <p>Lern den neuen Ablauf kennen — die Demo speichert nichts.</p>
+      <p>Lern den Ablauf kennen — Beispielvorgänge bleiben nur in diesem Browser-Tab.</p>
       <a class="btn btn--primary" href="termin.html">Terminwahl ausprobieren <span class="arrow">→</span></a>
     </div>
   </aside>
 
   <script src="app.js"></script>
+<script src="../assets/wow-kit.js"></script>
+<script src="wow.js"></script>
 </body>
 </html>

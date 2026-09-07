@@ -1,0 +1,38 @@
+/* The room view is the hotel's invitation. */
+[data-demo="goldener-hirsch"] .masthead {max-width:1440px;padding:22px 4%;display:flex;align-items:center;justify-content:space-between;gap:24px;text-align:left;flex-wrap:wrap}
+[data-demo="goldener-hirsch"] .masthead-ort,[data-demo="goldener-hirsch"] .masthead-unterzeile {display:none}
+[data-demo="goldener-hirsch"] .masthead-marke {display:flex;align-items:center;gap:13px;margin:0}
+[data-demo="goldener-hirsch"] .masthead .geweih-marke {width:35px;height:40px;margin:0}
+[data-demo="goldener-hirsch"] .masthead .wortmarke {font-size:23px;letter-spacing:.065em}
+[data-demo="goldener-hirsch"] .hauptnav {border:0;margin:0;padding:0;gap:0}
+[data-demo="goldener-hirsch"] .hauptnav a {font-size:12px;letter-spacing:0;text-transform:none;padding:0 12px}
+.stay-hero {position:relative;isolation:isolate;max-width:1440px;margin:0 auto 48px;min-height:650px;display:grid;grid-template-columns:1fr 1.1fr;align-items:center;background:#243f32;color:#fff;overflow:hidden}
+.stay-image {position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:70% 46%;z-index:-3}
+.stay-hero[data-view="haus"] .stay-image {width:68%;left:auto;object-position:50% 50%}
+.stay-shade {position:absolute;inset:0;z-index:-2;background:linear-gradient(90deg,#213e32 0%,#213e32ed 25%,#213e3270 57%,#14292018 100%)}
+.stay-copy {padding:64px 0 130px 10%;max-width:610px}
+.stay-copy > p:first-child {font-family:var(--sans);font-size:14px;color:#e2d4b8;margin-bottom:20px}
+.stay-copy h1 {font-size:clamp(42px,4.6vw,70px);line-height:1.04;letter-spacing:-.035em;max-width:10ch;font-weight:400}
+.stay-copy .stay-lede {font-size:18px;line-height:1.65;max-width:34ch;margin:25px 0 28px;color:#f1eee5}
+.stay-copy .btn {background:#f4efdf;color:#233d31;border-color:#f4efdf;text-transform:none;letter-spacing:0;font-size:14px;min-height:50px}
+.stay-copy .btn:hover {background:#fff}
+.stay-atmosphere {position:absolute;top:24px;right:30px;color:#fff;font:12px/1.5 var(--sans);background:#21372edb;padding:7px 12px}
+.stay-room-panel {align-self:end;margin:0 6% 34px 3%;background:#faf7f2;color:#211d17;padding:23px 26px;box-shadow:0 12px 48px #15241f30}
+.stay-room-panel h2 {font:400 28px/1.15 var(--serif);margin:0 0 16px}
+.stay-switch {display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
+.stay-switch button {font:13px/1.35 var(--sans);padding:10px 12px;min-height:44px;border:1px solid #d3d6cf;background:transparent;color:#314537;cursor:pointer}
+.stay-switch button[aria-pressed="true"] {background:#2f5644;color:#fff;border-color:#2f5644}
+.stay-caption {min-height:68px;font:14px/1.65 var(--sans);color:#5b6258}
+.stay-caption strong {display:block;color:#22382d;font-weight:600}
+.stay-room-panel a {display:inline-flex;min-height:44px;align-items:center;color:#2f5644;font:600 13px var(--sans);text-underline-offset:4px}
+.stay-hero :focus-visible {outline:3px solid #c2a061;outline-offset:4px}
+.stay-bottom {position:absolute;bottom:32px;left:4.5%;font:13px var(--sans);color:#e8ded0}
+#aufenthalt {scroll-margin-top:90px}
+@media(max-width:900px){.stay-hero {grid-template-columns:1fr;min-height:0}.stay-copy {padding:48px 7% 40px;max-width:620px}.stay-copy h1 {font-size:58px}.stay-copy .stay-lede {max-width:30ch}.stay-room-panel {margin:15px 7% 30px;max-width:610px}.stay-bottom {display:none}.stay-atmosphere {right:18px;top:16px}.stay-shade {background:linear-gradient(90deg,#213e32f5,#213e3290 70%,#14292050)}.stay-hero[data-view="haus"] .stay-image {width:100%}.stay-image {object-position:70% center}}
+@media(max-width:540px){[data-demo="goldener-hirsch"] .masthead {padding:16px 20px}.stay-copy {padding:42px 24px 20px}.stay-copy h1 {font-size:46px}.stay-copy .stay-lede {font-size:16px;max-width:27ch}.stay-room-panel {margin:18px 18px 22px;padding:20px}.stay-room-panel h2 {font-size:26px}.stay-atmosphere {position:static;grid-row:1;justify-self:end;margin:12px 16px 0;font-size:11px}.stay-copy > p:first-child {margin-bottom:15px}.stay-switch button {flex:1 1 40%;padding:10px 6px}.stay-caption {min-height:0}.stay-hero {margin-bottom:10px}}
+@media(prefers-reduced-motion:reduce){.stay-hero * {animation:none!important;transition:none!important}}
+
+/* Keep native date inputs and long room labels within the inquiry column. */
+[data-demo="goldener-hirsch"] .anfrage-grid > *, [data-demo="goldener-hirsch"] .anfrage-form > *, [data-demo="goldener-hirsch"] .feld {min-width:0}
+[data-demo="goldener-hirsch"] .anfrage-form input, [data-demo="goldener-hirsch"] .anfrage-form select, [data-demo="goldener-hirsch"] .anfrage-form textarea {min-width:0;width:100%}
+@media(max-width:600px){[data-demo="goldener-hirsch"] .anfrage-form{padding:24px 18px}[data-demo="goldener-hirsch"] .anfrage-form .wf-fields{grid-template-columns:1fr}}

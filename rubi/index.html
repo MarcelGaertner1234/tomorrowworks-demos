@@ -11,16 +11,24 @@
     >
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
+    <link rel="stylesheet" href="../assets/demo-ui.css">
+  <link rel="stylesheet" href="../assets/demo-refinements.css">
+  <script src="../assets/demo-ui.js" defer></script>
+<link rel="stylesheet" href="../assets/demo-workflow.css"><script src="../assets/demo-workflow.js"></script><script src="../assets/branch-definitions.js"></script><script src="../assets/branch-bridge.js"></script>
+<link rel="stylesheet" href="../assets/wow-final.css">
+<link rel="stylesheet" href="wow.css">
+</head>
+  <body data-demo="rubi">
     <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
 
     <header>
-      <div class="banner">
-        <strong>Design-Entwurf von TOMORROWWORKS</strong> —
-        nicht die offizielle Website von Dienstleistungen Rubi ·
-        Persönliche Konzeptvorschau
+      <aside class="demo-toolbar" aria-label="Designstudie von TomorrowWorks">
+      <div class="demo-toolbar-label"><strong>TomorrowWorks · Designstudie</strong><span>Keine offizielle Website</span></div>
+      <div class="demo-toolbar-actions">
+        <a href="../projekte.html#designstudien"><span aria-hidden="true">←</span> Alle Demos</a>
+        <details><summary>Hinweis</summary><p>Design-Entwurf von TOMORROWWORKS — nicht die offizielle Website von Dienstleistungen Rubi · Persönliche Konzeptvorschau</p></details>
       </div>
+    </aside>
       <div class="site-header">
         <div class="site-header-inhalt">
           <a class="wortmarke" href="#inhalt" aria-label="Dienstleistungen Rubi — zur Startseite">
@@ -44,28 +52,10 @@
 
     <main id="inhalt">
       <!-- Hero: gepflegter Hauseingang + Claim -->
-      <section class="hero" aria-label="Einstieg">
-        <img
-          src="assets/hero-eingang.jpg"
-          alt="Gepflegter Hauseingang mit ordentlichem Grundstück — Beispielfoto"
-          width="1600"
-          height="1000"
-          fetchpriority="high"
-        >
-        <div class="hero-inhalt">
-          <h1>Rund ums Haus. Verlässlich vor Ort.</h1>
-          <p class="hero-sub">
-            Hausmeisterdienste, Renovierungsarbeiten, Gartenarbeiten und
-            Reparaturarbeiten rund um Mosbach — ein Ansprechpartner für alles,
-            was an Haus und Grundstück ansteht.
-          </p>
-          <div class="hero-aktionen">
-            <a class="btn btn--voll" href="anfrage.html">Anfrage stellen</a>
-            <a class="btn btn--hell" href="#leistungen">Leistungen ansehen</a>
-          </div>
-        </div>
-        <span class="hero-credit">Beispielfoto (Symbolbild)</span>
-      </section>
+      <section class="tw-experience house-stage" aria-label="Ihr Haus, Ihre Aufgaben"><div class="wx-inner wx-split"><div><p class="wx-eyebrow">Dienstleistungen Rubi · Mosbach</p><h1>Ein Haus.<br><em>Viel zu tun.</em></h1><p>Markieren Sie, was ansteht. Aus mehreren Aufgaben wird eine gemeinsame Anfrage für Ihr Objekt.</p><div class="wx-choices" role="group" aria-label="Objektart"><button class="wx-choice" data-house-object="privat" aria-pressed="true">Privates Haus</button><button class="wx-choice" data-house-object="gewerblich" aria-pressed="false">Gewerbeobjekt</button></div><div class="house-tasks" role="group" aria-label="Arbeiten am Haus"><button class="wx-choice" data-house-task="hausmeister" aria-pressed="false"><span>01</span>Hausmeisterdienste</button><button class="wx-choice" data-house-task="renovierung" aria-pressed="false"><span>02</span>Renovierung</button><button class="wx-choice" data-house-task="garten" aria-pressed="false"><span>03</span>Gartenpflege</button><button class="wx-choice" data-house-task="reparatur" aria-pressed="false"><span>04</span>Reparaturen</button></div><div class="wx-result"><p data-house-summary role="status">Welche Aufgaben dürfen wir übernehmen?</p><a class="wx-button" data-house-cta href="anfrage.html" aria-disabled="true">Objektanfrage vorbereiten ↗</a><p class="wx-status" data-house-error role="status"></p></div></div>
+ <figure class="house-illustration"><div class="house-label"><span>OBJEKT / MOSBACH</span><strong data-house-count>0 Aufgaben</strong></div><div class="house-canvas"><svg viewBox="0 0 600 550" role="img" aria-label="Schematisches Haus. Gewählte Arbeiten markieren die zugehörigen Hausbereiche."><defs><pattern id="house-brick" width="40" height="22" patternUnits="userSpaceOnUse"><path d="M0 0H40M20 0V22" stroke="#c8b99c" stroke-width="1" fill="none"/></pattern></defs><circle cx="330" cy="230" r="220" fill="#dce9df"/><path d="M20 460L330 320 585 450 273 535Z" fill="#b6caa5"/><g data-house-area="garten"><path d="M20 460L155 400 290 475 190 515Z" fill="#86a079"/><path d="M450 480L530 443 575 463 487 503Z" fill="#86a079"/><path d="M82 400V330M545 402V325" stroke="#706f50" stroke-width="10"/><ellipse cx="82" cy="307" rx="40" ry="62" fill="#648563"/><ellipse cx="545" cy="300" rx="36" ry="58" fill="#648563"/></g><path d="M160 435L342 510 422 476 239 402Z" fill="#e5dbc6"/><g data-house-area="hausmeister"><path d="M145 235L342 310V457L145 385Z" fill="#e6dcc8"/><path d="M145 235L342 310V457L145 385Z" fill="url(#house-brick)"/><path d="M342 310L470 230V380L342 457Z" fill="#c4b69c"/></g><path d="M120 237L262 123 490 205 348 322Z" fill="#586552"/><path d="M262 123L348 257 490 205Z" fill="#788270"/><path d="M120 237L262 123 348 257Z" fill="#334b3b"/><g data-house-area="renovierung"><path d="M181 285L239 307V360L181 338Z" fill="#a6c6be" stroke="#faf8ed" stroke-width="7"/><path d="M266 316L314 334V388L266 371Z" fill="#a6c6be" stroke="#faf8ed" stroke-width="7"/><path d="M385 313L436 283V337L385 368Z" fill="#b4d1c4" stroke="#e6dcc8" stroke-width="6"/><path d="M180 338L239 360M267 371L314 388" stroke="#638a70" stroke-width="10"/></g><g data-house-area="reparatur"><path d="M259 397L304 414V443L259 426Z" fill="#866e50"/><path d="M357 393L382 378V433L357 448Z" fill="#4e6455"/><path d="M439 212V368" stroke="#648076" stroke-width="7"/><circle cx="373" cy="409" r="3" fill="#f4d887"/></g><g class="house-markers" fill="#fff" stroke="#50714c" stroke-width="2"><circle data-house-dot="hausmeister" cx="167" cy="380" r="13"/><circle data-house-dot="renovierung" cx="260" cy="310" r="13"/><circle data-house-dot="garten" cx="77" cy="423" r="13"/><circle data-house-dot="reparatur" cx="434" cy="373" r="13"/></g><g font-size="11" font-family="Arial" fill="#294130" text-anchor="middle"><text x="167" y="384">01</text><text x="260" y="314">02</text><text x="77" y="427">03</text><text x="434" y="377">04</text></g></svg><button type="button" class="house-pin" data-house-pin="hausmeister" aria-pressed="false" aria-label="Hausmeisterdienste am Haus auswählen" style="left:27.833333333333332%;top:69.0909090909091%">01</button><button type="button" class="house-pin" data-house-pin="renovierung" aria-pressed="false" aria-label="Renovierung am Haus auswählen" style="left:43.333333333333336%;top:56.36363636363637%">02</button><button type="button" class="house-pin" data-house-pin="garten" aria-pressed="false" aria-label="Gartenpflege am Haus auswählen" style="left:12.833333333333334%;top:76.9090909090909%">03</button><button type="button" class="house-pin" data-house-pin="reparatur" aria-pressed="false" aria-label="Reparaturen am Haus auswählen" style="left:72.33333333333333%;top:67.81818181818181%">04</button></div><figcaption>Ihr Aufgabenplan wächst mit jeder Auswahl.<br><small>Schematische Objektansicht · Beispiel</small></figcaption></figure>
+</div></section>
+
 
       <!-- USP: Vier Leistungen, ein Ansprechpartner (ersetzt das frühere Statement-Band) -->
       <section class="usp" aria-label="Ihr Vorteil auf einen Blick" id="vorteil">
@@ -342,7 +332,7 @@
           <details>
             <summary>Was passiert mit meiner Anfrage über dieses Formular?</summary>
             <p>
-              In dieser Demo: nichts — es wird nichts gespeichert und nichts
+              In dieser Demo: nichts — es bleibt der Vorgang nur in diesem Browser-Tab und nichts
               versendet. Auf einer echten Website würde der Betrieb Ihre
               Anfrage erhalten und sich bei Ihnen melden.
             </p>
@@ -416,5 +406,7 @@
     </footer>
 
     <script src="app.js"></script>
-  </body>
+  <script src="../assets/wow-kit.js"></script>
+<script src="wow.js"></script>
+</body>
 </html>

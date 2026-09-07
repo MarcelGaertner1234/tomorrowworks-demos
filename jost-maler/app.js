@@ -1,5 +1,5 @@
 // Jost Maler — Demo-Interaktionen (Vorher/Nachher-Regler + Projektanfrage).
-// Grundsatz: kein Versand, keine Speicherung, keine externen Aufrufe.
+// Vorgänge in der Browser-Sitzung; kein Versand, keine gespeicherten Kontaktdaten.
 (() => {
   'use strict';
 
@@ -168,6 +168,10 @@
 
   // Leistungsart aus ?leistung= vorauswählen (Links der Leistungs-Kacheln).
   const leistung = new URLSearchParams(window.location.search).get('leistung');
+  if (new URLSearchParams(window.location.search).get('inspiration') === 'salbei') {
+    const nachricht = form.querySelector('#nachricht');
+    if (nachricht && !nachricht.value) nachricht.value = 'Mich interessiert ein neuer Innenanstrich wie im Raumbeispiel in Salbeigrün.';
+  }
   if (leistung) {
     const radio = form.querySelector(`input[name="leistung"][value="${CSS.escape(leistung)}"]`);
     if (radio) radio.checked = true;
@@ -207,6 +211,7 @@
   };
   fotoInput.addEventListener('change', fotoAnzeige);
 
+  let workflowToken = crypto.randomUUID();
   form.addEventListener('submit', (ereignis) => {
     ereignis.preventDefault();
 
@@ -236,6 +241,8 @@
       return;
     }
 
+    const areaField = form.querySelector('#projekt-flaeche');
+    if (areaField.value && !areaField.checkValidity()) { DemoFlow.error(fehler, 'Bitte eine Wandfläche zwischen 1 und 5000 m² eingeben.'); return; }
     if (fehler) fehler.hidden = true;
     const gewaehlt = form.querySelector('input[name="leistung"]:checked');
     const fotoAnzahl = fotoInput.files ? fotoInput.files.length : 0;
@@ -247,7 +254,13 @@
       zusammenfassung.textContent =
         `Demo-Zusammenfassung: ${leistungsNamen[gewaehlt?.value] ?? 'Leistung'} · ` +
         `${ort} · ${zeitraumNamen[zeitraum] ?? 'Zeitraum'} · ${vorname} ${nachname} · ${fotoText}`;
+      const nachricht = form.querySelector('#nachricht').value.trim();
+      if (nachricht) zusammenfassung.textContent += ` · ${nachricht}`;
     }
+    try {
+      const record = DemoFlow.create('jost-maler', {status:'new',service:leistungsNamen[gewaehlt?.value] || 'Beratung',place:ort,period:zeitraumNamen[zeitraum],notes:form.querySelector('#nachricht').value.trim(),area:areaField.value ? Number(areaField.value) : null,surface:form.querySelector('#projekt-untergrund').value,photos:fotoAnzahl}, workflowToken);
+      DemoFlow.handoff(bestaetigung, 'jost-maler', record);
+    } catch(error) { DemoFlow.error(fehler,error.message);return; }
     form.hidden = true;
     if (bestaetigung) {
       bestaetigung.hidden = false;
@@ -261,6 +274,7 @@
       if (bestaetigung) bestaetigung.hidden = true;
       form.hidden = false;
       form.reset();
+      workflowToken = crypto.randomUUID();
       fotoAnzeige();
       window.scrollTo({ top: 0 });
     });

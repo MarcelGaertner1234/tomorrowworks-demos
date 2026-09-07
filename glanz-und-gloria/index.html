@@ -8,14 +8,23 @@
   <title>Glanz und Gloria · Goldschmiede Mosbach — Design-Entwurf</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../assets/demo-ui.css">
+  <link rel="stylesheet" href="../assets/demo-refinements.css">
+  <script src="../assets/demo-ui.js" defer></script>
+  <link rel="stylesheet" href="wow.css">
+  <script src="wow.js" defer></script>
+<link rel="stylesheet" href="../assets/demo-workflow.css"><script src="../assets/demo-workflow.js"></script><script src="../assets/branch-definitions.js"></script><script src="../assets/branch-bridge.js"></script>
 </head>
-<body>
+<body data-demo="glanz-und-gloria">
   <a class="skip-link" href="#hauptinhalt">Zum Inhalt springen</a>
 
-  <aside class="draft-banner" aria-label="Hinweis zum Entwurfsstatus">
-    <strong>Design-Entwurf von TOMORROWWORKS</strong> — nicht die offizielle Website von Goldschmiede Glanz und Gloria ·
-    Persönliche Konzeptvorschau · Terminwunsch ist eine Demo · Angaben werden bestätigt
-  </aside>
+  <aside class="demo-toolbar" aria-label="Designstudie von TomorrowWorks">
+      <div class="demo-toolbar-label"><strong>TomorrowWorks · Designstudie</strong><span>Keine offizielle Website</span></div>
+      <div class="demo-toolbar-actions">
+        <a href="../projekte.html#designstudien"><span aria-hidden="true">←</span> Alle Demos</a>
+        <details><summary>Hinweis</summary><p>Design-Entwurf von TOMORROWWORKS — nicht die offizielle Website von Goldschmiede Glanz und Gloria · Persönliche Konzeptvorschau · Terminwunsch ist eine Demo · Angaben werden bestätigt</p></details>
+      </div>
+    </aside>
 
   <div class="layout">
     <header class="sidebar">
@@ -50,21 +59,36 @@
       <main id="hauptinhalt">
 
         <!-- Hero: Smaragd, Facettenmuster, Claim + gerahmte Goldschmiedin -->
-        <section class="hero" id="start">
-          <div class="wrap hero-grid">
-            <div class="hero-copy">
-              <p class="eyebrow">Goldschmiede · Mosbach</p>
-              <h1>Aus Gold wird <em>Geschichte.</em></h1>
-              <p class="lede">Trauringe, Unikate und behutsame Reparaturen — im Gespräch entworfen, in der Mosbacher Werkstatt von Hand gefertigt. In Gold, Silber und Platin.</p>
-              <div class="hero-ctas">
-                <a class="btn btn--primary" href="termin.html">Beratungstermin anfragen <span class="arrow" aria-hidden="true">→</span></a>
-                <a class="btn btn--ghost" href="#stilwelten">Stilwelten entdecken</a>
+        <section class="atelier-hero" id="start" aria-labelledby="atelier-title">
+          <div class="ring-hero-copy">
+            <p class="atelier-location">Glanz und Gloria · Goldschmiede in Mosbach</p>
+            <h1 id="atelier-title">Ein Ring.<br>Ein Versprechen.</h1>
+            <p>Was Sie verbindet, wird zu einem Stück für immer. Entdecken Sie Ihr Material und geben Sie Ihrem Ring persönliche Worte mit.</p>
+          </div>
+          <figure class="atelier-photo" data-atelier-photo>
+            <img src="assets/wow-ring-gold.webp" width="1536" height="1024" alt="Polierter Goldring auf tiefgrünem Samt — KI-generierte Materialstudie" fetchpriority="high" data-atelier-image>
+            <svg class="atelier-lettering" viewBox="0 0 1536 1024" aria-hidden="true">
+              <defs><path id="ring-engraving-curve" d="M 859 391 C 792 492 797 657 916 757"/></defs>
+              <text><textPath href="#ring-engraving-curve" startOffset="50%" text-anchor="middle" data-atelier-engraving-text></textPath></text>
+            </svg>
+            <span class="atelier-light" aria-hidden="true"></span>
+            <div class="atelier-photo-note"><span data-atelier-metal-name>Gelbgold</span><span>Materialstudie</span></div>
+            <figcaption>KI-generiertes Symbolbild · Ausführung nach Beratung</figcaption>
+          </figure>
+          <div class="atelier-controls">
+            <fieldset class="atelier-metals"><legend>Welches Material fühlt sich nach Ihnen an?</legend>
+              <div class="atelier-metal-options">
+                <button type="button" data-atelier-metal="gelbgold" aria-pressed="true"><span class="metal-sample metal-sample--gold" aria-hidden="true"></span>Gelbgold</button>
+                <button type="button" data-atelier-metal="weissgold" aria-pressed="false"><span class="metal-sample metal-sample--white" aria-hidden="true"></span>Weißgold</button>
+                <button type="button" data-atelier-metal="roségold" aria-pressed="false"><span class="metal-sample metal-sample--rose" aria-hidden="true"></span>Roségold</button>
+                <button type="button" data-atelier-metal="platin" aria-pressed="false"><span class="metal-sample metal-sample--platinum" aria-hidden="true"></span>Platin</button>
               </div>
-            </div>
-            <figure class="hero-figure">
-              <img src="assets/hero-goldschmiedin.jpg" alt="Goldschmiedin prüft ein Schmuckstück an der Werkbank — Beispielfoto" width="1600" height="2133" fetchpriority="high">
-              <figcaption class="small">Beispielfoto (Symbolbild) — echte Werkstatt-Fotos folgen nach Freigabe</figcaption>
-            </figure>
+            </fieldset>
+            <label class="atelier-engraving" for="atelier-gravur">Ihre Worte für die Innenseite <span>optional</span>
+              <input id="atelier-gravur" maxlength="20" placeholder="Zum Beispiel: Du. Für immer." autocomplete="off" aria-describedby="atelier-engraving-preview">
+            </label>
+            <p class="atelier-engraving-preview" id="atelier-engraving-preview" aria-live="polite" data-atelier-engraving-preview>Bis zu 20 Zeichen für Ihren persönlichen Moment.</p>
+            <div class="atelier-actions"><a class="btn btn--primary" data-atelier-request href="termin.html?anlass=trauringe">Diesen Ring besprechen</a><a class="atelier-details" href="#ringatelier">Breite, Oberfläche &amp; Ringpaar gestalten</a></div>
           </div>
         </section>
 
@@ -103,7 +127,7 @@
               </article>
             </div>
 
-            <div class="ring-konfigurator" data-ring-konfigurator>
+            <div class="ring-konfigurator" id="ringatelier" data-ring-konfigurator>
               <div class="ring-konfigurator-eingabe">
                 <p class="eyebrow">Zum Ausprobieren</p>
                 <h3>Stellen Sie sich Ihre Trauringe vor</h3>

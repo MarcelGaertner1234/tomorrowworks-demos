@@ -11,16 +11,22 @@
     >
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
+    <link rel="stylesheet" href="../assets/demo-ui.css">
+  <link rel="stylesheet" href="../assets/demo-refinements.css">
+  <script src="../assets/demo-ui.js" defer></script>
+<link rel="stylesheet" href="../assets/demo-workflow.css"><script src="../assets/demo-workflow.js"></script><script src="../assets/branch-definitions.js"></script><script src="../assets/branch-bridge.js"></script>
+</head>
+  <body data-demo="spitzer-moden">
     <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
 
     <header>
-      <div class="banner">
-        <strong>Design-Entwurf von TOMORROWWORKS</strong> —
-        nicht die offizielle Website von Spitzer Moden ·
-        Persönliche Konzeptvorschau
+      <aside class="demo-toolbar" aria-label="Designstudie von TomorrowWorks">
+      <div class="demo-toolbar-label"><strong>TomorrowWorks · Designstudie</strong><span>Keine offizielle Website</span></div>
+      <div class="demo-toolbar-actions">
+        <a href="../projekte.html#designstudien"><span aria-hidden="true">←</span> Alle Demos</a>
+        <details><summary>Hinweis</summary><p>Design-Entwurf von TOMORROWWORKS — nicht die offizielle Website von Spitzer Moden · Persönliche Konzeptvorschau</p></details>
       </div>
+    </aside>
       <div class="site-header">
         <div class="site-header-inhalt">
           <nav class="site-nav" aria-label="Hauptnavigation">
@@ -52,11 +58,11 @@
     <main id="inhalt">
       <div class="planer">
         <div class="planer-kopf">
-          <span class="demo-chip">DEMO · KEINE SPEICHERUNG</span>
+          <span class="demo-chip">DEMO · VORGANG IM BROWSER-TAB</span>
           <h1>Beratung anfragen</h1>
           <p>
             Fünf kurze Schritte — Bereich, Anlass, Wunschtermin, Persönliches. In dieser
-            Konzeptvorschau wird nichts gespeichert oder versendet.
+            Konzeptvorschau bleibt der Vorgang nur in diesem Browser-Tab oder versendet.
           </p>
         </div>
 
@@ -114,7 +120,7 @@
               <div class="feld">
                 <label for="datum">Wunschtermin (Beratung)</label>
                 <input id="datum" name="datum" type="date">
-                <p class="feld-hinweis">Beispielangabe genügt — es wird nichts gespeichert.</p>
+                <p class="feld-hinweis">Beispielangabe genügt — es bleibt der Vorgang nur in diesem Browser-Tab.</p>
               </div>
               <div class="feld">
                 <label for="uhrzeit">Uhrzeit</label>
@@ -185,7 +191,7 @@
           <p>
             So würde Ihre Beratungs-Anfrage beim Laden ankommen — in dieser Konzeptvorschau
             wurde sie nur angezeigt:
-            <strong>es wurden keine Daten gespeichert oder versendet.</strong>
+            <strong>der Vorgang bleibt nur in diesem Browser-Tab; es wurde nichts versendet.</strong>
           </p>
           <p class="zusammenfassung" data-zusammenfassung></p>
           <div class="planer-aktionen">

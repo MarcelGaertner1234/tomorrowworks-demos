@@ -8,14 +8,23 @@
   <title>Autohaus Gassert · Fahrenbach-Trienz — Design-Entwurf</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../assets/demo-ui.css">
+  <link rel="stylesheet" href="../assets/demo-refinements.css">
+  <script src="../assets/demo-ui.js" defer></script>
+<link rel="stylesheet" href="../assets/demo-workflow.css"><script src="../assets/demo-workflow.js"></script><script src="../assets/branch-definitions.js"></script><script src="../assets/branch-bridge.js"></script>
+<link rel="stylesheet" href="../assets/wow-final.css">
+<link rel="stylesheet" href="wow.css">
 </head>
-<body>
+<body data-demo="gassert">
   <a class="skip-link" href="#hauptinhalt">Zum Inhalt springen</a>
 
-  <aside class="draft-banner" aria-label="Hinweis zum Entwurfsstatus">
-    <strong>Design-Entwurf von TOMORROWWORKS</strong> — nicht die offizielle Website des Autohauses Gassert ·
-    Persönliche Konzeptvorschau · Terminwunsch ist eine Demo · Angaben werden bestätigt
-  </aside>
+  <aside class="demo-toolbar" aria-label="Designstudie von TomorrowWorks">
+      <div class="demo-toolbar-label"><strong>TomorrowWorks · Designstudie</strong><span>Keine offizielle Website</span></div>
+      <div class="demo-toolbar-actions">
+        <a href="../projekte.html#designstudien"><span aria-hidden="true">←</span> Alle Demos</a>
+        <details><summary>Hinweis</summary><p>Design-Entwurf von TOMORROWWORKS — nicht die offizielle Website des Autohauses Gassert · Persönliche Konzeptvorschau · Terminwunsch ist eine Demo · Angaben werden bestätigt</p></details>
+      </div>
+    </aside>
 
   <header class="site-header">
     <a class="wordmark" href="#start" aria-label="Autohaus Gassert — Startseite">
@@ -35,21 +44,13 @@
   <main id="hauptinhalt">
 
     <!-- Vollbild-Hero, zentrierte Claim-Karte, Doppel-CTA (Referenz-DNA übersetzt) -->
-    <section class="hero" id="start">
-      <figure class="hero-figure">
-        <img src="assets/hero-landstrasse.jpg" alt="Landstraße zwischen herbstlichen Feldern und Wiesen aus der Luft — Beispielfoto" width="2000" height="1125" fetchpriority="high">
-        <figcaption class="small hero-caption">Beispielfoto (Symbolbild) — echte Fotos aus Werkstatt und Region folgen nach Freigabe</figcaption>
-      </figure>
-      <div class="hero-claim">
-        <p class="eyebrow">Autohaus · Werkstatt · Pannenhilfe</p>
-        <h1>Einer aus der Region. Rund um die Uhr.</h1>
-        <p class="lede">Renault &amp; Dacia, ehrliche Werkstattarbeit — und wenn's klemmt, kommt der Abschleppwagen. An der Römerstraße in Fahrenbach-Trienz, wenige Minuten von Mosbach.</p>
-        <div class="hero-ctas">
-          <a class="btn btn--primary" href="termin.html">Werkstatt-Termin anfragen</a>
-          <a class="btn btn--ghost" href="#pannenhilfe">Pannenhilfe 24/7</a>
-        </div>
-      </div>
-    </section>
+    <section class="tw-experience motor-stage" id="start" aria-label="Fahrzeuge entdecken und vergleichen"><div class="wx-inner">
+ <div class="motor-heading"><div><p class="wx-eyebrow">Autohaus Gassert · Fahrenbach-Trienz</p><h1>Was bewegt<br><em>Sie morgen?</em></h1></div><p>Stadt, Familie oder Landstraße — entdecken Sie drei Beispielfahrzeuge und vergleichen Sie Ihre Favoriten.</p></div>
+ <div class="motor-layout"><figure class="motor-photo"><img data-motor-photo src="assets/wow-city.webp" alt="KI-Symbolbild: roter Kompaktwagen im Showroom" fetchpriority="high" width="1400" height="933"><figcaption><span data-motor-number>01 / 03</span> FAHRZEUGBÜHNE · KI-SYMBOLBILD</figcaption></figure>
+ <div class="motor-info"><div class="wx-choices" role="group" aria-label="Beispielfahrzeug"><button class="wx-choice" data-motor-car="fahrzeug-1" aria-pressed="true">01 Stadt</button><button class="wx-choice" data-motor-car="fahrzeug-2" aria-pressed="false">02 Familie</button><button class="wx-choice" data-motor-car="fahrzeug-3" aria-pressed="false">03 Land</button></div><p class="wx-step" data-motor-tags>Renault · Neuwagen</p><h2 data-motor-title>Kleinwagen für Dorf und Stadt</h2><dl class="motor-specs" data-motor-specs></dl><button class="motor-compare-add" data-motor-add aria-pressed="false">+ Zum Vergleich merken</button><p class="wx-status" data-motor-status role="status"></p><a class="wx-button" data-motor-cta href="termin.html?anliegen=probefahrt&amp;fahrzeug=fahrzeug-1">Dieses Fahrzeug anfragen ↗</a><p class="wx-note">KI-generierte Fahrzeugkonzepte und Beispielangaben. Die Bilder zeigen keine konkreten Markenmodelle oder verfügbaren Fahrzeuge.</p></div></div>
+ <div class="motor-comparison" data-motor-comparison hidden><div class="motor-comparison-head"><h2>Ihre zwei Favoriten.</h2><button class="wx-choice" data-motor-clear>Vergleich leeren</button></div><div data-motor-table></div></div>
+</div></section>
+
 
     <!-- Leistungs-Karten -->
     <section class="section" id="leistungen">
@@ -63,7 +64,7 @@
           <article class="leistung-card" data-anliegen="neuwagen">
             <figure>
               <img src="assets/karte-neuwagen.jpg" alt="Scheinwerfer-Detail eines Fahrzeugs, keine Marke erkennbar — Beispielfoto" loading="lazy" width="1400" height="933">
-              <figcaption class="small">Beispielfoto (Symbolbild)</figcaption>
+              <figcaption class="small">KI-Symbolbild · kein konkretes Markenmodell</figcaption>
             </figure>
             <div class="card-body">
               <h3>Neuwagen — Renault &amp; Dacia</h3>
@@ -74,7 +75,7 @@
           <article class="leistung-card" data-anliegen="gebrauchtwagen">
             <figure>
               <img src="assets/karte-gebrauchtwagen.jpg" alt="Handschlag vor einer Ziegelwand — Beispielfoto" loading="lazy" width="1400" height="933">
-              <figcaption class="small">Beispielfoto (Symbolbild)</figcaption>
+              <figcaption class="small">KI-Symbolbild · kein konkretes Markenmodell</figcaption>
             </figure>
             <div class="card-body">
               <h3>Gebrauchtwagen</h3>
@@ -85,7 +86,7 @@
           <article class="leistung-card" data-anliegen="service">
             <figure>
               <img src="assets/karte-werkstatt.jpg" alt="Mechaniker-Hände bei der Arbeit am Fahrzeug — Beispielfoto" loading="lazy" width="1400" height="933">
-              <figcaption class="small">Beispielfoto (Symbolbild)</figcaption>
+              <figcaption class="small">KI-Symbolbild · kein konkretes Markenmodell</figcaption>
             </figure>
             <div class="card-body">
               <h3>Werkstatt &amp; Service</h3>
@@ -96,7 +97,7 @@
           <article class="leistung-card" data-anliegen="pannenhilfe">
             <figure>
               <img src="assets/karte-pannenhilfe.jpg" alt="Fahrzeug nachts mit Licht auf dunkler Landstraße — Beispielfoto" loading="lazy" width="1400" height="933">
-              <figcaption class="small">Beispielfoto (Symbolbild)</figcaption>
+              <figcaption class="small">KI-Symbolbild · kein konkretes Markenmodell</figcaption>
             </figure>
             <div class="card-body">
               <h3>Pannenhilfe &amp; Abschleppdienst</h3>
@@ -150,8 +151,8 @@
         <div class="fahrzeug-grid" data-fahrzeug-grid>
           <article class="fahrzeug-karte" data-marke="renault" data-zustand="neuwagen" data-fahrzeug-id="fahrzeug-1">
             <figure>
-              <img src="assets/fahrzeug-beispiel-1.jpg" alt="Roter Kleinwagen in der Seitenansicht am Straßenrand — Beispielfoto" loading="lazy" width="1400" height="933">
-              <figcaption class="small">Beispielfoto (Symbolbild)</figcaption>
+              <img src="assets/wow-city.webp" alt="KI-Symbolbild: roter Kompaktwagen im Showroom" loading="lazy" width="1400" height="933">
+              <figcaption class="small">KI-Symbolbild · kein konkretes Markenmodell</figcaption>
             </figure>
             <div class="card-body">
               <p class="chip">Beispielfahrzeug</p>
@@ -173,8 +174,8 @@
           </article>
           <article class="fahrzeug-karte" data-marke="dacia" data-zustand="gebrauchtwagen" data-fahrzeug-id="fahrzeug-2">
             <figure>
-              <img src="assets/fahrzeug-beispiel-2.jpg" alt="Dunkler Kombi in der Seitenansicht vor nebligen Feldern — Beispielfoto" loading="lazy" width="1400" height="933">
-              <figcaption class="small">Beispielfoto (Symbolbild)</figcaption>
+              <img src="assets/wow-family.webp" alt="KI-Symbolbild: dunkelgrauer Kombi im Showroom" loading="lazy" width="1400" height="933">
+              <figcaption class="small">KI-Symbolbild · kein konkretes Markenmodell</figcaption>
             </figure>
             <div class="card-body">
               <p class="chip">Beispielfahrzeug</p>
@@ -198,8 +199,8 @@
           </article>
           <article class="fahrzeug-karte" data-marke="renault" data-zustand="gebrauchtwagen" data-fahrzeug-id="fahrzeug-3">
             <figure>
-              <img src="assets/fahrzeug-beispiel-3.jpg" alt="Dunkler SUV auf kurviger Landstraße in grünen Hügeln — Beispielfoto" loading="lazy" width="1400" height="933">
-              <figcaption class="small">Beispielfoto (Symbolbild)</figcaption>
+              <img src="assets/wow-suv.webp" alt="KI-Symbolbild: schwarzer SUV im Showroom" loading="lazy" width="1400" height="933">
+              <figcaption class="small">KI-Symbolbild · kein konkretes Markenmodell</figcaption>
             </figure>
             <div class="card-body">
               <p class="chip">Beispielfahrzeug</p>
@@ -296,7 +297,7 @@
         </details>
         <details>
           <summary>Was passiert mit meiner Terminanfrage?</summary>
-          <p>In dieser Demo: nichts — es wird nichts gespeichert und nichts versendet. Auf der echten Website würde das Autohaus Ihren Terminwunsch erhalten und sich zur Bestätigung zurückmelden.</p>
+          <p>In dieser Demo: nichts — es bleibt der Vorgang nur in diesem Browser-Tab und nichts versendet. Auf der echten Website würde das Autohaus Ihren Terminwunsch erhalten und sich zur Bestätigung zurückmelden.</p>
         </details>
         <details>
           <summary>Welche Fahrzeuge und Marken gibt es?</summary>
@@ -315,5 +316,7 @@
   </footer>
 
   <script src="app.js"></script>
+<script src="../assets/wow-kit.js"></script>
+<script src="wow.js"></script>
 </body>
 </html>

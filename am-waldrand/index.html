@@ -8,14 +8,23 @@
   <title>Am Waldrand · Pension in Mosbach-Waldstadt — Design-Entwurf</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../assets/demo-ui.css">
+  <link rel="stylesheet" href="../assets/demo-refinements.css">
+  <script src="../assets/demo-ui.js" defer></script>
+<link rel="stylesheet" href="../assets/demo-workflow.css"><script src="../assets/demo-workflow.js"></script><script src="../assets/branch-definitions.js"></script><script src="../assets/branch-bridge.js"></script>
+<link rel="stylesheet" href="../assets/wow-final.css">
+<link rel="stylesheet" href="wow.css">
 </head>
-<body>
+<body data-demo="am-waldrand">
   <a class="skip-link" href="#hauptinhalt">Zum Inhalt springen</a>
 
-  <aside class="draft-banner" aria-label="Hinweis zum Entwurfsstatus">
-    <strong>Design-Entwurf von TOMORROWWORKS</strong> — nicht die offizielle Website von Pension Am Waldrand ·
-    Persönliche Konzeptvorschau · Zimmeranfrage ist eine Demo · Angaben werden bestätigt
-  </aside>
+  <aside class="demo-toolbar" aria-label="Designstudie von TomorrowWorks">
+      <div class="demo-toolbar-label"><strong>TomorrowWorks · Designstudie</strong><span>Keine offizielle Website</span></div>
+      <div class="demo-toolbar-actions">
+        <a href="../projekte.html#designstudien"><span aria-hidden="true">←</span> Alle Demos</a>
+        <details><summary>Hinweis</summary><p>Design-Entwurf von TOMORROWWORKS — nicht die offizielle Website von Pension Am Waldrand · Persönliche Konzeptvorschau · Zimmeranfrage ist eine Demo · Angaben werden bestätigt</p></details>
+      </div>
+    </aside>
 
   <header class="site-header">
     <a class="btn pill-fix" href="anfrage.html" data-pill>Zimmer anfragen</a>
@@ -40,22 +49,13 @@
   <main id="hauptinhalt">
 
     <!-- Hero: eckiges Inset-Waldbild + zentrierter Claim im Du-Ton -->
-    <section class="hero" id="start">
-      <div class="wrap wrap--breit">
-        <figure class="hero-figure">
-          <img src="assets/hero-wald.jpg" alt="Sonnenstrahlen fluten einen ruhigen Wald — Beispielfoto" width="1600" height="1200" fetchpriority="high">
-          <figcaption class="small">Beispielfoto (Symbolbild) — echte Fotos folgen nach Freigabe</figcaption>
-        </figure>
-      </div>
-      <div class="wrap hero-intro">
-        <h1>Komm zur Ruhe —<br>am Waldrand.</h1>
-        <p class="lede">Kleine, renovierte Pension am südlichen Tor zum Neckartal-Odenwald: absolute Ruhe, viel Natur und ein Zuhause auf Zeit — seit über 30 Jahren in Familienbesitz.</p>
-        <div class="hero-ctas">
-          <a class="btn btn--primary" href="anfrage.html">Zimmer anfragen <span class="arrow" aria-hidden="true">→</span></a>
-          <a class="btn" href="#zimmer">Zimmer ansehen</a>
-        </div>
-      </div>
-    </section>
+    <section class="tw-experience forest-stage" id="start" aria-label="Ihre Auszeit am Waldrand">
+ <img class="forest-panorama" data-forest-photo src="assets/hero-wald.jpg" alt="Waldlandschaft als Symbolbild für eine Auszeit im Grünen" fetchpriority="high" width="1600" height="1000">
+ <div class="wx-inner forest-layout"><div class="forest-copy"><p class="wx-eyebrow">Am Waldrand · Mosbach-Waldstadt</p><h1>Mal wieder<br><em>draußen sein.</em></h1><p>Zwischen Waldwegen und einem ruhigen Zimmer liegt Ihre nächste kleine Auszeit.</p><div class="wx-choices" role="group" aria-label="Ihre Reiseidee"><button class="wx-choice" data-forest-mood="ruhe" aria-pressed="true">01 · Ruhe</button><button class="wx-choice" data-forest-mood="wandern" aria-pressed="false">02 · Wandern</button><button class="wx-choice" data-forest-mood="bike" aria-pressed="false">03 · Bike</button></div></div>
+ <aside class="forest-invitation"><span class="wx-step">Eine Idee für Ihren Aufenthalt</span><h2 data-forest-title>Weniger Termine.<br>Mehr Wald.</h2><p data-forest-text>Ein Buch einpacken, tief durchatmen und den Tag im eigenen Rhythmus beginnen.</p><div class="forest-itinerary"><span>ANKOMMEN</span><i></i><span data-forest-middle>ABSCHALTEN</span><i></i><span>AUSSCHLAFEN</span></div><a class="wx-button" href="#aufenthalts-planer" data-forest-plan>Meinen Aufenthalt planen ↗</a><p class="wx-note">Ihre Reiseidee wird in die Zimmeranfrage übernommen. Bilder und Ablauf sind beispielhaft.</p></aside>
+ </div><span class="forest-credit">DIE NATUR MACHT DEN UNTERSCHIED. / SYMBOLBILD</span>
+</section>
+
 
     <!-- USP-Band -->
     <section class="section section--usp" id="usp" aria-label="Das macht uns aus">
@@ -181,7 +181,7 @@
           </article>
         </div>
 
-        <div class="aufenthalts-planer" data-planer>
+        <div class="aufenthalts-planer" id="aufenthalts-planer" data-planer>
           <div class="planer-eingabe">
             <p class="eyebrow">Zum Ausprobieren</p>
             <h3>Sieh dir deinen Aufenthalt an</h3>
@@ -379,5 +379,7 @@
   </footer>
 
   <script src="app.js"></script>
+<script src="../assets/wow-kit.js"></script>
+<script src="wow.js"></script>
 </body>
 </html>

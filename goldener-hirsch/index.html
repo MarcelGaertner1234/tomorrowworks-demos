@@ -995,10 +995,21 @@
         }
       }
     </style>
-  </head>
-  <body>
-    <aside class="entwurf-banner" aria-label="Hinweis zum Design-Entwurf">
-      Design-Entwurf von TOMORROWWORKS — nicht die offizielle Website von Hotel Goldener Hirsch
+    <link rel="stylesheet" href="../assets/demo-ui.css">
+  <link rel="stylesheet" href="../assets/demo-refinements.css">
+  <script src="../assets/demo-ui.js" defer></script>
+  <script src="app.js" defer></script>
+<link rel="stylesheet" href="../assets/demo-workflow.css"><script src="../assets/demo-workflow.js"></script><script src="../assets/branch-definitions.js"></script><script src="../assets/branch-bridge.js"></script>
+<link rel="stylesheet" href="wow.css">
+<script src="wow.js" defer></script>
+</head>
+  <body data-demo="goldener-hirsch">
+    <aside class="demo-toolbar" aria-label="Designstudie von TomorrowWorks">
+      <div class="demo-toolbar-label"><strong>TomorrowWorks · Designstudie</strong><span>Keine offizielle Website</span></div>
+      <div class="demo-toolbar-actions">
+        <a href="../projekte.html#designstudien"><span aria-hidden="true">←</span> Alle Demos</a>
+        <details><summary>Hinweis</summary><p>Design-Entwurf von TOMORROWWORKS — nicht die offizielle Website von Hotel Goldener Hirsch</p></details>
+      </div>
     </aside>
 
     <header id="top">
@@ -1024,38 +1035,29 @@
         </nav>
       </div>
 
-      <div class="hero">
-        <h1 class="reveal">
-          <span class="h1-zeile">Gut schlafen im Fachwerk —</span>
-          <em class="h1-zeile">mitten in Mosbach.</em>
-        </h1>
-        <p class="hero-lauftext reveal">
-          23 Zimmer in einem Kulturdenkmal von 1700, direkt in der Fußgängerzone.
-          Frühstücksbuffet inklusive (Beispiel).
-        </p>
-        <div class="hero-cta reveal">
-          <a class="btn btn-voll" href="#anfrage">Zimmer anfragen</a>
-          <a class="btn" href="tel:+4962618465020">Anrufen</a>
+      <section class="stay-hero" data-stay data-view="haus" aria-label="Haus und Zimmer entdecken">
+        <img class="stay-image" src="assets/fachwerk-fassade.jpg" alt="Fachwerkhaus in einer Altstadtgasse – Symbolbild" width="1600" height="2400" fetchpriority="high">
+        <div class="stay-shade" aria-hidden="true"></div>
+        <span class="stay-atmosphere">Beispielhafte Bildwelt</span>
+        <div class="stay-copy">
+          <p>Hotel Goldener Hirsch in Mosbach</p>
+          <h1>Eine kleine Auszeit. Mitten in Mosbach.</h1>
+          <p class="stay-lede">Draußen die Altstadt. Drinnen Zeit für sich. Entdecken Sie Ihr Wunschzimmer und planen Sie Ihren Aufenthalt.</p>
+          <a class="btn" href="#aufenthalt">Aufenthalt planen</a>
         </div>
-      </div>
-
-      <figure class="foto-rahmen reveal" style="max-width: 1080px; margin: 0 auto; padding: 0 clamp(1.2rem, 4vw, 3rem)">
-        <div class="foto hero-foto">
-          <span class="foto-siegel">Anno 1700 · Kulturdenkmal</span>
-          <picture>
-            <source media="(min-width: 641px)" srcset="assets/fachwerk-zeile.jpg" />
-            <img
-              src="assets/fachwerk-fassade.jpg"
-              alt="Historische Fachwerkhäuser in einer Altstadtgasse"
-              width="1600"
-              height="2400"
-            />
-          </picture>
+        <div class="stay-room-panel">
+          <h2>Wie möchten Sie wohnen?</h2>
+          <div class="stay-switch" role="group" aria-label="Haus oder Zimmerstil ansehen">
+            <button type="button" data-stay-room="haus" aria-pressed="true">Das Haus</button>
+            <button type="button" data-stay-room="renoviert" aria-pressed="false">Renoviert</button>
+            <button type="button" data-stay-room="landhaus" aria-pressed="false">Landhaus</button>
+            <button type="button" data-stay-room="klimatisiert" aria-pressed="false">Klimatisiert</button>
+          </div>
+          <p class="stay-caption" data-stay-caption aria-live="polite"><strong>Ankommen in der Altstadt</strong>Fachwerk, kleine Gassen und ein Zimmer zum Zurückziehen.</p>
+          <a href="#aufenthalt">Zeitraum für Ihr Wunschzimmer wählen</a>
         </div>
-        <figcaption class="foto-unterschrift">
-          Echte Aufnahme — beispielhafte Bildwelt für Ihren neuen Auftritt.
-        </figcaption>
-      </figure>
+        <p class="stay-bottom">Zimmer entdecken. Aufenthalt zusammenstellen. Persönlich anfragen.</p>
+      </section>
     </header>
 
     <main>
@@ -1141,7 +1143,7 @@
             Beispielpreise — werden gemeinsam mit Ihnen festgelegt. Fotos: beispielhafte Bildwelt.
           </p>
 
-          <div class="aufenthalts-planer reveal" data-planer>
+          <div class="aufenthalts-planer reveal" id="aufenthalt" data-planer>
             <div class="planer-eingabe">
               <p class="vorzeile">Zum Ausprobieren</p>
               <h3>Sehen Sie sich Ihren Aufenthalt an</h3>
@@ -1178,7 +1180,7 @@
                   <label><input type="radio" name="planer-personen" value="1"> 1 Person</label>
                   <label><input type="radio" name="planer-personen" value="2" checked> 2 Personen</label>
                 </div>
-                <label><input type="checkbox" value="fruehstueck" data-planer-extra> Frühstück vom Buffet — 12 € pro Person/Nacht <em>(Beispielpreis)</em></label>
+                <p>Frühstück vom Buffet ist im Beispielpreis enthalten.</p>
                 <label><input type="checkbox" value="saloon" data-planer-extra> Saloon-Abend mit Grillkarte — 35 € pro Person, einmalig <em>(Beispielpreis)</em></label>
               </fieldset>
             </div>
@@ -1303,44 +1305,48 @@
                 <a class="btn" href="mailto:info@goldener-hirsch-mosbach.de">E-Mail schreiben</a>
               </div>
             </div>
-            <form class="anfrage-form reveal">
+            <form class="anfrage-form reveal" data-hotel-form novalidate><div class="wf-fields"><label class="wf-field" for="stay-personen">Personen<select id="stay-personen" name="personen"><option value="1">1 Person</option><option value="2" selected>2 Personen</option></select></label><label class="wf-field" for="branch-anreise">Anreise<input id="branch-anreise" name="anreise" type="date" required></label><label class="wf-field" for="branch-abreise">Abreise<input id="branch-abreise" name="abreise" type="date" required></label></div>
               <div class="feld">
                 <label for="anfrage-name">Name</label>
-                <input id="anfrage-name" name="name" type="text" autocomplete="name" />
+                <input id="anfrage-name" name="name" type="text" autocomplete="name" required />
               </div>
               <div class="feld">
-                <label for="anfrage-zeitraum">Zeitraum</label>
+                <label for="anfrage-email">E-Mail für die Rückmeldung</label>
+                <input id="anfrage-email" name="email" type="email" autocomplete="email" required>
+              </div>
+              <div class="feld">
+                <label for="anfrage-zeitraum">Gewünschter Zeitraum</label>
                 <input
                   id="anfrage-zeitraum"
                   name="zeitraum"
                   type="text"
                   placeholder="z. B. 02.–04. Oktober"
+                  required
                 />
               </div>
               <div class="feld">
-                <label for="anfrage-zimmertyp">Zimmertyp</label>
+                <label for="anfrage-zimmertyp">Gewünschter Zimmerstil</label>
                 <select id="anfrage-zimmertyp" name="zimmertyp">
-                  <option>Einzelzimmer</option>
-                  <option>Doppelzimmer</option>
-                  <option>Dreibettzimmer</option>
+                  <option value="renoviert">Renoviert 2020</option>
+                  <option value="landhaus">Landhausstil</option>
+                  <option value="klimatisiert">Klimatisiert · 3. Stock</option>
                 </select>
               </div>
               <div class="feld">
                 <label for="anfrage-nachricht">Nachricht</label>
                 <textarea id="anfrage-nachricht" name="nachricht" rows="3"></textarea>
               </div>
-              <button
-                class="btn btn-voll anfrage-demo"
-                type="button"
-                title="Im Entwurf noch ohne Funktion — wird bei Umsetzung mit Ihrem Postfach verbunden"
-              >
-                Anfrage senden
-              </button>
-              <p class="demo-hinweis">
-                Das Formular wird bei der Umsetzung mit Ihrem E-Mail-Postfach verbunden.
-                (Beispiel-Entwurf)
-              </p>
+              <p class="demo-field-error" data-fehler role="alert" hidden></p>
+              <button class="btn btn-voll" type="submit">Demo-Anfrage ansehen</button>
+              <p class="demo-hinweis">Sie sehen eine Zusammenfassung. Es wird nichts versendet, gespeichert oder reserviert.</p>
             </form>
+            <div class="hotel-bestaetigung" data-bestaetigung hidden tabindex="-1">
+              <p class="vorzeile">Ihre Demo-Anfrage</p>
+              <h3>So sieht Ihre Anfrage aus.</h3>
+              <p data-zusammenfassung></p>
+              <p>Es wurde nichts versendet oder reserviert. Verfügbarkeit und Konditionen werden erst vom Hotel bestätigt.</p>
+              <button type="button" class="btn btn-voll" data-hotel-bearbeiten>Angaben bearbeiten</button>
+            </div>
           </div>
         </div>
       </section>
@@ -1478,7 +1484,6 @@
           klimatisiert: { name: 'Klimatisiert — 3. Stock', preis: 85 },
         };
         const extraDaten = {
-          fruehstueck: { name: 'Frühstück', preis: 12, proNacht: true },
           saloon: { name: 'Saloon-Abend', preis: 35, proNacht: false },
         };
         const wochentage = ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'];
@@ -1502,8 +1507,8 @@
           const anreiseWert = anreiseFeld?.value;
           const abreiseWert = abreiseFeld?.value;
 
-          if (!anreiseWert || !abreiseWert || abreiseWert <= anreiseWert) {
-            if (text) text.textContent = 'Wählen Sie Anreise und Abreise, um Ihren Aufenthalt zu sehen.';
+          if (!anreiseWert || !abreiseWert || anreiseWert < anreiseFeld.min || abreiseWert <= anreiseWert) {
+            if (text) text.textContent = 'Wählen Sie eine Anreise ab heute und eine spätere Abreise.';
             if (naechteBox) {
               naechteBox.hidden = true;
               naechteBox.innerHTML = '';
@@ -1526,6 +1531,7 @@
           let gesamt = zimmerGesamt;
           const rechnungZeilen = [
             `${naechteAnzahl} ${naechteWort(naechteAnzahl)} × ${zimmer.preis} € = ${zimmerGesamt} €`,
+            'Frühstück inklusive',
           ];
           const extrasZeilen = [];
           const extrasNachrichtTeile = [];
@@ -1553,7 +1559,7 @@
 
           if (naechteBox) {
             naechteBox.innerHTML = '';
-            for (let i = 0; i < naechteAnzahl; i += 1) {
+            for (let i = 0; i < Math.min(naechteAnzahl, 14); i += 1) {
               const tag = new Date(anreiseDatum);
               tag.setDate(tag.getDate() + i);
               const karte = document.createElement('span');
@@ -1562,6 +1568,11 @@
                 `<span class="planer-tag-wochentag">${wochentage[tag.getDay()]}</span>` +
                 `<span class="planer-tag-nummer">${formatKurz(tag)}</span>`;
               naechteBox.appendChild(karte);
+            }
+            if (naechteAnzahl > 14) {
+              const weitere = document.createElement('span');
+              weitere.textContent = `… und ${naechteAnzahl - 14} weitere Nächte`;
+              naechteBox.append(weitere);
             }
             naechteBox.hidden = false;
           }
@@ -1587,9 +1598,11 @@
         };
 
         pillen.forEach((pille) => {
+          pille.setAttribute('aria-pressed', String(pille.classList.contains('is-aktiv')));
           pille.addEventListener('click', () => {
-            pillen.forEach((p) => p.classList.remove('is-aktiv'));
+            pillen.forEach((p) => { p.classList.remove('is-aktiv'); p.setAttribute('aria-pressed', 'false'); });
             pille.classList.add('is-aktiv');
+            pille.setAttribute('aria-pressed', 'true');
             zimmerAktiv = pille.dataset.planerZimmer;
             aktualisieren();
           });

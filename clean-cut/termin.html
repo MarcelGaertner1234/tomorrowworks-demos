@@ -4,18 +4,26 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
-  <meta name="description" content="Termin-Demo im Design-Entwurf von TOMORROWWORKS für CLEAN CUT Mosbach: Leistung, Friseur und Beispielzeit wählen — ohne Speicherung, ohne Versand.">
+  <meta name="description" content="Termin-Demo im Design-Entwurf von TOMORROWWORKS für CLEAN CUT Mosbach: Leistung, Friseur und Beispielzeit wählen — mit Vorgängen im Browser-Tab, ohne Versand.">
   <title>Termin-Demo | CLEAN CUT Mosbach — Design-Entwurf</title>
   <link rel="icon" href="assets/logo.png" type="image/png">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../assets/demo-ui.css">
+  <link rel="stylesheet" href="../assets/demo-refinements.css">
+  <script src="../assets/demo-ui.js" defer></script>
+  <link rel="stylesheet" href="../assets/demo-workflow.css">
+  <script src="../assets/demo-workflow.js"></script>
 </head>
-<body>
+<body data-demo="clean-cut">
   <a class="skip-link" href="#hauptinhalt">Zum Inhalt springen</a>
 
-  <aside class="draft-banner" aria-label="Hinweis zum Entwurfsstatus">
-    <strong>Design-Entwurf von TOMORROWWORKS</strong> — nicht die offizielle Website von CLEAN CUT Mosbach ·
-    Persönliche Konzeptvorschau · Diese Demo speichert und versendet keine Daten
-  </aside>
+  <aside class="demo-toolbar" aria-label="Designstudie von TomorrowWorks">
+      <div class="demo-toolbar-label"><strong>TomorrowWorks · Designstudie</strong><span>Keine offizielle Website</span></div>
+      <div class="demo-toolbar-actions">
+        <a href="../projekte.html#designstudien"><span aria-hidden="true">←</span> Alle Demos</a>
+        <details><summary>Hinweis</summary><p>Design-Entwurf von TOMORROWWORKS — nicht die offizielle Website von CLEAN CUT Mosbach · Persönliche Konzeptvorschau · Diese Demo speichert und versendet keine Daten</p></details>
+      </div>
+    </aside>
 
   <header class="site-header">
     <div class="wrap">
@@ -54,7 +62,7 @@
         <form class="planner" data-planner novalidate>
           <div class="planner-head">
             <strong>Terminwahl ausprobieren</strong>
-            <span class="pill-note">DEMO · KEINE SPEICHERUNG</span>
+            <span class="pill-note">DEMO · NUR IN DIESEM BROWSER-TAB</span>
           </div>
 
           <fieldset>
@@ -62,15 +70,15 @@
             <div class="choice-grid choice-grid--3">
               <label class="choice">
                 <input type="radio" name="leistung" value="Haarschnitt" checked>
-                <span class="choice-text"><strong>Haarschnitt</strong><span>Dauer offen · Preis offen</span></span>
+                <span class="choice-text"><strong>Haarschnitt</strong><span>45 Min. · Beispieldauer · Preis offen</span></span>
               </label>
               <label class="choice">
                 <input type="radio" name="leistung" value="Bartpflege">
-                <span class="choice-text"><strong>Bartpflege</strong><span>Dauer offen · Preis offen</span></span>
+                <span class="choice-text"><strong>Bartpflege</strong><span>30 Min. · Beispieldauer · Preis offen</span></span>
               </label>
               <label class="choice">
                 <input type="radio" name="leistung" value="Schnitt &amp; Bart">
-                <span class="choice-text"><strong>Schnitt &amp; Bart</strong><span>Dauer offen · Preis offen</span></span>
+                <span class="choice-text"><strong>Schnitt &amp; Bart</strong><span>60 Min. · Beispieldauer · Preis offen</span></span>
               </label>
             </div>
           </fieldset>
@@ -79,8 +87,8 @@
             <legend><span class="step-no">02</span> Wer schneidet?</legend>
             <div class="choice-grid choice-grid--2x2">
               <label class="choice">
-                <input type="radio" name="friseur" value="Schnellster Termin" checked>
-                <span class="choice-text"><span class="choice-flag">EMPFOHLEN</span><strong>Schnellster Termin</strong><span>Automatisch aus allen 3 Kalendern</span></span>
+                <input type="radio" name="friseur" value="Person noch offen" checked>
+                <span class="choice-text"><span class="choice-flag">EMPFOHLEN</span><strong>Person noch offen</strong><span>Person im Beispielkalender wählen</span></span>
               </label>
               <label class="choice">
                 <input type="radio" name="friseur" value="Max · Inhaber">
@@ -103,7 +111,7 @@
               <div>
                 <p class="role-line">Beispiel-Zuordnung</p>
                 <strong>Max</strong> <span>· Inhaber</span>
-                <p>Nach der Zeitwahl wird automatisch der früheste freie Mitarbeiter angezeigt.</p>
+                <p>Die Person und die tatsächliche Zeit wählst du im Kalender in Schritt 04.</p>
               </div>
             </div>
           </fieldset>
@@ -147,7 +155,7 @@
                 <button type="button" class="chip chip--stylist" aria-pressed="false" data-stylist="lena"><small>Platz C</small> Lena</button>
               </div>
               <div class="slot-grid" role="group" aria-label="Beispielzeiten am Beispieltag Dienstag (belegte Zeiten sind gesperrt)" data-slotgrid></div>
-              <p class="chip-hint" data-slot-hint aria-live="polite">Das Beispielraster wird direkt im Browser aufgebaut — ohne Server, ohne Speicherung.</p>
+              <p class="chip-hint" data-slot-hint aria-live="polite">Das Beispielraster wird direkt im Browser aufgebaut — ohne Server, mit Vorgängen im Browser-Tab.</p>
             </div>
           </fieldset>
 
@@ -197,7 +205,7 @@
               <img src="assets/qr-termin.svg" alt="QR-Code zur CLEAN CUT Termin-Demo" width="160" height="160">
               <p>So sieht die Bestätigung mit QR-Code aus — im echten Betrieb dient er dem Check-in im Salon.</p>
             </div>
-            <p class="confirm-note">Demo-Bestätigung — es wurden keine Daten gespeichert oder versendet.</p>
+            <p class="confirm-note">Demo-Bestätigung — Der Vorgang bleibt in diesem Browser-Tab. Es wurde nichts versendet.</p>
           </div>
         </form>
       </div>
@@ -237,5 +245,7 @@
   </footer>
 
   <script src="app.js"></script>
+<script src="../assets/wow-kit.js"></script>
+<script src="wow.js"></script>
 </body>
 </html>

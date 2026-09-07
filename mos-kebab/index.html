@@ -999,10 +999,21 @@
         }
       }
     </style>
-  </head>
-  <body>
-    <aside class="entwurf-banner" aria-label="Hinweis zum Design-Entwurf">
-      Design-Entwurf von TOMORROWWORKS — nicht die offizielle Website von MOS Kebap
+    <link rel="stylesheet" href="../assets/demo-ui.css">
+  <link rel="stylesheet" href="../assets/demo-refinements.css">
+  <script src="../assets/demo-ui.js" defer></script>
+  <link rel="stylesheet" href="../assets/demo-workflow.css">
+  <script src="../assets/demo-workflow.js"></script>
+<link rel="stylesheet" href="../assets/wow-final.css">
+<link rel="stylesheet" href="wow.css">
+</head>
+  <body data-demo="mos-kebab">
+    <aside class="demo-toolbar" aria-label="Designstudie von TomorrowWorks">
+      <div class="demo-toolbar-label"><strong>TomorrowWorks · Designstudie</strong><span>Keine offizielle Website</span></div>
+      <div class="demo-toolbar-actions">
+        <a href="../projekte.html#designstudien"><span aria-hidden="true">←</span> Alle Demos</a>
+        <details><summary>Hinweis</summary><p>Design-Entwurf von TOMORROWWORKS — nicht die offizielle Website von MOS Kebap</p></details>
+      </div>
     </aside>
 
     <header id="top">
@@ -1060,56 +1071,9 @@
         </nav>
       </div>
 
-      <div class="hero">
-        <div>
-          <p class="hero-eyebrow">hoş geldiniz</p>
-          <h1>
-            <span class="zeile">frisch vom spieß —</span>
-            <span class="zeile">döner &amp; pizza</span>
-            <span class="zeile">in mosbach-neckarelz</span>
-          </h1>
-          <p class="hero-sub">
-            alles wird erst auf bestellung frisch zubereitet. zum mitnehmen, täglich (beispiel).
-          </p>
-          <p class="open-status"><span class="dot"></span> jetzt geöffnet</p>
-          <div class="hero-cta">
-            <a class="btn btn-primary" href="tel:+4962616744353">jetzt anrufen</a>
-            <a class="btn" href="#speisekarte">speisekarte</a>
-          </div>
-        </div>
-        <figure class="bild-frame reveal">
-          <div class="media-frame">
-            <img
-              class="media-poster"
-              src="assets/mos-doener-poster.webp"
-              alt="Knuspriger Dönerspieß am Grill"
-            />
-            <video
-              class="food-film"
-              autoplay
-              muted
-              loop
-              playsinline
-              preload="metadata"
-              poster="assets/mos-doener-poster.webp"
-              aria-label="Rotierender Dönerspieß am Grill"
-            >
-              <source src="assets/mos-doener-loop.mp4" type="video/mp4" />
-            </video>
-            <button
-              class="video-toggle"
-              type="button"
-              data-video-subject="Döner-Video"
-              aria-label="Döner-Video abspielen"
-            >
-              Film abspielen
-            </button>
-          </div>
-          <figcaption class="bild-caption">
-            echte food-aufnahme — beispielhafte bildwelt für ihren neuen auftritt.
-          </figcaption>
-        </figure>
-      </div>
+<section class="tw-experience kebap-stage" aria-label="Dein Döner, Schicht für Schicht"><div class="wx-inner kebap-layout"><div class="kebap-copy"><p class="wx-eyebrow">MOS KEBAP · MOSBACH-NECKARELZ</p><h1>Dein Döner.<br><em>Deine Regeln.</em></h1><p>Brot, Beef und genau das, worauf du Lust hast. Klick deine Zutaten zusammen — wir machen einen Bon daraus.</p><div class="kebap-ingredients"><label class="wx-check"><input type="checkbox" data-kebap-ingredient value="salat" checked><span>Knackiger Salat</span><i></i>01</label><label class="wx-check"><input type="checkbox" data-kebap-ingredient value="tomate" checked><span>Tomaten</span><i></i>02</label><label class="wx-check"><input type="checkbox" data-kebap-ingredient value="zwiebel" checked><span>Zwiebeln</span><i></i>03</label><label class="wx-check"><input type="checkbox" data-kebap-ingredient value="sauce" checked><span>Sauce</span><i></i>04</label></div><p class="wx-note">Interaktives Zutatenbeispiel. Die endgültige Rezeptur und Allergene klärt die echte Speisekarte.</p><a class="kebap-menu-link" href="#speisekarte">Die ganze Speisekarte ↓</a></div>
+ <figure class="kebap-art"><div class="kebap-orbit" aria-hidden="true"></div><svg viewBox="0 0 460 570" role="img" aria-label="Illustrativer Döner in Schichten. Abgewählte Zutaten verschwinden aus der Ansicht."><defs><linearGradient id="kebap-bread" x2="0" y2="1"><stop stop-color="#e8c28c"/><stop offset="1" stop-color="#ad743a"/></linearGradient><pattern id="kebap-sesame" width="32" height="25" patternUnits="userSpaceOnUse" patternTransform="rotate(-18)"><ellipse cx="10" cy="8" rx="3" ry="1.4" fill="#f9e7bb"/></pattern></defs><ellipse cx="228" cy="516" rx="161" ry="23" fill="#000" opacity=".2"/><g class="kebap-bread-top"><path d="M71 126Q76 27 230 32 379 29 391 126L383 149Q223 208 80 149Z" fill="url(#kebap-bread)"/><path d="M77 119Q87 38 230 42 371 40 385 120Q237 170 77 119Z" fill="url(#kebap-sesame)"/><path d="M91 149Q238 191 370 148" stroke="#f2d2a1" stroke-width="7" fill="none"/></g><g data-kebap-layer="salat"><path d="M59 211L86 190 105 199 131 180 158 199 184 182 213 200 237 181 263 197 290 179 317 197 345 184 365 203 390 190 405 215 372 239 344 228 314 247 289 234 266 252 236 235 208 252 183 234 155 249 133 231 104 242 81 225Z" fill="#78964c" stroke="#afbf72" stroke-width="5"/><path d="M86 212Q227 244 380 212" fill="none" stroke="#415b30" stroke-width="4"/></g><g data-kebap-layer="tomate" fill="#ba4229" stroke="#ec8260" stroke-width="5"><ellipse cx="130" cy="280" rx="63" ry="19" transform="rotate(-6 130 280)"/><ellipse cx="247" cy="289" rx="62" ry="20"/><ellipse cx="344" cy="274" rx="52" ry="17" transform="rotate(8 344 274)"/><path d="M108 280L151 280M227 288L267 288M327 274L359 274" stroke="#f3b588" stroke-width="3"/></g><g data-kebap-layer="zwiebel" fill="none" stroke="#e5c4d8" stroke-width="8"><ellipse cx="128" cy="326" rx="43" ry="13" transform="rotate(-14 128 326)"/><ellipse cx="239" cy="342" rx="51" ry="12"/><ellipse cx="330" cy="318" rx="42" ry="12" transform="rotate(13 330 318)"/></g><g fill="#845239" stroke="#bd8966" stroke-width="4"><path d="M70 385L140 358 228 373 328 355 394 384 338 407 235 397 134 414Z"/><path d="M85 401L158 382 229 405 310 380 379 405 330 426 244 419 167 436Z"/><path d="M131 376L159 411M229 373L251 418M328 372L307 418" fill="none" stroke="#553828" stroke-width="3"/></g><g data-kebap-layer="sauce"><path d="M109 395Q139 377 172 391T238 391 300 390 358 392" fill="none" stroke="#f8e9cb" stroke-width="9" stroke-linecap="round"/></g><path d="M75 461Q226 411 390 457L374 480Q231 542 90 482Z" fill="url(#kebap-bread)"/><ellipse cx="232" cy="457" rx="157" ry="31" fill="#efd2a1"/><path d="M96 457Q237 427 369 458" stroke="#d5b281" stroke-width="5" fill="none"/></svg><figcaption>SCHICHT FÜR SCHICHT. DEIN GESCHMACK.<br><small>Illustration · individuelle Beispielzusammenstellung</small></figcaption></figure>
+ <aside class="kebap-receipt"><span class="kebap-receipt-brand">MOS / DEIN BON</span><p class="wx-step">01 × Döner Kebap</p><h2>So wird’s<br>deiner.</h2><ul data-kebap-bon><li>Mit allen Zutaten</li></ul><div class="kebap-total"><span>BEISPIELPREIS</span><strong data-kebap-price>7,50 €</strong></div><button class="wx-button" data-kebap-add>In den Warenkorb +</button><p class="wx-status" data-kebap-feedback role="status"></p><button class="kebap-checkout" data-kebap-checkout hidden>Warenkorb öffnen →</button><p class="wx-note">Nur ausprobieren. Keine echte Bestellung.</p></aside></div></section>
     </header>
 
     <section class="anatolian-band" aria-label="Anatolisches Ornamentband"></section>
@@ -1263,8 +1227,8 @@
                   <h3>kontakt für die abholung</h3>
                   <label>name<input name="flow-name" type="text" autocomplete="off" required></label>
                   <label>telefon<input name="flow-telefon" type="tel" autocomplete="off" required></label>
-                  <p class="demo-hint">entwurf — es wird nichts gespeichert oder versendet.</p>
-                  <p class="flow-fehler" data-flow-fehler role="alert" hidden></p>
+                  <p class="demo-hint">entwurf — der Vorgang bleibt nur in diesem Browser-Tab; kein Versand.</p>
+                  <label class="wf-field" for="bestell-wunsch">Sonderwunsch (optional)<textarea id="bestell-wunsch" maxlength="300" placeholder="z. B. ohne Zwiebeln"></textarea></label><p class="flow-fehler" data-flow-fehler role="alert" hidden></p>
                   <button type="button" class="btn btn-primary" data-flow-weiter>
                     bestellung abschließen (beispiel)
                   </button>
@@ -1280,7 +1244,7 @@
                     <li data-status="abholbereit">abholbereit</li>
                   </ol>
                   <p class="demo-hint">
-                    status läuft im demo-zeitraffer (echt: live-anzeige für ihre kunden).
+                    den nächsten status setzt du in der küchenansicht.
                   </p>
                   <button type="button" class="btn" data-flow-reset>weitere bestellung ansehen</button>
                 </div>
@@ -1505,7 +1469,7 @@
 
       // Warenkorb (Speisekarte): Artikel per + hinzufügen, Menge live anpassen,
       // Zwischensumme berechnen. Bewusst KEINE echte Bestellung — reine
-      // Beispiel-Zusammenfassung, kein Versand, keine Speicherung.
+      // Beispiel-Zusammenfassung, kein Versand, nur in diesem Browser-Tab.
       const warenkorbLeiste = document.querySelector('[data-warenkorb-leiste]');
       if (warenkorbLeiste) {
         const callBar = document.querySelector('.call-bar');
@@ -1565,6 +1529,17 @@
           warenkorbLeiste.hidden = gesamtMenge === 0;
         };
 
+        // Only these fixed ingredient keys can become a custom item name.
+        window.MosWowCart = Object.freeze({add(keys) {
+          const allowed = {salat:'Salat',tomate:'Tomaten',zwiebel:'Zwiebeln',sauce:'Sauce'};
+          if (!Array.isArray(keys) || keys.some(k => !Object.hasOwn(allowed,k))) return false;
+          const omitted = Object.keys(allowed).filter(k => !keys.includes(k));
+          const name = 'Döner Kebap · ' + (omitted.length ? 'ohne ' + omitted.map(k=>allowed[k]).join(', ') : 'mit allen Zutaten');
+          const preis = Number(document.querySelector('[data-artikel="Döner Kebap"]').dataset.preis);
+          const entry = warenkorb.get(name) || {preis, menge:0};
+          entry.menge += 1; warenkorb.set(name,entry); render(); return true;
+        }});
+
         document.querySelectorAll('[data-warenkorb-plus]').forEach((knopf) => {
           knopf.addEventListener('click', () => {
             const zeile = knopf.closest('[data-artikel]');
@@ -1587,7 +1562,7 @@
         });
 
         // Bestell-Flow (Beispiel): Abholzeit wählen, Kontakt angeben, Bestätigung mit
-        // Status-Zeitraffer. Bewusst KEIN Versand/Speicherung — reines Vorführ-Beispiel.
+        // Küchenstatus. Speicherung nur im Browser-Tab, kein Versand.
         const bestellflow = document.querySelector('[data-bestellflow]');
         const slotsSchritt = bestellflow?.querySelector('[data-flow-slots]');
         const slotGrid = slotsSchritt?.querySelector('.slot-grid');
@@ -1607,14 +1582,7 @@
         const leerHinweis = bestellflow?.querySelector('[data-flow-leer]');
 
         if (bestellflow) {
-          let bestellZaehler = 40; // erste Nummer: MK-2026-041
-          function naechsteBestellnummer() {
-            bestellZaehler += 1;
-            return 'MK-2026-' + String(bestellZaehler).padStart(3, '0');
-          }
-
           let gewaehlteZeit = null;
-          let statusTimer = [];
 
           const slotWaehlen = (pille, zeit) => {
             slotGrid
@@ -1651,27 +1619,17 @@
             }
           };
 
-          const statusZeitrafferStarten = () => {
-            statusTimer.forEach((id) => window.clearTimeout(id));
-            statusTimer = [];
-            const aktivSetzen = (index) => {
-              statusEintraege.forEach((li, i) => {
-                if (i === index) li.setAttribute('aria-current', 'step');
-                else li.removeAttribute('aria-current');
-              });
-            };
-            aktivSetzen(0);
-            if (motionQuery.matches) return;
-            statusTimer.push(window.setTimeout(() => aktivSetzen(1), 6000));
-            statusTimer.push(window.setTimeout(() => aktivSetzen(2), 12000));
+          const statusAnzeigen = () => {
+            statusEintraege.forEach((li,i)=>{if(i===0)li.setAttribute('aria-current','step');else li.removeAttribute('aria-current');});
           };
-
+          let orderToken = crypto.randomUUID();
           abschliessenBtn?.addEventListener('click', () => {
             // Warenkorb-Panel einklappen: sonst konkurriert es am unteren Rand
             // (mobil) mit dem Bestell-Flow und der call-bar um den Platz.
             panel.hidden = true;
             toggle?.setAttribute('aria-expanded', 'false');
 
+            orderToken = crypto.randomUUID();
             bestellflow.hidden = false;
             bestaetigungSchritt.hidden = true;
             kontaktSchritt.hidden = true;
@@ -1699,6 +1657,13 @@
               fehlerFeld.textContent = 'bitte name und telefon angeben.';
               return;
             }
+            let record;
+            try {
+              const items = [...warenkorb].map(([name,item])=>({name,quantity:item.menge,price:item.preis}));
+              if(!items.length || !gewaehlteZeit)throw Error('Bitte zuerst Artikel und Abholzeit wählen.');
+              if(DemoFlow.list('mos-kebab').filter(r=>r.time===gewaehlteZeit && !['cancelled','collected'].includes(r.status)).length>=3)throw Error('Diese Beispiel-Abholzeit ist ausgelastet. Bitte oben den Warenkorb öffnen und eine andere Zeit wählen.');
+              record=DemoFlow.create('mos-kebab',{status:'received',items,time:gewaehlteZeit,total:items.reduce((n,i)=>n+i.quantity*i.price,0),notes:document.querySelector('#bestell-wunsch').value.trim()},orderToken);
+            }catch(error){DemoFlow.error(fehlerFeld,error.message);return;}
             fehlerFeld.hidden = true;
 
             // Wizard-Schritt: vorige Schritte weg, sonst bliebe „bestellung
@@ -1706,7 +1671,7 @@
             slotsSchritt.hidden = true;
             kontaktSchritt.hidden = true;
             bestaetigungSchritt.hidden = false;
-            nummerFeld.textContent = naechsteBestellnummer();
+            nummerFeld.textContent = record.id;
             artikelListe.innerHTML = '';
             warenkorb.forEach((eintrag, artikelName) => {
               const zeile = document.createElement('li');
@@ -1714,13 +1679,13 @@
               artikelListe.appendChild(zeile);
             });
             zeitFeld.textContent = `abholung um ${gewaehlteZeit} uhr (beispiel).`;
-            statusZeitrafferStarten();
+            statusAnzeigen();
+            DemoFlow.handoff(bestaetigungSchritt,'mos-kebab',record);
+            warenkorb.clear();render();
             bestaetigungSchritt.focus();
           });
 
           resetBtn?.addEventListener('click', () => {
-            statusTimer.forEach((id) => window.clearTimeout(id));
-            statusTimer = [];
             bestellflow.hidden = true;
             bestaetigungSchritt.hidden = true;
             kontaktSchritt.hidden = true;
@@ -1731,5 +1696,7 @@
         }
       }
     </script>
-  </body>
+  <script src="../assets/wow-kit.js"></script>
+<script src="wow.js"></script>
+</body>
 </html>

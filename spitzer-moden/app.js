@@ -151,6 +151,7 @@
         `Wunschtermin ${tag}.${monat}.${jahr}, ${uhrzeitNamen[uhrzeit] ?? 'Uhrzeit'} · ` +
         `${vorname} ${nachname} · Wonach: ${wonach ? 'ja' : 'nein'} · ${fotoText}`;
     }
+    if (!BranchDemo.accept(form, bestaetigung)) return;
     form.hidden = true;
     if (bestaetigung) {
       bestaetigung.hidden = false;

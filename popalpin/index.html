@@ -11,16 +11,24 @@
     >
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
+    <link rel="stylesheet" href="../assets/demo-ui.css">
+  <link rel="stylesheet" href="../assets/demo-refinements.css">
+  <script src="../assets/demo-ui.js" defer></script>
+  <link rel="stylesheet" href="wow.css">
+  <script src="wow.js" defer></script>
+<link rel="stylesheet" href="../assets/demo-workflow.css"><script src="../assets/demo-workflow.js"></script><script src="../assets/branch-definitions.js"></script><script src="../assets/branch-bridge.js"></script>
+</head>
+  <body data-demo="popalpin">
     <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
 
     <header>
-      <div class="banner">
-        <strong>Design-Entwurf von TOMORROWWORKS</strong> —
-        nicht die offizielle Website von PopAlpin ·
-        Persönliche Konzeptvorschau
+      <aside class="demo-toolbar" aria-label="Designstudie von TomorrowWorks">
+      <div class="demo-toolbar-label"><strong>TomorrowWorks · Designstudie</strong><span>Keine offizielle Website</span></div>
+      <div class="demo-toolbar-actions">
+        <a href="../projekte.html#designstudien"><span aria-hidden="true">←</span> Alle Demos</a>
+        <details><summary>Hinweis</summary><p>Design-Entwurf von TOMORROWWORKS — nicht die offizielle Website von PopAlpin · Persönliche Konzeptvorschau</p></details>
       </div>
+    </aside>
       <div class="site-header">
         <div class="site-header-inhalt">
           <a class="wortmarke" href="#inhalt" aria-label="PopAlpin — zur Startseite">
@@ -44,35 +52,22 @@
 
     <main id="inhalt">
       <!-- Hero: Bühne statt Baukasten -->
-      <section class="hero" aria-label="Einstieg">
-        <div class="hero-bild">
-          <img
-            src="assets/hero.jpg"
-            alt="Warmes Bühnenlicht über einer feiernden Menge — Beispielfoto"
-            width="1600"
-            height="1067"
-            fetchpriority="high"
-          >
+      <section class="stage-hero" data-stage data-stage-mood="hochzeit" aria-labelledby="stage-title">
+        <div class="stage-scenery" aria-hidden="true"><img src="assets/wow-stage.webp" width="1672" height="941" fetchpriority="high" alt=""><div class="stage-beams"><span></span><span></span><span></span></div></div>
+        <img class="stage-duo" src="assets/band-duo-cut.webp" alt="Die beiden PopAlpin-Musiker — Originalfoto von PopAlpin" width="466" height="616" fetchpriority="high">
+        <div class="stage-copy">
+          <p class="stage-location">PopAlpin · Liveband für Ihren Anlass</p>
+          <h1 id="stage-title">Euer Abend.<br>Unsere Bühne.</h1>
+          <p class="stage-lede">Vom ersten Tanz bis zur letzten Zugabe. Wählen Sie Ihren Anlass – und machen Sie das Licht an.</p>
+          <div class="stage-performance">
+            <button type="button" class="stage-power" data-stage-power aria-label="Bühnenlicht" aria-pressed="false"><span class="stage-power-dot" aria-hidden="true"></span><span data-stage-power-label>Licht an</span></button>
+            <div class="stage-moods" role="group" aria-label="Bühnenstimmung wählen">
+              <button type="button" data-stage-choice="hochzeit" aria-pressed="true">Hochzeit</button><button type="button" data-stage-choice="gala" aria-pressed="false">Gala</button><button type="button" data-stage-choice="party" aria-pressed="false">Party</button>
+            </div>
+          </div>
+          <p class="stage-state" data-stage-state aria-live="polite">Die Bühne gehört Ihnen.</p>
         </div>
-        <span class="foto-tag foto-tag--links">Hintergrund: Beispielfoto (Symbolbild)</span>
-        <span class="buehnen-spot" aria-hidden="true"></span>
-        <img
-          class="hero-duo"
-          src="assets/band-duo-cut.webp"
-          alt="Das PopAlpin-Duo in Schwarz mit roten Krawatten, Daumen hoch — Foto: PopAlpin"
-          width="466"
-          height="616"
-        >
-        <div class="hero-inhalt">
-          <p class="eyebrow eyebrow--gold">Liveband für Hochzeiten &amp; Events</p>
-          <h1 class="display">Wir machen die Tanzfläche <span class="gold-wort">voll.</span></h1>
-          <p class="hero-unterzeile">
-            30 Jahre Bühnenerfahrung, über 500 Events — und immer das richtige
-            Lied zur richtigen Zeit. Von der emotionalen Hochzeit bis zum
-            bebenden Festzelt.
-          </p>
-
-          <form class="schnellcheck" action="anfrage.html" method="get" aria-label="Verfügbarkeits-Schnellcheck">
+        <div class="stage-booking"><form class="schnellcheck" action="anfrage.html" method="get" aria-label="Verfügbarkeits-Schnellcheck">
             <p class="schnellcheck-titel">Verfügbarkeits-Schnellcheck</p>
             <div class="schnellcheck-felder">
               <div>
@@ -85,6 +80,7 @@
                   <option value="">Bitte wählen</option>
                   <option value="hochzeit">Hochzeit</option>
                   <option value="gala">Gala-Abend</option>
+                  <option value="party">Party</option>
                   <option value="geburtstag">Geburtstag</option>
                   <option value="fastnacht">Fastnacht</option>
                   <option value="festzelt">Festzelt</option>
@@ -96,8 +92,8 @@
             <p class="schnellcheck-hinweis">
               Unverbindlich &amp; kostenlos — Demo-Vorschau: Die Anfrage wird nicht übertragen.
             </p>
-          </form>
-        </div>
+          </form></div>
+        <p class="stage-credit">Bühne: KI-generiertes Symbolbild · Musiker: PopAlpin</p>
       </section>
 
       <!-- Anlässe -->

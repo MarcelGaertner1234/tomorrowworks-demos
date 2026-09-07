@@ -36,17 +36,27 @@
     };
 
     fahrzeugFilter.querySelectorAll('[data-filter-marke]').forEach((knopf) => {
+      knopf.setAttribute('aria-pressed', String(knopf.classList.contains('is-aktiv')));
       knopf.addEventListener('click', () => {
-        fahrzeugFilter.querySelectorAll('[data-filter-marke]').forEach((k) => k.classList.remove('is-aktiv'));
+        fahrzeugFilter.querySelectorAll('[data-filter-marke]').forEach((k) => {
+          k.classList.remove('is-aktiv');
+          k.setAttribute('aria-pressed', 'false');
+        });
         knopf.classList.add('is-aktiv');
+        knopf.setAttribute('aria-pressed', 'true');
         markeAktiv = knopf.dataset.filterMarke;
         anwenden();
       });
     });
     fahrzeugFilter.querySelectorAll('[data-filter-zustand]').forEach((knopf) => {
+      knopf.setAttribute('aria-pressed', String(knopf.classList.contains('is-aktiv')));
       knopf.addEventListener('click', () => {
-        fahrzeugFilter.querySelectorAll('[data-filter-zustand]').forEach((k) => k.classList.remove('is-aktiv'));
+        fahrzeugFilter.querySelectorAll('[data-filter-zustand]').forEach((k) => {
+          k.classList.remove('is-aktiv');
+          k.setAttribute('aria-pressed', 'false');
+        });
         knopf.classList.add('is-aktiv');
+        knopf.setAttribute('aria-pressed', 'true');
         zustandAktiv = knopf.dataset.filterZustand;
         anwenden();
       });
@@ -182,6 +192,7 @@
       }
       zusammenfassung.textContent = `Demo-Zusammenfassung: ${teile.join(' · ')}`;
     }
+    if (!BranchDemo.accept(form, bestaetigung)) return;
     form.hidden = true;
     if (bestaetigung) {
       bestaetigung.hidden = false;

@@ -11,16 +11,23 @@
     >
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
+    <link rel="stylesheet" href="../assets/demo-ui.css">
+  <link rel="stylesheet" href="../assets/demo-refinements.css">
+  <script src="../assets/demo-ui.js" defer></script>
+<link rel="stylesheet" href="../assets/demo-workflow.css"><script src="../assets/demo-workflow.js"></script><script src="../assets/branch-definitions.js"></script><script src="../assets/branch-bridge.js"></script>
+<link rel="stylesheet" href="wow.css">
+</head>
+  <body data-demo="blumen-viva">
     <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
 
     <header>
-      <div class="banner">
-        <strong>Design-Entwurf von TOMORROWWORKS</strong> —
-        nicht die offizielle Website von Blumen Viva ·
-        Persönliche Konzeptvorschau
+      <aside class="demo-toolbar" aria-label="Designstudie von TomorrowWorks">
+      <div class="demo-toolbar-label"><strong>TomorrowWorks · Designstudie</strong><span>Keine offizielle Website</span></div>
+      <div class="demo-toolbar-actions">
+        <a href="../projekte.html#designstudien"><span aria-hidden="true">←</span> Alle Demos</a>
+        <details><summary>Hinweis</summary><p>Design-Entwurf von TOMORROWWORKS — nicht die offizielle Website von Blumen Viva · Persönliche Konzeptvorschau</p></details>
       </div>
+    </aside>
       <div class="site-header">
         <div class="site-header-inhalt">
           <a class="wortmarke" href="#inhalt" aria-label="Blumen Viva — zur Startseite">
@@ -52,40 +59,68 @@
     </header>
 
     <main id="inhalt">
-      <!-- Hero: heller Split — Text auf der Bühne, großes Blumenmotiv rechts -->
-      <section class="hero" aria-label="Einstieg">
-        <div class="hero-inhalt">
-          <span class="eyebrow eyebrow--pink">Floristik in Mosbach-Neckarelz</span>
-          <h1>Frisch gebunden, <em>persönlich</em> gedacht.</h1>
-          <p class="hero-sub">
-            Sträuße, Pflanzen und Floristik für jeden Anlass — erzählen Sie uns, wofür es
-            blühen soll, und holen Sie Ihren Strauß frisch gebunden im Laden ab.
-          </p>
-          <div class="hero-aktionen">
-            <a class="btn btn--voll" href="anfrage.html">Strauß anfragen</a>
-            <a class="btn btn--kontur" href="#anlaesse">Anlässe ansehen</a>
+      <section class="bloom-hero" id="konfigurator" data-konfigurator aria-labelledby="bloom-title">
+        <div class="bloom-heading"><p>Blumen Viva in Mosbach-Neckarelz</p><h1 id="bloom-title">Ein Strauß. Ganz Ihr Gefühl.</h1><p>Wählen Sie Farbe und Größe. Schreiben Sie ein paar persönliche Worte. Wir binden Ihre Idee weiter.</p></div>
+        <div class="bloom-workbench">
+          <div class="bloom-preview" data-konf-huelle data-size="klassisch" data-color="zart">
+            <span class="bloom-specimen" data-bloom-name>Zart &amp; Pastell</span>
+            <div class="bloom-preview-colors" role="group" aria-label="Farbwelt direkt am Strauß wählen">
+              <button type="button" data-konf-stil="zart" aria-pressed="true" aria-label="Zart &amp; Pastell" title="Zart &amp; Pastell" style="--dot:#dfa8bf"></button>
+              <button type="button" data-konf-stil="sonnig" aria-pressed="false" aria-label="Warm &amp; Sonnig" title="Warm &amp; Sonnig" style="--dot:#eeb63c"></button>
+              <button type="button" data-konf-stil="wildwiese" aria-pressed="false" aria-label="Wildwiese bunt" title="Wildwiese bunt" style="--dot:#c94f7c"></button>
+              <button type="button" data-konf-stil="weissgruen" aria-pressed="false" aria-label="Weiß &amp; Grün" title="Weiß &amp; Grün" style="--dot:#cdd8c4"></button>
+            </div>
+            <img class="bloom-bouquet" data-konf-bild src="assets/wow-bouquet-zart.webp" alt="Illustrativer Strauß mit pastellrosa und weißen Blüten" width="1024" height="1024" fetchpriority="high">
+            <div class="bloom-card" aria-label="Vorschau Ihrer Grußkarte"><span>Für Sie, von Herzen.</span><p data-bloom-card>Ein paar Worte machen ihn zu Ihrem Strauß.</p><span class="bloom-signature">Blumen Viva</span></div>
+            <p class="bloom-image-note">KI-Blumenillustration · Saisonale Bindung nach Absprache</p>
+          </div>
+          <div class="bloom-controls">
+            <div class="konf-wahl">
+<fieldset class="konf-schritt">
+                <legend>Ihre Farbwelt</legend>
+                <div class="konf-pillen">
+                  <button type="button" class="konf-pille konf-pille--farbe is-aktiv" style="--punkt:#dfa8bf" aria-pressed="true" data-konf-stil="zart">Zart &amp; Pastell</button>
+                  <button type="button" class="konf-pille konf-pille--farbe" style="--punkt:#eeb63c" aria-pressed="false" data-konf-stil="sonnig">Warm &amp; Sonnig</button>
+                  <button type="button" class="konf-pille konf-pille--farbe" style="--punkt:#c94f7c" aria-pressed="false" data-konf-stil="wildwiese">Wildwiese bunt</button>
+                  <button type="button" class="konf-pille konf-pille--farbe" style="--punkt:#cdd8c4" aria-pressed="false" data-konf-stil="weissgruen">Weiß &amp; Grün</button>
+                </div>
+              </fieldset>
+<fieldset class="konf-schritt">
+                <legend>Wie groß darf er werden?</legend>
+                <div class="konf-pillen">
+                  <button type="button" class="konf-pille" aria-pressed="false" data-konf-umfang="kleiner-gruss">Kleiner Gruß</button>
+                  <button type="button" class="konf-pille is-aktiv" aria-pressed="true" data-konf-umfang="klassisch">Klassisch</button>
+                  <button type="button" class="konf-pille" aria-pressed="false" data-konf-umfang="ueppig">Üppig</button>
+                </div>
+                <p class="konf-schritt-hinweis">
+                  Illustrative Größenansicht. Blüten und Budget stimmen wir persönlich ab.
+                </p>
+              </fieldset>
+<fieldset class="konf-schritt">
+                <legend>Für welchen Anlass?</legend>
+                <div class="konf-pillen">
+                  <button type="button" class="konf-pille is-aktiv" aria-pressed="true" data-konf-anlass="geburtstag">Geburtstag</button>
+                  <button type="button" class="konf-pille" aria-pressed="false" data-konf-anlass="liebe-danke">Liebe &amp; Danke</button>
+                  <button type="button" class="konf-pille" aria-pressed="false" data-konf-anlass="hochzeit">Hochzeit &amp; Feste</button>
+                  <button type="button" class="konf-pille konf-pille--still" aria-pressed="false" data-konf-anlass="trauer">Trauer</button>
+                </div>
+              </fieldset>
+            </div>
+
+            <label class="bloom-message" for="bloom-gruss">Ihre Worte auf der Grußkarte <span>(optional)</span><textarea id="bloom-gruss" maxlength="240" rows="2" placeholder="Schön, dass es dich gibt …" data-bloom-message></textarea></label>
+            <p class="bloom-summary" data-konf-satz aria-live="polite">Ihr Strauß: klassisch, Zart &amp; Pastell, zum Geburtstag.</p>
+            <a class="btn btn--voll" data-konf-cta href="anfrage.html?anlass=geburtstag&amp;stil=zart&amp;umfang=klassisch">Diesen Strauß anfragen</a>
+            <p class="bloom-handoff">Ihre Auswahl und Grußkarte kommen mit in die Anfrage.</p>
           </div>
         </div>
-        <div class="hero-bild">
-          <img
-            src="assets/hero.jpg"
-            alt="Frische Blumen in der Floristik-Werkstatt — Beispielfoto"
-            width="1600"
-            height="1200"
-            fetchpriority="high"
-          >
-          <span class="foto-tag">Beispielfoto (Symbolbild)</span>
-        </div>
       </section>
-
       <!-- Intro: zentrierte schmale Textspalte -->
       <section class="section intro" aria-label="Einleitung">
         <div class="section-inhalt">
           <p class="intro-statement">Blumen kauft man mit den Augen.</p>
           <p>
-            Manche Dinge sucht man nicht in Listen — man sieht sie und weiß: die sind es.
-            Deshalb zeigt diese Seite Blumen statt Absätzen: Anlässe, Farbwelten und ein
-            kurzer Weg zu Ihrem Strauß.
+            Vom kleinen Dankeschön bis zum großen Fest: Farbe, Form und ein persönlicher
+            Gruß geben Ihren Blumen eine eigene Geschichte. Wir nehmen uns Zeit für Ihre Wünsche.
           </p>
         </div>
       </section>
@@ -280,78 +315,6 @@
 
       <!-- Strauß-Konfigurator — Anlass + Farbwelt + Umfang ergeben live eine Vorschau.
            Nutzt bewusst die vorhandenen Farbwelten-Fotos; keine Preise, keine Übertragung. -->
-      <section class="section section--konfigurator" id="konfigurator">
-        <div class="section-inhalt">
-          <div class="section-kopf">
-            <span class="eyebrow">Zum Ausprobieren</span>
-            <h2>Stellen Sie sich Ihren Strauß <em>zusammen</em></h2>
-            <p>
-              Anlass, Farbwelt, Umfang — drei Klicks, und Sie sehen, worüber wir sprechen.
-              Ihre Auswahl nehmen wir direkt mit in die Anfrage.
-            </p>
-          </div>
-
-          <div class="konfigurator" data-konfigurator>
-            <div class="konf-wahl">
-              <fieldset class="konf-schritt">
-                <legend>01 · Anlass</legend>
-                <div class="konf-pillen">
-                  <button type="button" class="konf-pille is-aktiv" aria-pressed="true" data-konf-anlass="geburtstag">Geburtstag</button>
-                  <button type="button" class="konf-pille" aria-pressed="false" data-konf-anlass="liebe-danke">Liebe &amp; Danke</button>
-                  <button type="button" class="konf-pille" aria-pressed="false" data-konf-anlass="hochzeit">Hochzeit &amp; Feste</button>
-                  <button type="button" class="konf-pille konf-pille--still" aria-pressed="false" data-konf-anlass="trauer">Trauer</button>
-                  <button type="button" class="konf-pille" aria-pressed="false" data-konf-anlass="pflanzen">Pflanzen</button>
-                </div>
-              </fieldset>
-
-              <fieldset class="konf-schritt">
-                <legend>02 · Farbwelt</legend>
-                <div class="konf-pillen">
-                  <button type="button" class="konf-pille konf-pille--farbe is-aktiv" style="--punkt:#dfa8bf" aria-pressed="true" data-konf-stil="zart">Zart &amp; Pastell</button>
-                  <button type="button" class="konf-pille konf-pille--farbe" style="--punkt:#eeb63c" aria-pressed="false" data-konf-stil="sonnig">Warm &amp; Sonnig</button>
-                  <button type="button" class="konf-pille konf-pille--farbe" style="--punkt:#c94f7c" aria-pressed="false" data-konf-stil="wildwiese">Wildwiese bunt</button>
-                  <button type="button" class="konf-pille konf-pille--farbe" style="--punkt:#cdd8c4" aria-pressed="false" data-konf-stil="weissgruen">Weiß &amp; Grün</button>
-                </div>
-              </fieldset>
-
-              <fieldset class="konf-schritt">
-                <legend>03 · Umfang</legend>
-                <div class="konf-pillen">
-                  <button type="button" class="konf-pille" aria-pressed="false" data-konf-umfang="kleiner-gruss">Kleiner Gruß</button>
-                  <button type="button" class="konf-pille is-aktiv" aria-pressed="true" data-konf-umfang="klassisch">Klassisch</button>
-                  <button type="button" class="konf-pille" aria-pressed="false" data-konf-umfang="ueppig">Üppig</button>
-                </div>
-                <p class="konf-schritt-hinweis">
-                  Beispiel-Zusammenstellung ohne Preisangaben — den Rahmen besprechen Sie in Ruhe im Laden.
-                </p>
-              </fieldset>
-            </div>
-
-            <div class="konf-vorschau">
-              <figure class="konf-vorschau-bild" data-konf-huelle>
-                <img
-                  src="assets/farbwelt-zart.jpg"
-                  alt="Strauß in zarten Pastelltönen — Beispielfoto"
-                  loading="lazy"
-                  width="1000"
-                  height="750"
-                  data-konf-bild
-                >
-                <span class="foto-tag">Beispielfoto (Symbolbild)</span>
-              </figure>
-              <div class="konf-vorschau-text">
-                <p class="konf-satz" data-konf-satz aria-live="polite">
-                  Ihr Strauß: klassisch, Zart &amp; Pastell, zum Geburtstag.
-                </p>
-                <a class="btn btn--voll" data-konf-cta href="anfrage.html?anlass=geburtstag&amp;stil=zart&amp;umfang=klassisch">
-                  Diesen Strauß anfragen
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <!-- Trauerfloristik — ruhig und pietätvoll abgesetzt (belegte Leistung) -->
       <section class="section section--still" id="trauer">
         <div class="section-inhalt">
@@ -555,5 +518,6 @@
     </footer>
 
     <script src="app.js"></script>
+    <script src="wow.js"></script>
   </body>
 </html>

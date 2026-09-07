@@ -1,0 +1,152 @@
+/* Deliberate, brand-specific refinements from the September demo review. */
+
+/* A stay in the forest: the invitation and booking action lead the photograph. */
+[data-demo="am-waldrand"] .hero {
+  display: grid; grid-template-columns: .9fr 1.1fr; align-items: center;
+  gap: clamp(24px, 5vw, 72px); max-width: 1320px; margin: auto;
+  padding: 40px clamp(20px, 4vw, 48px) 64px;
+}
+[data-demo="am-waldrand"] .hero > .wrap { width: 100%; padding: 0; }
+[data-demo="am-waldrand"] .hero-intro { text-align: left; }
+[data-demo="am-waldrand"] .hero-intro h1 { font-size: clamp(34px, 4.5vw, 64px); letter-spacing: .02em; text-transform: none; }
+[data-demo="am-waldrand"] .hero-ctas { justify-content: flex-start; }
+[data-demo="am-waldrand"] .hero-figure img { aspect-ratio: 5 / 6; max-height: 580px; }
+
+/* Floristry: keep the flowers and a readable, direct invitation together. */
+[data-demo="blumen-viva"] .hero h1 { font-size: clamp(36px, 3.6vw, 52px); line-height: 1.1; }
+[data-demo="blumen-viva"] .hero p { max-width: 48ch; }
+
+/* Salon: introduce the service on the photograph; controls remain separate. */
+[data-demo="clean-cut"] .hero-slideshow { height: clamp(580px, 78svh, 820px); }
+[data-demo="clean-cut"] .hero-slideshow .slides { position: absolute; inset: 0; height: 100%; }
+[data-demo="clean-cut"] .hero-slideshow .slide img { height: 100%; min-height: 0; }
+[data-demo="clean-cut"] .hero-slideshow::after {
+  content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background: linear-gradient(90deg, #0d1212bf 0%, #0d121273 45%, transparent 80%), linear-gradient(0deg, #0d121299, transparent 45%);
+}
+[data-demo="clean-cut"] .hero-intro-copy { position: absolute; z-index: 3; bottom: 110px; left: 7%; max-width: 640px; color: #fff; }
+[data-demo="clean-cut"] .hero-intro-copy .wrap { padding: 0; text-align: left; }
+[data-demo="clean-cut"] .hero-intro-copy .eyebrow { color: #e9d49b; }
+[data-demo="clean-cut"] .hero-intro-copy h1 { font-size: clamp(42px, 5.5vw, 78px); line-height: 1.05; color: #fff; }
+[data-demo="clean-cut"] .hero-intro-copy h1 em { color: #f2dfb1; }
+[data-demo="clean-cut"] .hero-intro-copy .lede { color: #fff; max-width: 42ch; font-size: 18px; }
+[data-demo="clean-cut"] .hero-intro-copy .intro-ctas { justify-content: flex-start; }
+[data-demo="clean-cut"] .hero-intro-copy .btn--ghost { color: #fff; border-color: #fff; }
+[data-demo="clean-cut"] .hero-intro-copy .btn--ghost:hover { color: #171c1b; background: #fff; }
+[data-demo="clean-cut"] .slide-controls { z-index: 4; flex-wrap: wrap; width: max-content; max-width: calc(100% - 24px); left: 50%; right: auto; bottom: 24px; transform: translateX(-50%); }
+[data-demo="clean-cut"] .slide-pause { min-height: 44px; padding: 8px 12px; border: 1px solid #ffffff60; border-radius: 4px; background: #f8f5e8ed; color: #171c1b; font: inherit; font-size: 14px; line-height: 1.3; cursor: pointer; }
+[data-demo="clean-cut"] .portal-grid > * { min-width: 0; }
+[data-demo="clean-cut"] .absence-card { overflow-wrap: anywhere; }
+[data-demo="clean-cut"] .schedule-head { flex-wrap: wrap; }
+[data-demo="clean-cut"] .schedule-head .pill-note { white-space: normal; }
+
+/* Cleaning: show the workplace, without software-window decoration. */
+[data-demo="durmus-gebaeudereinigung"] .hero {
+  max-width: 1240px; margin: auto; padding: 64px 28px 48px;
+  display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 16px 64px;
+}
+[data-demo="durmus-gebaeudereinigung"] .hero-inhalt { text-align: left; max-width: none; padding: 0; }
+[data-demo="durmus-gebaeudereinigung"] .hero-titel { font-size: clamp(36px, 4.2vw, 62px); line-height: 1.08; }
+[data-demo="durmus-gebaeudereinigung"] .hero-sub { margin-inline: 0; }
+[data-demo="durmus-gebaeudereinigung"] .hero-aktionen { justify-content: flex-start; }
+[data-demo="durmus-gebaeudereinigung"] .hero-aktionen .btn--voll { order: -1; }
+[data-demo="durmus-gebaeudereinigung"] .fensterkarte { width: 100%; max-width: none; margin: 0; border: 0; border-radius: 3px; box-shadow: none; }
+[data-demo="durmus-gebaeudereinigung"] .fensterkarte img { aspect-ratio: 4 / 5; }
+[data-demo="durmus-gebaeudereinigung"] .bildunterschrift--hero { grid-column: 2; margin: 0; padding: 0; }
+
+/* Automotive: concise claim with room for the workshop action. */
+[data-demo="gassert"] .hero-claim { max-width: 720px; }
+[data-demo="gassert"] .hero h1 { font-size: clamp(34px, 4vw, 54px); line-height: 1.12; }
+
+/* Cosmetics: the treatment offer comes before the ownership story. */
+[data-demo="kimberger"] .hero { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 48px; max-width: 1200px; margin: 48px auto 72px; padding: 0 28px; }
+[data-demo="kimberger"] .hero-claim { width: auto; margin: 0; padding: 0; border: 0; box-shadow: none; background: none; text-align: left; }
+[data-demo="kimberger"] .hero h1 { font-size: clamp(38px, 5vw, 66px); line-height: 1.1; text-transform: none; letter-spacing: .01em; }
+[data-demo="kimberger"] .hero-figure img { height: 520px; border-radius: 2px; }
+[data-demo="kimberger"] .hero-caption { position: static; padding: 8px 0 0; background: none; }
+[data-demo="kimberger"] .hero-ctas { justify-content: flex-start; }
+
+/* The compass responds to the visitor; the page never waits behind a splash. */
+[data-demo="kompass-umzuege"] .hero-kompass-hinweis { text-transform: none; letter-spacing: .02em; }
+[data-demo="popalpin"] .demo-menu-toggle { color: #faf6ee; }
+[data-demo="popalpin"] .hero-inhalt > .schnellcheck { animation: none; opacity: 1; }
+
+/* Painter: legible trade, restrained photo and no extended all-caps slogan. */
+[data-demo="jost-maler"] .hero-titel { font-size: clamp(40px, 5.8vw, 80px); text-transform: none; letter-spacing: -.025em; line-height: 1.08; }
+[data-demo="jost-maler"] .hero-sub { max-width: 52ch; }
+
+/* Food: prices and ordering actions remain easy to read and tap. */
+[data-demo="mos-kebab"] .hero-sub { font-size: 15px; line-height: 1.7; }
+[data-demo="mos-kebab"] .menu-item { font-size: 16px; }
+[data-demo="mos-kebab"] .warenkorb-plus { min-width: 44px; min-height: 44px; }
+[data-demo="mos-kebab"] .hero { padding-top: 64px; }
+[data-demo="mos-kebab"] .open-status { font-size: 13px; }
+
+/* Fashion: one readable claim, both sections and a direct shop entrance. */
+[data-demo="spitzer-moden"] .hero h1 { color: #fff9eb; font-size: clamp(40px, 5vw, 72px); max-width: 14ch; margin-inline: auto; text-wrap: balance; }
+[data-demo="spitzer-moden"] .hero-shop-link { display: inline-flex; align-items: center; min-height: 44px; margin: 12px 0 0; color: #fff9eb; text-underline-offset: 5px; }
+[data-demo="spitzer-moden"] .hero-scrim { background: linear-gradient(0deg, #181006c9, transparent 85%); }
+[data-demo="goldener-hirsch"] .hotel-bestaetigung { padding: 28px; border: 1px solid #2f5644; background: #f2f6f0; }
+[data-demo="goldener-hirsch"] [data-zusammenfassung] { white-space: pre-line; overflow-wrap: anywhere; margin-block: 20px; }
+
+@media (max-width: 860px) {
+  [data-demo="am-waldrand"] .hero,
+  [data-demo="durmus-gebaeudereinigung"] .hero,
+  [data-demo="kimberger"] .hero { grid-template-columns: 1fr; gap: 28px; padding: 32px 20px 48px; margin-block: 0; }
+  [data-demo="am-waldrand"] .hero-figure img { aspect-ratio: 4 / 3; max-height: 420px; }
+  [data-demo="durmus-gebaeudereinigung"] .fensterkarte img { aspect-ratio: 4 / 3; }
+  [data-demo="durmus-gebaeudereinigung"] .bildunterschrift--hero { grid-column: 1; margin-top: -16px; }
+  [data-demo="kimberger"] .hero-figure img { height: 340px; }
+  [data-demo="glanz-und-gloria"] .hero-figure { order: 0; max-width: 460px; }
+  [data-demo="glanz-und-gloria"] .hero { padding-top: 36px; }
+  [data-demo="watson-angelika-coach"] .portrait--hero { order: 0; }
+  [data-demo="watson-angelika-coach"] .portrait--hero .portrait-bogen { width: 240px; min-height: 260px; aspect-ratio: 1; }
+  [data-demo="watson-angelika-coach"] .hero { padding-top: 36px; }
+}
+@media (max-width: 760px) {
+  [data-demo="am-waldrand"] .site-header { padding: 0; }
+  [data-demo="blumen-viva"] .hero { padding-top: 32px; }
+  [data-demo="clean-cut"] .hero-slideshow { height: 660px; min-height: 0; }
+  [data-demo="clean-cut"] .hero-intro-copy { left: 20px; right: 20px; bottom: 160px; }
+  [data-demo="clean-cut"] .hero-intro-copy h1 { font-size: clamp(42px, 11vw, 58px); }
+  [data-demo="clean-cut"] .hero-intro-copy .lede { font-size: 16px; }
+  [data-demo="clean-cut"] .hero-intro-copy .intro-ctas { display: grid; gap: 10px; }
+  [data-demo="clean-cut"] .slide-pause { flex-basis: 100%; }
+  [data-demo="clean-cut"] .hero-caption .small { font-size: 12px; line-height: 1.6; letter-spacing: 0; }
+  [data-demo="gassert"] .hero-claim { padding: 28px 22px; }
+  [data-demo="gassert"] .hero { min-height: 620px; }
+  [data-demo="gassert"] .wordmark span { max-width: 25ch; }
+  [data-demo="glanz-und-gloria"] .sidebar { padding: 14px 20px; }
+  [data-demo="glanz-und-gloria"] .hero-copy .btn { display: flex; margin: 0 0 12px; }
+  [data-demo="goldener-hirsch"] .masthead .geweih-marke { width: 28px; height: 32px; margin: 0; }
+  [data-demo="goldener-hirsch"] .masthead-marke { display: flex; align-items: center; gap: 10px; }
+  [data-demo="goldener-hirsch"] .masthead .wortmarke { font-size: 21px; letter-spacing: .05em; }
+  [data-demo="goldener-hirsch"] .hero { padding-top: 32px; }
+  [data-demo="goldener-hirsch"] .hero h1 { font-size: 36px; }
+  [data-demo="goldener-hirsch"] .hero-lauftext { font-size: 16px; line-height: 1.65; }
+  [data-demo="jost-maler"] .hero { min-height: 560px; }
+  [data-demo="jost-maler"] .hero-titel { font-size: 46px; }
+  [data-demo="jost-maler"] .wortmarke-text > span { font-size: 9px; letter-spacing: .06em; }
+  [data-demo="kimberger"] .wordmark span { max-width: 26ch; }
+  [data-demo="kompass-umzuege"] .hero-inhalt { padding-top: 40px; }
+  [data-demo="kompass-umzuege"] .hero-kompass { margin-top: 12px; }
+  [data-demo="mos-kebab"] .top .brand-seal { width: 44px; height: 44px; }
+  [data-demo="mos-kebab"] .top .brand-name { font-size: 18px; }
+  [data-demo="mos-kebab"] .top .brand-claim { font-size: 9px; }
+  [data-demo="mos-kebab"] .hero { padding-top: 36px; }
+  [data-demo="popalpin"] .hero-inhalt { padding-top: 40px; }
+  [data-demo="popalpin"] .hero h1 { font-size: clamp(46px, 12vw, 64px); }
+  [data-demo="rubi"] .hero { min-height: 570px; }
+  [data-demo="rubi"] .wortmarke-text strong { font-size: 17px; }
+  [data-demo="rubi"] .wortmarke-text > span { font-size: 10px; letter-spacing: .04em; }
+  [data-demo="sml-spitzer"] .hero-inhalt { padding-top: 44px; padding-bottom: 44px; }
+  [data-demo="spitzer-moden"] .wortmarke { justify-content: flex-start; }
+  [data-demo="spitzer-moden"] .wortmarke-text { font-size: 15px; letter-spacing: .12em; }
+  [data-demo="watson-angelika-coach"] .wordmark-text strong { font-size: 17px; }
+  [data-demo="watson-angelika-coach"] .hero-ctas { display: grid; }
+}
+@media (max-width: 360px) {
+  [data-demo="clean-cut"] .hero-slideshow { height: 740px; }
+  [data-demo="clean-cut"] .hero-intro-copy h1 { font-size: 40px; }
+  [data-demo="kimberger"] .wordmark > span { display: none; }
+}

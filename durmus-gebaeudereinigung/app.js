@@ -47,7 +47,7 @@
         begruendung.textContent =
           `Bei ${flaeche} m² und ${frequenzLabels[frequenz]} Reinigung passt dieses System zu Ihrem Bedarf.`;
       }
-      if (cta) cta.setAttribute('href', `anfrage.html?system=${system}`);
+      if (cta) cta.setAttribute('href', `anfrage.html?system=${system}&flaeche=${flaeche}&frequenz=${frequenz}`);
     };
 
     flaecheFeld?.addEventListener('input', aktualisieren);
@@ -135,6 +135,7 @@
         `${systemLabel} · ${datum} · ${daten.get('vorname')} ${daten.get('nachname')}`;
     }
 
+    if (!BranchDemo.accept(form, bestaetigung)) return;
     form.hidden = true;
     if (bestaetigung) {
       bestaetigung.hidden = false;

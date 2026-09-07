@@ -160,6 +160,7 @@
         `Demo-Zusammenfassung: ${themaNamen[gewaehltesThema?.value] ?? 'Thema'} · ` +
         `${formatWahlNamen[gewaehltesFormat?.value] ?? 'Format'} · ${gewaehlterSlot} · ${vorname} ${nachname}`;
     }
+    if (!BranchDemo.accept(form, bestaetigung)) return;
     form.hidden = true;
     if (bestaetigung) {
       bestaetigung.hidden = false;

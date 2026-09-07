@@ -1,5 +1,5 @@
 /* CLEAN CUT Demo — Terminplaner, Reveals, Link-Kopieren.
-   Reine Demo: speichert nichts, versendet nichts, kein alert/confirm. */
+   Reine Demo: Vorgänge im Browser-Tab, kein Versand, keine gespeicherten Kontaktdaten. */
 (function () {
   'use strict';
 
@@ -18,22 +18,6 @@
       });
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
     reveals.forEach(function (el) { io.observe(el); });
-  }
-
-  /* ---------- Hero-Höhe: Bild füllt den restlichen Viewport ---------- */
-  var heroBand = document.querySelector('.hero-slideshow');
-  if (heroBand) {
-    var setHeroHeight = function () {
-      var banner = document.querySelector('.draft-banner');
-      var header = document.querySelector('.site-header');
-      var rest =
-        window.innerHeight -
-        (banner ? banner.offsetHeight : 0) -
-        (header ? header.offsetHeight : 0);
-      document.documentElement.style.setProperty('--hero-h', Math.max(rest, 320) + 'px');
-    };
-    setHeroHeight();
-    window.addEventListener('resize', setHeroHeight);
   }
 
   /* ---------- Hero-Slideshow ---------- */
@@ -71,11 +55,27 @@
       }
     }
 
+    var pauseButton = show.querySelector('[data-slide-pause]');
+
     function stopAutoplay() {
       if (timer) {
         window.clearInterval(timer);
         timer = null;
-        show.setAttribute('data-autoplay', 'off');
+      }
+      show.setAttribute('data-autoplay', 'off');
+      if (pauseButton) {
+        pauseButton.textContent = 'Bilder abspielen';
+        pauseButton.setAttribute('aria-pressed', 'true');
+      }
+    }
+
+    function startAutoplay() {
+      stopAutoplay();
+      show.setAttribute('data-autoplay', 'on');
+      timer = window.setInterval(function () { render(current + 1); }, 5500);
+      if (pauseButton) {
+        pauseButton.textContent = 'Bilder pausieren';
+        pauseButton.setAttribute('aria-pressed', 'false');
       }
     }
 
@@ -92,20 +92,16 @@
       });
     });
 
-    if (reduceMotion) {
-      show.setAttribute('data-autoplay', 'off');
-    } else {
-      show.setAttribute('data-autoplay', 'on');
-      timer = window.setInterval(function () { render(current + 1); }, 5500);
-      show.addEventListener('mouseenter', function () {
-        if (timer) { window.clearInterval(timer); timer = null; }
-      });
-      show.addEventListener('mouseleave', function () {
-        if (!timer && show.getAttribute('data-autoplay') === 'on') {
-          timer = window.setInterval(function () { render(current + 1); }, 5500);
-        }
-      });
-    }
+    if (reduceMotion) stopAutoplay();
+    else startAutoplay();
+
+    if (pauseButton) pauseButton.addEventListener('click', function () {
+      if (show.getAttribute('data-autoplay') === 'on') stopAutoplay();
+      else startAutoplay();
+    });
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) stopAutoplay();
+    });
 
     render(0);
   });
@@ -154,7 +150,7 @@
   /* ---------- Beispieltag Dienstag: Belegung 1:1 aus portal.html ----------
      Dieselben Buchungscodes, Pausen- und Abwesenheitsblöcke wie im
      Teamkalender des Team-Portals. Reine Beispieldaten — kein echter
-     Kalender, keine Speicherung, keine Übertragung. */
+     Kalender mit festen Beispieldaten, keine Übertragung. */
   var RASTER = { start: '09:00', ende: '18:00', schrittMinuten: 30 };
 
   var BEISPIELTAG_DIENSTAG = [
@@ -220,9 +216,10 @@
     return zeiten;
   }
 
-  function belegungFuer(stylist, zeit, tag, raster) {
+  function belegungFuer(stylist, zeit, tag, raster, dauer, ignorieren) {
     var beginn = minutenAus(zeit);
-    var ende = beginn + raster.schrittMinuten;
+    var ende = beginn + (dauer || raster.schrittMinuten);
+    if (ende > minutenAus(raster.ende) + 30) return {von:zeit,bis:zeitAus(ende),label:"außerhalb der Beispiel-Öffnungszeit",art:"pause"};
     var treffer = null;
     stylist.eintraege.forEach(function (eintrag) {
       if (!treffer && minutenAus(eintrag.von) < ende && minutenAus(eintrag.bis) > beginn) {
@@ -233,11 +230,11 @@
       // Zweite Belegungsquelle: Sitzungs-Buchungen aus dem Demo-Planer (Schritt 05),
       // die denselben Platz zur selben Zeit am selben Beispieltag belegen.
       Object.keys(buchungen).forEach(function (code) {
-        if (treffer) return;
+        if (treffer || code === ignorieren) return;
         var buchung = buchungen[code];
         if (buchung.stylist !== stylist.id || buchung.tag !== tag) return;
         var buchungsBeginn = minutenAus(buchung.zeit);
-        var buchungsEnde = buchungsBeginn + raster.schrittMinuten;
+        var buchungsEnde = buchungsBeginn + (buchung.duration || 30);
         if (buchungsBeginn < ende && buchungsEnde > beginn) {
           treffer = {
             von: buchung.zeit,
@@ -271,7 +268,7 @@
      BEISPIELTAG_DIENSTAG, keine Kopie — siehe bestehender Spiegelungs-Check
      in verify.mjs). Die übrigen Tage sind zusätzliche, eigenständige
      Beispieldaten in derselben Objektform — ebenfalls reine Demo, kein
-     echter Kalender, keine Speicherung, keine Übertragung. */
+     echter Kalender mit festen Beispieldaten, keine Übertragung. */
   var BEISPIELWOCHE = {
     mo: [
       {
@@ -441,14 +438,25 @@
   };
 
   /* ---------- Sitzungs-Buchungen (Demo) ----------
-     Nur im Arbeitsspeicher dieser Sitzung — keine Browser-Speicherung, kein Versand.
+     Nur in sessionStorage dieses Browser-Tabs, kein Versand.
      Codes B-11xx, vergeben beim Abschluss des Planers (Schritt 05). B-1042
      ist ein fest hinterlegter Beispielcode für die Verwaltungs-Demo
      (Leon, Dienstag, 09:30 — siehe BEISPIELTAG_DIENSTAG oben). */
-  var buchungen = {};
-  var buchungsZaehler = 0;
+  var buchungen = Object.fromEntries(DemoFlow.list('clean-cut').filter(r=>r.status!=='cancelled').map(r=>[r.id,r]));
   var FESTCODE = 'B-1042';
   var FESTTERMIN = { stylist: 'leon', tag: 'di', zeit: '09:30', leistung: 'Haarschnitt' };
+
+  function dauerFuer(leistung) { return {'Haarschnitt':45,'Bartpflege':30,'Schnitt & Bart':60}[leistung] || 30; }
+  window.CleanCalendar = {
+    week:BEISPIELWOCHE,days:TAG_NAMEN,minutes:minutenAus,time:zeitAus,duration:dauerFuer,
+    available:function(person,tag,zeit,dauer,ignore){
+      buchungen=Object.fromEntries(DemoFlow.list('clean-cut').filter(r=>r.status!=='cancelled').map(r=>[r.id,r]));
+      var stylist=(BEISPIELWOCHE[tag]||[]).find(s=>s.id===person);
+      if(!stylist || !rasterZeiten(rasterFuerTag(tag)).includes(zeit))return 'Bitte eine gültige Beispielzeit wählen.';
+      var occupied=belegungFuer(stylist,zeit,tag,rasterFuerTag(tag),dauer,ignore);
+      return occupied ? occupied.label : '';
+    }
+  };
 
   /* ---------- Terminplaner ---------- */
   document.querySelectorAll('[data-planner]').forEach(function (form) {
@@ -468,6 +476,7 @@
       var parts = [];
       if (!state.day) parts.push('Beispieltag');
       if (!state.time) parts.push('Wunschzeit');
+      if (!state.slot) parts.push('konkrete Uhrzeit in Schritt 04');
       if (!vorname.value.trim()) parts.push('Vorname');
       if (!nachname.value.trim()) parts.push('Nachname');
       if (digits(handy.value) < 7) parts.push('Handynummer (mind. 7 Ziffern)');
@@ -552,8 +561,9 @@
         );
         slotGrid.textContent = '';
         zeiten.forEach(function (zeit) {
-          var belegung = belegungFuer(stylist, zeit, state.tag, raster);
-          var bis = zeitAus(minutenAus(zeit) + raster.schrittMinuten);
+          var duration = dauerFuer(form.querySelector('input[name="leistung"]:checked')?.value);
+          var belegung = belegungFuer(stylist, zeit, state.tag, raster, duration);
+          var bis = zeitAus(minutenAus(zeit) + duration);
           var knopf = document.createElement('button');
           var uhrzeit = document.createElement('strong');
           var zusatz = document.createElement('small');
@@ -644,6 +654,8 @@
     form.querySelectorAll('input[type="radio"]').forEach(function (radio) {
       radio.addEventListener('change', function () {
         if (panel && !panel.hidden) { panel.hidden = true; }
+        state.slot = null;
+        if(slotpicker)zeichneSlots();
         update();
       });
     });
@@ -668,7 +680,7 @@
           gewaehlt.platz +
           ' · ' +
           (state.slot
-            ? state.slot + '–' + zeitAus(minutenAus(state.slot) + raster.schrittMinuten) + ' Uhr'
+            ? state.slot + '–' + zeitAus(minutenAus(state.slot) + dauerFuer(leistung?.value)) + ' Uhr'
             : 'noch keine Beispielzeit gewählt');
       }
       form.querySelector('[data-sum-name]').textContent =
@@ -689,23 +701,16 @@
              sie für genau diesen Platz/Tag/Slot bereits eine eigene
              Sitzungs-Buchung (Code-Muster B-11xx), wird deren Code erneut
              angezeigt statt ein neuer vergeben. */
-          var bestehendeBelegung = belegungFuer(gewaehlt, state.slot, state.tag, raster);
-          var bestehenderCode =
-            bestehendeBelegung && bestehendeBelegung.label.match(/^belegt · (B-11\d{2})$/);
-          var neuerCode;
-          if (bestehenderCode) {
-            neuerCode = bestehenderCode[1];
-          } else {
-            buchungsZaehler += 1;
-            neuerCode =
-              'B-11' + (buchungsZaehler < 10 ? '0' + buchungsZaehler : String(buchungsZaehler));
-            buchungen[neuerCode] = {
-              stylist: gewaehlt.id,
-              tag: state.tag,
-              zeit: state.slot,
-              leistung: leistung ? leistung.value : '',
-            };
-          }
+          var existing=Object.values(buchungen).find(r=>r.stylist===state.stylist && r.tag===state.tag && r.zeit===state.slot);
+          var issue=CleanCalendar.available(state.stylist,state.tag,state.slot,dauerFuer(leistung?.value),existing?.id);
+          if(issue){statusEl.textContent='Dieser Termin ist nicht frei: '+issue;state.slot=null;zeichneSlots();update();return;}
+          var record;
+          try {
+            record=existing || DemoFlow.create('clean-cut',{status:'booked',stylist:gewaehlt.id,tag:state.tag,zeit:state.slot,leistung:leistung?leistung.value:'Haarschnitt',duration:dauerFuer(leistung?.value)},crypto.randomUUID());
+          }catch(error){statusEl.textContent=error.message;return;}
+          var neuerCode=record.id;
+          buchungen[neuerCode]=record;
+          DemoFlow.handoff(panel,'clean-cut',record);
           sumCode.hidden = false;
           sumCode.innerHTML =
             'Buchungscode <strong>' +
@@ -726,7 +731,7 @@
 
       panel.hidden = false;
       statusEl.textContent =
-        'Demo abgeschlossen — es wurden keine Daten gespeichert oder versendet.';
+        'Demo abgeschlossen — der Termin bleibt in diesem Browser-Tab und ist jetzt im Teamkalender sichtbar.';
       panel.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'nearest' });
       if (sumCode && !sumCode.hidden) sumCode.focus();
     });
@@ -763,7 +768,7 @@
         var stylist = stylistAusListe(eintrag.stylist, eintrag.tag);
         var name = stylist ? stylist.name + ' · ' + stylist.platz : eintrag.stylist;
         var eintragRaster = rasterFuerTag(eintrag.tag);
-        var ende = zeitAus(minutenAus(eintrag.zeit) + eintragRaster.schrittMinuten);
+        var ende = zeitAus(minutenAus(eintrag.zeit) + (eintrag.duration || 30));
         var istFestcode = code === FESTCODE;
 
         karte.hidden = false;
@@ -794,6 +799,7 @@
         if (!istFestcode) {
           var stornoBtn = karte.querySelector('[data-verwaltung-storno]');
           stornoBtn.addEventListener('click', function () {
+            DemoFlow.update('clean-cut',code,{status:'cancelled'},'Termin abgesagt; Zeit wieder frei');
             delete buchungen[code];
             karte.hidden = true;
             karte.innerHTML = '';

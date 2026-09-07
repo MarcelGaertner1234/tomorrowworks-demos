@@ -1,108 +1,4 @@
-// Blumen Viva — Demo-Interaktionen (Strauß-Konfigurator + Strauß-Anfrage).
-// Grundsatz: kein Versand, keine Speicherung, keine externen Aufrufe.
-
-// --- Strauß-Konfigurator (Startseite) ---
-// Anlass + Farbwelt + Umfang ergeben live ein Vorschau-Foto, einen Satz und den
-// Anfrage-Link. Es werden ausschließlich die vorhandenen Farbwelten-Fotos getauscht.
-(() => {
-  'use strict';
-
-  const konfigurator = document.querySelector('[data-konfigurator]');
-  if (!konfigurator) return;
-
-  const bild = konfigurator.querySelector('[data-konf-bild]');
-  const huelle = konfigurator.querySelector('[data-konf-huelle]');
-  const satz = konfigurator.querySelector('[data-konf-satz]');
-  const cta = konfigurator.querySelector('[data-konf-cta]');
-  if (!bild || !huelle || !satz || !cta) return;
-
-  const anlaesse = {
-    geburtstag: { auftakt: 'Ihr Strauß', schluss: 'zum Geburtstag', cta: 'Diesen Strauß anfragen' },
-    'liebe-danke': { auftakt: 'Ihr Strauß', schluss: 'für Liebe & Danke', cta: 'Diesen Strauß anfragen' },
-    hochzeit: { auftakt: 'Ihr Strauß', schluss: 'zur Hochzeit', cta: 'Diesen Strauß anfragen' },
-    trauer: {
-      auftakt: 'Ihr Strauß',
-      schluss: 'für einen stillen Abschied',
-      cta: 'Diesen Strauß anfragen',
-      still: true,
-    },
-    pflanzen: { auftakt: 'Ihre Pflanzen', schluss: 'fürs Zuhause', cta: 'Diese Auswahl anfragen' },
-  };
-
-  const farbwelten = {
-    zart: {
-      name: 'Zart & Pastell',
-      bild: 'assets/farbwelt-zart.jpg',
-      alt: 'Strauß in zarten Pastelltönen — Beispielfoto',
-    },
-    sonnig: {
-      name: 'Warm & Sonnig',
-      bild: 'assets/farbwelt-sonnig.jpg',
-      alt: 'Warmer Strauß in Gelb- und Orangetönen — Beispielfoto',
-    },
-    wildwiese: {
-      name: 'Wildwiese bunt',
-      bild: 'assets/farbwelt-wildwiese.jpg',
-      alt: 'Bunter Wiesenstrauß mit Gräsern — Beispielfoto',
-    },
-    weissgruen: {
-      name: 'Weiß & Grün',
-      bild: 'assets/farbwelt-weissgruen.jpg',
-      alt: 'Strauß in Weiß und Grün — Beispielfoto',
-    },
-  };
-
-  const umfaenge = {
-    'kleiner-gruss': 'klein und fein',
-    klassisch: 'klassisch',
-    ueppig: 'üppig',
-  };
-
-  const wahl = { anlass: 'geburtstag', stil: 'zart', umfang: 'klassisch' };
-  const gruppen = [
-    ['anlass', 'data-konf-anlass'],
-    ['stil', 'data-konf-stil'],
-    ['umfang', 'data-konf-umfang'],
-  ];
-
-  const aktualisieren = () => {
-    const anlass = anlaesse[wahl.anlass];
-    const farbwelt = farbwelten[wahl.stil];
-    if (bild.getAttribute('src') !== farbwelt.bild) {
-      bild.src = farbwelt.bild;
-      bild.alt = farbwelt.alt;
-    }
-    huelle.classList.toggle('ist-still', anlass.still === true);
-    // aria-live: nur bei echter Änderung neu schreiben, sonst meldet der Screenreader
-    // schon beim Laden einen „neuen" Satz.
-    const neuerSatz =
-      `${anlass.auftakt}: ${umfaenge[wahl.umfang]}, ${farbwelt.name}, ${anlass.schluss}.`;
-    if (satz.textContent.trim() !== neuerSatz) satz.textContent = neuerSatz;
-    // Bei Trauer nimmt sich auch der CTA zurück (wie in der Trauer-Sektion).
-    cta.classList.toggle('btn--voll', anlass.still !== true);
-    cta.classList.toggle('btn--still', anlass.still === true);
-    if (cta.textContent.trim() !== anlass.cta) cta.textContent = anlass.cta;
-    cta.href = `anfrage.html?anlass=${wahl.anlass}&stil=${wahl.stil}&umfang=${wahl.umfang}`;
-  };
-
-  for (const [gruppe, attribut] of gruppen) {
-    const knoepfe = [...konfigurator.querySelectorAll(`[${attribut}]`)];
-    for (const knopf of knoepfe) {
-      knopf.addEventListener('click', () => {
-        wahl[gruppe] = knopf.getAttribute(attribut);
-        for (const geschwister of knoepfe) {
-          const aktiv = geschwister === knopf;
-          geschwister.classList.toggle('is-aktiv', aktiv);
-          geschwister.setAttribute('aria-pressed', String(aktiv));
-        }
-        aktualisieren();
-      });
-    }
-  }
-
-  aktualisieren();
-})();
-
+// Blumen Viva – lokale Anfrage und Grußkartenvorschau.
 // --- Strauß-Anfrage (anfrage.html) ---
 (() => {
   'use strict';
@@ -198,6 +94,14 @@
     karteText.classList.toggle('ist-platzhalter', text === '');
   };
   if (grussFeld) grussFeld.addEventListener('input', karteAktualisieren);
+
+  if (parameter.get('entwurf') === 'strauss') {
+    try {
+      const draft = JSON.parse(sessionStorage.getItem('viva-strauss-entwurf') || 'null');
+      if (draft && typeof draft.gruss === 'string') grussFeld.value = draft.gruss.slice(0, 240);
+    } catch { /* A missing draft still permits an ordinary inquiry. */ }
+  }
+  karteAktualisieren();
 
   // --- Datum-Schnellwahl (03 Abholung): drei Chips setzen den Wunschtermin ohne Tippen. ---
   const schnellwahlKnoepfe = [
@@ -300,8 +204,9 @@
     const [jahr, monat, tag] = datum.split('-');
     const abholungText = `${tag}.${monat}.${jahr}, ${uhrzeitNamen[uhrzeit] ?? 'Uhrzeit'}`;
 
+    if (!BranchDemo.accept(form, bestellBestaetigung)) return;
     bestellZaehler += 1;
-    const bestellNummer = `BV-2026-${bestellZaehler}`;
+    const bestellNummer = form.dataset.branchId;
 
     // Wizard-Regel: erst das Formular verstecken (kein Doppel-Abschluss — der Submit-Button
     // verschwindet mit ihm), dann die Bestätigung zeigen, DANACH befüllen, zuletzt fokussieren.

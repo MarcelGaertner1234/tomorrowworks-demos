@@ -10,14 +10,23 @@
   <link rel="preload" href="assets/fonts/fraunces-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/instrument-sans-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../assets/demo-ui.css">
+  <link rel="stylesheet" href="../assets/demo-refinements.css">
+  <script src="../assets/demo-ui.js" defer></script>
+<link rel="stylesheet" href="../assets/demo-workflow.css"><script src="../assets/demo-workflow.js"></script><script src="../assets/branch-definitions.js"></script><script src="../assets/branch-bridge.js"></script>
+<link rel="stylesheet" href="../assets/wow-final.css">
+<link rel="stylesheet" href="wow.css">
 </head>
-<body>
+<body data-demo="watson-angelika-coach">
   <a class="skip-link" href="#hauptinhalt">Zum Inhalt springen</a>
 
-  <aside class="draft-banner" aria-label="Hinweis zum Entwurfsstatus">
-    <strong>Design-Entwurf von TOMORROWWORKS</strong> — nicht die offizielle Website von Angelika Watson ·
-    Persönliche Konzeptvorschau · Anfrage ist eine Demo · Angaben werden bestätigt
-  </aside>
+  <aside class="demo-toolbar" aria-label="Designstudie von TomorrowWorks">
+      <div class="demo-toolbar-label"><strong>TomorrowWorks · Designstudie</strong><span>Keine offizielle Website</span></div>
+      <div class="demo-toolbar-actions">
+        <a href="../projekte.html#designstudien"><span aria-hidden="true">←</span> Alle Demos</a>
+        <details><summary>Hinweis</summary><p>Design-Entwurf von TOMORROWWORKS — nicht die offizielle Website von Angelika Watson · Persönliche Konzeptvorschau · Anfrage ist eine Demo · Angaben werden bestätigt</p></details>
+      </div>
+    </aside>
 
   <header class="site-header">
     <a class="wordmark" href="#start" aria-label="Angelika Watson Coaching — Startseite">
@@ -40,31 +49,9 @@
   <main id="hauptinhalt">
 
     <!-- Hero: Aussage links, Portrait-Bogen rechts -->
-    <section class="hero" id="start">
-      <div class="wrap hero-grid">
-        <div class="hero-copy">
-          <p class="eyebrow">Coaching · Online &amp; vor Ort in der Schweiz</p>
-          <h1>Du spürst, dass etwas anders werden soll. <em>Hier fängt es an.</em></h1>
-          <p class="lede">Coaching mit Angelika Watson: ein geschützter Raum, um Klarheit zu gewinnen, Entscheidungen zu treffen und den nächsten Schritt wirklich zu gehen — ohne Druck, in deinem Tempo.</p>
-          <div class="hero-ctas">
-            <a class="btn btn--primary" href="kennenlernen.html">Kennenlerngespräch anfragen <span class="arrow" aria-hidden="true">→</span></a>
-            <a class="btn btn--ghost" href="#ablauf">So arbeite ich</a>
-          </div>
-          <ul class="hero-fakten" aria-label="Das zeichnet das Coaching aus">
-            <li><span class="fakt-punkt" aria-hidden="true"></span>Vertraulich und auf Augenhöhe</li>
-            <li><span class="fakt-punkt" aria-hidden="true"></span>Online, telefonisch oder vor Ort</li>
-            <li><span class="fakt-punkt" aria-hidden="true"></span>Erstes Gespräch zum Kennenlernen</li>
-          </ul>
-        </div>
-        <figure class="portrait portrait--hero" aria-label="Platz für das Portrait von Angelika Watson">
-          <div class="portrait-bogen">
-            <span class="portrait-initialen" aria-hidden="true">AW</span>
-            <span class="portrait-kreis" aria-hidden="true"></span>
-          </div>
-          <figcaption class="small">Portrait von Angelika Watson — Original-Foto folgt nach Freigabe</figcaption>
-        </figure>
-      </div>
-    </section>
+    <section class="tw-experience mind-stage" id="start" aria-label="Gedanken sortieren"><div class="wx-inner wx-split"><div><p class="wx-eyebrow">Angelika Watson · Coaching</p><h1>Viel im Kopf.<br><em>Wo anfangen?</em></h1><p>Du musst noch nicht alles wissen. Wähle, was dich gerade beschäftigt — ein erster Gesprächsfaden reicht.</p><div class="mind-topics" role="group" aria-label="Dein Anliegen"><button class="wx-choice" data-mind-topic="entscheidung" aria-pressed="false">Eine Entscheidung</button><button class="wx-choice" data-mind-topic="neustart" aria-pressed="false">Ein Neustart</button><button class="wx-choice" data-mind-topic="kraft" aria-pressed="false">Mehr Raum für mich</button><button class="wx-choice" data-mind-topic="selbstvertrauen" aria-pressed="false">Für mich einstehen</button><button class="wx-choice" data-mind-topic="klarheit" aria-pressed="false">Ein offenes Gespräch</button><button class="wx-choice" data-mind-topic="ziel" aria-pressed="false">Mein nächster Schritt</button></div><p class="wx-note">Ein Gesprächseinstieg zur Orientierung. Du entscheidest, was du erzählen möchtest.</p></div>
+ <div class="mind-workbench"><div class="mind-board-head"><span>DEINE GEDANKEN HABEN PLATZ.</span><button data-mind-reset type="button" hidden>Neu sortieren ↺</button></div><div class="mind-thoughts" data-mind-thoughts><span>Was will ich?</span><span>Was, wenn …?</span><span>Ich müsste …</span><span>Wohin jetzt?</span><span>So vieles.</span><span>Und ich?</span><div class="mind-center" data-mind-center>Ein Anfang<br>darf klein sein.</div></div><div class="mind-next" aria-live="polite"><span class="wx-step">Ein möglicher Gesprächseinstieg</span><h2 data-mind-question>Was darf heute Raum bekommen?</h2><p data-mind-description>Wähle links ein Anliegen. Wir legen einen ersten Faden für unser Kennenlernen bereit.</p></div><label class="wx-check mind-take" data-mind-take-label hidden><input data-mind-take type="checkbox" checked>Diese Frage ins Kennenlernen mitnehmen</label><a class="wx-button" data-mind-cta href="kennenlernen.html">Kennenlernen anfragen ↗</a></div></div></section>
+
 
     <!-- Themen-Kompass: Situation wählen, passendes Angebot live sehen -->
     <section class="section section--zone" id="fuer-dich">
@@ -290,5 +277,7 @@
   </footer>
 
   <script src="app.js"></script>
+<script src="../assets/wow-kit.js"></script>
+<script src="wow.js"></script>
 </body>
 </html>

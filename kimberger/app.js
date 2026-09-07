@@ -36,9 +36,14 @@
     };
 
     pillen.forEach((pille) => {
+      pille.setAttribute('aria-pressed', String(pille.classList.contains('is-aktiv')));
       pille.addEventListener('click', () => {
-        pillen.forEach((p) => p.classList.remove('is-aktiv'));
+        pillen.forEach((p) => {
+          p.classList.remove('is-aktiv');
+          p.setAttribute('aria-pressed', 'false');
+        });
         pille.classList.add('is-aktiv');
+        pille.setAttribute('aria-pressed', 'true');
         const wert = pille.dataset.anliegen;
         const eintrag = behandlungen[wert];
         if (titelFeld) titelFeld.textContent = eintrag.titel;
@@ -119,6 +124,7 @@
       zusammenfassung.textContent =
         `Demo-Zusammenfassung: ${behandlungsNamen[gewaehlt?.value] ?? 'Behandlung'} · ${gewaehlterSlot} · ${vorname} ${nachname}`;
     }
+    if (!BranchDemo.accept(form, bestaetigung)) return;
     form.hidden = true;
     if (bestaetigung) {
       bestaetigung.hidden = false;

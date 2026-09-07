@@ -69,9 +69,9 @@
           : 'Keine ausgewählt.';
       }
 
-      if (!anreiseWert || !abreiseWert || abreiseWert <= anreiseWert) {
+      if (!anreiseWert || !abreiseWert || anreiseWert < anreiseFeld.min || abreiseWert <= anreiseWert) {
         if (text) {
-          text.textContent = 'Wähle Anreise und Abreise, um deinen Aufenthalt zu sehen.';
+          text.textContent = 'Wähle eine Anreise ab heute und eine spätere Abreise.';
         }
         if (naechteBox) {
           naechteBox.hidden = true;
@@ -95,7 +95,7 @@
 
       if (naechteBox) {
         naechteBox.innerHTML = '';
-        for (let i = 0; i < naechteAnzahl; i += 1) {
+        for (let i = 0; i < Math.min(naechteAnzahl, 14); i += 1) {
           const tag = new Date(anreiseDatum);
           tag.setDate(tag.getDate() + i);
           const karte = document.createElement('span');
@@ -104,6 +104,11 @@
             `<span class="planer-tag-wochentag">${wochentage[tag.getDay()]}</span>` +
             `<span class="planer-tag-nummer">${tag.getDate()}.${tag.getMonth() + 1}.</span>`;
           naechteBox.appendChild(karte);
+        }
+        if (naechteAnzahl > 14) {
+          const rest = document.createElement('span');
+          rest.textContent = `… und ${naechteAnzahl - 14} weitere Nächte`;
+          naechteBox.appendChild(rest);
         }
         naechteBox.hidden = false;
       }
@@ -120,6 +125,7 @@
           anreise: anreiseWert,
           abreise: abreiseWert,
         });
+        if (planer.dataset.reiseidee) ctaParameter.set('reiseidee', planer.dataset.reiseidee);
         if (state.wuensche.length) ctaParameter.set('wuensche', state.wuensche.join('; '));
         cta.setAttribute('href', `anfrage.html?${ctaParameter.toString()}`);
       }
@@ -242,6 +248,7 @@
         `${formatDatum(anreise)} – ${formatDatum(abreise)} · ` +
         `${personen} ${personen === 1 ? 'Gast' : 'Gäste'} · ${vorname} ${nachname}`;
     }
+    if (!BranchDemo.accept(form, bestaetigung)) return;
     form.hidden = true;
     if (bestaetigung) {
       bestaetigung.hidden = false;

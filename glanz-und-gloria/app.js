@@ -72,18 +72,22 @@
         span.textContent = gravur;
         span.classList.toggle('hat-text', gravur.length > 0);
       }
+      konfigurator.dispatchEvent(new CustomEvent('ringchange', { detail: { index, material: ring.material } }));
     };
 
     const pillenAktualisieren = () => {
       const ring = ringe[aktiverRing];
       konfigurator.querySelectorAll('[data-ring-material]').forEach((p) => {
         p.classList.toggle('is-aktiv', p.dataset.ringMaterial === ring.material);
+        p.setAttribute('aria-pressed', String(p.dataset.ringMaterial === ring.material));
       });
       konfigurator.querySelectorAll('[data-ring-breite]').forEach((p) => {
         p.classList.toggle('is-aktiv', p.dataset.ringBreite === ring.breite);
+        p.setAttribute('aria-pressed', String(p.dataset.ringBreite === ring.breite));
       });
       konfigurator.querySelectorAll('[data-ring-oberflaeche]').forEach((p) => {
         p.classList.toggle('is-aktiv', p.dataset.ringOberflaeche === ring.oberflaeche);
+        p.setAttribute('aria-pressed', String(p.dataset.ringOberflaeche === ring.oberflaeche));
       });
     };
 
@@ -317,7 +321,10 @@
     if (zusammenfassung) {
       zusammenfassung.textContent =
         `Demo-Zusammenfassung: ${anlassNamen[gewaehlt?.value] ?? 'Beratung'} · ${gewaehlterSlot} · ${vorname} ${nachname}`;
+      const nachricht = form.querySelector('#nachricht').value.trim();
+      if (nachricht) zusammenfassung.textContent += ` · ${nachricht}`;
     }
+    if (!BranchDemo.accept(form, bestaetigung)) return;
     form.hidden = true;
     if (bestaetigung) {
       bestaetigung.hidden = false;

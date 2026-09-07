@@ -104,6 +104,7 @@
   const anlassNamen = {
     hochzeit: 'Hochzeit',
     gala: 'Gala-Abend',
+    party: 'Party',
     geburtstag: 'Geburtstag',
     fastnacht: 'Fastnacht',
     festzelt: 'Festzelt',
@@ -193,6 +194,7 @@
       }),
     );
 
+    if (!BranchDemo.accept(form, bestaetigung)) return;
     bestaetigung.classList.add('aktiv');
     bestaetigung.scrollIntoView({ behavior: reduziert ? 'auto' : 'smooth', block: 'start' });
   });

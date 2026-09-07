@@ -55,7 +55,7 @@
       if (teamFeld) teamFeld.textContent = eintrag.team;
       if (fahrzeugFeld) fahrzeugFeld.textContent = eintrag.fahrzeug;
       if (tippFeld) tippFeld.textContent = eintrag.tipp;
-      if (cta) cta.setAttribute('href', `anfrage.html?umzugsart=privatumzug&groesse=${groesseAktiv}`);
+      if (cta) cta.setAttribute('href', `anfrage.html?umzugsart=privatumzug&groesse=${groesseAktiv}&volumen=${bis}&keller=${kellerBox?.checked?1:0}`);
     };
 
     pillen.forEach((pille) => {
@@ -203,6 +203,7 @@
         `Termin ${tag}.${monat}.${jahr}, ${zeitfensterNamen[zeitfenster] ?? 'Zeitfenster'} · ` +
         `Zusatzleistungen: ${zusatzText} · ${vorname} ${nachname} · ${fotoText}`;
     }
+    if (!BranchDemo.accept(form, bestaetigung)) return;
     form.hidden = true;
     if (bestaetigung) {
       bestaetigung.hidden = false;

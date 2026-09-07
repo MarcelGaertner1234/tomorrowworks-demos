@@ -5,7 +5,7 @@
 
   // Anfrage-Zusammenstellung (index.html): Objekttyp + mehrere Leistungen
   // per Checkbox auswählen, live zusammenfassen, CTA übergibt beides an die
-  // Anfrage (erste gewählte Leistung + Objektart als URL-Parameter).
+  // Anfrage (alle gewählten Leistungen + Objektart als URL-Parameter).
   const zusammenstellung = document.querySelector('[data-zusammenstellung]');
   if (zusammenstellung) {
     const objekttypPillen = [...zusammenstellung.querySelectorAll('[data-objekttyp]')];
@@ -44,7 +44,7 @@
       }
       if (cta) {
         cta.removeAttribute('aria-disabled');
-        cta.setAttribute('href', `anfrage.html?leistung=${gewaehlt[0]}&objektart=${objekttypAktiv}`);
+        cta.setAttribute('href', `anfrage.html?leistung=${gewaehlt[0]}&leistungen=${gewaehlt.join(',')}&objektart=${objekttypAktiv}`);
       }
     };
 
@@ -143,8 +143,11 @@
     const telefon = form.querySelector('#telefon').value.trim();
     const ziffern = telefon.replace(/\D/g, '');
 
+    const objektarbeiten = [...form.querySelectorAll('[name="objektarbeiten"]:checked')].map(box=>box.value);
     let meldung = '';
-    if (!objektart) {
+    if (form.querySelector('[name="objektarbeiten"]') && !objektarbeiten.length) {
+      meldung = 'Bitte wählen Sie mindestens eine Arbeit für Ihr Objekt.';
+    } else if (!objektart) {
       meldung = 'Bitte wählen Sie die Objekt-Art (Beispielangabe genügt).';
     } else if (!termin) {
       meldung = 'Bitte wählen Sie einen Wunschtermin (Beispielangabe genügt).';
@@ -174,11 +177,12 @@
     const fotoText = `${fotoAnzahl} Foto(s) ausgewählt — nicht übertragen`;
     if (zusammenfassung) {
       zusammenfassung.textContent =
-        `Demo-Zusammenfassung: ${leistungsNamen[gewaehlt?.value] ?? 'Leistung'} · ` +
+        `Demo-Zusammenfassung: ${objektarbeiten.length ? objektarbeiten.map(key=>leistungsNamen[key]).join(' + ') : leistungsNamen[gewaehlt?.value] ?? 'Leistung'} · ` +
         `${objektartNamen[objektart] ?? 'Objekt-Art'} · ` +
         `Termin ${tag}.${monat}.${jahr}, ${zeitNamen[zeit] ?? 'Zeit'} · ` +
         `${vorname} ${nachname} · ${fotoText}`;
     }
+    if (!BranchDemo.accept(form, bestaetigung)) return;
     form.hidden = true;
     if (bestaetigung) {
       bestaetigung.hidden = false;

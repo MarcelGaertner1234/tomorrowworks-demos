@@ -8,14 +8,21 @@
   <title>Zimmer anfragen · Am Waldrand — Design-Entwurf</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../assets/demo-ui.css">
+  <link rel="stylesheet" href="../assets/demo-refinements.css">
+  <script src="../assets/demo-ui.js" defer></script>
+<link rel="stylesheet" href="../assets/demo-workflow.css"><script src="../assets/demo-workflow.js"></script><script src="../assets/branch-definitions.js"></script><script src="../assets/branch-bridge.js"></script>
 </head>
-<body>
+<body data-demo="am-waldrand">
   <a class="skip-link" href="#hauptinhalt">Zum Inhalt springen</a>
 
-  <aside class="draft-banner" aria-label="Hinweis zum Entwurfsstatus">
-    <strong>Design-Entwurf von TOMORROWWORKS</strong> — nicht die offizielle Website von Pension Am Waldrand ·
-    Persönliche Konzeptvorschau · Zimmeranfrage ist eine Demo · Angaben werden bestätigt
-  </aside>
+  <aside class="demo-toolbar" aria-label="Designstudie von TomorrowWorks">
+      <div class="demo-toolbar-label"><strong>TomorrowWorks · Designstudie</strong><span>Keine offizielle Website</span></div>
+      <div class="demo-toolbar-actions">
+        <a href="../projekte.html#designstudien"><span aria-hidden="true">←</span> Alle Demos</a>
+        <details><summary>Hinweis</summary><p>Design-Entwurf von TOMORROWWORKS — nicht die offizielle Website von Pension Am Waldrand · Persönliche Konzeptvorschau · Zimmeranfrage ist eine Demo · Angaben werden bestätigt</p></details>
+      </div>
+    </aside>
 
   <header class="site-header">
     <div class="wrap">
@@ -40,8 +47,8 @@
         <div class="planer-kopf">
           <p class="eyebrow">Zimmeranfrage · Demo</p>
           <h1>Dein Zimmerwunsch</h1>
-          <p class="lede">Sag uns, wann du kommen möchtest — wir melden uns bei dir. In dieser Konzeptvorschau wird nichts gesendet oder gespeichert.</p>
-          <p class="demo-chip">DEMO · KEINE SPEICHERUNG</p>
+          <p class="lede">Sag uns, wann du kommen möchtest — wir melden uns bei dir. In dieser Konzeptvorschau wird nichts versendet. Fachliche Angaben bleiben nur in diesem Browser-Tab.</p>
+          <p class="demo-chip">DEMO · VORGANG IM BROWSER-TAB</p>
         </div>
 
         <form id="anfrage-form" novalidate>
@@ -124,7 +131,7 @@
 
         <div class="bestaetigung" data-bestaetigung hidden>
           <h2>Danke — deine Anfrage ist angekommen. <em>Fast.</em></h2>
-          <p>Das ist eine Konzeptvorschau: <strong>es wurden keine Daten gespeichert oder versendet</strong>. Auf der echten Website würde die Pension deine Anfrage jetzt erhalten und sich direkt bei dir melden — ohne Umweg über ein Portal.</p>
+          <p>Das ist eine Konzeptvorschau: <strong>der Vorgang bleibt nur in diesem Browser-Tab; es wurde nichts versendet</strong>. Auf der echten Website würde die Pension deine Anfrage jetzt erhalten und sich direkt bei dir melden — ohne Umweg über ein Portal.</p>
           <p class="small" data-zusammenfassung></p>
           <button type="button" class="btn btn--ghost" data-neustart>Demo neu starten</button>
         </div>
@@ -140,5 +147,7 @@
   </footer>
 
   <script src="app.js"></script>
+<script src="../assets/wow-kit.js"></script>
+<script src="wow.js"></script>
 </body>
 </html>

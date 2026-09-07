@@ -8,14 +8,23 @@
   <title>Kimberger Kosmetikinstitut · Sinsheim — Design-Entwurf</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../assets/demo-ui.css">
+  <link rel="stylesheet" href="../assets/demo-refinements.css">
+  <script src="../assets/demo-ui.js" defer></script>
+<link rel="stylesheet" href="../assets/demo-workflow.css"><script src="../assets/demo-workflow.js"></script><script src="../assets/branch-definitions.js"></script><script src="../assets/branch-bridge.js"></script>
+<link rel="stylesheet" href="../assets/wow-final.css">
+<link rel="stylesheet" href="wow.css">
 </head>
-<body>
+<body data-demo="kimberger">
   <a class="skip-link" href="#hauptinhalt">Zum Inhalt springen</a>
 
-  <aside class="draft-banner" aria-label="Hinweis zum Entwurfsstatus">
-    <strong>Design-Entwurf von TOMORROWWORKS</strong> — nicht die offizielle Website des Kimberger Kosmetikinstituts ·
-    Persönliche Konzeptvorschau · Terminwunsch ist eine Demo · Angaben werden bestätigt
-  </aside>
+  <aside class="demo-toolbar" aria-label="Designstudie von TomorrowWorks">
+      <div class="demo-toolbar-label"><strong>TomorrowWorks · Designstudie</strong><span>Keine offizielle Website</span></div>
+      <div class="demo-toolbar-actions">
+        <a href="../projekte.html#designstudien"><span aria-hidden="true">←</span> Alle Demos</a>
+        <details><summary>Hinweis</summary><p>Design-Entwurf von TOMORROWWORKS — nicht die offizielle Website des Kimberger Kosmetikinstituts · Persönliche Konzeptvorschau · Terminwunsch ist eine Demo · Angaben werden bestätigt</p></details>
+      </div>
+    </aside>
 
   <header class="site-header">
     <a class="wordmark" href="#start" aria-label="Kimberger Kosmetikinstitut — Startseite">
@@ -34,21 +43,11 @@
   <main id="hauptinhalt">
 
     <!-- Vollbild-Hero mit überlappender Claim-Karte -->
-    <section class="hero" id="start">
-      <figure class="hero-figure">
-        <img src="assets/hero-institut.jpg" alt="Sorgfältiger Masken-Auftrag bei einer Gesichtsbehandlung in warmem Licht — Beispielfoto" width="2000" height="1333" fetchpriority="high">
-        <figcaption class="small hero-caption">Beispielfoto (Symbolbild) — echte Institutsfotos folgen nach Freigabe</figcaption>
-      </figure>
-      <div class="hero-claim">
-        <p class="eyebrow">Kosmetikinstitut · Sinsheim</p>
-        <h1>Ein neues Kapitel — <em>mit vertrauten Händen.</em></h1>
-        <p class="lede">Zum 1. September 2026 geht das Kimberger Kosmetikinstitut in neue Hände über — und bleibt, was es seit über 50 Jahren ist: ein Ort, an dem Ihre Haut zur Ruhe kommt.</p>
-        <div class="hero-ctas">
-          <a class="btn btn--primary" href="termin.html">Terminwunsch senden <span class="arrow" aria-hidden="true">→</span></a>
-          <a class="btn btn--ghost" href="#behandlungen">Behandlungen entdecken</a>
-        </div>
-      </div>
-    </section>
+    <section class="tw-experience care-stage" id="start" aria-label="Ihre kleine Pflegeauszeit">
+ <div class="wx-inner wx-split"><div class="care-copy"><p class="wx-eyebrow">Kimberger · Kosmetik in Sinsheim</p><h1>Ein Moment.<br><em>Nur für Sie.</em></h1><p>Wählen Sie Ihre Behandlung und entdecken Sie einen beispielhaften Ablauf Ihres Besuchs.</p><div class="wx-choices" role="group" aria-label="Behandlung wählen"><button class="wx-choice" data-care-treatment="sensibelchen" aria-pressed="true">Sensibelchen</button><button class="wx-choice" data-care-treatment="klassik" aria-pressed="false">Klassik</button><button class="wx-choice" data-care-treatment="klassik-plus" aria-pressed="false">Klassik Plus</button><button class="wx-choice" data-care-treatment="komfort" aria-pressed="false">Komfort</button><button class="wx-choice" data-care-treatment="anti-aging" aria-pressed="false">Anti-Aging</button></div><div class="care-booking"><span class="wx-step">Ihre Auswahl</span><h2 data-care-selected>Sensibelchen</h2><a class="wx-button" data-care-cta href="termin.html?behandlung=sensibelchen">Beispieltermin wählen ↗</a></div></div>
+ <div class="care-story"><figure class="care-photo"><img data-care-photo src="assets/institut-interieur.jpg" alt="Ruhiger Institutsraum — Symbolbild" fetchpriority="high" width="1200" height="1000"><figcaption><span data-care-count>01 / 03</span><span>IHRE AUSZEIT</span></figcaption></figure><div class="care-stations" role="group" aria-label="Ablauf entdecken"><button data-care-step="0" aria-pressed="true"><span>01</span>Ankommen</button><button data-care-step="1" aria-pressed="false"><span>02</span>Pflegezeit</button><button data-care-step="2" aria-pressed="false"><span>03</span>Nachklingen</button></div><div class="care-step-copy" aria-live="polite"><h2 data-care-title>Erst einmal ankommen.</h2><p data-care-text>Ihre Wünsche besprechen und gemeinsam schauen, was Ihnen heute wichtig ist.</p></div><p class="wx-note">Beispielhafter Ablauf mit Symbolbildern. Die Behandlung wird persönlich abgestimmt.</p></div></div>
+</section>
+
 
     <!-- Übergangs-Sektion: Statement-50 + Erzählung -->
     <section class="section section--ton" id="neues-kapitel">
@@ -77,7 +76,7 @@
       <div class="wrap">
         <div class="section-kopf">
           <p class="eyebrow">Behandlungen</p>
-          <h2>Zeit für Ihre Haut</h2>
+          <h2>Welche Pflege passt zu Ihnen?</h2>
           <p class="lede">Schwerpunkt des Instituts: Gesichtsbehandlungen und Anti-Aging — jede Behandlung beginnt mit einem Blick auf Ihre Haut.</p>
         </div>
 
@@ -215,7 +214,7 @@
         </details>
         <details>
           <summary>Wie funktioniert der Online-Terminwunsch?</summary>
-          <p>Sie wählen Behandlung und Wunschzeit, das Institut meldet sich zur Bestätigung zurück — ganz ohne Anruf. In dieser Konzeptvorschau ist das eine Demo: Es wird nichts gesendet oder gespeichert.</p>
+          <p>Sie wählen Behandlung und Wunschzeit, das Institut meldet sich zur Bestätigung zurück — ganz ohne Anruf. In dieser Konzeptvorschau ist das eine Demo: Es wird nichts versendet. Fachliche Angaben bleiben nur in diesem Browser-Tab.</p>
         </details>
       </div>
     </section>
@@ -230,5 +229,7 @@
   </footer>
 
   <script src="app.js"></script>
+<script src="../assets/wow-kit.js"></script>
+<script src="wow.js"></script>
 </body>
 </html>

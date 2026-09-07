@@ -10,14 +10,21 @@
   <link rel="preload" href="assets/fonts/fraunces-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/instrument-sans-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../assets/demo-ui.css">
+  <link rel="stylesheet" href="../assets/demo-refinements.css">
+  <script src="../assets/demo-ui.js" defer></script>
+<link rel="stylesheet" href="../assets/demo-workflow.css"><script src="../assets/demo-workflow.js"></script><script src="../assets/branch-definitions.js"></script><script src="../assets/branch-bridge.js"></script>
 </head>
-<body>
+<body data-demo="watson-angelika-coach">
   <a class="skip-link" href="#hauptinhalt">Zum Inhalt springen</a>
 
-  <aside class="draft-banner" aria-label="Hinweis zum Entwurfsstatus">
-    <strong>Design-Entwurf von TOMORROWWORKS</strong> — nicht die offizielle Website von Angelika Watson ·
-    Persönliche Konzeptvorschau · Anfrage ist eine Demo · Angaben werden bestätigt
-  </aside>
+  <aside class="demo-toolbar" aria-label="Designstudie von TomorrowWorks">
+      <div class="demo-toolbar-label"><strong>TomorrowWorks · Designstudie</strong><span>Keine offizielle Website</span></div>
+      <div class="demo-toolbar-actions">
+        <a href="../projekte.html#designstudien"><span aria-hidden="true">←</span> Alle Demos</a>
+        <details><summary>Hinweis</summary><p>Design-Entwurf von TOMORROWWORKS — nicht die offizielle Website von Angelika Watson · Persönliche Konzeptvorschau · Anfrage ist eine Demo · Angaben werden bestätigt</p></details>
+      </div>
+    </aside>
 
   <header class="site-header site-header--schmal">
     <a class="wordmark" href="index.html" aria-label="Zurück zur Startseite">
@@ -39,8 +46,8 @@
       <div class="wrap wrap--planer">
         <p class="eyebrow">Kennenlerngespräch · Demo</p>
         <h1>Lass uns kennenlernen.</h1>
-        <p class="lede">Vier kurze Schritte — dann melde ich mich mit Terminvorschlägen. In dieser Konzeptvorschau wird nichts gesendet oder gespeichert.</p>
-        <p class="demo-chip">DEMO · KEINE SPEICHERUNG</p>
+        <p class="lede">Vier kurze Schritte — dann melde ich mich mit Terminvorschlägen. In dieser Konzeptvorschau wird nichts versendet. Fachliche Angaben bleiben nur in diesem Browser-Tab.</p>
+        <p class="demo-chip">DEMO · VORGANG IM BROWSER-TAB</p>
 
         <form id="anfrage-form" novalidate>
           <fieldset class="planer-schritt">
@@ -177,5 +184,7 @@
   </footer>
 
   <script src="app.js"></script>
+<script src="../assets/wow-kit.js"></script>
+<script src="wow.js"></script>
 </body>
 </html>

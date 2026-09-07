@@ -11,16 +11,22 @@
     >
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
+    <link rel="stylesheet" href="../assets/demo-ui.css">
+  <link rel="stylesheet" href="../assets/demo-refinements.css">
+  <script src="../assets/demo-ui.js" defer></script>
+<link rel="stylesheet" href="../assets/demo-workflow.css"><script src="../assets/demo-workflow.js"></script><script src="../assets/branch-definitions.js"></script><script src="../assets/branch-bridge.js"></script>
+</head>
+  <body data-demo="popalpin">
     <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
 
     <header>
-      <div class="banner">
-        <strong>Design-Entwurf von TOMORROWWORKS</strong> —
-        nicht die offizielle Website von PopAlpin ·
-        Persönliche Konzeptvorschau
+      <aside class="demo-toolbar" aria-label="Designstudie von TomorrowWorks">
+      <div class="demo-toolbar-label"><strong>TomorrowWorks · Designstudie</strong><span>Keine offizielle Website</span></div>
+      <div class="demo-toolbar-actions">
+        <a href="../projekte.html#designstudien"><span aria-hidden="true">←</span> Alle Demos</a>
+        <details><summary>Hinweis</summary><p>Design-Entwurf von TOMORROWWORKS — nicht die offizielle Website von PopAlpin · Persönliche Konzeptvorschau</p></details>
       </div>
+    </aside>
       <div class="site-header">
         <div class="site-header-inhalt">
           <a class="wortmarke" href="index.html" aria-label="PopAlpin — zur Startseite">
@@ -49,8 +55,7 @@
           <h1 class="display">Wunschtermin anfragen.</h1>
           <p>
             Fünf kurze Schritte — Sie erhalten eine persönliche, unverbindliche
-            Einschätzung. Demo-Vorschau: Es wird nichts übertragen und nichts
-            gespeichert.
+            Einschätzung. Demo-Vorschau: Es wird nichts übertragen. Der Vorgang bleibt nur in diesem Browser-Tab.
           </p>
         </div>
       </div>
@@ -72,6 +77,10 @@
             <div class="wahl">
               <input type="radio" id="anlass-gala" name="anlass" value="gala">
               <label for="anlass-gala"><strong>Gala-Abend</strong><small>Tischmusik &amp; Party-Mix</small></label>
+            </div>
+            <div class="wahl">
+              <input type="radio" id="anlass-party" name="anlass" value="party">
+              <label for="anlass-party"><strong>Party</strong><small>Ein Abend zum Feiern</small></label>
             </div>
             <div class="wahl">
               <input type="radio" id="anlass-geburtstag" name="anlass" value="geburtstag">
@@ -191,7 +200,7 @@
             <input type="checkbox" id="demo-ok" name="demo-ok">
             <label for="demo-ok">
               Mir ist klar, dass dies eine Demo ist — es wird nichts übertragen
-              und nichts gespeichert.
+              und nur der Vorgang in diesem Browser-Tab gespeichert.
             </label>
           </p>
         </fieldset>
@@ -200,7 +209,7 @@
           <button class="btn btn--geist-dunkel" type="submit">Anfrage senden (Demo)</button>
           <p class="demo-hinweis">
             Demo-Attrappe: Der Klick erzeugt nur die Zusammenfassung unten —
-            keine Übertragung, keine Speicherung.
+            keine Übertragung, Vorgang nur im Browser-Tab.
           </p>
         </div>
       </form>
@@ -214,7 +223,7 @@
         </p>
         <dl data-zusammenfassung></dl>
         <p class="demo-hinweis">
-          Demo-Vorschau: Es wurde nichts übertragen und nichts gespeichert.
+          Demo-Vorschau: Es wurde nichts übertragen. Der Vorgang bleibt nur in diesem Browser-Tab.
         </p>
       </section>
       </div>

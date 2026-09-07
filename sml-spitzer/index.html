@@ -11,16 +11,24 @@
     >
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
+    <link rel="stylesheet" href="../assets/demo-ui.css">
+  <link rel="stylesheet" href="../assets/demo-refinements.css">
+  <script src="../assets/demo-ui.js" defer></script>
+<link rel="stylesheet" href="../assets/demo-workflow.css"><script src="../assets/demo-workflow.js"></script><script src="../assets/branch-definitions.js"></script><script src="../assets/branch-bridge.js"></script>
+<link rel="stylesheet" href="../assets/wow-final.css">
+<link rel="stylesheet" href="wow.css">
+</head>
+  <body data-demo="sml-spitzer">
     <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
 
     <header>
-      <div class="banner">
-        <strong>Design-Entwurf von TOMORROWWORKS</strong> —
-        nicht die offizielle Website der Spedition Spitzer GmbH &amp; Co. KG ·
-        Persönliche Konzeptvorschau
+      <aside class="demo-toolbar" aria-label="Designstudie von TomorrowWorks">
+      <div class="demo-toolbar-label"><strong>TomorrowWorks · Designstudie</strong><span>Keine offizielle Website</span></div>
+      <div class="demo-toolbar-actions">
+        <a href="../projekte.html#designstudien"><span aria-hidden="true">←</span> Alle Demos</a>
+        <details><summary>Hinweis</summary><p>Design-Entwurf von TOMORROWWORKS — nicht die offizielle Website der Spedition Spitzer GmbH &amp; Co. KG · Persönliche Konzeptvorschau</p></details>
       </div>
+    </aside>
       <div class="site-header">
         <div class="site-header-inhalt">
           <a class="wortmarke" href="#inhalt" aria-label="SML Spitzer — zur Startseite">
@@ -46,32 +54,9 @@
 
     <main id="inhalt">
       <!-- Hero: dunkle Bühne, Rot-Overlay-Referenz an die echte Seite -->
-      <section class="hero" aria-label="Einstieg">
-        <div class="hero-bild">
-          <img
-            src="assets/hero.jpg"
-            alt="Umzugskartons bereit zum Transport — Beispielfoto"
-            width="1920"
-            height="1080"
-            fetchpriority="high"
-          >
-          <span class="foto-tag">Beispielfoto (Symbolbild)</span>
-        </div>
-        <div class="hero-inhalt">
-          <span class="hero-badge">Seit 1903 in Mosbach</span>
-          <span class="eyebrow eyebrow--hell">Umzüge &amp; Logistik aus Mosbach</span>
-          <h1>Ihr Umzug — <em>gut vorbereitet.</em></h1>
-          <p class="hero-sub">
-            Privatumzüge, Büro- und Projektumzüge: Sie sagen uns, wohin es geht — wir
-            übernehmen den Rest. Mit einer kurzen Vorab-Anfrage sparen Sie bei der
-            Beratung wertvolle Zeit.
-          </p>
-          <div class="hero-aktionen">
-            <a class="btn btn--voll" href="anfrage.html">Umzug anfragen</a>
-            <a class="btn btn--kontur btn--kontur-hell" href="#leistungen">Leistungen ansehen</a>
-          </div>
-        </div>
-      </section>
+      <section class="tw-experience load-stage" aria-label="Ihr Umzug nimmt Form an"><div class="wx-inner"><div class="load-heading"><div><p class="wx-eyebrow">SML Spitzer · Umzüge &amp; Logistik</p><h1>Ein neues Zuhause.<br><em>Wir bewegen das.</em></h1></div><p>Wie viel zieht mit? Lassen Sie Ihren Umzug sichtbar werden — Zimmer für Zimmer.</p></div><div class="load-layout"><div class="load-controls"><span class="wx-step">01 / Wohnungsgröße</span><div class="wx-choices" role="group" aria-label="Wohnungsgröße"><button class="wx-choice" data-load-size="1-zimmer" aria-pressed="true">1 Zimmer</button><button class="wx-choice" data-load-size="2-zimmer" aria-pressed="false">2 Zimmer</button><button class="wx-choice" data-load-size="3-zimmer" aria-pressed="false">3 Zimmer</button><button class="wx-choice" data-load-size="4-plus" aria-pressed="false">4+ Zimmer</button></div><label class="wx-check"><input type="checkbox" data-load-cellar>Keller oder Abstellraum zieht mit</label><div class="load-estimate" aria-live="polite"><span>GROBE ORIENTIERUNG</span><strong data-load-volume>10–15 m³</strong><p data-load-team>Beispiel-Team: 2 Personen</p></div><a class="wx-button" data-load-cta href="anfrage.html?umzugsart=privatumzug&amp;groesse=1-zimmer&amp;volumen=15&amp;keller=0">Diesen Umzug vorbereiten ↗</a></div>
+ <figure class="load-truck"><div class="load-ruler"><span>DEIN LEBEN. GUT VERPACKT.</span><span data-load-caption>01 ZIMMER</span></div><svg viewBox="0 0 780 460" role="img" aria-label="Schematischer Transporter, der sich mit der gewählten Wohnungsgröße füllt"><defs><pattern id="load-grid" width="35" height="35" patternUnits="userSpaceOnUse"><path d="M35 0H0V35" fill="none" stroke="#d6dfe8"/></pattern></defs><path d="M25 394H756" stroke="#8397b0" stroke-width="2"/><rect x="35" y="90" width="505" height="272" rx="5" fill="#f8fafc" stroke="#234575" stroke-width="9"/><rect x="45" y="100" width="485" height="247" fill="url(#load-grid)"/><path d="M540 180H646L720 275V365H540Z" fill="#234575"/><path d="M568 201H635L687 273H568Z" fill="#a8c4d2"/><path d="M548 294H713M553 316H590" stroke="#90a6c4" stroke-width="4"/><rect x="684" y="313" width="26" height="15" rx="3" fill="#f3d8a5"/><rect x="30" y="350" width="700" height="24" rx="5" fill="#1c3559"/><g data-load-level="1" class="load-cargo"><rect x="65" y="276" width="130" height="62" rx="8" fill="#d0b58e" stroke="#826b4d" stroke-width="3"/><path d="M70 293H190M92 280V326M168 280V326" stroke="#a48a65" stroke-width="3"/><rect x="64" y="294" width="20" height="43" rx="5" fill="#b99c73"/><rect x="178" y="294" width="20" height="43" rx="5" fill="#b99c73"/><rect x="75" y="338" width="10" height="9" fill="#6c543c"/><rect x="177" y="338" width="10" height="9" fill="#6c543c"/><rect x="211" y="293" width="61" height="54" fill="#cda573"/><path d="M241 293V311M225 327H254" stroke="#a47c4e" stroke-width="4"/></g><g data-load-level="2" class="load-cargo" hidden><rect x="288" y="167" width="91" height="180" fill="#9a7d58"/><path d="M332 167V347" stroke="#695638" stroke-width="3"/><path d="M322 249V268M342 249V268" stroke="#d6bc92" stroke-width="4"/><rect x="211" y="239" width="61" height="52" fill="#dab988"/><path d="M241 239V260" stroke="#ae8757" stroke-width="5"/></g><g data-load-level="3" class="load-cargo" hidden><rect x="392" y="286" width="65" height="61" fill="#cda573"/><rect x="395" y="224" width="60" height="60" fill="#dfbd8c"/><path d="M423 224V246M423 287V310" stroke="#a47c4e" stroke-width="5"/><path d="M81 210H184M93 210V270M173 210V270" stroke="#685b47" stroke-width="8"/><rect x="100" y="170" width="72" height="37" fill="#b4c0b7"/></g><g data-load-level="4" class="load-cargo" hidden><rect x="211" y="173" width="60" height="64" fill="#b6aa89"/><path d="M240 173V195" stroke="#8d8267" stroke-width="5"/><path d="M474 168H510V347H474Z" fill="#8f9a92"/><path d="M474 230H510M474 292H510" stroke="#dde2d8" stroke-width="3"/></g><g data-load-basement class="load-cargo" hidden><rect x="297" y="119" width="74" height="46" fill="#879caa"/><path d="M332 119V139" stroke="#d2e0e7" stroke-width="7"/><text x="334" y="153" font-size="10" text-anchor="middle" fill="#fff">KELLER</text></g><g fill="#26364b" stroke="#dbe2e7" stroke-width="7"><circle cx="139" cy="373" r="37"/><circle cx="627" cy="373" r="37"/></g><g fill="#8e9eaf"><circle cx="139" cy="373" r="15"/><circle cx="627" cy="373" r="15"/></g></svg><figcaption>Schematisches Ladebild, keine Fahrzeug- oder Kapazitätszusage.<br>Den tatsächlichen Umfang klären wir bei der Besichtigung.</figcaption></figure></div></div></section>
+
 
       <!-- Leistungs-Übersicht: 9 Kacheln, Privatumzüge hervorgehoben -->
       <section class="section" id="leistungen">
@@ -365,5 +350,7 @@
     </footer>
 
     <script src="app.js"></script>
-  </body>
+  <script src="../assets/wow-kit.js"></script>
+<script src="wow.js"></script>
+</body>
 </html>

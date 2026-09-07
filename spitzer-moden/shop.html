@@ -11,16 +11,22 @@
     >
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
+    <link rel="stylesheet" href="../assets/demo-ui.css">
+  <link rel="stylesheet" href="../assets/demo-refinements.css">
+  <script src="../assets/demo-ui.js" defer></script>
+<link rel="stylesheet" href="../assets/demo-workflow.css"><script src="../assets/demo-workflow.js"></script><script src="../assets/branch-definitions.js"></script><script src="../assets/branch-bridge.js"></script>
+</head>
+  <body data-demo="spitzer-moden">
     <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
 
     <header>
-      <div class="banner">
-        <strong>Design-Entwurf von TOMORROWWORKS</strong> —
-        nicht die offizielle Website von Spitzer Moden ·
-        Persönliche Konzeptvorschau
+      <aside class="demo-toolbar" aria-label="Designstudie von TomorrowWorks">
+      <div class="demo-toolbar-label"><strong>TomorrowWorks · Designstudie</strong><span>Keine offizielle Website</span></div>
+      <div class="demo-toolbar-actions">
+        <a href="../projekte.html#designstudien"><span aria-hidden="true">←</span> Alle Demos</a>
+        <details><summary>Hinweis</summary><p>Design-Entwurf von TOMORROWWORKS — nicht die offizielle Website von Spitzer Moden · Persönliche Konzeptvorschau</p></details>
       </div>
+    </aside>
       <div class="site-header">
         <div class="site-header-inhalt">
           <nav class="site-nav" aria-label="Hauptnavigation">
@@ -99,7 +105,7 @@
           <button type="button" class="bereich-cta produkt-detail-zurueck" data-zurueck>← Zurück zum Sortiment</button>
           <div class="produkt-detail-layout">
             <div class="produkt-detail-bild">
-              <img id="produkt-detail-bild" src="" alt="" width="1000" height="1250">
+              <img id="produkt-detail-bild" src="assets/produkt-bluse-zeitlos-1.jpg" alt="" width="1000" height="1250">
               <!-- 2 Thumbnail-Buttons (Ansicht 2 + 3 — Ansicht 1 ist bereits das Hauptbild oben)
                    werden von shop.js pro Produkt-Klick befüllt; Klick tauscht das Hauptbild aus. -->
               <div class="produkt-galerie-thumbnails" role="group" aria-label="Weitere Ansichten"></div>
@@ -176,6 +182,7 @@
       </div>
     </footer>
 
+    <script src="look-data.js"></script>
     <script src="shop.js"></script>
   </body>
 </html>

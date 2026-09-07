@@ -8,14 +8,21 @@
   <title>Terminwunsch · Kimberger Kosmetikinstitut — Design-Entwurf</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../assets/demo-ui.css">
+  <link rel="stylesheet" href="../assets/demo-refinements.css">
+  <script src="../assets/demo-ui.js" defer></script>
+<link rel="stylesheet" href="../assets/demo-workflow.css"><script src="../assets/demo-workflow.js"></script><script src="../assets/branch-definitions.js"></script><script src="../assets/branch-bridge.js"></script>
 </head>
-<body>
+<body data-demo="kimberger">
   <a class="skip-link" href="#hauptinhalt">Zum Inhalt springen</a>
 
-  <aside class="draft-banner" aria-label="Hinweis zum Entwurfsstatus">
-    <strong>Design-Entwurf von TOMORROWWORKS</strong> — nicht die offizielle Website des Kimberger Kosmetikinstituts ·
-    Persönliche Konzeptvorschau · Terminwunsch ist eine Demo · Angaben werden bestätigt
-  </aside>
+  <aside class="demo-toolbar" aria-label="Designstudie von TomorrowWorks">
+      <div class="demo-toolbar-label"><strong>TomorrowWorks · Designstudie</strong><span>Keine offizielle Website</span></div>
+      <div class="demo-toolbar-actions">
+        <a href="../projekte.html#designstudien"><span aria-hidden="true">←</span> Alle Demos</a>
+        <details><summary>Hinweis</summary><p>Design-Entwurf von TOMORROWWORKS — nicht die offizielle Website des Kimberger Kosmetikinstituts · Persönliche Konzeptvorschau · Terminwunsch ist eine Demo · Angaben werden bestätigt</p></details>
+      </div>
+    </aside>
 
   <header class="site-header site-header--schmal">
     <a class="wordmark" href="index.html" aria-label="Zurück zur Startseite">
@@ -34,8 +41,8 @@
       <div class="wrap wrap--planer">
         <p class="eyebrow">Terminwunsch · Demo</p>
         <h1>Ihr Terminwunsch</h1>
-        <p class="lede">Wählen Sie Behandlung und Wunschzeit — in dieser Konzeptvorschau wird nichts gesendet oder gespeichert.</p>
-        <p class="demo-chip">DEMO · KEINE SPEICHERUNG</p>
+        <p class="lede">Wählen Sie Behandlung und Wunschzeit — in dieser Konzeptvorschau wird nichts versendet. Fachliche Angaben bleiben nur in diesem Browser-Tab.</p>
+        <p class="demo-chip">DEMO · VORGANG IM BROWSER-TAB</p>
 
         <form id="termin-form" novalidate>
           <fieldset class="planer-schritt">
@@ -131,7 +138,7 @@
 
         <div class="bestaetigung" data-bestaetigung hidden>
           <h2>Danke — Ihr Terminwunsch ist angekommen. <em>Fast.</em></h2>
-          <p>Das ist eine Konzeptvorschau: <strong>es wurden keine Daten gespeichert oder versendet</strong>. Auf der echten Website würde das Institut Ihren Wunsch jetzt erhalten und sich zur Bestätigung zurückmelden.</p>
+          <p>Das ist eine Konzeptvorschau: <strong>der Vorgang bleibt nur in diesem Browser-Tab; es wurde nichts versendet</strong>. Auf der echten Website würde das Institut Ihren Wunsch jetzt erhalten und sich zur Bestätigung zurückmelden.</p>
           <p class="small" data-zusammenfassung></p>
           <button type="button" class="btn btn--ghost" data-neustart>Demo neu starten</button>
         </div>

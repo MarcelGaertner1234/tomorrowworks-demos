@@ -11,16 +11,24 @@
     >
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
+    <link rel="stylesheet" href="../assets/demo-ui.css">
+  <link rel="stylesheet" href="../assets/demo-refinements.css">
+  <script src="../assets/demo-ui.js" defer></script>
+<link rel="stylesheet" href="../assets/demo-workflow.css"><script src="../assets/demo-workflow.js"></script><script src="../assets/branch-definitions.js"></script><script src="../assets/branch-bridge.js"></script>
+<link rel="stylesheet" href="../assets/wow-final.css">
+<link rel="stylesheet" href="wow.css">
+</head>
+  <body data-demo="durmus-gebaeudereinigung">
     <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
 
     <header>
-      <div class="banner">
-        <strong>Design-Entwurf von TOMORROWWORKS</strong> —
-        nicht die offizielle Website von Durmus Berkant Gebäudereinigung ·
-        Persönliche Konzeptvorschau
+      <aside class="demo-toolbar" aria-label="Designstudie von TomorrowWorks">
+      <div class="demo-toolbar-label"><strong>TomorrowWorks · Designstudie</strong><span>Keine offizielle Website</span></div>
+      <div class="demo-toolbar-actions">
+        <a href="../projekte.html#designstudien"><span aria-hidden="true">←</span> Alle Demos</a>
+        <details><summary>Hinweis</summary><p>Design-Entwurf von TOMORROWWORKS — nicht die offizielle Website von Durmus Berkant Gebäudereinigung · Persönliche Konzeptvorschau</p></details>
       </div>
+    </aside>
       <div class="site-header">
         <div class="site-header-inhalt">
           <a
@@ -48,35 +56,9 @@
 
     <main id="inhalt">
       <!-- Hero: Pill-Badge, riesige zentrierte Headline, Fenster-Rahmen-Fotokarte (Referenz-DNA attio.com) -->
-      <section class="hero" aria-label="Einstieg">
-        <div class="hero-inhalt">
-          <span class="pill-badge">Gebäudereinigung in Mosbach-Diedesheim</span>
-          <h1 class="hero-titel">Wir bringen die Klarheit zu Ihnen.</h1>
-          <p class="hero-sub">
-            Gebäudereinigung, Glasreinigung und Kurierdienst aus Mosbach-Diedesheim —
-            sorgfältig ausgeführt und in wenigen Schritten angefragt.
-          </p>
-          <div class="hero-aktionen">
-            <a class="btn btn--kontur" href="#leistungen">Leistungen ansehen</a>
-            <a class="btn btn--voll" href="anfrage.html">Reinigung anfragen</a>
-          </div>
-        </div>
-        <div class="fensterkarte">
-          <div class="fensterkarte-chrome" aria-hidden="true">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-          <img
-            src="assets/hero.jpg"
-            alt="Helle, frisch gereinigte Bürofläche mit großen Fenstern — Beispielfoto (Symbolbild)"
-            width="1600"
-            height="1000"
-            fetchpriority="high"
-          >
-        </div>
-        <span class="bildunterschrift bildunterschrift--hero">Beispielfoto (Symbolbild)</span>
-      </section>
+      <section class="tw-experience glass-stage" aria-label="Klarer Blick auf Ihren Reinigungsbedarf"><div class="wx-inner"><div class="glass-heading"><div><p class="wx-eyebrow">Durmus Berkant · Gebäudereinigung</p><h1>Ein klarer Blick.<br><em>Ein guter Anfang.</em></h1></div><p>Saubere Glasflächen machen den Unterschied sichtbar. Ziehen Sie den Abzieher — und planen Sie Ihren Bedarf.</p></div><div class="glass-layout"><figure class="glass-experiment"><div class="glass-window" data-glass-window style="--clear:55%"><img src="assets/wow-clear-window.webp" alt="KI-Symbolbild: klare Glasfront mit Blick in einen grünen Innenhof" fetchpriority="high" width="1600" height="1000"><div class="glass-fog" aria-hidden="true"></div><div class="glass-squeegee" aria-hidden="true"><span></span></div><div class="glass-labels"><span>KLARE ANSICHT</span><span>MATTIERTE ANSICHT</span></div></div><div class="glass-slider"><label for="glass-clarity">Abzieher bewegen</label><output for="glass-clarity" data-glass-value>55 %</output><input id="glass-clarity" type="range" min="0" max="100" value="55" aria-valuetext="55 Prozent der illustrativen Glasfläche freigelegt"></div><figcaption>Illustrativer Reinigungseffekt · KI-Symbolbild mit künstlicher Mattierung</figcaption></figure>
+ <div class="glass-demand"><span class="wx-step">Ihr Einsatz beginnt hier</span><h2>Glasreinigung<br>für Ihr Objekt.</h2><label for="glass-area">Zu reinigende Fläche, grob in m²<input id="glass-area" data-glass-area type="number" min="20" max="800" step="10" value="150"></label><label for="glass-frequency">Gewünschter Rhythmus<select id="glass-frequency" data-glass-frequency><option value="woechentlich">1× wöchentlich</option><option value="mehrmals">Mehrmals wöchentlich</option><option value="taeglich">Täglich</option></select></label><div class="glass-recommendation"><span>BEISPIEL-EINORDNUNG</span><strong data-glass-system>System Basis</strong><p>Den passenden Umfang und Rhythmus stimmen wir bei der Besichtigung ab.</p></div><a class="wx-button" data-glass-cta href="anfrage.html?leistung=glasreinigung&amp;system=basis&amp;flaeche=150&amp;frequenz=woechentlich">Glasreinigung anfragen ↗</a><p class="wx-status" data-glass-error role="status"></p></div></div></div></section>
+
 
       <!-- Leistungs-Kacheln: nur die drei belegten Leistungen -->
       <section class="section" id="leistungen">
@@ -449,5 +431,7 @@
     </footer>
 
     <script src="app.js"></script>
-  </body>
+  <script src="../assets/wow-kit.js"></script>
+<script src="wow.js"></script>
+</body>
 </html>

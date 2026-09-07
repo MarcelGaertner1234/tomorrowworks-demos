@@ -3,7 +3,7 @@
 // Aufrufe. Der Warenkorb-Zustand selbst darf über sessionStorage zwischen shop.html und
 // warenkorb.html wandern (s. Spec §6) — verlässt den Browser-Tab dabei nie.
 
-// PRODUKTE: Beispiel-Sortiment (10 Artikel, siehe Spec §5) — vollständig erfunden, keine
+// PRODUKTE: Beispiel-Sortiment (10 bisherige Artikel und 4 Teile aus dem Lookbook) — vollständig erfunden, keine
 // Markennamen, keine Modellnummern. Bewusst auf MODULEBENE, außerhalb beider IIFEs unten:
 // Task 3 liest denselben Array aus einer eigenen, separaten IIFE (warenkorb.html) für
 // Namens-/Preis-Lookup — eine IIFE-lokale Deklaration wäre dort per Scope unerreichbar.
@@ -138,6 +138,7 @@ const PRODUKTE = [
       'assets/produkt-pullover-casual-3.jpg',
     ],
   },
+  ...SPITZER_LOOKS.flatMap(look => look.products),
 ];
 
 // Preis-Ausnahme (Spec §6): JEDE Preisnennung im Shop MUSS unmittelbar „Beispielpreis"
@@ -280,7 +281,7 @@ try {
 
   let aktuellesProdukt = null;
 
-  // Galerie-Index des aktuell im Hauptbild gezeigten Fotos (0 = erstes von 3 Bildern in
+  // Galerie-Index des aktuell im Hauptbild gezeigten Fotos (0 = erstes der vorhandenen Bilder in
   // produkt.bilder). Zurückgesetzt auf 0 bei jedem neuen Produkt-Klick (oeffneDetail unten).
   let aktiverGalerieIndex = 0;
 
@@ -295,7 +296,7 @@ try {
     aktiverGalerieIndex = index;
     if (detailBild) {
       detailBild.src = produkt.bilder[index];
-      detailBild.alt = `${produkt.name} — Beispielfoto${index > 0 ? `, Ansicht ${index + 1}` : ''}`;
+      detailBild.alt = `${produkt.name} — ${produkt.look ? 'KI-Beispiel im Gesamtlook' : 'Beispielfoto'}${index > 0 ? `, Ansicht ${index + 1}` : ''}`;
     }
     if (!detailGalerieThumbnails) return;
     for (const thumbBtn of detailGalerieThumbnails.querySelectorAll('.produkt-galerie-thumb')) {
@@ -310,7 +311,7 @@ try {
   const renderGalerieThumbnails = (produkt) => {
     if (!detailGalerieThumbnails) return;
     detailGalerieThumbnails.textContent = '';
-    [0, 1, 2].forEach((index) => {
+    produkt.bilder.forEach((_, index) => {
       const thumbBtn = document.createElement('button');
       thumbBtn.type = 'button';
       thumbBtn.className = 'produkt-galerie-thumb';
@@ -367,7 +368,7 @@ try {
     bildWrapper.className = 'produkt-bild';
     const bild = document.createElement('img');
     bild.src = produkt.bilder[0];
-    bild.alt = `${produkt.name} — Beispielfoto`;
+    bild.alt = `${produkt.name} — ${produkt.look ? 'KI-Beispiel im Gesamtlook' : 'Beispielfoto'}`;
     bild.loading = 'lazy';
     bild.width = 1000;
     bild.height = 1250;
@@ -468,6 +469,15 @@ try {
   // Strukturierte Bestätigungs-Blöcke (Kassen-Abschluss, Stufe 3) — ersetzen die frühere einzelne
   // [data-zusammenfassung]-Fließtext-Zeile; der umschließende [data-zusammenfassung]-Container
   // selbst braucht keine JS-Referenz mehr, da nur noch seine Kind-Elemente befüllt werden.
+  if (new URLSearchParams(location.search).get('anprobe') === '1') form.querySelector('[name="abwicklung"][value="anprobe"]').checked = true;
+  const updateRequestLabel = () => {
+    const fitting = form.querySelector('[name="abwicklung"]:checked')?.value === 'anprobe';
+    form.querySelector('button[type="submit"]').textContent = fitting ? 'Anprobe-Anfrage vorbereiten' : 'Bestellanfrage vorbereiten';
+    bestaetigung.querySelector('h2').textContent = fitting ? 'Ihre Demo-Anprobe ist angefragt' : 'Ihre Demo-Bestellanfrage steht';
+  };
+  form.querySelectorAll('[name="abwicklung"]').forEach(input => input.addEventListener('change', updateRequestLabel));
+  form.addEventListener('reset', () => queueMicrotask(updateRequestLabel));
+  updateRequestLabel();
   const bestellNummer = document.querySelector('[data-bestell-nummer]');
   const bestellAbwicklung = document.querySelector('[data-bestell-abwicklung]');
   const bestellArtikel = document.querySelector('[data-bestell-artikel]');
@@ -616,6 +626,7 @@ try {
         };
       });
       const summeWert = gesamtsumme();
+      if (!BranchDemo.accept(form, bestaetigung, {items:artikelSchnappschuss.map((item,index)=>({...item,productId:warenkorb[index].produktId})),total:summeWert})) return;
 
       // Erfolgsfall: Warenkorb + sessionStorage leeren — die Bestätigung zeigt den oben schon
       // eingefrorenen Schnappschuss, der Warenkorb selbst gilt als „abgeschickt". render() räumt
@@ -636,8 +647,8 @@ try {
         if (bestellNummer) {
           bestellNummer.textContent = '';
           const starkNummer = document.createElement('strong');
-          starkNummer.textContent = 'Beispiel-Bestellnummer';
-          bestellNummer.append(starkNummer, ` ${bestellNummerWert}`);
+          starkNummer.textContent = 'Vorgangsnummer';
+          bestellNummer.append(starkNummer, ` ${form.dataset.branchId}`);
         }
 
         if (bestellAbwicklung) {

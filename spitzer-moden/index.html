@@ -11,16 +11,23 @@
     >
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
+    <link rel="stylesheet" href="../assets/demo-ui.css">
+  <link rel="stylesheet" href="../assets/demo-refinements.css">
+  <script src="../assets/demo-ui.js" defer></script>
+<link rel="stylesheet" href="../assets/demo-workflow.css"><script src="../assets/demo-workflow.js"></script><script src="../assets/branch-definitions.js"></script><script src="../assets/branch-bridge.js"></script>
+<link rel="stylesheet" href="wow.css">
+</head>
+  <body data-demo="spitzer-moden">
     <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
 
     <header>
-      <div class="banner">
-        <strong>Design-Entwurf von TOMORROWWORKS</strong> —
-        nicht die offizielle Website von Spitzer Moden ·
-        Persönliche Konzeptvorschau
+      <aside class="demo-toolbar" aria-label="Designstudie von TomorrowWorks">
+      <div class="demo-toolbar-label"><strong>TomorrowWorks · Designstudie</strong><span>Keine offizielle Website</span></div>
+      <div class="demo-toolbar-actions">
+        <a href="../projekte.html#designstudien"><span aria-hidden="true">←</span> Alle Demos</a>
+        <details><summary>Hinweis</summary><p>Design-Entwurf von TOMORROWWORKS — nicht die offizielle Website von Spitzer Moden · Persönliche Konzeptvorschau</p></details>
       </div>
+    </aside>
       <div class="site-header">
         <div class="site-header-inhalt">
           <nav class="site-nav" aria-label="Hauptnavigation">
@@ -52,40 +59,37 @@
     </header>
 
     <main id="inhalt">
-      <!-- Vollbild-Hero mit Sie/Ihn-Toggle (Referenz-DNA prada.com, s. Spec §3b) -->
-      <section class="hero" aria-label="Einstieg">
-        <div class="hero-buehne">
-          <img
-            class="hero-bild"
-            id="hero-bild"
-            src="assets/hero-damen.jpg"
-            data-bild-damen="assets/hero-damen.jpg"
-            data-bild-herren="assets/hero-herren.jpg"
-            alt="Editorial-Look für Damen — Beispielfoto"
-            width="1600"
-            height="2000"
-            fetchpriority="high"
-          >
-          <div class="hero-scrim" aria-hidden="true"></div>
-          <div class="hero-text">
-            <span class="eyebrow">Modehaus in Mosbach</span>
-            <h1>Zwei Garderoben. <em>Ein</em> Anspruch.</h1>
-            <div class="hero-toggle" role="tablist" aria-label="Bereich wählen">
-              <button type="button" class="hero-toggle-btn is-aktiv" data-bereich="damen" role="tab" aria-selected="true">Für Sie</button>
-              <button type="button" class="hero-toggle-btn" data-bereich="herren" role="tab" aria-selected="false">Für Ihn</button>
-            </div>
-            <a class="btn btn--voll hero-cta" id="hero-cta" href="anfrage.html?bereich=damen">Beratung anfragen</a>
+      <section class="lookbook" data-lookbook data-look="stadt" aria-label="Lookbook mit Anprobe-Auswahl">
+        <figure class="look-visual">
+          <img class="look-photo" data-look-photo src="assets/wow-look-stadt.webp" alt="KI-Beispiellook: Frau im dunkelblauen Blazer mit steingrauer Hose" width="1024" height="1536" fetchpriority="high">
+          <div class="look-pins" data-look-pins></div>
+          <figcaption>KI-Lookbook · Beispielkollektion</figcaption>
+        </figure>
+        <div class="look-editor">
+          <p>Spitzer Moden in Mosbach</p>
+          <h1>Gute Teile. Ein ganzer Look.</h1>
+          <div class="look-switch" role="group" aria-label="Look wählen">
+            <button type="button" data-look-select="stadt" aria-pressed="true">Stadt &amp; Kaffee</button>
+            <button type="button" data-look-select="abend" aria-pressed="false">Ein besonderer Abend</button>
           </div>
+          <h2 data-look-title>Stadt &amp; Kaffee</h2>
+          <p class="look-description" data-look-description>Ein dunkelblauer Blazer, eine steingraue Hose. Klare Linien, entspannt kombiniert.</p>
+          <div class="look-items" data-look-items></div>
+          <p class="look-total" data-look-total aria-live="polite"></p>
+          <button class="look-reserve" type="button" data-look-add>Auswahl zur Anprobe vormerken</button>
+          <div class="look-feedback" data-look-feedback role="status" hidden></div>
+          <p class="look-info">Gezeigte Beispielteile einzeln auswählen. Oberteil und Schuhe im Damen-Look sowie Schuhe im Herren-Look dienen dem Styling. Die Anprobe-Anfrage schließen Sie im Warenkorb ab.</p>
+          <noscript><p><a href="shop.html">Beispielkollektion im Shop entdecken</a></p></noscript>
         </div>
       </section>
 
       <!-- Intro: zentrierte schmale Textspalte -->
       <section class="section intro" aria-label="Einleitung">
         <div class="section-inhalt">
-          <p class="intro-statement">Ein Modehaus ist kein Regal — es ist ein Gespräch über Stil.</p>
+          <p class="intro-statement">Lieblingsteile findet man beim Anprobieren.</p>
           <p>
-            Deshalb zeigt diese Seite zuerst Bilder statt Listen: zwei Garderoben, ein paar
-            Beispiel-Looks und ein kurzer Weg zu Ihrer persönlichen Beratung.
+            Für den Alltag, das Büro oder einen besonderen Anlass: Entdecken Sie unsere
+            Beispiel-Looks und finden Sie Ihren Stil in einer persönlichen Beratung.
           </p>
         </div>
       </section>
@@ -392,5 +396,8 @@
     </footer>
 
     <script src="app.js"></script>
+    <script src="look-data.js"></script>
+    <script src="shop.js"></script>
+    <script src="wow.js"></script>
   </body>
 </html>
