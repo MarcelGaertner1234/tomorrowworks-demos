@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Hausmeisterservice ASH — Hausmeisterservice, Marktheidenfeld (Design-Entwurf)</title>
+    <meta
+      name="description"
+      content="Design-Entwurf von TOMORROWWORKS — Persönliche Konzeptvorschau, nicht die offizielle Website von Hausmeisterservice ASH."
+    >
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="gestaltung.css">
+    <script src="gestaltung.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#inhalt">Zum Inhalt springen</a>
+
+    <header>
+      <div class="banner">
+        <strong>Design-Entwurf von TOMORROWWORKS</strong> —
+        nicht die offizielle Website von Hausmeisterservice ASH ·
+        Persönliche Konzeptvorschau
+      </div>
+      <div class="site-header">
+        <div class="site-header-inhalt">
+          <a class="wortmarke" href="#inhalt" aria-label="Hausmeisterservice ASH — zur Startseite">
+            <span class="swatch" aria-hidden="true"></span>
+            <span class="wortmarke-text">
+              <strong>Hausmeisterservice ASH</strong>
+              <span>Hausmeisterservice — Marktheidenfeld</span>
+            </span>
+          </a>
+          <nav class="site-nav" aria-label="Hauptnavigation">
+            <a href="#leistungen">Leistungen</a>
+            <a href="#betrieb">Betrieb</a>
+            <a href="#ablauf">Ablauf</a>
+            <a href="#region">Region</a>
+            <a href="#faq">FAQ</a>
+          </nav>
+          <a class="btn btn--voll" href="anfrage.html" aria-label="Ihre Anfrage bei Hausmeisterservice ASH stellen">Anfrage stellen</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="inhalt">
+      <!-- Hero: gepflegter Hauseingang + Claim -->
+      <section class="hero" aria-label="Einstieg">
+        <img
+          src="assets/hero-eingang.jpg"
+          alt="Gepflegter Hauseingang mit ordentlichem Grundstück — Beispielfoto"
+          width="1600"
+          height="1000"
+          fetchpriority="high"
+        >
+        <div class="hero-inhalt">
+          <h1>Rund ums Haus. Verlässlich vor Ort.</h1>
+          <p class="hero-sub">
+            Haus-, Reinigungs- und Gartenservice sowie Reparatur und Montage
+            in Marktheidenfeld. Alexander Spuling — Ihr Ansprechpartner
+            für die Arbeiten rund um Haus und Grundstück.
+          </p>
+          <div class="hero-aktionen">
+            <a class="btn btn--voll" href="anfrage.html">Anfrage stellen</a>
+            <a class="btn btn--hell" href="#leistungen">Leistungen ansehen</a>
+          </div>
+        </div>
+        <span class="hero-credit">Beispielfoto (Symbolbild)</span>
+      </section>
+
+      <!-- USP: Vier Leistungen, ein Ansprechpartner (ersetzt das frühere Statement-Band) -->
+      <section class="usp" aria-label="Ihr Vorteil auf einen Blick" id="vorteil">
+        <div class="usp-inhalt">
+          <div class="usp-kopf">
+            <span class="eyebrow">Ihr Vorteil</span>
+            <h2>Vier Leistungen. Ein Ansprechpartner.</h2>
+          </div>
+          <div class="usp-grid">
+            <div class="usp-punkt">
+              <h3>Ein Ansprechpartner statt mehrerer Handwerker</h3>
+              <p>
+                Hausmeisterdienste, Reinigung, Garten und Reparatur laufen
+                über eine einzige Anlaufstelle — statt vier einzelne Betriebe
+                zu koordinieren.
+              </p>
+            </div>
+            <div class="usp-punkt">
+              <h3>Ein Kontakt für alle vier Bereiche</h3>
+              <p>
+                Ob Hausmeisterdienste, Reinigungsservice, Gartenarbeiten
+                oder Reparatur & Montage: Eine Anfrage genügt für alle vier
+                Leistungen.
+              </p>
+            </div>
+            <div class="usp-punkt">
+              <h3>Eine Anlaufstelle für Haus und Garten</h3>
+              <p>
+                Die vier Leistungsbereiche decken Arbeiten drinnen wie
+                draußen ab — abgestimmt über denselben Ansprechpartner.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Leistungs-Kacheln (Hausmeister · Reinigung · Garten · Reparatur) -->
+      <section class="section" id="leistungen">
+        <div class="section-inhalt">
+          <div class="section-kopf">
+            <span class="eyebrow">Leistungen</span>
+            <h2>Was Hausmeisterservice ASH übernimmt</h2>
+            <p>
+              Vier Bereiche aus einer Hand — jede Leistung können Sie direkt
+              als Anfrage auswählen.
+            </p>
+          </div>
+
+          <div class="anfrage-zusammenstellung" data-zusammenstellung>
+            <div class="zusammenstellung-eingabe">
+              <fieldset class="objekttyp-wahl">
+                <legend>Ihr Objekt</legend>
+                <button type="button" class="objekttyp-pille is-aktiv" data-objekttyp="privat" aria-pressed="true">Privat</button>
+                <button type="button" class="objekttyp-pille" data-objekttyp="gewerblich" aria-pressed="false">Gewerblich</button>
+              </fieldset>
+              <fieldset class="leistungs-checkboxen">
+                <legend>Welche Leistungen brauchen Sie?</legend>
+                <label>
+                  <input type="checkbox" data-zusammenstellung-leistung value="hausmeister">
+                  Hausmeisterdienste
+                </label>
+                <label>
+                  <input type="checkbox" data-zusammenstellung-leistung value="reinigung">
+                  Reinigungsservice
+                </label>
+                <label>
+                  <input type="checkbox" data-zusammenstellung-leistung value="garten">
+                  Gartenarbeiten &amp; Gartenpflege
+                </label>
+                <label>
+                  <input type="checkbox" data-zusammenstellung-leistung value="reparatur">
+                  Reparatur & Montage
+                </label>
+              </fieldset>
+            </div>
+            <div class="zusammenstellung-ergebnis">
+              <span class="zusammenstellung-label">Ihre Anfrage</span>
+              <p data-zusammenstellung-text aria-live="polite">
+                Wählen Sie mindestens eine Leistung aus, dann fassen wir Ihre Anfrage
+                hier zusammen.
+              </p>
+              <a class="btn btn--voll" data-zusammenstellung-cta href="anfrage.html?objektart=privat" aria-disabled="true">
+                Anfrage zusammenstellen
+              </a>
+            </div>
+          </div>
+
+          <div class="leistungen-grid">
+            <article class="kachel" data-leistung="hausmeister">
+              <div class="kachel-bild">
+                <img
+                  src="assets/leistung-hausmeister.jpg"
+                  alt="Kleine Instandhaltungsarbeit mit Werkzeug — Beispielfoto"
+                  loading="lazy"
+                  width="1600"
+                  height="1200"
+                >
+              </div>
+              <div class="kachel-text">
+                <h3>Hausmeisterdienste</h3>
+                <p>
+                  Unterstützung rund um Haus und Grundstück — beschreiben
+                  Sie Ihre Aufgabe und stimmen Sie den Umfang persönlich ab.
+                </p>
+                <a class="kachel-cta" href="anfrage.html?leistung=hausmeister">Anfragen →</a>
+              </div>
+            </article>
+            <article class="kachel" data-leistung="reinigung">
+              <div class="kachel-bild">
+                <img
+                  src="assets/leistung-reinigung.jpg"
+                  alt="Reinigungsutensilien für die Gebäudepflege — Beispielfoto"
+                  loading="lazy"
+                  width="1600"
+                  height="1200"
+                >
+              </div>
+              <div class="kachel-text">
+                <h3>Reinigungsservice</h3>
+                <p>
+                  Reinigungsservice für Ihr Objekt — schildern Sie, welche
+                  Flächen gepflegt werden sollen und wie häufig Sie Hilfe benötigen.
+                </p>
+                <a class="kachel-cta" href="anfrage.html?leistung=reinigung">Anfragen →</a>
+              </div>
+            </article>
+            <article class="kachel" data-leistung="garten">
+              <div class="kachel-bild">
+                <img
+                  src="assets/leistung-garten.jpg"
+                  alt="Rosenzweig wird mit der Gartenschere geschnitten — Beispielfoto"
+                  loading="lazy"
+                  width="1600"
+                  height="1200"
+                >
+              </div>
+              <div class="kachel-text">
+                <h3>Gartenarbeiten &amp; Gartenpflege</h3>
+                <p>
+                  Pflege für Garten und Grünflächen — teilen Sie mit,
+                  welche Arbeiten anstehen und wann Sie Unterstützung brauchen.
+                </p>
+                <a class="kachel-cta" href="anfrage.html?leistung=garten">Anfragen →</a>
+              </div>
+            </article>
+            <article class="kachel" data-leistung="reparatur">
+              <div class="kachel-bild">
+                <img
+                  src="assets/leistung-reparatur.jpg"
+                  alt="Kleine Reparatur wird mit Werkzeug ausgeführt — Beispielfoto"
+                  loading="lazy"
+                  width="1600"
+                  height="1200"
+                >
+              </div>
+              <div class="kachel-text">
+                <h3>Reparatur & Montage</h3>
+                <p>
+                  Reparatur- und Montagearbeiten rund ums Haus — mit einer
+                  kurzen Beschreibung lässt sich Ihr Anliegen gezielt besprechen.
+                </p>
+                <a class="kachel-cta" href="anfrage.html?leistung=reparatur">Anfragen →</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Betrieb: „Ihr Hausmeisterservice vor Ort" (rollenbasiert, keine erfundenen Personen) -->
+      <section class="section" id="betrieb">
+        <div class="section-inhalt">
+          <div class="betrieb-split">
+            <div class="betrieb-bild">
+              <img
+                src="assets/betrieb-werkzeug.jpg"
+                alt="Werkzeug für Haus- und Gartenarbeiten im Detail — Beispielfoto"
+                loading="lazy"
+                width="1200"
+                height="1500"
+              >
+              <span class="tag">Beispielfoto</span>
+            </div>
+            <div class="betrieb-text">
+              <span class="eyebrow">Der Betrieb</span>
+              <h2>Ihr Hausmeisterservice vor Ort</h2>
+              <p><strong>Alexander Spuling · Hausmeisterservice ASH</strong></p>
+              <p>
+                Vier Bereiche unter einem Dach: Hausmeisterdienste,
+                Reinigungsservice, Gartenarbeiten und Reparatur & Montage —
+                ein Ansprechpartner für alles, was an Haus und Grundstück
+                ansteht.
+              </p>
+              <ul class="betrieb-punkte">
+                <li>Vier Leistungen unter einem Dach</li>
+                <li>Ein Ansprechpartner für alle Anliegen</li>
+                <li>Vor Ort in Marktheidenfeld</li>
+              </ul>
+              <a class="btn btn--kontur" href="anfrage.html">Anfrage stellen</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Ablauf: Anfragen → Vor-Ort-Termin → Erledigt (Beispiel-Ablauf) -->
+      <section class="section" id="ablauf">
+        <div class="section-inhalt">
+          <div class="section-kopf">
+            <span class="eyebrow">So läuft es</span>
+            <h2>In drei Schritten erledigt</h2>
+          </div>
+          <div class="ablauf-grid">
+            <div class="ablauf-schritt">
+              <span class="ablauf-nummer" aria-hidden="true">01</span>
+              <h3>Anfragen</h3>
+              <p>
+                Sie schildern kurz Ihr Anliegen — mit Leistung, Objekt-Art
+                und Wunschtermin.
+              </p>
+            </div>
+            <div class="ablauf-schritt">
+              <span class="ablauf-nummer" aria-hidden="true">02</span>
+              <h3>Vor-Ort-Termin</h3>
+              <p>
+                Der Betrieb schaut sich die Aufgabe vor Ort an und bespricht
+                mit Ihnen das weitere Vorgehen.
+              </p>
+            </div>
+            <div class="ablauf-schritt">
+              <span class="ablauf-nummer" aria-hidden="true">03</span>
+              <h3>Erledigt</h3>
+              <p>
+                Die Arbeiten werden ausgeführt — ordentlich erledigt und
+                sauber übergeben.
+              </p>
+            </div>
+          </div>
+          <p class="ablauf-hinweis">
+            Beispiel-Ablauf der Konzeptvorschau — den tatsächlichen Ablauf
+            stimmt der Betrieb mit Ihnen ab.
+          </p>
+        </div>
+      </section>
+
+      <!-- Region: bewusst vage („rund um Marktheidenfeld"), kein erfundenes Einzugsgebiet -->
+      <section class="section section--sand" id="region">
+        <div class="section-inhalt">
+          <div class="section-kopf">
+            <span class="eyebrow">Region</span>
+            <h2>Zuhause in Marktheidenfeld</h2>
+            <p>
+              Hausmeisterservice ASH hat seinen Sitz in der Jahnstraße 5,
+              97828 Marktheidenfeld. Das genaue
+              Einzugsgebiet und freie Termine nennt Ihnen der Betrieb am
+              liebsten im persönlichen Gespräch.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ: allgemein, ohne erfundene Fakten (z. B. Gründungsjahr) -->
+      <section class="section" id="faq">
+        <div class="section-inhalt section-inhalt--schmal">
+          <div class="section-kopf">
+            <span class="eyebrow">Gut zu wissen</span>
+            <h2>Häufige Fragen</h2>
+          </div>
+          <details>
+            <summary>Ist das die echte Website von Hausmeisterservice ASH?</summary>
+            <p>
+              Nein — das ist eine persönliche Konzeptvorschau von
+              TOMORROWWORKS: ein Design-Entwurf, wie eine neue Website
+              aussehen könnte. Die Unternehmensdaten stammen aus Ihrer Anfrage
+              und dem städtischen Branchenverzeichnis. Alle Fotos sind Symbolbilder.
+            </p>
+          </details>
+          <details>
+            <summary>Was passiert mit meiner Anfrage über dieses Formular?</summary>
+            <p>
+              In dieser Demo: nichts — es wird nichts gespeichert und nichts
+              versendet. Auf einer echten Website würde der Betrieb Ihre
+              Anfrage erhalten und sich bei Ihnen melden.
+            </p>
+          </details>
+          <details>
+            <summary>Welche Leistungen bietet Hausmeisterservice ASH an?</summary>
+            <p>
+              Vier Bereiche: Hausmeisterdienste, Reinigungsservice,
+              Gartenarbeiten &amp; Gartenpflege sowie Reparatur & Montage —
+              jede Leistung können Sie direkt über die Anfrage auswählen.
+            </p>
+          </details>
+          <details>
+            <summary>Wo ist der Betrieb tätig?</summary>
+            <p>
+              Der Betrieb sitzt in Marktheidenfeld. Das genaue Einzugsgebiet nennt Ihnen der
+              Betrieb gerne im persönlichen Gespräch.
+            </p>
+          </details>
+        </div>
+      </section>
+
+      <!-- Anfrage-Teaser -->
+      <section class="section section--teaser" id="anfrage-sektion">
+        <div class="section-inhalt">
+          <div class="section-kopf">
+            <span class="eyebrow">Anfrage</span>
+            <h2>Erzählen Sie uns von Ihrem Anliegen</h2>
+            <p>
+              Ob Hausmeisterdienste, Reinigung, Garten oder Reparatur —
+              beschreiben Sie kurz, was ansteht, mit Wunschtermin und ein
+              paar Fotos.
+            </p>
+          </div>
+          <p class="teaser-aktion">
+            <a class="btn btn--voll" href="anfrage.html">Zur Anfrage</a>
+          </p>
+          <p class="teaser-meta">
+            Alexander Spuling · 0178 6550405 · a_spuling@t-online.de
+            <br>In dieser Vorschau können Sie die Anfrage unverbindlich ausprobieren.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer-inhalt">
+        <div class="footer-spalten">
+          <a class="wortmarke" href="#inhalt" aria-label="Hausmeisterservice ASH — nach oben">
+            <span class="swatch" aria-hidden="true"></span>
+            <span class="wortmarke-text">
+              <strong>Hausmeisterservice ASH</strong>
+              <span>Hausmeisterservice — Marktheidenfeld</span>
+            </span>
+          </a>
+          <nav aria-label="Fußnavigation">
+            <a href="#leistungen">Leistungen</a>
+            <a href="#betrieb">Betrieb</a>
+            <a href="#ablauf">Ablauf</a>
+            <a href="#region">Region</a>
+            <a href="#faq">FAQ</a>
+            <a href="anfrage.html" aria-label="Ihre Anfrage bei Hausmeisterservice ASH stellen">Anfrage stellen</a>
+          </nav>
+        </div>
+        <p class="footer-klein">
+          <strong>Design-Entwurf von TOMORROWWORKS</strong> — nicht die offizielle Website
+          von Hausmeisterservice ASH. Persönliche Konzeptvorschau für Alexander Spuling.
+          Beispielfotos · Anfragen werden nicht versendet.
+        </p>
+      </div>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>

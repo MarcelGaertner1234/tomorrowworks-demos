@@ -1,0 +1,34 @@
+/* Gemeinsam abgestimmte Farben für Flächen, Text und Bedienelemente. */
+:root { --akzent-hell: #d7a37e; }
+:root[data-farbe="kueste"] {
+ --creme: #f3f6fa; --sand: #e1e9f2; --tanne: #29475f; --tanne-tief: #142a3d;
+ --terracotta: #205c91; --terracotta-tief: #174570; --tinte: #172b3d; --grau: #485b6c; --akzent-hell: #b4d9ff;
+}
+:root[data-farbe="wald"] {
+ --creme: #f4f7f1; --sand: #e1e9db; --tanne: #345541; --tanne-tief: #183424;
+ --terracotta: #35613c; --terracotta-tief: #264b2d; --tinte: #203126; --grau: #4f6051; --akzent-hell: #c4dfb1;
+}
+:root[data-farbe="graphit"] {
+ --creme: #f7f7f5; --sand: #e7e7e3; --tanne: #424546; --tanne-tief: #242728;
+ --terracotta: #505557; --terracotta-tief: #363b3d; --tinte: #222627; --grau: #565c5e; --akzent-hell: #d9dedf;
+}
+:root[data-schrift="klassisch"] { --font-display: Georgia, 'Times New Roman', serif; --font-body: Arial, Helvetica, sans-serif; }
+:root[data-schrift="modern"] { --font-display: Arial, Helvetica, sans-serif; --font-body: Arial, Helvetica, sans-serif; }
+:root[data-schrift="weich"] { --font-display: 'Trebuchet MS', Verdana, sans-serif; --font-body: Verdana, Geneva, sans-serif; }
+.usp .eyebrow, .section--teaser .eyebrow { color: var(--akzent-hell); }
+.gestaltung { background: var(--creme); color: var(--tinte); border-bottom: 1px solid var(--grau); padding: 0 1.25rem; }
+.gestaltung > summary { max-width: 1160px; margin: auto; padding: .65rem 0; min-height: 44px; cursor: pointer; font: 600 .9rem/1.5 var(--font-body); }
+.gestaltung-inhalt { max-width: 1160px; margin: auto; padding: .25rem 0 1rem; }
+.gestaltung-inhalt > p { font-size: .85rem; color: var(--grau); margin-bottom: .8rem; }
+.gestaltung-gruppen { display: flex; flex-wrap: wrap; align-items: end; gap: 1rem 2rem; }
+.gestaltung fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+.gestaltung legend { font: 600 .8rem/1.5 var(--font-body); margin-bottom: .4rem; }
+.gestaltung-optionen { display: flex; flex-wrap: wrap; gap: .4rem; }
+.gestaltung button { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; min-height: 44px; padding: .5rem .75rem; border: 1px solid var(--grau); border-radius: 4px; color: var(--tinte); background: var(--creme); font: 500 .85rem/1.5 var(--font-body); cursor: pointer; }
+.gestaltung button[aria-pressed="true"] { border: 2px solid var(--tinte); padding: calc(.5rem - 1px) calc(.75rem - 1px); background: var(--sand); }
+.gestaltung button[aria-pressed="true"]::after { content: '✓'; }
+.gestaltung .farbpunkt { width: 14px; height: 14px; border-radius: 50%; background: var(--probe); }
+.gestaltung [data-font="klassisch"] { font-family: Georgia, serif; }
+.gestaltung [data-font="modern"] { font-family: Arial, sans-serif; }
+.gestaltung [data-font="weich"] { font-family: 'Trebuchet MS', Verdana, sans-serif; }
+.gestaltung-status { margin: .75rem 0 0; font-size: .8rem; color: var(--grau); }

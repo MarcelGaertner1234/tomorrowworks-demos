@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Eigenanfertigung TOMORROWWORKS: Haus-Silhouette mit Schraubenschlüssel-Ring,
+       Terracotta auf Tanne (Rubi „Der Verlässliche") -->
+  <rect width="32" height="32" fill="#2d4a3a"/>
+  <path d="M16 4 L28 14 H24.5 V28 H7.5 V14 H4 Z" fill="#b85c2c"/>
+  <rect x="13.5" y="18" width="5" height="10" fill="#2d4a3a"/>
+  <circle cx="23" cy="23" r="3.2" fill="none" stroke="#f5f1e8" stroke-width="1.6" opacity="0.85"/>
+  <rect x="22.2" y="20" width="1.6" height="4" fill="#f5f1e8" opacity="0.85"/>
+</svg>
